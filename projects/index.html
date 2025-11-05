@@ -2,9 +2,19 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 设置字符集为 UTF-8 -->
 
-  <title>我的项目 | Sun Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 响应式布局，适配移动设备 -->
+
+  <!-- 页面标题 -->
+  <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
+  <!-- 否则只显示网站标题 config.title -->
+  <title>
+    📒 我的项目 | Sun Blog
+  </title>
+
+  <!-- 页面描述，用于 SEO -->
   <meta name="description" content="一个记录开发、学习与生活点滴的博客">
 
   <!-- ===== 全局样式引入 ===== -->
@@ -12,11 +22,16 @@
   <link rel="stylesheet" href="/css/header.css">
   <link rel="stylesheet" href="/css/sidebar.css">
   <link rel="stylesheet" href="/css/post-list.css">
+  <link rel="stylesheet" href="/css/page.css">
+  <link rel="stylesheet" href="/css/category.css">
+  <link rel="stylesheet" href="/css/archive.css">
   <link rel="stylesheet" href="/css/layout.css">
+  <!-- 各模块样式，便于维护 -->
 
   <!-- ===== 字体与图标 ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <!-- 网站 favicon 和 Google 字体 -->
 
   <!-- ===== 登录状态检查 ===== -->
   <script>
@@ -25,6 +40,7 @@
       if (!onLoginPage && !localStorage.getItem("isLoggedIn")) {
         window.location.href = "/login/";
       }
+      // 如果未登录且不在登录页，自动跳转到登录页
     });
   </script>
 <meta name="generator" content="Hexo 8.1.1"></head>
@@ -33,118 +49,256 @@
   
     <!-- ===== 顶部导航栏 ===== -->
     <header class="top-nav">
-  <div class="logo"><a href="/">首页</a></div>
+  <!-- ============================
+       顶部导航栏模块
+       功能：
+         - 显示网站 logo
+         - 提供主菜单导航
+         - 技术分类下拉菜单
+         - 新建笔记 / 关于我 / 我的项目 / 技能树
+         - 小屏幕汉堡菜单切换
+         - 退出登录按钮
+  ============================ -->
+
+  <!-- 网站 Logo -->
+  <div class="logo">
+    <a href="/">首页</a>
+    <!-- 点击跳转到网站首页 -->
+  </div>
+
+  <!-- 汉堡按钮（小屏幕时显示） -->
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="切换菜单">☰</button>
+  <!-- onclick 调用 toggleMenu() 切换移动端菜单显示状态 -->
+
+  <!-- 主菜单容器 -->
   <nav class="menu">
-    <!-- 固定入口 -->
+
+    <!-- 普通菜单项 -->
     <a href="/new-note/">新建笔记</a>
-
-    <!-- 新增的独立页面入口 -->
+    <a href="/notes/">笔记列表</a>
+    <a href="/archives/">时间轴</a>
     <a href="/about/">关于我</a>
-    <a href="/projects/">我的项目</a>
+    <a href="/projects/">项目集</a>
     <a href="/skills/">技能树</a>
+    <!-- 点击跳转到对应页面 -->
 
-    <!-- 技术分类菜单 -->
-    
-    
-      <button class="menu-btn" onclick="selectMenu('Java')">Java</button>
-    
-      <button class="menu-btn" onclick="selectMenu('SpringBoot')">SpringBoot</button>
-    
-      <button class="menu-btn" onclick="selectMenu('JUnit')">JUnit</button>
-    
-      <button class="menu-btn" onclick="selectMenu('Maven')">Maven</button>
-    
-      <button class="menu-btn" onclick="selectMenu('Mybatis')">Mybatis</button>
-    
-      <button class="menu-btn" onclick="selectMenu('Git')">Git</button>
-    
-      <button class="menu-btn" onclick="selectMenu('SQL')">SQL</button>
-    
-      <button class="menu-btn" onclick="selectMenu('VBA')">VBA</button>
-    
-      <button class="menu-btn" onclick="selectMenu('Azure')">Azure</button>
-    
-      <button class="menu-btn" onclick="selectMenu('Docker')">Docker</button>
-    
-      <button class="menu-btn" onclick="selectMenu('前端')">前端</button>
-    
-      <button class="menu-btn" onclick="selectMenu('架构分析')">架构分析</button>
-    
-      <button class="menu-btn" onclick="selectMenu('快捷键')">快捷键</button>
-    
+    <!-- 技术分类下拉菜单 -->
+    <div class="dropdown">
+      <button class="menu-btn" type="button">技术分类</button>
+      <!-- 下拉按钮，点击显示分类列表 -->
 
-    <!-- 退出按钮 -->
+      <div class="dropdown-content">
+        
+
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Java/">Java</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Java')">Java</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/SpringBoot/">SpringBoot</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('SpringBoot')">SpringBoot</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/JUnit/">JUnit</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('JUnit')">JUnit</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Maven/">Maven</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Maven')">Maven</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Mybatis/">Mybatis</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Mybatis')">Mybatis</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Git/">Git</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Git')">Git</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/SQL/">SQL</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('SQL')">SQL</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/VBA/">VBA</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('VBA')">VBA</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Azure/">Azure</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Azure')">Azure</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Docker/">Docker</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Docker')">Docker</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('前端')">前端</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90/">架构分析</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('架构分析')">架构分析</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/%E5%BF%AB%E6%8D%B7%E9%94%AE/">快捷键</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('快捷键')">快捷键</a> -->
+          
+        
+      </div>
+    </div>
+    <!-- 技术分类下拉菜单结束 -->
+
+    <!-- 退出登录按钮 -->
     <button class="logout" onclick="logout()">退出</button>
-  </nav>
-</header>
+    <!-- 点击调用 logout() 清除登录状态并跳转登录页 -->
 
+  </nav>
+  <!-- 主菜单容器结束 -->
+
+</header>
+<!-- 顶部导航栏结束 -->
+
+    <!-- 导入 header 部分模板 -->
 
     <!-- ===== 侧边栏 ===== -->
     <aside class="sidebar" id="sidebar">
+  <!-- ============================
+       侧边栏模块
+       功能：
+         - 自动读取 Hexo 分类数据
+         - 自动读取 Hexo 标签数据
+         - 渲染为分类导航和标签云
+  ============================ -->
+
+  <!-- 分类导航 -->
   <h3 class="sidebar-title">📘 分类导航</h3>
-  <ul id="navList">
-    <li>请选择上方分类</li>
+  <ul class="category-list">
+    
+      
+        <li>
+          <a href="/categories/JUnit/">
+            JUnit (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/Java/">
+            Java (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/Springboot/">
+            Springboot (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">
+            第一篇文章 (1)
+          </a>
+        </li>
+      
+    
+  </ul>
+
+  <!-- 标签云 -->
+  <h3 class="sidebar-title">🏷️ 标签云</h3>
+  <ul class="tag-list">
+    
+      
+        <li>
+          <a href="/tags/JUnit/">
+            JUnit (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/Java/">
+            Java (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/Springboot/">
+            Springboot (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/log/">
+            log (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E5%9F%BA%E7%A1%80/">
+            基础 (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">
+            第一篇文章 (1)
+          </a>
+        </li>
+      
+    
   </ul>
 </aside>
 
-<script>
-  // ====== 菜单数据 ======
-  const menuData = {
-    'Java': ['基础语法', '集合框架', 'Stream 流', '异常处理'],
-    'SpringBoot': ['项目结构', 'Controller', 'Service', '配置文件'],
-    'JUnit': ['单元测试', 'Mock 测试', '参数化测试'],
-    'Maven': ['依赖管理', '插件配置', '生命周期'],
-    'Mybatis': ['Mapper', 'SQL语句', '分页插件'],
-    'Git': ['基本命令', '分支操作', '冲突解决'],
-    'SQL': ['SELECT', 'JOIN', '事务'],
-    'VBA': ['Excel 自动化', '表单操作', '宏安全'],
-    'Azure': ['App Service', 'DevOps', 'Blob 存储'],
-    'Docker': ['镜像构建', '容器运行', 'Compose 管理'],
-    '前端': ['HTML/CSS', 'JavaScript', 'React/Vue 概览'],
-    '架构分析': ['分层设计', 'DDD', '微服务结构'],
-    '快捷键': ['VSCode 快捷键', 'Eclipse 快捷键']
-  };
-
-  // ====== 由 header 调用的函数：点击上方按钮时触发 ======
-  function selectMenu(category) {
-    const navList = document.getElementById('navList');
-    navList.innerHTML = '';
-
-    // 没有数据情况
-    if (!menuData[category]) {
-      navList.innerHTML = '<li>暂无内容</li>';
-      return;
-    }
-
-    // 动态生成侧边栏项
-    menuData[category].forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
-
-      // 点击侧边栏项 → 激活样式 & 更新右侧内容
-      li.addEventListener('click', () => {
-        // 激活样式
-        document.querySelectorAll('#navList li').forEach(el => el.classList.remove('active'));
-        li.classList.add('active');
-
-        // 更新右侧主内容区
-        const main = document.getElementById('main-content');
-        if (main) {
-          main.innerHTML = `
-            <div class="content-card">
-              <h2>${item}</h2>
-              <p>这是 <strong>${category}</strong> 分类下的 <strong>${item}</strong> 内容示例。</p>
-              <p>（此处可以替换成 Markdown 渲染内容或文章列表）</p>
-            </div>
-          `;
-        }
-      });
-
-      navList.appendChild(li);
-    });
-  }
-</script>
-
+    <!-- 导入 sidebar 部分模板 -->
   
 
   <!-- ===== 主体内容区 ===== -->
@@ -153,28 +307,30 @@
   page.ejs
   通用页面模板（Hexo 主题使用）
   功能：
-    - 标题、日期（可选）
-    - 页面正文内容（Markdown 渲染）
-    - 可选侧边栏、导航条由 layout.ejs 提供
-    - 适用于独立页面（如关于、联系、说明等）
-
-  使用说明：
-    放置在 themes/<your-theme>/layout/page.ejs
-    页面 Markdown 文件位于 source 目录下，可自定义 Front Matter
+    - 显示页面标题、副标题（可选）、日期（可选）
+    - 渲染页面正文内容（Markdown 转换后的 HTML）
+    - 页脚信息（版权、Powered by）
+    - 外层布局（导航、侧边栏）由 layout.ejs 提供
 -->
 
 <article class="page-article">
-  <!-- 标题区 -->
+  <!-- 标题区：如果有 title 就渲染 -->
   
     <header class="page-header">
-      <h1 class="page-title">我的项目</h1>
+      <!-- 页面标题 -->
+      <h1 class="page-title">📒 我的项目</h1>
+
+      <!-- 副标题（可选，来自 front-matter 的 subtitle 字段） -->
+      
+
+      <!-- 日期（可选，来自 front-matter 的 date 字段） -->
       
         <p class="page-meta">发布于 2025-01-10</p>
       
     </header>
   
 
-  <!-- 页面正文 -->
+  <!-- 页面正文内容（Markdown 渲染结果） -->
   <div class="page-content">
     <h2 id="🚀-项目经验"><a href="#🚀-项目经验" class="headerlink" title="🚀 项目经验"></a>🚀 项目经验</h2><h3 id="1-企业级金融系统改造"><a href="#1-企业级金融系统改造" class="headerlink" title="1. 企业级金融系统改造"></a>1. 企业级金融系统改造</h3><ul>
 <li><strong>角色</strong>：后端开发 &amp; 架构优化</li>
@@ -202,39 +358,26 @@
 
   </div>
 
-  <!-- 页脚占位（可选） -->
+  <!-- 页脚：如果 simpleLayout 未开启，则显示版权信息 -->
   
     <footer class="page-footer">
-      <p>版权声明：本文内容由作者提供，如需转载请注明来源。</p>
+      <p>
+        © 2025 SUN |
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a> &
+        <a href="https://vercel.com" target="_blank">Vercel</a>
+      </p>
     </footer>
   
 </article>
 
-<!-- 可选局部脚本 -->
+<!-- 可选脚本：可在这里写页面交互逻辑 -->
 <script>
-  // 页面内部可能需要的 JS，如滚动效果、交互等
+  // 例如：滚动到顶部按钮、动态效果等
 </script>
 
-<!-- 推荐 CSS（可放在 theme 的 CSS 文件中） -->
-<!--
-.page-article { max-width: 900px; margin: 0 auto; padding: 24px; }
-.page-header { margin-bottom: 20px; }
-.page-title { font-size: 2rem; font-weight: 600; }
-.page-meta { color: #777; font-size: 0.9rem; margin-top: 4px; }
-.page-content { line-height: 1.8; font-size: 1rem; }
-.page-footer { margin-top: 36px; border-top: 1px solid #eee; padding-top: 18px; font-size: 0.9rem; color: #555; }
--->
-
+    <!-- 渲染当前页面内容 -->
+    <!--  保证 HTML 正常渲染，不转义 -->
   </main>
-
-  
-    <!-- ===== 页脚 ===== -->
-    <footer>
-  <p>
-    © 2025 SUN | Powered by Hexo + Vercel
-  </p>
-</footer>
-  
 
   <!-- ===== 全局脚本区域 ===== -->
   <script>
@@ -242,24 +385,37 @@
     function logout() {
       localStorage.removeItem("isLoggedIn");
       window.location.href = "/login/";
+      // 清除登录标记并跳转登录页
     }
 
     // ===== 平滑滚动至顶部 =====
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      // 平滑滚动到页面顶部
+    }
+
+    // ===== 切换小屏幕菜单展开/收起 =====
+    function toggleMenu() {
+      const menu = document.querySelector('header.top-nav .menu');
+      if (menu) {
+        menu.classList.toggle('show');
+        // 切换菜单显示状态，便于移动端操作
+      }
     }
   </script>
 
-  <!-- 可选的“返回顶部”按钮 -->
+  <!-- ===== 可选的“返回顶部”按钮 ===== -->
   <button id="backToTop" title="回到顶部">↑</button>
 
   <script>
     // ===== 返回顶部按钮逻辑 =====
     const topBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
+      // 当页面向下滚动超过 300px 显示按钮，否则隐藏
       topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
     });
     topBtn.addEventListener('click', scrollToTop);
+    // 点击按钮触发平滑滚动到顶部
   </script>
 </body>
 </html>

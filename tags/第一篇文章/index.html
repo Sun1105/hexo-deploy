@@ -303,86 +303,91 @@
 
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
-    <section class="archive-timeline">
-  <!-- ============================
-       文章归档时间轴模块
-       功能：
-         - 按年份分组文章
-         - 按时间顺序渲染文章列表
-         - 每篇文章显示发布日期、标题、摘要
-  ============================ -->
+    <!--
+  tag.ejs
+  标签页面模板
+  功能：
+    - 显示当前标签名称
+    - 遍历该标签下的所有文章
+    - 渲染为文章卡片列表
+-->
 
-  
+<section class="main-section">
+  <!-- 页面主容器，用于布局和样式控制 -->
 
-        <div class="archive-year">
-          <!-- 单个年份组容器 -->
-          <h2>2025</h2>
-          <!-- 显示年份标题，例如 2025 -->
-          <div class="timeline">
-            <!-- 时间轴容器 -->
-      
+  <!-- 标签标题 -->
+  <h2 class="section-title">🏷️ 第一篇文章 标签</h2>
+  <!-- emoji 🏷️ 用于视觉增强 -->
+  <!-- 第一篇文章 动态输出当前页面所属标签名称 -->
+  <!-- 最终显示效果示例：🏷️ Java 标签 -->
 
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
+  <div class="post-list">
+    <!-- 文章列表容器，用于存放该标签下的所有文章卡片 -->
 
-        <div class="timeline-content">
-          <span class="timeline-date">11-01</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
-
-          <a href="/2025/10/31/20251105-00001-Junit/" class="timeline-title">JUnit</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
+    
+    <!-- 判断当前标签下是否有文章 -->
+    <!-- page.posts → 当前页面文章数组 -->
+    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
 
       
+      <!-- 遍历每篇文章 post -->
+      <!-- post 对象包含文章标题、路径、日期、分类、摘要等信息 -->
 
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
+        <article class="post-card">
+        <!-- 单篇文章卡片容器 -->
 
-        <div class="timeline-content">
-          <span class="timeline-date">11-01</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
+          <!-- 文章标题 -->
+          <h3 class="post-title">
+            <a href="/2024/12/31/hello-world/">Hello World</a>
+            <!-- 链接到文章详情页 -->
+            <!-- url_for(post.path) → 生成文章路径 -->
+            <!-- post.title → 当前文章标题 -->
+          </h3>
 
-          <a href="/2025/10/31/20251105-00001-SpringBoot/" class="timeline-title">Springboot</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
+          <!-- 文章元信息：发布日期 + 分类 -->
+          <p class="post-meta">
+            发布于 2025-01-01
+            <!-- 显示文章发布日期 -->
 
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
+             |
+              分类：
+              
+                <a href="/categories/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">第一篇文章</a>
+                
+                <!-- 遍历文章分类 -->
+                <!-- 多个分类用逗号分隔 -->
+              
+            
+          </p>
+          <!-- 文章元信息结束 -->
+
+          <!-- 文章摘要 -->
+          <p class="post-excerpt">
+            （暂无摘要）
+            <!-- 显示文章摘要 -->
+            <!-- 去掉 HTML 标签，只保留纯文本 -->
+            <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
+          </p>
+
+          <!-- 阅读全文按钮 -->
+          <a href="/2024/12/31/hello-world/" class="read-more">阅读全文 →</a>
+          <!-- 链接到文章详情页 -->
+          <!-- CSS class "read-more" 用于样式化按钮 -->
+
+        </article>
+        <!-- 单篇文章卡片结束 -->
 
       
+      <!-- 遍历文章结束 -->
 
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
+    
+    <!-- 条件判断结束 -->
 
-        <div class="timeline-content">
-          <span class="timeline-date">10-30</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
+  </div>
+  <!-- 文章列表容器结束 -->
 
-          <a href="/2025/10/29/20251105-00002-Springboot/" class="timeline-title">将 DTO 或 Entity 对象以键值对 JSON 格式输出到日志（log）</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-            </div> <!-- timeline 结束 -->
-          </div> <!-- archive-year 结束 -->
-        
 </section>
-<!-- 文章归档时间轴模块结束 -->
+<!-- 页面主容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->

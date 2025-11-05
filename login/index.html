@@ -2,9 +2,19 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 设置字符集为 UTF-8 -->
 
-  <title>登录 | Sun Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 响应式布局，适配移动设备 -->
+
+  <!-- 页面标题 -->
+  <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
+  <!-- 否则只显示网站标题 config.title -->
+  <title>
+    登录 | Sun Blog
+  </title>
+
+  <!-- 页面描述，用于 SEO -->
   <meta name="description" content="一个记录开发、学习与生活点滴的博客">
 
   <!-- ===== 全局样式引入 ===== -->
@@ -12,11 +22,16 @@
   <link rel="stylesheet" href="/css/header.css">
   <link rel="stylesheet" href="/css/sidebar.css">
   <link rel="stylesheet" href="/css/post-list.css">
+  <link rel="stylesheet" href="/css/page.css">
+  <link rel="stylesheet" href="/css/category.css">
+  <link rel="stylesheet" href="/css/archive.css">
   <link rel="stylesheet" href="/css/layout.css">
+  <!-- 各模块样式，便于维护 -->
 
   <!-- ===== 字体与图标 ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <!-- 网站 favicon 和 Google 字体 -->
 
   <!-- ===== 登录状态检查 ===== -->
   <script>
@@ -25,6 +40,7 @@
       if (!onLoginPage && !localStorage.getItem("isLoggedIn")) {
         window.location.href = "/login/";
       }
+      // 如果未登录且不在登录页，自动跳转到登录页
     });
   </script>
 <meta name="generator" content="Hexo 8.1.1"></head>
@@ -38,67 +54,106 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
+  <!-- 页面字符集设置为 UTF-8 -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 响应式布局，适配移动设备 -->
+
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
+  <!-- 禁止浏览器缓存，保证每次加载最新页面 -->
+
   <title>登录 - MyBlog</title>
+  <!-- 页面标题 -->
+
   <link rel="stylesheet" href="/css/login.css">
+  <!-- 引入登录页样式 -->
+  <!-- url_for() → Hexo 方法生成正确的资源路径 -->
 </head>
+
 <body class="login-page">
+  <!-- 登录页主容器，class="login-page" 用于 CSS 样式 -->
+
   <div class="login-container">
+    <!-- 登录表单容器 -->
+
     <h2>🔐 登录 MyBlog</h2>
+    <!-- 页面标题，带锁的 emoji 提示安全性 -->
+
     <form id="loginForm">
+      <!-- 登录表单 -->
       <input type="text" id="username" placeholder="用户名" required>
+      <!-- 用户名输入框 -->
+
       <input type="password" id="password" placeholder="密码" required>
+      <!-- 密码输入框 -->
+
       <button type="submit">登录</button>
+      <!-- 提交按钮 -->
     </form>
+
     <p id="message" class="message"></p>
+    <!-- 登录反馈信息显示容器 -->
   </div>
 
   <script>
+    // ===============================
     // 已登录用户自动跳转主页
+    // ===============================
     if (localStorage.getItem("isLoggedIn") === "true") {
       window.location.href = "/";
     }
+    // 如果 localStorage 中有登录标记，则直接跳转主页
 
     const form = document.getElementById("loginForm");
     const msg = document.getElementById("message");
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+      // 阻止表单默认提交行为
 
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value.trim();
+      // 获取输入框值并去掉空格
 
+      // ===============================
       // 简单模拟登录验证
+      // ===============================
       if (username === "admin" && password === "123456") {
+        // 登录成功逻辑
         msg.textContent = "登录成功，正在跳转...";
         msg.className = "message success";
+        // 显示成功信息
 
-        // 存储登录标记
         localStorage.setItem("isLoggedIn", "true");
+        // 存储登录标记
 
-        // 确保浏览器先写入 localStorage 再跳转
+        // 延时动画效果，先写入 localStorage 再跳转
         setTimeout(() => {
           document.body.classList.add("fade-out");
+          // 可以配合 CSS 动画做淡出效果
 
-          // 使用 replace 避免回退到登录页
           setTimeout(() => {
-            window.location.replace("/"); // ✅ 用 replace 比 href 更稳定
+            window.location.replace("/");
+            // 跳转到主页
+            // 使用 replace 避免用户回退返回登录页
           }, 600);
         }, 500);
+
       } else {
-              msg.textContent = "用户名或密码错误，请重试。";
-              msg.className = "message error";
-            }
+        // 登录失败逻辑
+        msg.textContent = "用户名或密码错误，请重试。";
+        msg.className = "message error";
+        // 显示错误信息
+      }
     });
   </script>
 </body>
 </html>
 
+    <!-- 渲染当前页面内容 -->
+    <!--  保证 HTML 正常渲染，不转义 -->
   </main>
-
-  
 
   <!-- ===== 全局脚本区域 ===== -->
   <script>
@@ -106,24 +161,37 @@
     function logout() {
       localStorage.removeItem("isLoggedIn");
       window.location.href = "/login/";
+      // 清除登录标记并跳转登录页
     }
 
     // ===== 平滑滚动至顶部 =====
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      // 平滑滚动到页面顶部
+    }
+
+    // ===== 切换小屏幕菜单展开/收起 =====
+    function toggleMenu() {
+      const menu = document.querySelector('header.top-nav .menu');
+      if (menu) {
+        menu.classList.toggle('show');
+        // 切换菜单显示状态，便于移动端操作
+      }
     }
   </script>
 
-  <!-- 可选的“返回顶部”按钮 -->
+  <!-- ===== 可选的“返回顶部”按钮 ===== -->
   <button id="backToTop" title="回到顶部">↑</button>
 
   <script>
     // ===== 返回顶部按钮逻辑 =====
     const topBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
+      // 当页面向下滚动超过 300px 显示按钮，否则隐藏
       topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
     });
     topBtn.addEventListener('click', scrollToTop);
+    // 点击按钮触发平滑滚动到顶部
   </script>
 </body>
 </html>

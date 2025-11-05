@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    Sun Blog
+    将 DTO 或 Entity 对象以键值对 JSON 格式输出到日志（log） | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -303,86 +303,81 @@
 
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
-    <section class="archive-timeline">
-  <!-- ============================
-       文章归档时间轴模块
-       功能：
-         - 按年份分组文章
-         - 按时间顺序渲染文章列表
-         - 每篇文章显示发布日期、标题、摘要
-  ============================ -->
+    <!--
+  post.ejs
+  文章详情页模板
+  功能：
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
+-->
 
-  
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
-        <div class="archive-year">
-          <!-- 单个年份组容器 -->
-          <h2>2025</h2>
-          <!-- 显示年份标题，例如 2025 -->
-          <div class="timeline">
-            <!-- 时间轴容器 -->
-      
+  <!-- 文章标题 -->
+  <h1 class="post-title">将 DTO 或 Entity 对象以键值对 JSON 格式输出到日志（log）</h1>
+  <!-- page.title → 当前文章标题 -->
 
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2025-10-30</span>
+    <!-- 显示文章发布日期 -->
 
-        <div class="timeline-content">
-          <span class="timeline-date">11-01</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
+    
+      <!-- 判断文章是否有标签 -->
 
-          <a href="/2025/10/31/20251105-00001-Junit/" class="timeline-title">JUnit</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
-
-        <div class="timeline-content">
-          <span class="timeline-date">11-01</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
-
-          <a href="/2025/10/31/20251105-00001-SpringBoot/" class="timeline-title">Springboot</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
-
-        <div class="timeline-content">
-          <span class="timeline-date">10-30</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
-
-          <a href="/2025/10/29/20251105-00002-Springboot/" class="timeline-title">将 DTO 或 Entity 对象以键值对 JSON 格式输出到日志（log）</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-            </div> <!-- timeline 结束 -->
-          </div> <!-- archive-year 结束 -->
+      <span>标签：
         
-</section>
-<!-- 文章归档时间轴模块结束 -->
+          <a href="/tags/Springboot/">Springboot</a>
+          , 
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+          <a href="/tags/log/">log</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+      </span>
+
+    
+    <!-- 标签判断结束 -->
+  </div>
+  <!-- 文章元信息结束 -->
+
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    <p>✅ 一、使用 Jackson（推荐）</p>
+<p>Spring Boot 默认集成了 Jackson，所以你可以直接用它把对象转成 JSON。</p>
+<p>示例代码：</p>
+<pre><code class="language-java">import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class LogUtil {
+    private static final Logger log = LoggerFactory.getLogger(LogUtil.class);
+    private static final ObjectMapper mapper = new ObjectMapper();
+
+    public static void logAsJson(Object obj) {
+        try {
+            String json = mapper.writeValueAsString(obj);
+            log.info(&quot;Object JSON: {}&quot;, json);
+        } catch (JsonProcessingException e) {
+            log.error(&quot;Failed to convert object to JSON&quot;, e);
+        }
+    }
+}
+</code></pre>
+
+    <!-- 渲染文章正文 HTML -->
+    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  </div>
+  <!-- 文章正文结束 -->
+
+</article>
+<!-- 单篇文章容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->

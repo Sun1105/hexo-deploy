@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    Sun Blog
+    📒 在线笔记 | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -303,87 +303,214 @@
 
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
-    <section class="archive-timeline">
+    <section class="main-section">   
   <!-- ============================
-       文章归档时间轴模块
+       在线笔记系统模块
        功能：
-         - 按年份分组文章
-         - 按时间顺序渲染文章列表
-         - 每篇文章显示发布日期、标题、摘要
+         - 列出已有文章
+         - 新建文章
+         - 编辑文章（标题、分类、标签、内容）
+         - 实时 Markdown 预览
+         - 保存到 GitHub 仓库，触发 Vercel 自动部署
   ============================ -->
+  <h1 style="text-align:center;">📒 在线笔记系统</h1>
 
-  
+  <div style="max-width:1000px; margin:20px auto;">
+    <!-- 新建文章按钮 -->
+    <button id="newNoteBtn" style="padding:10px 15px; background:#0078d7; color:#fff; border:none; border-radius:5px; cursor:pointer;">📝 新建文章</button>
 
-        <div class="archive-year">
-          <!-- 单个年份组容器 -->
-          <h2>2025</h2>
-          <!-- 显示年份标题，例如 2025 -->
-          <div class="timeline">
-            <!-- 时间轴容器 -->
-      
+    <!-- 文章列表容器 -->
+    <div id="noteList" style="margin-top:20px;"></div>
 
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
+    <!-- 编辑器弹窗 -->
+    <div id="editorModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">
+      <div style="background:#fff; width:90%; max-width:800px; margin:50px auto; padding:20px; border-radius:8px; position:relative;">
+        <h2 id="editorTitle">编辑文章</h2>
 
-        <div class="timeline-content">
-          <span class="timeline-date">11-01</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
+        <!-- 标题输入框 -->
+        <input type="text" id="noteTitle" placeholder="标题" style="width:100%; padding:8px; margin-bottom:10px;">
 
-          <a href="/2025/10/31/20251105-00001-Junit/" class="timeline-title">JUnit</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
+        <!-- 分类输入框 -->
+        <input type="text" id="noteCategory" placeholder="分类" style="width:100%; padding:8px; margin-bottom:10px;">
 
-          
+        <!-- 标签输入框 -->
+        <input type="text" id="noteTags" placeholder="标签，用逗号分隔" style="width:100%; padding:8px; margin-bottom:10px;">
+
+        <!-- 内容输入框 -->
+        <textarea id="noteContent" rows="15" style="width:100%; padding:8px;"></textarea>
+
+        <!-- 保存/取消按钮 -->
+        <div style="margin-top:10px; display:flex; gap:10px;">
+          <button id="saveNoteBtn" style="flex:1; padding:10px; background:#28a745; color:#fff; border:none; border-radius:5px; cursor:pointer;">💾 保存</button>
+          <button id="cancelEditBtn" style="flex:1; padding:10px; background:#dc3545; color:#fff; border:none; border-radius:5px; cursor:pointer;">❌ 取消</button>
         </div>
+
+        <!-- Markdown 实时预览 -->
+        <div id="preview" style="margin-top:20px; padding:10px; border:1px solid #ddd; border-radius:5px;"></div>
       </div>
-      <!-- 单篇文章时间轴项结束 -->
+    </div>
+  </div>
 
-      
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+  const owner = "你的GitHub用户名";   // 替换成你的 GitHub 用户名
+  const repo = "你的仓库名";          // 替换成你的仓库名
+  const postsDir = "_posts";          // Hexo 文章目录
+  let editingNote = null;             // 当前正在编辑的文章对象
 
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
+  const noteListDiv = document.getElementById('noteList');
+  const editorModal = document.getElementById('editorModal');
+  const noteTitle = document.getElementById('noteTitle');
+  const noteCategory = document.getElementById('noteCategory'); // 分类输入框
+  const noteTags = document.getElementById('noteTags');
+  const noteContent = document.getElementById('noteContent');
+  const saveNoteBtn = document.getElementById('saveNoteBtn');
+  const cancelEditBtn = document.getElementById('cancelEditBtn');
+  const previewDiv = document.getElementById('preview');
 
-        <div class="timeline-content">
-          <span class="timeline-date">11-01</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
+  // ========================
+  // 1️⃣ 列出文章列表
+  // ========================
+  async function loadNotes() {
+    noteListDiv.innerHTML = "加载中...";
+    try {
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${postsDir}`);
+      const data = await res.json();
+      if(res.ok){
+        noteListDiv.innerHTML = "";
+        data.forEach(file => {
+          if(file.name.endsWith(".md")){
+            const div = document.createElement('div');
+            div.style.padding = "10px";
+            div.style.borderBottom = "1px solid #ddd";
+            div.style.cursor = "pointer";
+            div.textContent = file.name;
+            div.addEventListener('click', () => openEditor(file));
+            noteListDiv.appendChild(div);
+          }
+        });
+      } else {
+        noteListDiv.innerHTML = "❌ 获取文章列表失败：" + JSON.stringify(data);
+      }
+    } catch(err){
+      noteListDiv.innerHTML = "❌ 网络错误：" + err.message;
+    }
+  }
 
-          <a href="/2025/10/31/20251105-00001-SpringBoot/" class="timeline-title">Springboot</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
+  // ========================
+  // 2️⃣ 打开编辑器
+  // ========================
+  async function openEditor(file){
+    editingNote = file;
+    try {
+      const res = await fetch(file.download_url);
+      const contentText = await res.text();
+      const shaRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${postsDir}/${file.name}`);
+      const shaData = await shaRes.json();
+      editingNote.sha = shaData.sha;
 
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
+      // 填充编辑器
+      noteTitle.value = contentText.match(/title:\s*(.*)/)?.[1] || file.name;
+      noteCategory.value = contentText.match(/category:\s*(.*)/)?.[1] || ""; // 分类
+      noteTags.value = contentText.match(/tags:\s*\[(.*)\]/)?.[1] || "";
+      noteContent.value = contentText.split('---').slice(2).join('---').trim();
 
-      
+      previewDiv.innerHTML = marked.parse(noteContent.value);
+      editorModal.style.display = "block";
+    } catch(err){
+      alert("❌ 打开编辑器失败：" + err.message);
+    }
+  }
 
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
+  // ========================
+  // 3️⃣ 新建文章
+  // ========================
+  document.getElementById('newNoteBtn').addEventListener('click', () => {
+    editingNote = null;
+    noteTitle.value = "";
+    noteCategory.value = "";
+    noteTags.value = "";
+    noteContent.value = "";
+    previewDiv.innerHTML = "";
+    editorModal.style.display = "block";
+  });
 
-        <div class="timeline-content">
-          <span class="timeline-date">10-30</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
+  // ========================
+  // 4️⃣ 保存文章
+  // ========================
+  saveNoteBtn.addEventListener('click', async () => {
+    const title = noteTitle.value.trim();
+    const category = noteCategory.value.trim(); // 分类
+    const tags = noteTags.value.split(',').map(t=>t.trim()).filter(Boolean);
+    const content = noteContent.value.trim();
 
-          <a href="/2025/10/29/20251105-00002-Springboot/" class="timeline-title">将 DTO 或 Entity 对象以键值对 JSON 格式输出到日志（log）</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
+    if(!title || !content){
+      alert("标题和内容不能为空！");
+      return;
+    }
 
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
+    const mdContent = `---
+  title: ${title}
+  category: ${category}
+  tags: [${tags.join(',')}]
+  date: ${new Date().toISOString()}
+  ---
 
-      
-            </div> <!-- timeline 结束 -->
-          </div> <!-- archive-year 结束 -->
-        
+  ${content}
+  `;
+
+    try {
+      let path, sha, message;
+      if(editingNote){
+        path = `${postsDir}/${editingNote.name}`;
+        sha = editingNote.sha;
+        message = `编辑文章: ${title}`;
+      } else {
+        const fileName = `${Date.now()}-${title.replace(/\s+/g,'-')}.md`;
+        path = `${postsDir}/${fileName}`;
+        sha = undefined;
+        message = `新建文章: ${title}`;
+      }
+
+      const res = await fetch(editingNote ? '/api/edit-note' : '/api/new-note', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ path, sha, content: mdContent, message })
+      });
+
+      const data = await res.json();
+      if(res.ok){
+        alert('✅ 保存成功！请稍等 Vercel 自动部署。');
+        editorModal.style.display = "none";
+        loadNotes();
+      } else {
+        alert('❌ 保存失败：' + JSON.stringify(data.error));
+      }
+    } catch(err){
+      alert("❌ 网络或服务器错误：" + err.message);
+    }
+  });
+
+  // ========================
+  // 5️⃣ 取消编辑
+  // ========================
+  cancelEditBtn.addEventListener('click', () => {
+    editorModal.style.display = "none";
+  });
+
+  // ========================
+  // 6️⃣ 实时 Markdown 预览
+  // ========================
+  noteContent.addEventListener('input', () => {
+    previewDiv.innerHTML = marked.parse(noteContent.value);
+  });
+
+  // ========================
+  // 7️⃣ 初始化加载文章列表
+  // ========================
+  loadNotes();
+  </script>
 </section>
-<!-- 文章归档时间轴模块结束 -->
-
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
   </main>
