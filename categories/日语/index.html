@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    📓 技能树 | Sun Blog
+    Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -298,83 +298,113 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  page.ejs
-  通用页面模板（Hexo 主题使用）
+  category.ejs
+  分类页面模板
   功能：
-    - 显示页面标题、副标题（可选）、日期（可选）
-    - 渲染页面正文内容（Markdown 转换后的 HTML）
-    - 页脚信息（版权、Powered by）
-    - 外层布局（导航、侧边栏）由 layout.ejs 提供
+    - 显示分类标题
+    - 遍历当前分类下所有文章
+    - 渲染文章卡片列表
+    - 当分类下无文章时显示提示
 -->
 
-<article class="page-article">
-  <!-- 标题区：如果有 title 就渲染 -->
-  
-    <header class="page-header">
-      <!-- 页面标题 -->
-      <h1 class="page-title">📓 技能树</h1>
+<section class="main-section">
+  <!-- 页面主容器，控制布局和样式 -->
 
-      <!-- 副标题（可选，来自 front-matter 的 subtitle 字段） -->
-      
+  <!-- 分类标题 -->
+  <h2 class="section-title">📘 日语 分类</h2>
+  <!-- emoji 📘 用于视觉增强 -->
+  <!-- 日语 动态输出当前页面所属分类名称 -->
+  <!-- 显示示例：📘 Java 分类 -->
 
-      <!-- 日期（可选，来自 front-matter 的 date 字段） -->
-      
-        <p class="page-meta">发布于 2025-01-15</p>
-      
-    </header>
-  
+  <div class="post-list">
+    <!-- 文章列表容器，用于放置文章卡片 -->
 
-  <!-- 页面正文内容（Markdown 渲染结果） -->
-  <div class="page-content">
-    <h2 id="🧑‍💻-编程语言"><a href="#🧑‍💻-编程语言" class="headerlink" title="🧑‍💻 编程语言"></a>🧑‍💻 编程语言</h2><ul>
-<li><strong>Java</strong>：精通，熟悉 Spring Boot、MyBatis 等主流框架</li>
-<li><strong>Python</strong>：掌握数据处理与 OpenCV 图像处理</li>
-<li><strong>JavaScript</strong>：能进行前端调试与模板优化</li>
-<li><strong>Shell &#x2F; VBA</strong>：擅长自动化工具开发</li>
-</ul>
-<hr>
-<h2 id="🏗️-系统架构与后端"><a href="#🏗️-系统架构与后端" class="headerlink" title="🏗️ 系统架构与后端"></a>🏗️ 系统架构与后端</h2><ul>
-<li>企业级系统架构设计与优化</li>
-<li>微服务与 CI&#x2F;CD 流程</li>
-<li>DevOps 与云端部署（Vercel、Docker、Azure）</li>
-</ul>
-<hr>
-<h2 id="🗄️-数据库与数据分析"><a href="#🗄️-数据库与数据分析" class="headerlink" title="🗄️ 数据库与数据分析"></a>🗄️ 数据库与数据分析</h2><ul>
-<li>Oracle 数据库：复杂 SQL、性能调优</li>
-<li>MySQL &#x2F; PostgreSQL：常规开发与维护</li>
-<li>数据建模与结构化分析</li>
-</ul>
-<hr>
-<h2 id="🧩-工具链与自动化"><a href="#🧩-工具链与自动化" class="headerlink" title="🧩 工具链与自动化"></a>🧩 工具链与自动化</h2><ul>
-<li>自动化测试工具开发</li>
-<li>流程优化与模块化设计</li>
-<li>Git &#x2F; GitHub &#x2F; GitLab 工作流</li>
-</ul>
-<hr>
-<h2 id="🎨-其他技能"><a href="#🎨-其他技能" class="headerlink" title="🎨 其他技能"></a>🎨 其他技能</h2><ul>
-<li>技术博客搭建与 SEO 优化</li>
-<li>多语言技术交流（中日双语）</li>
-<li>知识整理与文档化习惯</li>
-</ul>
+    
+    <!-- 判断当前分类下是否有文章 -->
+    <!-- page.posts → 当前页面文章数组 -->
+    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
+
+      
+      <!-- 遍历当前分类下每篇文章 post -->
+      <!-- post 对象包含文章标题、路径、日期、分类、标签、摘要等信息 -->
+
+        <!--
+  _partial/post-card.ejs
+  功能：
+    - 渲染单篇文章的卡片
+    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
+    - 可在分类页、标签页、归档页复用
+-->
+
+<article class="post-card">
+  <!-- 单篇文章卡片容器，用于布局和样式 -->
+
+  <!-- 文章标题 -->
+  <h3 class="post-title">
+    <a href="/2025/11/11/1762867028153--%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92-%E7%9B%AE%E6%A0%87-%E6%8E%A5%E8%BF%91%E6%AF%8D%E8%AF%AD%E6%B0%B4%E5%B9%B3-/">📖 日语学习计划（目标：接近母语水平）</a>
+    <!-- 链接到文章详情页 -->
+    <!-- url_for(post.path) → 生成文章路径 -->
+    <!-- post.title → 当前文章标题 -->
+  </h3>
+
+  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
+  <p class="post-meta">
+    发布于 2025-11-11
+    <!-- 显示文章发布日期 -->
+
+     |
+      分类：
+      
+        <a href="/categories/%E6%97%A5%E8%AF%AD/">日语</a>
+        
+        <!-- 遍历文章分类 -->
+        <!-- 多个分类用逗号分隔 -->
+      
+    
+
+     |
+      标签：
+      
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">学习计划</a>
+        
+        <!-- 遍历文章标签 -->
+        <!-- 多个标签用逗号分隔 -->
+      
+    
+  </p>
+  <!-- 文章元信息结束 -->
+
+  <!-- 文章摘要 -->
+  <p class="post-excerpt">
+    （暂无摘要）
+    <!-- 显示文章摘要 -->
+    <!-- 去掉 HTML 标签，只保留纯文本 -->
+    <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
+  </p>
+
+  <!-- 阅读全文按钮 -->
+  <a href="/2025/11/11/1762867028153--%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92-%E7%9B%AE%E6%A0%87-%E6%8E%A5%E8%BF%91%E6%AF%8D%E8%AF%AD%E6%B0%B4%E5%B9%B3-/" class="read-more">阅读全文 →</a>
+  <!-- 链接到文章详情页 -->
+  <!-- CSS class "read-more" 用于样式化按钮 -->
+
+</article>
+<!-- 单篇文章卡片结束 -->
+
+        <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
+        <!-- 将当前文章对象 post 传入模板 -->
+        <!--  输出 HTML，不转义，保证标签正常显示 -->
+
+      
+      <!-- 遍历文章结束 -->
+
+    
+    <!-- 条件判断结束 -->
 
   </div>
+  <!-- 文章列表容器结束 -->
 
-  <!-- 页脚：如果 simpleLayout 未开启，则显示版权信息 -->
-  
-    <footer class="page-footer">
-      <p>
-        © 2025 SUN |
-        Powered by <a href="https://hexo.io" target="_blank">Hexo</a> &
-        <a href="https://vercel.com" target="_blank">Vercel</a>
-      </p>
-    </footer>
-  
-</article>
-
-<!-- 可选脚本：可在这里写页面交互逻辑 -->
-<script>
-  // 例如：滚动到顶部按钮、动态效果等
-</script>
+</section>
+<!-- 页面主容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->

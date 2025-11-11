@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    📓 技能树 | Sun Blog
+    📖 日语学习计划（目标：接近母语水平） | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -298,83 +298,141 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  page.ejs
-  通用页面模板（Hexo 主题使用）
+  post.ejs
+  文章详情页模板
   功能：
-    - 显示页面标题、副标题（可选）、日期（可选）
-    - 渲染页面正文内容（Markdown 转换后的 HTML）
-    - 页脚信息（版权、Powered by）
-    - 外层布局（导航、侧边栏）由 layout.ejs 提供
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
 -->
 
-<article class="page-article">
-  <!-- 标题区：如果有 title 就渲染 -->
-  
-    <header class="page-header">
-      <!-- 页面标题 -->
-      <h1 class="page-title">📓 技能树</h1>
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
-      <!-- 副标题（可选，来自 front-matter 的 subtitle 字段） -->
-      
+  <!-- 文章标题 -->
+  <h1 class="post-title">📖 日语学习计划（目标：接近母语水平）</h1>
+  <!-- page.title → 当前文章标题 -->
 
-      <!-- 日期（可选，来自 front-matter 的 date 字段） -->
-      
-        <p class="page-meta">发布于 2025-01-15</p>
-      
-    </header>
-  
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2025-11-11</span>
+    <!-- 显示文章发布日期 -->
 
-  <!-- 页面正文内容（Markdown 渲染结果） -->
-  <div class="page-content">
-    <h2 id="🧑‍💻-编程语言"><a href="#🧑‍💻-编程语言" class="headerlink" title="🧑‍💻 编程语言"></a>🧑‍💻 编程语言</h2><ul>
-<li><strong>Java</strong>：精通，熟悉 Spring Boot、MyBatis 等主流框架</li>
-<li><strong>Python</strong>：掌握数据处理与 OpenCV 图像处理</li>
-<li><strong>JavaScript</strong>：能进行前端调试与模板优化</li>
-<li><strong>Shell &#x2F; VBA</strong>：擅长自动化工具开发</li>
-</ul>
-<hr>
-<h2 id="🏗️-系统架构与后端"><a href="#🏗️-系统架构与后端" class="headerlink" title="🏗️ 系统架构与后端"></a>🏗️ 系统架构与后端</h2><ul>
-<li>企业级系统架构设计与优化</li>
-<li>微服务与 CI&#x2F;CD 流程</li>
-<li>DevOps 与云端部署（Vercel、Docker、Azure）</li>
-</ul>
-<hr>
-<h2 id="🗄️-数据库与数据分析"><a href="#🗄️-数据库与数据分析" class="headerlink" title="🗄️ 数据库与数据分析"></a>🗄️ 数据库与数据分析</h2><ul>
-<li>Oracle 数据库：复杂 SQL、性能调优</li>
-<li>MySQL &#x2F; PostgreSQL：常规开发与维护</li>
-<li>数据建模与结构化分析</li>
-</ul>
-<hr>
-<h2 id="🧩-工具链与自动化"><a href="#🧩-工具链与自动化" class="headerlink" title="🧩 工具链与自动化"></a>🧩 工具链与自动化</h2><ul>
-<li>自动化测试工具开发</li>
-<li>流程优化与模块化设计</li>
-<li>Git &#x2F; GitHub &#x2F; GitLab 工作流</li>
-</ul>
-<hr>
-<h2 id="🎨-其他技能"><a href="#🎨-其他技能" class="headerlink" title="🎨 其他技能"></a>🎨 其他技能</h2><ul>
-<li>技术博客搭建与 SEO 优化</li>
-<li>多语言技术交流（中日双语）</li>
-<li>知识整理与文档化习惯</li>
-</ul>
+    
+      <!-- 判断文章是否有标签 -->
 
+      <span>标签：
+        
+          <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">学习计划</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+      </span>
+
+    
+    <!-- 标签判断结束 -->
   </div>
+  <!-- 文章元信息结束 -->
 
-  <!-- 页脚：如果 simpleLayout 未开启，则显示版权信息 -->
-  
-    <footer class="page-footer">
-      <p>
-        © 2025 SUN |
-        Powered by <a href="https://hexo.io" target="_blank">Hexo</a> &
-        <a href="https://vercel.com" target="_blank">Vercel</a>
-      </p>
-    </footer>
-  
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    <h2 id="🎯-总体目标拆解"><a href="#🎯-总体目标拆解" class="headerlink" title="🎯 总体目标拆解"></a>🎯 总体目标拆解</h2><ul>
+<li><strong>短期（6–12个月）</strong>：打牢语法和词汇基础，提升到 N2 水平  </li>
+<li><strong>中期（1.5–3年）</strong>：掌握高级语法、扩大词汇量，达到 N1 水平  </li>
+<li><strong>长期（3–5年）</strong>：通过大量输入与输出，逐步接近母语者的自然表达和思维方式</li>
+</ul>
+<hr>
+<h2 id="📚-学习安排"><a href="#📚-学习安排" class="headerlink" title="📚 学习安排"></a>📚 学习安排</h2><h3 id="平日（每天-1-小时）"><a href="#平日（每天-1-小时）" class="headerlink" title="平日（每天 1 小时）"></a>平日（每天 1 小时）</h3><ul>
+<li><strong>词汇积累（20分钟）</strong><ul>
+<li>使用《新完全掌握N2&#x2F;N1词汇》或 Anki 卡片  </li>
+<li>每天固定记忆 + 复习，半年目标：6000–8000 常用词</li>
+</ul>
+</li>
+<li><strong>语法学习（20分钟）</strong><ul>
+<li>系统学习《新完全掌握N2&#x2F;N1语法》  </li>
+<li>每天 1–2 个语法点，配合例句造句</li>
+</ul>
+</li>
+<li><strong>听力&#x2F;口语（20分钟）</strong><ul>
+<li>听 NHK News Web Easy 或播客，跟读模仿  </li>
+<li>录音自我检查，减少“外国语感”</li>
+</ul>
+</li>
+</ul>
+<h3 id="周末（整天学习）"><a href="#周末（整天学习）" class="headerlink" title="周末（整天学习）"></a>周末（整天学习）</h3><ul>
+<li><strong>上午：强化阅读</strong><ul>
+<li>阅读日文小说、新闻、技术文章（结合 IT 工作）  </li>
+<li>做笔记，标注不认识的词汇和表达</li>
+</ul>
+</li>
+<li><strong>下午：写作与输出</strong><ul>
+<li>写日记或短文，模仿日本人写作风格  </li>
+<li>请日本朋友或语言交换伙伴帮忙修改</li>
+</ul>
+</li>
+<li><strong>晚上：会话练习</strong><ul>
+<li>参加语言交换、线上日语角，或找导师进行会话训练</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="🧩-学习方法与工具"><a href="#🧩-学习方法与工具" class="headerlink" title="🧩 学习方法与工具"></a>🧩 学习方法与工具</h2><ul>
+<li><strong>输入</strong>：大量阅读、听力（小说、新闻、动漫、播客）  </li>
+<li><strong>输出</strong>：写作 + 会话，避免只停留在“能听懂”  </li>
+<li><strong>工具推荐</strong>：<ul>
+<li>Anki（词汇记忆）  </li>
+<li>NHK News Web Easy（听力）  </li>
+<li>LangCorrect &#x2F; HelloTalk（写作与交流）  </li>
+<li>《新完全掌握》系列（语法、词汇、听力）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="🪜-阶段性目标"><a href="#🪜-阶段性目标" class="headerlink" title="🪜 阶段性目标"></a>🪜 阶段性目标</h2><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>时间</th>
+<th>目标</th>
+<th>具体成果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基础巩固</td>
+<td>6–12个月</td>
+<td>N2 水平</td>
+<td>能读懂新闻、技术文档，日常交流无障碍</td>
+</tr>
+<tr>
+<td>高级提升</td>
+<td>1.5–3年</td>
+<td>N1 水平</td>
+<td>工作中能自然表达，理解复杂文章和会议内容</td>
+</tr>
+<tr>
+<td>母语接近</td>
+<td>3–5年</td>
+<td>母语者水平</td>
+<td>思维习惯接近日本人，表达自然流畅</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🔑-关键建议"><a href="#🔑-关键建议" class="headerlink" title="🔑 关键建议"></a>🔑 关键建议</h2><ul>
+<li><strong>坚持输入输出结合</strong>：不要只背单词或语法，要用出来  </li>
+<li><strong>利用工作环境</strong>：IT派遣工作中，多用日语写邮件、做会议记录  </li>
+<li><strong>阶段性检验</strong>：建议参加 JLPT 考试（N2 → N1），作为里程碑</li>
+</ul>
+<hr>
+<p>👉 建议先设定一个 <strong>半年目标：通过 N2</strong>，这样能获得阶段性成就感，再逐步冲击 N1。</p>
+
+    <!-- 渲染文章正文 HTML -->
+    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  </div>
+  <!-- 文章正文结束 -->
+
 </article>
-
-<!-- 可选脚本：可在这里写页面交互逻辑 -->
-<script>
-  // 例如：滚动到顶部按钮、动态效果等
-</script>
+<!-- 单篇文章容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
