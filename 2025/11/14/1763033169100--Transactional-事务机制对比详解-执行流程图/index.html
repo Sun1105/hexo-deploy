@@ -384,63 +384,17 @@
 
   <!-- 文章正文内容 -->
   <div class="post-content">
-    <h1 id="⚙️-Transactional-事务机制对比详解"><a href="#⚙️-Transactional-事务机制对比详解" class="headerlink" title="⚙️ @Transactional 事务机制对比详解"></a>⚙️ @Transactional 事务机制对比详解</h1><h2 id="🧩-一、无-Transactional-的情况（默认-JDBC-自动提交）"><a href="#🧩-一、无-Transactional-的情况（默认-JDBC-自动提交）" class="headerlink" title="🧩 一、无 @Transactional 的情况（默认 JDBC 自动提交）"></a>🧩 一、无 <code>@Transactional</code> 的情况（默认 JDBC 自动提交）</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────────────────┐</span><br><span class="line">│ 调用 service.method()                              │</span><br><span class="line">└────────────┬─────────────┘</span><br><span class="line">             │</span><br><span class="line">             ▼</span><br><span class="line">     ┌────────────────┐</span><br><span class="line">     │ 执行 SQL 1     │</span><br><span class="line">     ├────────────────┤</span><br><span class="line">     │ JDBC 自动提交  │  ← autoCommit = true</span><br><span class="line">     └────────────────┘</span><br><span class="line">             │</span><br><span class="line">             ▼</span><br><span class="line">     ┌────────────────┐</span><br><span class="line">     │ 执行 SQL 2     │</span><br><span class="line">     ├────────────────┤</span><br><span class="line">     │ JDBC 自动提交  │  ← 每条 SQL 都立即 commit</span><br><span class="line">     └────────────────┘</span><br><span class="line">             │</span><br><span class="line">             ▼</span><br><span class="line">     ┌────────────────┐</span><br><span class="line">     │ 出现异常 ❌     │</span><br><span class="line">     └────────────────┘</span><br><span class="line">             │</span><br><span class="line">             ▼</span><br><span class="line">❗ **结果：**</span><br><span class="line">- SQL1 已提交  </span><br><span class="line">- SQL2 已提交  </span><br><span class="line">- 无法回滚</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>🧠 <strong>解释：</strong><br>没有事务时，JDBC 默认 <code>autoCommit = true</code>，每条 SQL 都是独立提交的，异常不会影响之前的操作。</p>
-</blockquote>
-<hr>
-<h2 id="✅-二、有-Transactional-的情况（Spring-事务代理）"><a href="#✅-二、有-Transactional-的情况（Spring-事务代理）" class="headerlink" title="✅ 二、有 @Transactional 的情况（Spring 事务代理）"></a>✅ 二、有 <code>@Transactional</code> 的情况（Spring 事务代理）</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────────────────┐</span><br><span class="line">│              调用 @Transactional 方法              │</span><br><span class="line">└────────────┬─────────────┘</span><br><span class="line">                          │</span><br><span class="line">                          ▼</span><br><span class="line">     ┌──────────────────────────────┐</span><br><span class="line">     │ Spring 创建事务                                            │</span><br><span class="line">     │ (autoCommit = false)                                       │</span><br><span class="line">     └──────────────────────────────┘</span><br><span class="line">             │</span><br><span class="line">             ▼</span><br><span class="line">     ┌────────────────┐</span><br><span class="line">     │ 执行 SQL 1                     │</span><br><span class="line">     ├────────────────┤</span><br><span class="line">     │ 不提交 (暂存)                  │</span><br><span class="line">     └────────────────┘</span><br><span class="line">             │</span><br><span class="line">             ▼</span><br><span class="line">     ┌────────────────┐</span><br><span class="line">     │ 执行 SQL 2                     │</span><br><span class="line">     ├────────────────┤</span><br><span class="line">     │ 不提交 (暂存)                  │</span><br><span class="line">     └────────────────┘</span><br><span class="line">             │</span><br><span class="line">             ▼</span><br><span class="line">     ┌────────────────┐</span><br><span class="line">     │ 逻辑执行结束                   │</span><br><span class="line">     └────────────────┘</span><br><span class="line">             │</span><br><span class="line">             ▼</span><br><span class="line">     ┌────────────────┐</span><br><span class="line">     │ 判断是否异常                   │</span><br><span class="line">     └────────────────┘</span><br><span class="line">          ┌─────────────┬─────────────┐</span><br><span class="line">          ▼                                                      ▼</span><br><span class="line">    ✅ 正常结束                                            ❌ 出现异常</span><br><span class="line">┌────────────────┐         ┌────────────────┐</span><br><span class="line">│ Spring 提交事务                │         │ Spring 回滚事务                │</span><br><span class="line">└────────────────┘         └────────────────┘</span><br></pre></td></tr></table></figure>
-
-<p><strong>结果总结：</strong></p>
-<ul>
-<li>✅ 正常情况 → 所有 SQL 一起 <strong>commit</strong></li>
-<li>❌ 异常情况 → 所有 SQL 全部 <strong>rollback</strong></li>
-</ul>
-<hr>
-<h2 id="🧭-三、两者核心区别总结"><a href="#🧭-三、两者核心区别总结" class="headerlink" title="🧭 三、两者核心区别总结"></a>🧭 三、两者核心区别总结</h2><table>
-<thead>
-<tr>
-<th>项目</th>
-<th>无 @Transactional</th>
-<th>有 @Transactional</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>事务是否开启</td>
-<td>否</td>
-<td>是</td>
-</tr>
-<tr>
-<td>JDBC autoCommit</td>
-<td><code>true</code></td>
-<td><code>false</code></td>
-</tr>
-<tr>
-<td>提交时机</td>
-<td>每条 SQL 立即提交</td>
-<td>方法执行完统一提交</td>
-</tr>
-<tr>
-<td>异常回滚</td>
-<td>不会</td>
-<td>会（默认回滚 <code>RuntimeException</code>）</td>
-</tr>
-<tr>
-<td>数据一致性</td>
-<td>无法保证</td>
-<td>可以保证</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="💡-补充说明"><a href="#💡-补充说明" class="headerlink" title="💡 补充说明"></a>💡 补充说明</h2><blockquote>
-<p><strong>@Transactional 生效条件：</strong></p>
-<ul>
-<li>✅ 类或方法必须被 <strong>Spring 容器管理</strong>（即是 Bean）。</li>
-<li>✅ 方法必须是 <strong>public</strong>。</li>
-<li>⚠️ <strong>自调用（同类内部互调）</strong> 不经过代理，不会触发事务。</li>
-</ul>
-</blockquote>
+    <p>⚙️ @Transactional 事务机制对比详解<br>🧩 一、无 @Transactional 的情况（默认 JDBC 自动提交）<br>コード<br>┌──────────────────────────┐<br>│ 调用 service.method()    │<br>└────────────┬─────────────┘<br>             │<br>             ▼<br>     ┌────────────────┐<br>     │ 执行 SQL 1     │<br>     ├────────────────┤<br>     │ JDBC 自动提交  │ ← autoCommit &#x3D; true<br>     └────────────────┘<br>             │<br>             ▼<br>     ┌────────────────┐<br>     │ 执行 SQL 2     │<br>     ├────────────────┤<br>     │ JDBC 自动提交  │ ← 每条 SQL 都立即 commit<br>     └────────────────┘<br>             │<br>             ▼<br>     ┌────────────────┐<br>     │ 出现异常 ❌     │<br>     └────────────────┘<br>🧠 结果：</p>
+<p>✅ SQL1 已提交</p>
+<p>✅ SQL2 已提交</p>
+<p>❌ 无法回滚（数据不一致风险）</p>
+<p>📌 JDBC 默认 autoCommit &#x3D; true，每条 SQL 独立提交，异常不会影响已执行的操作。</p>
+<p>✅ 二、有 @Transactional 的情况（Spring 事务代理）<br>コード<br>┌────────────────────────────┐<br>│ 调用 @Transactional 方法   │<br>└────────────┬───────────────┘<br>             ▼<br>     ┌──────────────────────────────┐<br>     │ Spring 创建事务               │<br>     │ (autoCommit &#x3D; false)          │<br>     └──────────────────────────────┘<br>             ▼<br>     ┌────────────────┐<br>     │ 执行 SQL 1     │<br>     ├────────────────┤<br>     │ 不提交（暂存） │<br>     └────────────────┘<br>             ▼<br>     ┌────────────────┐<br>     │ 执行 SQL 2     │<br>     ├────────────────┤<br>     │ 不提交（暂存） │<br>     └────────────────┘<br>             ▼<br>     ┌────────────────┐<br>     │ 逻辑执行结束   │<br>     └────────────────┘<br>             ▼<br>     ┌────────────────┐<br>     │ 判断是否异常   │<br>     └────────────────┘<br>          ┌─────────────┬─────────────┐<br>          ▼                           ▼<br>   ✅ 正常结束                 ❌ 出现异常<br>┌────────────────┐         ┌────────────────┐<br>│ Spring 提交事务 │         │ Spring 回滚事务 │<br>└────────────────┘         └────────────────┘<br>🧠 结果：</p>
+<p>✅ 正常情况 → 所有 SQL 一起 commit</p>
+<p>❌ 异常情况 → 所有 SQL 全部 rollback</p>
+<p>🧭 三、核心区别对比表<br>项目	无 @Transactional	有 @Transactional<br>是否开启事务	❌ 否	✅ 是<br>JDBC autoCommit	true	false<br>提交时机	每条 SQL 立即提交	方法执行完后统一提交<br>异常回滚	❌ 不支持	✅ 默认回滚 RuntimeException<br>数据一致性保障	❌ 无法保证	✅ 可以保证<br>💡 补充说明：@Transactional 生效条件<br>✅ 类或方法必须被 Spring 容器管理（即是 Bean）</p>
+<p>✅ 方法必须是 public</p>
+<p>⚠️ 自调用（同类内部方法互调） 不经过代理，不会触发事务</p>
 
     <!-- 渲染文章正文 HTML -->
     <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
