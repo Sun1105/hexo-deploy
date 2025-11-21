@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    📑 关于我 | Sun Blog
+    Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -364,68 +364,90 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  page.ejs
-  通用页面模板（Hexo 主题使用）
+  tag.ejs
+  标签页面模板
   功能：
-    - 显示页面标题、副标题（可选）、日期（可选）
-    - 渲染页面正文内容（Markdown 转换后的 HTML）
-    - 页脚信息（版权、Powered by）
-    - 外层布局（导航、侧边栏）由 layout.ejs 提供
+    - 显示当前标签名称
+    - 遍历该标签下的所有文章
+    - 渲染为文章卡片列表
 -->
 
-<article class="page-article">
-  <!-- 标题区：如果有 title 就渲染 -->
-  
-    <header class="page-header">
-      <!-- 页面标题 -->
-      <h1 class="page-title">📑 关于我</h1>
+<section class="main-section">
+  <!-- 页面主容器，用于布局和样式控制 -->
 
-      <!-- 副标题（可选，来自 front-matter 的 subtitle 字段） -->
-      
+  <!-- 标签标题 -->
+  <h2 class="section-title">🏷️ 执行类 标签</h2>
+  <!-- emoji 🏷️ 用于视觉增强 -->
+  <!-- 执行类 动态输出当前页面所属标签名称 -->
+  <!-- 最终显示效果示例：🏷️ Java 标签 -->
 
-      <!-- 日期（可选，来自 front-matter 的 date 字段） -->
-      
-        <p class="page-meta">发布于 2025-01-01</p>
-      
-    </header>
-  
+  <div class="post-list">
+    <!-- 文章列表容器，用于存放该标签下的所有文章卡片 -->
 
-  <!-- 页面正文内容（Markdown 渲染结果） -->
-  <div class="page-content">
-    <h2 id="👋-你好，我是SUN"><a href="#👋-你好，我是SUN" class="headerlink" title="👋 你好，我是SUN"></a>👋 你好，我是SUN</h2><p>我是一名专注于 <strong>Java 后端开发</strong> 与 <strong>系统架构优化</strong> 的工程师，平时喜欢整理技术笔记和分享学习心得。</p>
-<h3 id="🔧-技术栈"><a href="#🔧-技术栈" class="headerlink" title="🔧 技术栈"></a>🔧 技术栈</h3><ul>
-<li>Java &#x2F; Spring Boot &#x2F; MyBatis</li>
-<li>Oracle 数据库与复杂数据分析</li>
-<li>自动化工具开发（Shell、VBA、Excel）</li>
-<li>图像处理与 OpenCV 应用</li>
-<li>DevOps 流程与云端部署（Vercel 等）</li>
-</ul>
-<h3 id="📚-兴趣方向"><a href="#📚-兴趣方向" class="headerlink" title="📚 兴趣方向"></a>📚 兴趣方向</h3><ul>
-<li>企业级系统架构与技术升级</li>
-<li>自动化测试与工具链优化</li>
-<li>图像处理与多语言技术交流</li>
-<li>健康生活习惯与结构化学习</li>
-</ul>
-<h3 id="🎯-目标"><a href="#🎯-目标" class="headerlink" title="🎯 目标"></a>🎯 目标</h3><p>持续提升项目质量与效率，同时把学习过程沉淀为知识体系，帮助更多开发者少走弯路。</p>
+    
+    <!-- 判断当前标签下是否有文章 -->
+    <!-- page.posts → 当前页面文章数组 -->
+    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
+
+      
+      <!-- 遍历每篇文章 post -->
+      <!-- post 对象包含文章标题、路径、日期、分类、摘要等信息 -->
+
+        <article class="post-card">
+        <!-- 单篇文章卡片容器 -->
+
+          <!-- 文章标题 -->
+          <h3 class="post-title">
+            <a href="/2025/11/20/1763714704994-%E5%8D%95%E4%BD%93%E6%B5%8B%E8%AF%95%E6%89%A7%E8%A1%8C%E7%B1%BB-%E6%A8%A1%E6%9D%BF/">单体测试执行类_模板</a>
+            <!-- 链接到文章详情页 -->
+            <!-- url_for(post.path) → 生成文章路径 -->
+            <!-- post.title → 当前文章标题 -->
+          </h3>
+
+          <!-- 文章元信息：发布日期 + 分类 -->
+          <p class="post-meta">
+            发布于 2025-11-21
+            <!-- 显示文章发布日期 -->
+
+             |
+              分类：
+              
+                <a href="/categories/JUnit/">JUnit</a>
+                
+                <!-- 遍历文章分类 -->
+                <!-- 多个分类用逗号分隔 -->
+              
+            
+          </p>
+          <!-- 文章元信息结束 -->
+
+          <!-- 文章摘要 -->
+          <p class="post-excerpt">
+            （暂无摘要）
+            <!-- 显示文章摘要 -->
+            <!-- 去掉 HTML 标签，只保留纯文本 -->
+            <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
+          </p>
+
+          <!-- 阅读全文按钮 -->
+          <a href="/2025/11/20/1763714704994-%E5%8D%95%E4%BD%93%E6%B5%8B%E8%AF%95%E6%89%A7%E8%A1%8C%E7%B1%BB-%E6%A8%A1%E6%9D%BF/" class="read-more">阅读全文 →</a>
+          <!-- 链接到文章详情页 -->
+          <!-- CSS class "read-more" 用于样式化按钮 -->
+
+        </article>
+        <!-- 单篇文章卡片结束 -->
+
+      
+      <!-- 遍历文章结束 -->
+
+    
+    <!-- 条件判断结束 -->
 
   </div>
+  <!-- 文章列表容器结束 -->
 
-  <!-- 页脚：如果 simpleLayout 未开启，则显示版权信息 -->
-  
-    <footer class="page-footer">
-      <p>
-        © 2025 SUN |
-        Powered by <a href="https://hexo.io" target="_blank">Hexo</a> &
-        <a href="https://vercel.com" target="_blank">Vercel</a>
-      </p>
-    </footer>
-  
-</article>
-
-<!-- 可选脚本：可在这里写页面交互逻辑 -->
-<script>
-  // 例如：滚动到顶部按钮、动态效果等
-</script>
+</section>
+<!-- 页面主容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
