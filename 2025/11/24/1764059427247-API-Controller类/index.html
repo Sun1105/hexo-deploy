@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    📑 关于我 | Sun Blog
+    APIのController类 | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -376,68 +376,73 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  page.ejs
-  通用页面模板（Hexo 主题使用）
+  post.ejs
+  文章详情页模板
   功能：
-    - 显示页面标题、副标题（可选）、日期（可选）
-    - 渲染页面正文内容（Markdown 转换后的 HTML）
-    - 页脚信息（版权、Powered by）
-    - 外层布局（导航、侧边栏）由 layout.ejs 提供
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
 -->
 
-<article class="page-article">
-  <!-- 标题区：如果有 title 就渲染 -->
-  
-    <header class="page-header">
-      <!-- 页面标题 -->
-      <h1 class="page-title">📑 关于我</h1>
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
-      <!-- 副标题（可选，来自 front-matter 的 subtitle 字段） -->
-      
+  <!-- 文章标题 -->
+  <h1 class="post-title">APIのController类</h1>
+  <!-- page.title → 当前文章标题 -->
 
-      <!-- 日期（可选，来自 front-matter 的 date 字段） -->
-      
-        <p class="page-meta">发布于 2025-01-01</p>
-      
-    </header>
-  
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2025-11-25</span>
+    <!-- 显示文章发布日期 -->
 
-  <!-- 页面正文内容（Markdown 渲染结果） -->
-  <div class="page-content">
-    <h2 id="👋-你好，我是SUN"><a href="#👋-你好，我是SUN" class="headerlink" title="👋 你好，我是SUN"></a>👋 你好，我是SUN</h2><p>我是一名专注于 <strong>Java 后端开发</strong> 与 <strong>系统架构优化</strong> 的工程师，平时喜欢整理技术笔记和分享学习心得。</p>
-<h3 id="🔧-技术栈"><a href="#🔧-技术栈" class="headerlink" title="🔧 技术栈"></a>🔧 技术栈</h3><ul>
-<li>Java &#x2F; Spring Boot &#x2F; MyBatis</li>
-<li>Oracle 数据库与复杂数据分析</li>
-<li>自动化工具开发（Shell、VBA、Excel）</li>
-<li>图像处理与 OpenCV 应用</li>
-<li>DevOps 流程与云端部署（Vercel 等）</li>
-</ul>
-<h3 id="📚-兴趣方向"><a href="#📚-兴趣方向" class="headerlink" title="📚 兴趣方向"></a>📚 兴趣方向</h3><ul>
-<li>企业级系统架构与技术升级</li>
-<li>自动化测试与工具链优化</li>
-<li>图像处理与多语言技术交流</li>
-<li>健康生活习惯与结构化学习</li>
-</ul>
-<h3 id="🎯-目标"><a href="#🎯-目标" class="headerlink" title="🎯 目标"></a>🎯 目标</h3><p>持续提升项目质量与效率，同时把学习过程沉淀为知识体系，帮助更多开发者少走弯路。</p>
+    
+      <!-- 判断文章是否有标签 -->
 
+      <span>标签：
+        
+          <a href="/tags/%E6%A8%A1%E6%9D%BF/">模板</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+      </span>
+
+    
+    <!-- 标签判断结束 -->
   </div>
+  <!-- 文章元信息结束 -->
 
-  <!-- 页脚：如果 simpleLayout 未开启，则显示版权信息 -->
-  
-    <footer class="page-footer">
-      <p>
-        © 2025 SUN |
-        Powered by <a href="https://hexo.io" target="_blank">Hexo</a> &
-        <a href="https://vercel.com" target="_blank">Vercel</a>
-      </p>
-    </footer>
-  
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    <p>&#x2F;**</p>
+<ul>
+<li><p>APIのController类<br> *&#x2F;<br>@RestController<br>@RequiredArgsConstructor<br>@Slf4j<br>public class TestController extends BaseController {</p>
+<p> &#x2F;** APIのサービスクラス *&#x2F;<br> private final TestService testService;</p>
+<p> &#x2F;**</p>
+<ul>
+<li><p>APIのメインメソッド</p>
+</li>
+<li></li>
+<li><p>@param request  リクエスト情報</p>
+</li>
+<li><p>@param response レスポンス情報<br>  *&#x2F;<br> @PostMapping(“&#x2F;TEST0001”)<br> public void execute(HttpServletRequest request, HttpServletResponse response) {<br> log.info(“TestController#execute() Start”);</p>
+<p> responseProcess(response, testService.execute(requestProcess(request)));</p>
+<p> log.info(“TestController#execute() End”);</p>
+</li>
+</ul>
+<p> }</p>
+</li>
+</ul>
+<p>}</p>
+
+    <!-- 渲染文章正文 HTML -->
+    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  </div>
+  <!-- 文章正文结束 -->
+
 </article>
-
-<!-- 可选脚本：可在这里写页面交互逻辑 -->
-<script>
-  // 例如：滚动到顶部按钮、动态效果等
-</script>
+<!-- 单篇文章容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
