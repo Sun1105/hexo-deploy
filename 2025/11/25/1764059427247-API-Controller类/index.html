@@ -415,26 +415,37 @@
 
   <!-- 文章正文内容 -->
   <div class="post-content">
-    <p>&#x2F;**</p>
-<ul>
-<li><p>APIのController类<br> *&#x2F;<br>@RestController<br>@RequiredArgsConstructor<br>@Slf4j<br>public class TestController extends BaseController {</p>
-<p> &#x2F;** APIのサービスクラス *&#x2F;<br> private final TestService testService;</p>
-<p> &#x2F;**</p>
-<ul>
-<li><p>APIのメインメソッド</p>
-</li>
-<li></li>
-<li><p>@param request  リクエスト情報</p>
-</li>
-<li><p>@param response レスポンス情報<br>  *&#x2F;<br> @PostMapping(“&#x2F;TEST0001”)<br> public void execute(HttpServletRequest request, HttpServletResponse response) {<br> log.info(“TestController#execute() Start”);</p>
-<p> responseProcess(response, testService.execute(requestProcess(request)));</p>
-<p> log.info(“TestController#execute() End”);</p>
-</li>
-</ul>
-<p> }</p>
-</li>
-</ul>
-<p>}</p>
+    <h1 id="TestController-java"><a href="#TestController-java" class="headerlink" title="TestController.java"></a>TestController.java</h1><pre><code class="language-java">/**
+ * APIのControllerクラス
+ */
+@RestController
+@RequiredArgsConstructor
+@Slf4j
+public class TestController extends BaseController {
+
+    /** APIのサービスクラス */
+    private final TestService testService;
+
+    /**
+     * APIのメインメソッド
+     *
+     * @param request  リクエスト情報
+     * @param response レスポンス情報
+     */
+    @PostMapping(&quot;/TEST0001&quot;)
+    public void execute(HttpServletRequest request, HttpServletResponse response) {
+        log.info(&quot;TestController#execute() Start&quot;);
+
+        // リクエスト処理 → サービス呼び出し → レスポンス処理
+        responseProcess(
+            response,
+            testService.execute(requestProcess(request))
+        );
+
+        log.info(&quot;TestController#execute() End&quot;);
+    }
+}
+</code></pre>
 
     <!-- 渲染文章正文 HTML -->
     <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
