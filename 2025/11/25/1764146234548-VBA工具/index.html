@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    临时备注 | Sun Blog
+    VBA工具 | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -400,12 +400,12 @@
   <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
   <!-- 文章标题 -->
-  <h1 class="post-title">临时备注</h1>
+  <h1 class="post-title">VBA工具</h1>
   <!-- page.title → 当前文章标题 -->
 
   <!-- 文章元信息：发布日期 + 标签 -->
   <div class="post-meta">
-    <span>发表于 2025-11-13</span>
+    <span>发表于 2025-11-26</span>
     <!-- 显示文章发布日期 -->
 
     
@@ -413,7 +413,7 @@
 
       <span>标签：
         
-          <a href="/tags/%E4%B8%B4%E6%97%B6%E5%A4%87%E6%B3%A8/">临时备注</a>
+          <a href="/tags/excel/">excel</a>
           
           <!-- 遍历文章标签，生成标签链接 -->
           <!-- 多个标签用逗号分隔 -->
@@ -427,13 +427,103 @@
 
   <!-- 文章正文内容 -->
   <div class="post-content">
-    <p>対応する命名規則<br>次のような形式の違いを自動的に変換します：</p>
-<p>小文字＋区切りなし → キャメルケース</p>
-<p>例：webuser → webUser</p>
-<p>小文字＋ハイフン区切り → キャメルケース</p>
-<p>例：web-user → webUser</p>
-<p>小文字＋アンダースコア区切り → キャメルケース</p>
-<p>例：web_user → webUser</p>
+    <h1 id="VBA-工具宏说明文档"><a href="#VBA-工具宏说明文档" class="headerlink" title="VBA 工具宏说明文档"></a>VBA 工具宏说明文档</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a><strong>概述</strong></h2><p>本 VBA 工具提供以下功能：</p>
+<ul>
+<li><strong>运行批处理文件</strong>（如服务器启动脚本）</li>
+<li><strong>打开指定 Excel 工具文件</strong></li>
+<li><strong>记录错误日志</strong></li>
+</ul>
+<p>该工具适用于自动化操作，减少手动执行命令和打开文件的工作量。</p>
+<hr>
+<h2 id="功能列表"><a href="#功能列表" class="headerlink" title="功能列表"></a><strong>功能列表</strong></h2><h3 id="1-RunBat"><a href="#1-RunBat" class="headerlink" title="1. RunBat"></a><strong>1. RunBat</strong></h3><p><strong>功能</strong>：运行指定文件夹中的批处理文件（<code>起動.bat</code>）<br><strong>参数</strong>：<code>folderPath</code> - 批处理文件所在的文件夹路径  </p>
+<pre><code class="language-vb">
+&#39;-----------------------------------------------
+&#39; 功能：运行指定文件夹中的批处理文件（起動.bat）
+&#39; 参数：folderPath - 批处理文件所在的文件夹路径
+&#39;-----------------------------------------------
+Public Sub RunBat(folderPath As String)
+    Dim wsh As Object
+    Dim batPath As String
+    
+    &#39; 拼接批处理文件完整路径
+    batPath = folderPath &amp; &quot;\起動.bat&quot;
+    
+    &#39; 判断文件是否存在
+    If Dir(batPath) &lt;&gt; &quot;&quot; Then
+        &#39; 创建 WScript.Shell 对象，用于执行命令行
+        Set wsh = CreateObject(&quot;WScript.Shell&quot;)
+        
+        &#39; 使用 cmd.exe 打开命令行窗口，切换到指定目录并运行起動.bat
+        &#39; /k 表示执行后保持窗口打开
+        wsh.Run &quot;cmd.exe /k &quot;&quot;cd /d &quot; &amp; folderPath &amp; &quot; &amp; 起動.bat&quot;&quot;&quot;, 1, True
+    Else
+        &#39; 文件不存在时弹出提示框，并记录错误日志
+        MsgBox &quot;文件不存在：&quot; &amp; batPath, vbExclamation
+        LogError &quot;文件不存在：&quot; &amp; batPath
+    End If
+End Sub
+
+
+&#39;-----------------------------------------------
+&#39; 功能：打开指定路径的 Excel 文件
+&#39; 参数：relativePath - 相对路径（相对于当前工作簿路径）
+&#39;-----------------------------------------------
+Public Sub OpenExcelTool(relativePath As String)
+    Dim filePath As String
+    
+    &#39; 拼接 Excel 文件完整路径
+    filePath = ThisWorkbook.Path &amp; &quot;\&quot; &amp; relativePath
+    
+    &#39; 判断文件是否存在
+    If Dir(filePath) &lt;&gt; &quot;&quot; Then
+        &#39; 打开 Excel 文件
+        Workbooks.Open filePath
+    Else
+        &#39; 文件不存在时弹出提示框，并记录错误日志
+        MsgBox &quot;Excel 文件不存在：&quot; &amp; filePath, vbExclamation
+        LogError &quot;Excel 文件不存在：&quot; &amp; filePath
+    End If
+End Sub
+
+
+&#39;-----------------------------------------------
+&#39; 功能：记录错误信息到日志文件
+&#39; 参数：errorMsg - 错误信息
+&#39;-----------------------------------------------
+Public Sub LogError(errorMsg As String)
+    Dim logFile As String
+    Dim fNum As Integer
+    
+    &#39; 日志文件路径（与当前工作簿同目录）
+    logFile = ThisWorkbook.Path &amp; &quot;\ErrorLog.txt&quot;
+    
+    &#39; 获取空闲文件号
+    fNum = FreeFile
+    
+    &#39; 以追加模式打开日志文件，并写入当前时间和错误信息
+    Open logFile For Append As #fNum
+    Print #fNum, Now &amp; &quot; - &quot; &amp; errorMsg
+    Close #fNum
+End Sub
+
+
+&#39;-----------------------------------------------
+&#39; 功能：运行服务器工具的批处理文件
+&#39;-----------------------------------------------
+Public Sub RunServerBat()
+    &#39; 调用 RunBat 方法，传入服务器工具路径
+    RunBat &quot;C:\Users\Desktop\TOOL\ServerTool&quot;
+End Sub
+
+
+&#39;-----------------------------------------------
+&#39; 功能：打开 ITA 测试工具 Excel 文件
+&#39;-----------------------------------------------
+Public Sub OpenITATestTool()
+    &#39; 调用 OpenExcelTool 方法，传入 ITA 测试工具相对路径
+    OpenExcelTool &quot;TOOL\ITATestTool\ITaTestTool.xlsm&quot;
+End Sub
+</code></pre>
 
     <!-- 渲染文章正文 HTML -->
     <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
