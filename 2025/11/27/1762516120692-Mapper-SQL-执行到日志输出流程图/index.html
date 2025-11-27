@@ -498,19 +498,36 @@
 
   <h2>📌 流程图（Mermaid 渲染）</h2>
 
-  <div class="mermaid">
-flowchart TD
-    A[调用 Mapper 方法] --> B[MyBatis Executor\\n核心执行器]
-    B --> C[生成 SQL 语句模板\\n(带 ? 占位符)]
-    C --> D[日志阶段 1\\nPreparing: SELECT ... WHERE ... = ?]
-    D --> E[参数绑定\\n绑定方法参数到 ?]
-    E --> F[日志阶段 2\\nParameters: 300000000 (String), 20250601 (String)]
-    F --> G[执行 SQL\\nJDBC 调用 Connection → PreparedStatement → executeQuery/executeUpdate]
-    G --> H[获取执行结果\\nSELECT → 结果集\\nUPDATE/INSERT → 影响行数]
-    H --> I[日志阶段 3\\n执行结果: Total = 1]
-    I --> J[返回 Mapper 方法结果]
-  </div>
+<p>sequenceDiagram<br>    autonumber</p>
+<pre><code>participant Caller as 调用方（Controller/Service）
+participant Mapper as Mapper 接口
+participant Executor as Executor 执行器
+participant SQLGen as SQL 模板生成器
+participant Param as 参数绑定器（ParameterHandler）
+participant JDBC as JDBC 层
+participant Result as 结果处理器（ResultSetHandler）
 
+Caller -&gt;&gt; Mapper: 调用 Mapper 方法
+Mapper -&gt;&gt; Executor: 进入 MyBatis 执行流程
+
+Executor -&gt;&gt; SQLGen: 生成 SQL 模板（带 ? 占位符）
+SQLGen --&gt;&gt; Executor: 返回 Prepared SQL
+
+Executor -&gt;&gt; Executor: 日志阶段 1\nPreparing: SELECT ... WHERE ... = ?
+
+Executor -&gt;&gt; Param: 绑定方法参数到 ?
+Param --&gt;&gt; Executor: 返回绑定后的参数
+
+Executor -&gt;&gt; Executor: 日志阶段 2\nParameters: 300000000, 20250601
+
+Executor -&gt;&gt; JDBC: 执行 SQL\nexecuteQuery / executeUpdate
+JDBC --&gt;&gt; Executor: 返回结果集或影响行数
+
+Executor -&gt;&gt; Executor: 日志阶段 3\nTotal = 1
+
+Executor -&gt;&gt; Result: 映射结果为 Java 对象
+Result --&gt;&gt; Caller: 返回最终结果
+</code></pre>
   <h2>📘 详细步骤说明</h2>
 
   <h3>1. 调用 Mapper 方法</h3>
