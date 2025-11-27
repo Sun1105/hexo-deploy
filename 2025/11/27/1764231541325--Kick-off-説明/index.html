@@ -610,6 +610,23 @@
 <hr>
 <h4 id="示例：系统集成架构图（Mermaid）"><a href="#示例：系统集成架构图（Mermaid）" class="headerlink" title="示例：系统集成架构图（Mermaid）"></a>示例：系统集成架构图（Mermaid）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">  CRM((CRM系统))</span><br><span class="line">  ERP((ERP系统))</span><br><span class="line">  ITA[ITA测试环境]</span><br><span class="line">  CRM -- 数据接口 --&gt; ERP</span><br><span class="line">  ERP -- 数据回写 --&gt; CRM</span><br><span class="line">  CRM -- 测试用例 --&gt; ITA</span><br><span class="line">  ERP -- 校验结果 --&gt; ITA</span><br></pre></td></tr></table></figure>
 
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+
+<div class="mermaid">
+graph LR
+  CRM((CRM系统))
+  ERP((ERP系统))
+  ITA[ITA测试环境]
+  CRM -- 数据接口 --> ERP
+  ERP -- 数据回写 --> CRM
+  CRM -- 测试用例 --> ITA
+  ERP -- 校验结果 --> ITA
+</div>
+
+
 <hr>
 <blockquote>
 <p>🚩 <strong>PPT建议</strong>  </p>
