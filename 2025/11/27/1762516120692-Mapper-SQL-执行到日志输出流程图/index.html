@@ -477,6 +477,7 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       margin-bottom: 40px;
+      white-space: pre-line;
     }
     code {
       background: #eee;
@@ -499,16 +500,16 @@
   <h2>📌 流程图（Mermaid 渲染）</h2>
 
   <div class="mermaid">
-  flowchart TD
-      A[调用 Mapper 方法] --> B[MyBatis Executor\n核心执行器]
-      B --> C[生成 SQL 语句模板\n(带 ? 占位符)]
-      C --> D[日志阶段 1\nPreparing: SELECT ... WHERE ... = ?]
-      D --> E[参数绑定\n绑定方法参数到 ?]
-      E --> F[日志阶段 2\nParameters: 300000000 (String), 20250601 (String)]
-      F --> G[执行 SQL\nJDBC 调用 Connection → PreparedStatement → executeQuery/executeUpdate]
-      G --> H[获取执行结果\nSELECT → 结果集\nUPDATE/INSERT → 影响行数]
-      H --> I[日志阶段 3\n执行结果: Total = 1]
-      I --> J[返回 Mapper 方法结果]
+flowchart TD
+    A[调用 Mapper 方法] --> B[MyBatis Executor\\n核心执行器]
+    B --> C[生成 SQL 语句模板\\n(带 ? 占位符)]
+    C --> D[日志阶段 1\\nPreparing: SELECT ... WHERE ... = ?]
+    D --> E[参数绑定\\n绑定方法参数到 ?]
+    E --> F[日志阶段 2\\nParameters: 300000000 (String), 20250601 (String)]
+    F --> G[执行 SQL\\nJDBC 调用 Connection → PreparedStatement → executeQuery/executeUpdate]
+    G --> H[获取执行结果\\nSELECT → 结果集\\nUPDATE/INSERT → 影响行数]
+    H --> I[日志阶段 3\\n执行结果: Total = 1]
+    I --> J[返回 Mapper 方法结果]
   </div>
 
   <h2>📘 详细步骤说明</h2>
@@ -559,9 +560,6 @@
 
 </body>
 </html>
-
-
-<p>✅ 该 Markdown 文件支持 <strong>Mermaid 流程图渲染</strong>，可直接用于 GitHub README 或技术文档。</p>
 
     <!-- 渲染文章正文 HTML -->
     <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
