@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    Sun Blog
+    📖 日语学习计划（目标：接近母语水平） | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -281,14 +281,14 @@
         </li>
       
         <li>
-          <a href="/categories/%E6%97%A5%E8%AF%AD/">
-            日语 (3)
+          <a href="/categories/%E6%97%A5%E8%AF%AD%E7%AC%94%E8%AE%B0/">
+            日语笔记 (1)
           </a>
         </li>
       
         <li>
-          <a href="/categories/%E6%97%A5%E8%AF%AD%E7%AC%94%E8%AE%B0/">
-            日语笔记 (1)
+          <a href="/categories/%E8%AE%A1%E5%88%92/">
+            计划 (3)
           </a>
         </li>
       
@@ -361,12 +361,6 @@
         </li>
       
         <li>
-          <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">
-            学习计划 (3)
-          </a>
-        </li>
-      
-        <li>
           <a href="/tags/%E5%BC%8F%E6%A0%B7%E4%B9%A6%E5%81%9A%E6%88%90/">
             式样书做成 (1)
           </a>
@@ -375,6 +369,12 @@
         <li>
           <a href="/tags/%E6%89%A7%E8%A1%8C%E7%B1%BB/">
             执行类 (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">
+            日语学习计划 (3)
           </a>
         </li>
       
@@ -424,253 +424,154 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  category.ejs
-  分类页面模板
+  post.ejs
+  文章详情页模板
   功能：
-    - 显示分类标题
-    - 遍历当前分类下所有文章
-    - 渲染文章卡片列表
-    - 当分类下无文章时显示提示
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
 -->
 
-<section class="main-section">
-  <!-- 页面主容器，控制布局和样式 -->
-
-  <!-- 分类标题 -->
-  <h2 class="section-title">📘 日语 分类</h2>
-  <!-- emoji 📘 用于视觉增强 -->
-  <!-- 日语 动态输出当前页面所属分类名称 -->
-  <!-- 显示示例：📘 Java 分类 -->
-
-  <div class="post-list">
-    <!-- 文章列表容器，用于放置文章卡片 -->
-
-    
-    <!-- 判断当前分类下是否有文章 -->
-    <!-- page.posts → 当前页面文章数组 -->
-    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
-
-      
-      <!-- 遍历当前分类下每篇文章 post -->
-      <!-- post 对象包含文章标题、路径、日期、分类、标签、摘要等信息 -->
-
-        <!--
-  _partial/post-card.ejs
-  功能：
-    - 渲染单篇文章的卡片
-    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
-    - 可在分类页、标签页、归档页复用
--->
-
-<article class="post-card">
-  <!-- 单篇文章卡片容器，用于布局和样式 -->
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
   <!-- 文章标题 -->
-  <h3 class="post-title">
-    <a href="/2025/11/11/1762869633094--%E4%B8%80%E6%97%A5%E8%AF%A6%E7%BB%86%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%E5%8D%95-%E4%BB%BB%E5%8A%A1%E7%A1%AE%E8%AE%A4%E7%94%A8-/">📖 一日详细学习计划单（任务确认用）</a>
-    <!-- 链接到文章详情页 -->
-    <!-- url_for(post.path) → 生成文章路径 -->
-    <!-- post.title → 当前文章标题 -->
-  </h3>
+  <h1 class="post-title">📖 日语学习计划（目标：接近母语水平）</h1>
+  <!-- page.title → 当前文章标题 -->
 
-  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
-  <p class="post-meta">
-    发布于 2025-11-11
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2025-11-28</span>
     <!-- 显示文章发布日期 -->
 
-     |
-      分类：
-      
-        <a href="/categories/%E6%97%A5%E8%AF%AD/">日语</a>
+    
+      <!-- 判断文章是否有标签 -->
+
+      <span>标签：
         
-        <!-- 遍历文章分类 -->
-        <!-- 多个分类用逗号分隔 -->
-      
-    
-
-     |
-      标签：
-      
-        <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">学习计划</a>
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">日语学习计划</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
         
-        <!-- 遍历文章标签 -->
-        <!-- 多个标签用逗号分隔 -->
-      
-    
-  </p>
-  <!-- 文章元信息结束 -->
-
-  <!-- 文章摘要 -->
-  <p class="post-excerpt">
-    （暂无摘要）
-    <!-- 显示文章摘要 -->
-    <!-- 去掉 HTML 标签，只保留纯文本 -->
-    <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
-  </p>
-
-  <!-- 阅读全文按钮 -->
-  <a href="/2025/11/11/1762869633094--%E4%B8%80%E6%97%A5%E8%AF%A6%E7%BB%86%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%E5%8D%95-%E4%BB%BB%E5%8A%A1%E7%A1%AE%E8%AE%A4%E7%94%A8-/" class="read-more">阅读全文 →</a>
-  <!-- 链接到文章详情页 -->
-  <!-- CSS class "read-more" 用于样式化按钮 -->
-
-</article>
-<!-- 单篇文章卡片结束 -->
-
-        <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
-        <!-- 将当前文章对象 post 传入模板 -->
-        <!--  输出 HTML，不转义，保证标签正常显示 -->
-
-      
-      <!-- 遍历当前分类下每篇文章 post -->
-      <!-- post 对象包含文章标题、路径、日期、分类、标签、摘要等信息 -->
-
-        <!--
-  _partial/post-card.ejs
-  功能：
-    - 渲染单篇文章的卡片
-    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
-    - 可在分类页、标签页、归档页复用
--->
-
-<article class="post-card">
-  <!-- 单篇文章卡片容器，用于布局和样式 -->
-
-  <!-- 文章标题 -->
-  <h3 class="post-title">
-    <a href="/2025/11/11/1762867657236--%E5%8D%8A%E5%B9%B4%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92-%E6%AF%8F%E5%91%A8-/">📖 半年日语学习计划（每周）</a>
-    <!-- 链接到文章详情页 -->
-    <!-- url_for(post.path) → 生成文章路径 -->
-    <!-- post.title → 当前文章标题 -->
-  </h3>
-
-  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
-  <p class="post-meta">
-    发布于 2025-11-11
-    <!-- 显示文章发布日期 -->
-
-     |
-      分类：
-      
-        <a href="/categories/%E6%97%A5%E8%AF%AD/">日语</a>
-        
-        <!-- 遍历文章分类 -->
-        <!-- 多个分类用逗号分隔 -->
-      
-    
-
-     |
-      标签：
-      
-        <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">学习计划</a>
-        
-        <!-- 遍历文章标签 -->
-        <!-- 多个标签用逗号分隔 -->
-      
-    
-  </p>
-  <!-- 文章元信息结束 -->
-
-  <!-- 文章摘要 -->
-  <p class="post-excerpt">
-    （暂无摘要）
-    <!-- 显示文章摘要 -->
-    <!-- 去掉 HTML 标签，只保留纯文本 -->
-    <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
-  </p>
-
-  <!-- 阅读全文按钮 -->
-  <a href="/2025/11/11/1762867657236--%E5%8D%8A%E5%B9%B4%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92-%E6%AF%8F%E5%91%A8-/" class="read-more">阅读全文 →</a>
-  <!-- 链接到文章详情页 -->
-  <!-- CSS class "read-more" 用于样式化按钮 -->
-
-</article>
-<!-- 单篇文章卡片结束 -->
-
-        <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
-        <!-- 将当前文章对象 post 传入模板 -->
-        <!--  输出 HTML，不转义，保证标签正常显示 -->
-
-      
-      <!-- 遍历当前分类下每篇文章 post -->
-      <!-- post 对象包含文章标题、路径、日期、分类、标签、摘要等信息 -->
-
-        <!--
-  _partial/post-card.ejs
-  功能：
-    - 渲染单篇文章的卡片
-    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
-    - 可在分类页、标签页、归档页复用
--->
-
-<article class="post-card">
-  <!-- 单篇文章卡片容器，用于布局和样式 -->
-
-  <!-- 文章标题 -->
-  <h3 class="post-title">
-    <a href="/2025/11/11/1762867028153--%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92-%E7%9B%AE%E6%A0%87-%E6%8E%A5%E8%BF%91%E6%AF%8D%E8%AF%AD%E6%B0%B4%E5%B9%B3-/">📖 日语学习计划（目标：接近母语水平）</a>
-    <!-- 链接到文章详情页 -->
-    <!-- url_for(post.path) → 生成文章路径 -->
-    <!-- post.title → 当前文章标题 -->
-  </h3>
-
-  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
-  <p class="post-meta">
-    发布于 2025-11-11
-    <!-- 显示文章发布日期 -->
-
-     |
-      分类：
-      
-        <a href="/categories/%E6%97%A5%E8%AF%AD/">日语</a>
-        
-        <!-- 遍历文章分类 -->
-        <!-- 多个分类用逗号分隔 -->
-      
-    
-
-     |
-      标签：
-      
-        <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">学习计划</a>
-        
-        <!-- 遍历文章标签 -->
-        <!-- 多个标签用逗号分隔 -->
-      
-    
-  </p>
-  <!-- 文章元信息结束 -->
-
-  <!-- 文章摘要 -->
-  <p class="post-excerpt">
-    （暂无摘要）
-    <!-- 显示文章摘要 -->
-    <!-- 去掉 HTML 标签，只保留纯文本 -->
-    <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
-  </p>
-
-  <!-- 阅读全文按钮 -->
-  <a href="/2025/11/11/1762867028153--%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92-%E7%9B%AE%E6%A0%87-%E6%8E%A5%E8%BF%91%E6%AF%8D%E8%AF%AD%E6%B0%B4%E5%B9%B3-/" class="read-more">阅读全文 →</a>
-  <!-- 链接到文章详情页 -->
-  <!-- CSS class "read-more" 用于样式化按钮 -->
-
-</article>
-<!-- 单篇文章卡片结束 -->
-
-        <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
-        <!-- 将当前文章对象 post 传入模板 -->
-        <!--  输出 HTML，不转义，保证标签正常显示 -->
-
-      
-      <!-- 遍历文章结束 -->
+      </span>
 
     
-    <!-- 条件判断结束 -->
-
+    <!-- 标签判断结束 -->
   </div>
-  <!-- 文章列表容器结束 -->
+  <!-- 文章元信息结束 -->
 
-</section>
-<!-- 页面主容器结束 -->
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    <h2 id="🎯-总体目标拆解"><a href="#🎯-总体目标拆解" class="headerlink" title="🎯 总体目标拆解"></a>🎯 总体目标拆解</h2><ul>
+<li><strong>短期（6–12个月）</strong>：打牢语法和词汇基础，提升到 N2 水平  </li>
+<li><strong>中期（1.5–3年）</strong>：掌握高级语法、扩大词汇量，达到 N1 水平  </li>
+<li><strong>长期（3–5年）</strong>：通过大量输入与输出，逐步接近母语者的自然表达和思维方式</li>
+</ul>
+<hr>
+<h2 id="📚-学习安排"><a href="#📚-学习安排" class="headerlink" title="📚 学习安排"></a>📚 学习安排</h2><h3 id="平日（每天-1-小时）"><a href="#平日（每天-1-小时）" class="headerlink" title="平日（每天 1 小时）"></a>平日（每天 1 小时）</h3><ul>
+<li><strong>词汇积累（20分钟）</strong><ul>
+<li>使用《新完全掌握N2&#x2F;N1词汇》或 Anki 卡片  </li>
+<li>每天固定记忆 + 复习，半年目标：6000–8000 常用词</li>
+</ul>
+</li>
+<li><strong>语法学习（20分钟）</strong><ul>
+<li>系统学习《新完全掌握N2&#x2F;N1语法》  </li>
+<li>每天 1–2 个语法点，配合例句造句</li>
+</ul>
+</li>
+<li><strong>听力&#x2F;口语（20分钟）</strong><ul>
+<li>听 NHK News Web Easy 或播客，跟读模仿  </li>
+<li>录音自我检查，减少“外国语感”</li>
+</ul>
+</li>
+</ul>
+<h3 id="周末（整天学习）"><a href="#周末（整天学习）" class="headerlink" title="周末（整天学习）"></a>周末（整天学习）</h3><ul>
+<li><strong>上午：强化阅读</strong><ul>
+<li>阅读日文小说、新闻、技术文章（结合 IT 工作）  </li>
+<li>做笔记，标注不认识的词汇和表达</li>
+</ul>
+</li>
+<li><strong>下午：写作与输出</strong><ul>
+<li>写日记或短文，模仿日本人写作风格  </li>
+<li>请日本朋友或语言交换伙伴帮忙修改</li>
+</ul>
+</li>
+<li><strong>晚上：会话练习</strong><ul>
+<li>参加语言交换、线上日语角，或找导师进行会话训练</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="🧩-学习方法与工具"><a href="#🧩-学习方法与工具" class="headerlink" title="🧩 学习方法与工具"></a>🧩 学习方法与工具</h2><ul>
+<li><strong>输入</strong>：大量阅读、听力（小说、新闻、动漫、播客）  </li>
+<li><strong>输出</strong>：写作 + 会话，避免只停留在“能听懂”  </li>
+<li><strong>工具推荐</strong>：<ul>
+<li>Anki（词汇记忆）  </li>
+<li>NHK News Web Easy（听力）  </li>
+<li>LangCorrect &#x2F; HelloTalk（写作与交流）  </li>
+<li>《新完全掌握》系列（语法、词汇、听力）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="🪜-日语学习阶段性目标｜学習ステップ目標"><a href="#🪜-日语学习阶段性目标｜学習ステップ目標" class="headerlink" title="🪜 日语学习阶段性目标｜学習ステップ目標"></a>🪜 日语学习阶段性目标｜学習ステップ目標</h2><blockquote>
+<p>⏰ 长期规划（3〜5年）｜🇯🇵 目標：日本人ネイティブレベル<br>🧭 每个阶段都有清晰成果，建议定期自我评估与复盘。</p>
+</blockquote>
+<hr>
+<table>
+<thead>
+<tr>
+<th align="left">🎯 阶段</th>
+<th align="center">🗓️ 时间</th>
+<th align="center">🎓 目标</th>
+<th align="left">📘 具体成果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">🧱 <strong>基础巩固期</strong><br>基礎固め</td>
+<td align="center">6〜12个月</td>
+<td align="center"><strong>N2 水平</strong></td>
+<td align="left">📰 能读懂新闻、技术文档<br>💬 日常交流无障碍</td>
+</tr>
+<tr>
+<td align="left">🚀 <strong>高级提升期</strong><br>上級ステップ</td>
+<td align="center">1.5〜3年</td>
+<td align="center"><strong>N1 水平</strong></td>
+<td align="left">🏢 工作交流自然<br>📚 理解复杂文章与会议内容</td>
+</tr>
+<tr>
+<td align="left">🏔️ <strong>母语接近期</strong><br>ネイティブ準拠</td>
+<td align="center">3〜5年</td>
+<td align="center"><strong>母语者水平</strong></td>
+<td align="left">🧠 思维方式接近日本人<br>🗣️ 表达自然流畅</td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p>💡 <strong>Tips：</strong></p>
+<ul>
+<li>建议每半年进行一次 <strong>词汇量与听力测试</strong>。  </li>
+<li>可结合 <strong>技术日语 + JLPT 模块</strong> 双线学习。  </li>
+<li>每个阶段结束后写一份「学习总结ノート」。</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="🔑-关键建议"><a href="#🔑-关键建议" class="headerlink" title="🔑 关键建议"></a>🔑 关键建议</h2><ul>
+<li><strong>坚持输入输出结合</strong>：不要只背单词或语法，要用出来  </li>
+<li><strong>利用工作环境</strong>：IT派遣工作中，多用日语写邮件、做会议记录  </li>
+<li><strong>阶段性检验</strong>：建议参加 JLPT 考试（N2 → N1），作为里程碑</li>
+</ul>
+<hr>
+<p>👉 建议先设定一个 <strong>半年目标：通过 N2</strong>，这样能获得阶段性成就感，再逐步冲击 N1。</p>
+
+    <!-- 渲染文章正文 HTML -->
+    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  </div>
+  <!-- 文章正文结束 -->
+
+</article>
+<!-- 单篇文章容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
