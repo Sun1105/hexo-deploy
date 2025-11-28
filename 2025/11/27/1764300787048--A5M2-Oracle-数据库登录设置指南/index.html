@@ -462,68 +462,146 @@
 
   <!-- 文章正文内容 -->
   <div class="post-content">
-    <h2 id="📌-目标"><a href="#📌-目标" class="headerlink" title="📌 目标"></a>📌 目标</h2><p>使用 <strong>A5:SQL Mk-2</strong> 通过 <strong>直接接続（Easy Connect）</strong> 方式连接 Oracle 数据库。</p>
-<hr>
-<h2 id="🔍-登录信息示例"><a href="#🔍-登录信息示例" class="headerlink" title="🔍 登录信息示例"></a>🔍 登录信息示例</h2><ul>
-<li><strong>用户ID</strong>：<code>KH000</code></li>
-<li><strong>密码</strong>：<code>123456789</code></li>
-<li><strong>连接字符串</strong>：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//10.123.456.001:1521/KH00_PDB.dkcsub.tbinas.oraclevcn.com</span><br></pre></td></tr></table></figure></li>
-<li><strong>端口</strong>：<code>1521</code></li>
-<li><strong>服务名</strong>：<code>KH00_PDB.dkcsub.tbinas.oraclevcn.com</code></li>
-</ul>
-<hr>
-<h2 id="🛠-操作流程（文字流程图）"><a href="#🛠-操作流程（文字流程图）" class="headerlink" title="🛠 操作流程（文字流程图）"></a>🛠 操作流程（文字流程图）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line">    A[Step 1: 选择接続方法] --&gt; B[Step 2: 输入接続文字列]</span><br><span class="line">    B --&gt; C[Step 3: 输入ユーザーID]</span><br><span class="line">    C --&gt; D[Step 4: 输入パスワード]</span><br><span class="line">    D --&gt; E[Step 5: 设置DBタイプ（可选）]</span><br><span class="line">    E --&gt; F[Step 6: 设置色（可选）]</span><br><span class="line">    F --&gt; G[Step 7: 点击「テスト接続」]</span><br><span class="line">    G --&gt; H[Step 8: 点击「OK」保存]</span><br></pre></td></tr></table></figure>
+    <!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>A5:SQL Mk-2 Oracle 直接接続设置指南</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif; background: #f5f8fa; color: #222; margin: 0; padding: 32px;}
+    h1, h2, h3 { color: #2366d1; }
+    .section { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #dadada; padding: 24px 28px; margin-bottom: 32px;}
+    .highlight { background: #fcf5c7; padding: 2px 6px; border-radius: 3px;}
+    .input-table { border-collapse: collapse; width: 100%; margin-bottom: 20px;}
+    .input-table th, .input-table td { border: 1px solid #b6b6b6; padding: 8px;}
+    .input-table th { background: #edf3fb; text-align: left;}
+    .code-box { background: #21272c; color: #f1f1f1; font-family: "Fira Mono", "Consolas", monospace; padding: 12px 16px; border-radius: 6px; font-size: 1em; margin: 12px 0;}
+    .note { color: #b80000; font-weight: bold;}
+    .step { margin-bottom: 16px;}
+    ul, ol { padding-left: 20px;}
+    .env-table { border: 1px solid #adbaca; border-radius: 8px;}
+    pre.mermaid-flow {
+      background: #e9f3fb; border-radius: 6px; padding: 16px; font-size: 1em; overflow-x: auto;
+    }
+    .small { font-size: 0.97em; color:#777;}
+  </style>
+</head>
+<body>
 
-<hr>
-<h2 id="✅-详细步骤与输入值"><a href="#✅-详细步骤与输入值" class="headerlink" title="✅ 详细步骤与输入值"></a>✅ 详细步骤与输入值</h2><h3 id="Step-1：选择接続方法"><a href="#Step-1：选择接続方法" class="headerlink" title="Step 1：选择接続方法"></a><strong>Step 1：选择接続方法</strong></h3><ul>
-<li>选中：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">直接接続（Oracle Client不要）</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="Step-2：输入接続文字列"><a href="#Step-2：输入接続文字列" class="headerlink" title="Step 2：输入接続文字列"></a><strong>Step 2：输入接続文字列</strong></h3><ul>
-<li>值：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//10.123.456.001:1521/KH00_PDB.dkcsub.tbinas.oraclevcn.com</span><br></pre></td></tr></table></figure></li>
-<li>格式说明：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//IP地址:端口/服务名</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="Step-3：输入ユーザーID"><a href="#Step-3：输入ユーザーID" class="headerlink" title="Step 3：输入ユーザーID"></a><strong>Step 3：输入ユーザーID</strong></h3><ul>
-<li>值：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KH022</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="Step-4：输入パスワード"><a href="#Step-4：输入パスワード" class="headerlink" title="Step 4：输入パスワード"></a><strong>Step 4：输入パスワード</strong></h3><ul>
-<li>值：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">N30RJ1_jP_ez</span><br></pre></td></tr></table></figure></li>
-<li>可选：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">勾选「パスワードを保存する」</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="Step-5：DBタイプ（可选）"><a href="#Step-5：DBタイプ（可选）" class="headerlink" title="Step 5：DBタイプ（可选）"></a><strong>Step 5：DBタイプ（可选）</strong></h3><ul>
-<li>如果是生产环境，勾选：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本番環境</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="Step-6：色（可选）"><a href="#Step-6：色（可选）" class="headerlink" title="Step 6：色（可选）"></a><strong>Step 6：色（可选）</strong></h3><ul>
-<li>默认：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(None)</span><br></pre></td></tr></table></figure></li>
-<li>可设置颜色用于区分环境。</li>
-</ul>
-<h3 id="Step-7：测试连接"><a href="#Step-7：测试连接" class="headerlink" title="Step 7：测试连接"></a><strong>Step 7：测试连接</strong></h3><ul>
-<li>点击：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">テスト接続</span><br></pre></td></tr></table></figure></li>
-<li>确认连接成功。</li>
-</ul>
-<h3 id="Step-8：保存设置"><a href="#Step-8：保存设置" class="headerlink" title="Step 8：保存设置"></a><strong>Step 8：保存设置</strong></h3><ul>
-<li>点击：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OK</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<ul>
-<li><p>path：\oracle\product\12.1.0\client_1\network\admin</p>
-</li>
-<li><p>file：tnsnames.ora</p>
-</li>
-<li><p>追加内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">KH00_ABC=</span><br><span class="line">  (DESCRIPTION=</span><br><span class="line">    (LOAD_BALANCE = ON)</span><br><span class="line">    (ADDRESS = (PROTOCOL=TCP)(HOST=10.123.456.101)(PORT=1521))</span><br><span class="line">    (ADDRESS = (PROTOCOL=TCP)(HOST=10.123.456.102)(PORT=1521))</span><br><span class="line">    (ADDRESS = (PROTOCOL=TCP)(HOST=10.123.456.103)(PORT=1521))</span><br><span class="line">    (CONNECT_DATA=</span><br><span class="line">      (SERVER=DEDICATED)</span><br><span class="line">      (SERVICE_NAME=KH00_ABC.dkcsub.tbinas.oraclevcn.com)</span><br><span class="line">      (FAILOVER_MODE=</span><br><span class="line">        (TYPE=select)</span><br><span class="line">        (METHOD=basic))))</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<h2 id="⚠-注意事项"><a href="#⚠-注意事项" class="headerlink" title="⚠ 注意事项"></a>⚠ 注意事项</h2><ul>
-<li><strong>必须选择「直接接続」</strong>，否则需要 Oracle Client。</li>
-<li><strong>接続文字列必须加 <code>//</code> 前缀</strong>。</li>
-<li>确保 <strong>网络可达</strong>，端口 <code>1521</code> 未被防火墙阻挡。</li>
-<li>如果连接失败，检查：<ul>
-<li>服务名是否正确。</li>
-<li>用户名和密码是否正确。</li>
-<li>数据库是否允许远程连接。</li>
-</ul>
-</li>
-</ul>
+<div class="section">
+  <h1>📌 目标</h1>
+  <p>使用 <b>A5:SQL Mk-2</b> 通过 <b>直接接続（Easy Connect）</b> 方式连接 Oracle 数据库。</p>
+</div>
+
+<div class="section">
+  <h2>🔍 登录信息示例</h2>
+  <table class="input-table">
+    <tr><th>项</th><th>示例值</th></tr>
+    <tr><td>用户ID</td><td><span class="highlight">KH000</span></td></tr>
+    <tr><td>密码</td><td><span class="highlight">123456789</span></td></tr>
+    <tr><td>连接字符串</td><td><span class="highlight">//10.123.456.001:1521/KH00_PDB.dkcsub.tbinas.oraclevcn.com</span></td></tr>
+    <tr><td>端口</td><td><span class="highlight">1521</span></td></tr>
+    <tr><td>服务名</td><td><span class="highlight">KH00_PDB.dkcsub.tbinas.oraclevcn.com</span></td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>🛠 操作流程（文字流程图）</h2>
+  <pre class="mermaid-flow">
+flowchart TD
+    A[Step 1: 选择接続方法] --> B[Step 2: 输入接続文字列]
+    B --> C[Step 3: 输入ユーザーID]
+    C --> D[Step 4: 输入パスワード]
+    D --> E[Step 5: 设置DBタイプ（可选）]
+    E --> F[Step 6: 设置色（可选）]
+    F --> G[Step 7: 点击「テスト接続」]
+    G --> H[Step 8: 点击「OK」保存]
+  </pre>
+</div>
+
+<div class="section">
+  <h2>✅ 详细步骤与输入值</h2>
+  <div class="step">
+    <b>Step 1：选择接続方法</b><br>
+    <span class="highlight">直接接続（Oracle Client不要）</span>
+  </div>
+  <div class="step">
+    <b>Step 2：输入接続文字列</b><br>
+    <span class="code-box">//10.123.456.001:1521/KH00_PDB.dkcsub.tbinas.oraclevcn.com</span>
+    <div class="small">格式：//IP地址:端口/服务名</div>
+  </div>
+  <div class="step">
+    <b>Step 3：输入ユーザーID</b><br>
+    <span class="code-box">KH000</span>
+  </div>
+  <div class="step">
+    <b>Step 4：输入パスワード</b><br>
+    <span class="code-box">123456789</span><br>
+    <span class="small">可选：勾选「パスワードを保存する」</span>
+  </div>
+  <div class="step">
+    <b>Step 5：DBタイプ（可选）</b><br>
+    本番环境请勾选：
+    <span class="highlight">本番環境</span>
+  </div>
+  <div class="step">
+    <b>Step 6：色（可选）</b><br>
+    默认：<span class="highlight">(None)</span>
+    <br>可区分不同环境自行选择颜色。
+  </div>
+  <div class="step">
+    <b>Step 7：测试连接</b><br>
+    点击：<span class="highlight">テスト接続</span>
+    <br>确认连接成功。
+  </div>
+  <div class="step">
+    <b>Step 8：保存设置</b><br>
+    点击：<span class="highlight">OK</span>
+  </div>
+</div>
+
+<div class="section">
+  <h2>🔗 tnsnames.ora 配置范例</h2>
+  <table class="input-table env-table">
+    <tr><td><b>路径</b></td><td>\oracle\product\12.1.0\client_1\network\admin</td></tr>
+    <tr><td><b>文件</b></td><td>tnsnames.ora</td></tr>
+  </table>
+  <div>追加内容：</div>
+  <pre class="code-box">
+KH00_ABC=
+  (DESCRIPTION=
+    (LOAD_BALANCE = ON)
+    (ADDRESS = (PROTOCOL=TCP)(HOST=10.123.456.101)(PORT=1521))
+    (ADDRESS = (PROTOCOL=TCP)(HOST=10.123.456.102)(PORT=1521))
+    (ADDRESS = (PROTOCOL=TCP)(HOST=10.123.456.103)(PORT=1521))
+    (CONNECT_DATA=
+      (SERVER=DEDICATED)
+      (SERVICE_NAME=KH00_ABC.dkcsub.tbinas.oraclevcn.com)
+      (FAILOVER_MODE=
+        (TYPE=select)
+        (METHOD=basic))))
+  </pre>
+</div>
+
+<div class="section">
+  <h2>⚠ 注意事项</h2>
+  <ul>
+    <li><span class="note">必须选择「直接接続」</span>（否则需要 Oracle Client）。</li>
+    <li>接続文字列必须加 <span class="highlight">//</span> 前缀。</li>
+    <li>确保 <b>网络可达</b>，端口 <b>1521</b> 未被防火墙阻挡。</li>
+    <li>连接失败时请检查：
+      <ul>
+        <li>服务名是否正确。</li>
+        <li>用户名和密码是否正确。</li>
+        <li>数据库是否允许远程连接。</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>
 
     <!-- 渲染文章正文 HTML -->
     <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
