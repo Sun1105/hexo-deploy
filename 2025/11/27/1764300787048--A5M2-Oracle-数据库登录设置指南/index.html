@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    ITA笔记 | Sun Blog
+    ✅ A5M2 Oracle 数据库登录设置指南 | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -430,12 +430,12 @@
   <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
   <!-- 文章标题 -->
-  <h1 class="post-title">ITA笔记</h1>
+  <h1 class="post-title">✅ A5M2 Oracle 数据库登录设置指南</h1>
   <!-- page.title → 当前文章标题 -->
 
   <!-- 文章元信息：发布日期 + 标签 -->
   <div class="post-meta">
-    <span>发表于 2025-11-27</span>
+    <span>发表于 2025-11-28</span>
     <!-- 显示文章发布日期 -->
 
     
@@ -443,7 +443,12 @@
 
       <span>标签：
         
-          <a href="/tags/%E5%BC%8F%E6%A0%B7%E4%B9%A6%E5%81%9A%E6%88%90/">式样书做成</a>
+          <a href="/tags/A5M2/">A5M2</a>
+          , 
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+          <a href="/tags/Oracle/">Oracle</a>
           
           <!-- 遍历文章标签，生成标签链接 -->
           <!-- 多个标签用逗号分隔 -->
@@ -457,95 +462,65 @@
 
   <!-- 文章正文内容 -->
   <div class="post-content">
-    <h2 id="ITA测试：将参照资料转化为“自己能用”的式样"><a href="#ITA测试：将参照资料转化为“自己能用”的式样" class="headerlink" title="ITA测试：将参照资料转化为“自己能用”的式样"></a>ITA测试：将参照资料转化为“自己能用”的式样</h2><h3 id="1-自己先吃透，再去问与建议"><a href="#1-自己先吃透，再去问与建议" class="headerlink" title="1. 自己先吃透，再去问与建议"></a>1. 自己先吃透，再去问与建议</h3><ul>
-<li><strong>基本原则：</strong><br>只有自己先将一件事情尽可能地了解透彻之后，才有资格去问别人问题，才有资格向别人提供建议和想法。  </li>
-<li><strong>对应行动：</strong><br>在做ITA测试式样书之前，要先把资料、规格、现有程序行为，都转化成自己能理解、能操作的形式（图、表、例子、请求样本等）。</li>
+    <h2 id="📌-目标"><a href="#📌-目标" class="headerlink" title="📌 目标"></a>📌 目标</h2><p>使用 <strong>A5:SQL Mk-2</strong> 通过 <strong>直接接続（Easy Connect）</strong> 方式连接 Oracle 数据库。</p>
+<hr>
+<h2 id="🔍-登录信息示例"><a href="#🔍-登录信息示例" class="headerlink" title="🔍 登录信息示例"></a>🔍 登录信息示例</h2><ul>
+<li><strong>用户ID</strong>：<code>KH000</code></li>
+<li><strong>密码</strong>：<code>123456789</code></li>
+<li><strong>连接字符串</strong>：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//10.123.456.001:1521/KH00_PDB.dkcsub.tbinas.oraclevcn.com</span><br></pre></td></tr></table></figure></li>
+<li><strong>端口</strong>：<code>1521</code></li>
+<li><strong>服务名</strong>：<code>KH00_PDB.dkcsub.tbinas.oraclevcn.com</code></li>
 </ul>
 <hr>
-<h3 id="2-项目开始时全局统括-mock-的重要性"><a href="#2-项目开始时全局统括-mock-的重要性" class="headerlink" title="2. 项目开始时全局统括 mock 的重要性"></a>2. 项目开始时全局统括 mock 的重要性</h3><ul>
-<li><strong>全局 mock 的目标：</strong><br>在一个项目开始时，做一个统括全局的、可以在多个机能之间跳转页面的 mock，是非常重要的。</li>
-<li><strong>mock 中应包含的内容：</strong>  <ul>
-<li><strong>客户端：</strong> 页面之间的跳转关系、主要画面要素。  </li>
-<li><strong>后端 API 请求：</strong>  <ul>
-<li>请求内容  </li>
-<li>请求格式</li>
+<h2 id="🛠-操作流程（文字流程图）"><a href="#🛠-操作流程（文字流程图）" class="headerlink" title="🛠 操作流程（文字流程图）"></a>🛠 操作流程（文字流程图）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line">    A[Step 1: 选择接続方法] --&gt; B[Step 2: 输入接続文字列]</span><br><span class="line">    B --&gt; C[Step 3: 输入ユーザーID]</span><br><span class="line">    C --&gt; D[Step 4: 输入パスワード]</span><br><span class="line">    D --&gt; E[Step 5: 设置DBタイプ（可选）]</span><br><span class="line">    E --&gt; F[Step 6: 设置色（可选）]</span><br><span class="line">    F --&gt; G[Step 7: 点击「テスト接続」]</span><br><span class="line">    G --&gt; H[Step 8: 点击「OK」保存]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="✅-详细步骤与输入值"><a href="#✅-详细步骤与输入值" class="headerlink" title="✅ 详细步骤与输入值"></a>✅ 详细步骤与输入值</h2><h3 id="Step-1：选择接続方法"><a href="#Step-1：选择接続方法" class="headerlink" title="Step 1：选择接続方法"></a><strong>Step 1：选择接続方法</strong></h3><ul>
+<li>选中：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">直接接続（Oracle Client不要）</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><strong>后端 API 响应：</strong>  <ul>
-<li>响应内容  </li>
-<li>响应格式</li>
+<h3 id="Step-2：输入接続文字列"><a href="#Step-2：输入接続文字列" class="headerlink" title="Step 2：输入接続文字列"></a><strong>Step 2：输入接続文字列</strong></h3><ul>
+<li>值：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//10.123.456.001:1521/KH00_PDB.dkcsub.tbinas.oraclevcn.com</span><br></pre></td></tr></table></figure></li>
+<li>格式说明：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//IP地址:端口/服务名</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><strong>常驻 batch：</strong>  <ul>
-<li>各种正常情况对 DB 的更新  </li>
-<li>各种异常情况对 DB 的更新</li>
+<h3 id="Step-3：输入ユーザーID"><a href="#Step-3：输入ユーザーID" class="headerlink" title="Step 3：输入ユーザーID"></a><strong>Step 3：输入ユーザーID</strong></h3><ul>
+<li>值：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KH022</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
+<h3 id="Step-4：输入パスワード"><a href="#Step-4：输入パスワード" class="headerlink" title="Step 4：输入パスワード"></a><strong>Step 4：输入パスワード</strong></h3><ul>
+<li>值：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">N30RJ1_jP_ez</span><br></pre></td></tr></table></figure></li>
+<li>可选：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">勾选「パスワードを保存する」</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
+<h3 id="Step-5：DBタイプ（可选）"><a href="#Step-5：DBタイプ（可选）" class="headerlink" title="Step 5：DBタイプ（可选）"></a><strong>Step 5：DBタイプ（可选）</strong></h3><ul>
+<li>如果是生产环境，勾选：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本番環境</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Step-6：色（可选）"><a href="#Step-6：色（可选）" class="headerlink" title="Step 6：色（可选）"></a><strong>Step 6：色（可选）</strong></h3><ul>
+<li>默认：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(None)</span><br></pre></td></tr></table></figure></li>
+<li>可设置颜色用于区分环境。</li>
+</ul>
+<h3 id="Step-7：测试连接"><a href="#Step-7：测试连接" class="headerlink" title="Step 7：测试连接"></a><strong>Step 7：测试连接</strong></h3><ul>
+<li>点击：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">テスト接続</span><br></pre></td></tr></table></figure></li>
+<li>确认连接成功。</li>
+</ul>
+<h3 id="Step-8：保存设置"><a href="#Step-8：保存设置" class="headerlink" title="Step 8：保存设置"></a><strong>Step 8：保存设置</strong></h3><ul>
+<li>点击：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OK</span><br></pre></td></tr></table></figure></li>
 </ul>
 <hr>
-<h3 id="3-ITA以上结合测试所需的辅助工具准备"><a href="#3-ITA以上结合测试所需的辅助工具准备" class="headerlink" title="3. ITA以上结合测试所需的辅助工具准备"></a>3. ITA以上结合测试所需的辅助工具准备</h3><ul>
-<li><strong>需要的工具：</strong>  <ul>
-<li><strong>シミュレーター</strong>（模拟浏览器送信页面等）  </li>
-<li><strong>Postman 等 API 发送工具</strong></li>
-</ul>
+<ul>
+<li><p>path：\oracle\product\12.1.0\client_1\network\admin</p>
 </li>
-<li><strong>准备的意义：</strong><br>ITA 以上的结合测试，需要借助这些发送请求的辅助工具，才能更好、更高效地进行后续作业。  </li>
-<li><strong>时间点要求：</strong><br>在正式着手 ITA 测试式样书之前，就要把这些前提事项准备好（环境、工具、账号、基础数据等）。</li>
+<li><p>file：tnsnames.ora</p>
+</li>
+<li><p>追加内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">KH00_ABC=</span><br><span class="line">  (DESCRIPTION=</span><br><span class="line">    (LOAD_BALANCE = ON)</span><br><span class="line">    (ADDRESS = (PROTOCOL=TCP)(HOST=10.123.456.101)(PORT=1521))</span><br><span class="line">    (ADDRESS = (PROTOCOL=TCP)(HOST=10.123.456.102)(PORT=1521))</span><br><span class="line">    (ADDRESS = (PROTOCOL=TCP)(HOST=10.123.456.103)(PORT=1521))</span><br><span class="line">    (CONNECT_DATA=</span><br><span class="line">      (SERVER=DEDICATED)</span><br><span class="line">      (SERVICE_NAME=KH00_ABC.dkcsub.tbinas.oraclevcn.com)</span><br><span class="line">      (FAILOVER_MODE=</span><br><span class="line">        (TYPE=select)</span><br><span class="line">        (METHOD=basic))))</span><br></pre></td></tr></table></figure></li>
 </ul>
 <hr>
-<h3 id="4-制作结合测试式样书（ITA，ITB）的步骤概述"><a href="#4-制作结合测试式样书（ITA，ITB）的步骤概述" class="headerlink" title="4. 制作结合测试式样书（ITA，ITB）的步骤概述"></a>4. 制作结合测试式样书（ITA，ITB）的步骤概述</h3><h4 id="4-1-前提准备"><a href="#4-1-前提准备" class="headerlink" title="4.1 前提准备"></a>4.1 前提准备</h4><ul>
-<li><strong>前提准备1：</strong><br>使用模拟浏览器送信页面，或者 Postman，配合程序实际执行的过程和结果，来制作测试式样书。  <ul>
-<li>一边实际发送请求，一边确认响应和 DB 变更  </li>
-<li>把“事实行为”整理成测试观点和测试步骤</li>
-</ul>
-</li>
-</ul>
-<h4 id="4-2-步骤一：制作ケース一览"><a href="#4-2-步骤一：制作ケース一览" class="headerlink" title="4.2 步骤一：制作ケース一览"></a>4.2 步骤一：制作ケース一览</h4><ul>
-<li><strong>目的：</strong><br>简单介绍每个 case 的测试内容，形成一个“测试全体地图”。  </li>
-<li><strong>内容示例：</strong>  <ul>
-<li>Case ID  </li>
-<li>测试标题  </li>
-<li>涉及机能（画面 &#x2F; API &#x2F; batch）  </li>
-<li>主要测试目的（正常系 &#x2F; 异常系 &#x2F; 边界值等）</li>
-</ul>
-</li>
-</ul>
-<h4 id="4-3-步骤二：为每条-case-写确认观点"><a href="#4-3-步骤二：为每条-case-写确认观点" class="headerlink" title="4.3 步骤二：为每条 case 写确认观点"></a>4.3 步骤二：为每条 case 写确认观点</h4><ul>
-<li><strong>确认观点示例：</strong>  <ul>
-<li><strong>响应相关：</strong>  <ul>
-<li>响应的 HTTP Status  </li>
-<li>响应 JSON &#x2F; XML 的各项值</li>
-</ul>
-</li>
-<li><strong>DB 相关：</strong>  <ul>
-<li>DB 登录值是否正确  </li>
-<li>DB 更新值是否符合预期  </li>
-<li>记录条数、状态值、时间戳等是否正确</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="4-4-步骤三：写-case-实施的条件与步骤（概要）"><a href="#4-4-步骤三：写-case-实施的条件与步骤（概要）" class="headerlink" title="4.4 步骤三：写 case 实施的条件与步骤（概要）"></a>4.4 步骤三：写 case 实施的条件与步骤（概要）</h4><ul>
-<li><strong>实施条件：</strong>  <ul>
-<li>需要事先准备的前提数据  </li>
-<li>必须满足的业务状态（例如：订单已创建但未支付等）</li>
-</ul>
-</li>
-<li><strong>实施步骤（概要版）：</strong><br>将为了满足测试观点所需的主要条件，按顺序列出，并对实施步骤做简要描述。</li>
-</ul>
-<h4 id="4-5-步骤四：详细写出条件、数据与实施步骤（详细版）"><a href="#4-5-步骤四：详细写出条件、数据与实施步骤（详细版）" class="headerlink" title="4.5 步骤四：详细写出条件、数据与实施步骤（详细版）"></a>4.5 步骤四：详细写出条件、数据与实施步骤（详细版）</h4><ul>
-<li><strong>详细条件与数据：</strong>  <ul>
-<li>请求体中各项目的值（字段、类型、具体示例值）  </li>
-<li>DB 登录值、更新值的具体内容（表名、字段名、预期值）</li>
-</ul>
-</li>
-<li><strong>详细实施步骤：</strong>  <ul>
-<li>具体操作步骤（在模拟画面&#x2F;浏览器&#x2F;工具上的操作）  </li>
-<li>请求发送方式（URL、Method、Headers、Body 等）  </li>
-<li>预期结果检查方法（从响应、日志、DB 等处如何确认）</li>
+<h2 id="⚠-注意事项"><a href="#⚠-注意事项" class="headerlink" title="⚠ 注意事项"></a>⚠ 注意事项</h2><ul>
+<li><strong>必须选择「直接接続」</strong>，否则需要 Oracle Client。</li>
+<li><strong>接続文字列必须加 <code>//</code> 前缀</strong>。</li>
+<li>确保 <strong>网络可达</strong>，端口 <code>1521</code> 未被防火墙阻挡。</li>
+<li>如果连接失败，检查：<ul>
+<li>服务名是否正确。</li>
+<li>用户名和密码是否正确。</li>
+<li>数据库是否允许远程连接。</li>
 </ul>
 </li>
 </ul>
