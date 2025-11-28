@@ -441,7 +441,7 @@
 
   <!-- 文章元信息：发布日期 + 标签 -->
   <div class="post-meta">
-    <span>发表于 2025-11-27</span>
+    <span>发表于 2025-11-28</span>
     <!-- 显示文章发布日期 -->
 
     
@@ -476,104 +476,44 @@
     <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>MyBatis SQL 执行流程图</title>
+  <meta charset="UTF-8">
+  <title>MyBatis SQL 执行流程图</title>
 
-  <!-- Mermaid JS -->
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true });
-  </script>
-
-  <style>
-    body {
-      font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
-      margin: 40px;
-      background-color: #f9f9f9;
-      line-height: 1.8;
-    }
-    h1, h2 {
-      color: #2c3e50;
-    }
-    .mermaid {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
-    }
-    code {
-      background: #eee;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-    pre {
-      background: #eee;
-      padding: 12px;
-      border-radius: 6px;
-      overflow-x: auto;
-    }
-  </style>
+<p>    <script type="module"><br>    import mermaid from &#39;<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs">https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs</a>&#39;;<br>    mermaid.initialize({ startOnLoad: true });<br>  </script></p>
+<p>  <style><br>    body {<br>      font-family: “Segoe UI”, “Microsoft YaHei”, sans-serif;<br>      margin: 40px;<br>      background-color: #f9f9f9;<br>      line-height: 1.8;<br>    }<br>    h1, h2 {<br>      color: #2c3e50;<br>    }<br>    .mermaid {<br>      background: #fff;<br>      padding: 20px;<br>      border-radius: 8px;<br>      box-shadow: 0 0 10px rgba(0,0,0,0.1);<br>      margin-bottom: 40px;<br>    }<br>    code {<br>      background: #eee;<br>      padding: 2px 6px;<br>      border-radius: 4px;<br>    }<br>    pre {<br>      background: #eee;<br>      padding: 12px;<br>      border-radius: 6px;<br>      overflow-x: auto;<br>    }<br>  </style></p>
 </head>
 
 <body>
 
-  <h1>MyBatis SQL 执行流程（可视化版）</h1>
+<p>  <h1>MyBatis SQL 执行流程（可视化版）</h1></p>
+<p>  <h2>📌 流程图（Mermaid 渲染）</h2></p>
+<div class="mermaid">
+flowchart TD
+    A[调用 Mapper 方法] --> B[MyBatis Executor\n核心执行器]
+    B --> C[生成 SQL 语句模板\n(带 ? 占位符)]
+    C --> D[日志阶段 1 \nPreparing: SELECT ... WHERE ... = ?]
+    D --> E[参数绑定 \n绑定方法参数到 ?]
+    E --> F[日志阶段 2 \nParameters: 300000000 (String), 20250601 (String)]
+    F --> G[执行 SQL \nJDBC 调用 Connection → PreparedStatement → executeQuery/executeUpdate]
+    G --> H[获取执行结果 \nSELECT → 结果集\nUPDATE/INSERT → 影响行数]
+    H --> I[日志阶段 3 \n执行结果: Total = 1]
+    I --> J[返回 Mapper 方法结果]
+</div>
 
-  <h2>📌 流程图（Mermaid 渲染）</h2>
 
-<p>flowchart TD<br>    A[调用 Mapper 方法] –&gt; B[MyBatis Executor\n核心执行器]<br>    B –&gt; C[生成 SQL 语句模板\n(带 ? 占位符)]<br>    C –&gt; D[日志阶段 1 \nPreparing: SELECT … WHERE … &#x3D; ?]<br>    D –&gt; E[参数绑定 \n绑定方法参数到 ?]<br>    E –&gt; F[日志阶段 2 \nParameters: 300000000 (String), 20250601 (String)]<br>    F –&gt; G[执行 SQL \nJDBC 调用 Connection → PreparedStatement → executeQuery&#x2F;executeUpdate]<br>    G –&gt; H[获取执行结果 \nSELECT → 结果集\nUPDATE&#x2F;INSERT → 影响行数]<br>    H –&gt; I[日志阶段 3 \n执行结果: Total &#x3D; 1]<br>    I –&gt; J[返回 Mapper 方法结果]</p>
-  <h2>📘 详细步骤说明</h2>
-
-  <h3>1. 调用 Mapper 方法</h3>
-  <p>用户通过 Mapper 接口调用对应方法。</p>
-
-  <h3>2. MyBatis Executor 核心执行器</h3>
-  <p>MyBatis 核心执行器负责整个 SQL 执行流程。</p>
-
-  <h3>3. 生成 SQL 语句模板</h3>
-  <p>根据 Mapper XML 或注解生成带 <code>?</code> 占位符的 SQL。</p>
-
-  <h3>4. 日志打印阶段 1: Preparing</h3>
-  <pre>
-==> Preparing: SELECT ... WHERE ... = ?
-  </pre>
-
-  <h3>5. 参数绑定</h3>
-  <p>将方法参数绑定到 SQL 中的 <code>?</code> 占位符。</p>
-
-  <h3>6. 日志打印阶段 2: Parameters</h3>
-  <pre>
-==> Parameters: 300000000 (String), 20250601 (String)
-  </pre>
-
-  <h3>7. 执行 SQL</h3>
-  <p>通过 JDBC 调用：</p>
-  <ul>
-    <li>Connection</li>
-    <li>PreparedStatement</li>
-    <li>executeQuery() / executeUpdate()</li>
-  </ul>
-
-  <h3>8. 获取执行结果</h3>
-  <ul>
-    <li><strong>SELECT</strong> → 返回结果集</li>
-    <li><strong>UPDATE / INSERT</strong> → 返回影响行数</li>
-  </ul>
-
-  <h3>9. 日志打印阶段 3: 执行结果</h3>
-  <pre>
-<== Total: 1
-  </pre>
-
-  <h3>10. 返回 Mapper 方法结果</h3>
-  <p>将结果返回给调用方。</p>
-
+<p>  <h2>📘 详细步骤说明</h2></p>
+<p>  <h3>1. 调用 Mapper 方法</h3><br>  <p>用户通过 Mapper 接口调用对应方法。</p></p>
+<p>  <h3>2. MyBatis Executor 核心执行器</h3><br>  <p>MyBatis 核心执行器负责整个 SQL 执行流程。</p></p>
+<p>  <h3>3. 生成 SQL 语句模板</h3><br>  <p>根据 Mapper XML 或注解生成带 <code>?</code> 占位符的 SQL。</p></p>
+<p>  <h3>4. 日志打印阶段 1: Preparing</h3><br>  <pre><br>==&gt; Preparing: SELECT ... WHERE ... = ?<br>  </pre></p>
+<p>  <h3>5. 参数绑定</h3><br>  <p>将方法参数绑定到 SQL 中的 <code>?</code> 占位符。</p></p>
+<p>  <h3>6. 日志打印阶段 2: Parameters</h3><br>  <pre><br>==&gt; Parameters: 300000000 (String), 20250601 (String)<br>  </pre></p>
+<p>  <h3>7. 执行 SQL</h3><br>  <p>通过 JDBC 调用：</p><br>  <ul><br>    <li>Connection</li><br>    <li>PreparedStatement</li><br>    <li>executeQuery() &#x2F; executeUpdate()</li><br>  </ul></p>
+<p>  <h3>8. 获取执行结果</h3><br>  <ul><br>    <li><strong>SELECT</strong> → 返回结果集</li><br>    <li><strong>UPDATE &#x2F; INSERT</strong> → 返回影响行数</li><br>  </ul></p>
+<p>  <h3>9. 日志打印阶段 3: 执行结果</h3><br>  <pre><br>&lt;== Total: 1<br>  </pre></p>
+<p>  <h3>10. 返回 Mapper 方法结果</h3><br>  <p>将结果返回给调用方。</p></p>
 </body>
 </html>
-
-
-<p>✅ 该 Markdown 文件支持 <strong>Mermaid 流程图渲染</strong>，可直接用于 GitHub README 或技术文档。</p>
 
     <!-- 渲染文章正文 HTML -->
     <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
