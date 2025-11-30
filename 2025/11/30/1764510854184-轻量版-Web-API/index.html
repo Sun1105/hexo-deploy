@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    Sun Blog
+    轻量版 Web API | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -376,113 +376,204 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  category.ejs
-  分类页面模板
+  post.ejs
+  文章详情页模板
   功能：
-    - 显示分类标题
-    - 遍历当前分类下所有文章
-    - 渲染文章卡片列表
-    - 当分类下无文章时显示提示
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
 -->
 
-<section class="main-section">
-  <!-- 页面主容器，控制布局和样式 -->
-
-  <!-- 分类标题 -->
-  <h2 class="section-title">📘 tool 分类</h2>
-  <!-- emoji 📘 用于视觉增强 -->
-  <!-- tool 动态输出当前页面所属分类名称 -->
-  <!-- 显示示例：📘 Java 分类 -->
-
-  <div class="post-list">
-    <!-- 文章列表容器，用于放置文章卡片 -->
-
-    
-    <!-- 判断当前分类下是否有文章 -->
-    <!-- page.posts → 当前页面文章数组 -->
-    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
-
-      
-      <!-- 遍历当前分类下每篇文章 post -->
-      <!-- post 对象包含文章标题、路径、日期、分类、标签、摘要等信息 -->
-
-        <!--
-  _partial/post-card.ejs
-  功能：
-    - 渲染单篇文章的卡片
-    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
-    - 可在分类页、标签页、归档页复用
--->
-
-<article class="post-card">
-  <!-- 单篇文章卡片容器，用于布局和样式 -->
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
   <!-- 文章标题 -->
-  <h3 class="post-title">
-    <a href="/2025/11/25/1764146234548-VBA%E5%B7%A5%E5%85%B7/">VBA工具</a>
-    <!-- 链接到文章详情页 -->
-    <!-- url_for(post.path) → 生成文章路径 -->
-    <!-- post.title → 当前文章标题 -->
-  </h3>
+  <h1 class="post-title">轻量版 Web API</h1>
+  <!-- page.title → 当前文章标题 -->
 
-  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
-  <p class="post-meta">
-    发布于 2025-11-26
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2025-11-30</span>
     <!-- 显示文章发布日期 -->
 
-     |
-      分类：
-      
-        <a href="/categories/tool/">tool</a>
-        
-        <!-- 遍历文章分类 -->
-        <!-- 多个分类用逗号分隔 -->
-      
     
+      <!-- 判断文章是否有标签 -->
 
-     |
-      标签：
-      
-        <a href="/tags/excel/">excel</a>
+      <span>标签：
         
-        <!-- 遍历文章标签 -->
-        <!-- 多个标签用逗号分隔 -->
-      
+          <a href="/tags/API%E5%B7%A5%E5%85%B7/">API工具</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+      </span>
+
     
-  </p>
+    <!-- 标签判断结束 -->
+  </div>
   <!-- 文章元信息结束 -->
 
-  <!-- 文章摘要 -->
-  <p class="post-excerpt">
-    （暂无摘要）
-    <!-- 显示文章摘要 -->
-    <!-- 去掉 HTML 标签，只保留纯文本 -->
-    <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
-  </p>
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    <!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Tester (Lite)</title>
 
-  <!-- 阅读全文按钮 -->
-  <a href="/2025/11/25/1764146234548-VBA%E5%B7%A5%E5%85%B7/" class="read-more">阅读全文 →</a>
-  <!-- 链接到文章详情页 -->
-  <!-- CSS class "read-more" 用于样式化按钮 -->
+<pre><code>&lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css&quot;&gt;
+&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;style&gt;
+    body { background-color: #0f1117; }
+    .scroll::-webkit-scrollbar { width: 8px; }
+    .scroll::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 6px; }
+&lt;/style&gt;
+</code></pre>
+</head>
+
+<body class="text-gray-200">
+<div class="max-w-4xl mx-auto p-6">
+
+<pre><code>&lt;h1 class=&quot;text-2xl font-bold mb-4 text-indigo-400&quot;&gt;Web API Tester (Lite)&lt;/h1&gt;
+
+&lt;div class=&quot;bg-gray-800 p-4 rounded-xl border border-gray-700 mb-6&quot;&gt;
+    &lt;div class=&quot;flex space-x-3&quot;&gt;
+        &lt;select id=&quot;method&quot; class=&quot;w-28 bg-gray-700 border border-gray-600 text-white text-sm rounded-lg p-2&quot;&gt;
+            &lt;option&gt;GET&lt;/option&gt;&lt;option&gt;POST&lt;/option&gt;
+            &lt;option&gt;PUT&lt;/option&gt;&lt;option&gt;DELETE&lt;/option&gt;
+            &lt;option&gt;PATCH&lt;/option&gt;
+        &lt;/select&gt;
+
+        &lt;input id=&quot;url&quot; type=&quot;text&quot;
+               class=&quot;flex-grow bg-gray-700 border border-gray-600 text-white rounded-lg p-2&quot;
+               placeholder=&quot;输入 URL&quot;&gt;
+
+        &lt;button id=&quot;send&quot; class=&quot;bg-indigo-600 hover:bg-indigo-700 text-white px-6 rounded-lg&quot;&gt;
+            发送
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;bg-gray-800 p-4 rounded-xl border border-gray-700 mb-6&quot;&gt;
+    &lt;textarea id=&quot;body&quot; rows=&quot;6&quot;
+              class=&quot;w-full bg-gray-900 border border-gray-700 text-gray-200 rounded-lg p-3 font-mono text-sm&quot;
+              placeholder=&quot;请求 Body（可选）&quot;&gt;&lt;/textarea&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;bg-gray-800 p-4 rounded-xl border border-gray-700 mb-6&quot;&gt;
+    &lt;div id=&quot;headers&quot; class=&quot;space-y-2&quot;&gt;&lt;/div&gt;
+    &lt;button id=&quot;add-header&quot; class=&quot;mt-3 text-indigo-400 text-sm&quot;&gt;➕ 添加 Header&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;bg-gray-800 p-4 rounded-xl border border-gray-700 mb-6&quot;&gt;
+    &lt;div class=&quot;flex space-x-6 text-sm mb-3&quot;&gt;
+        &lt;p&gt;状态: &lt;span id=&quot;code&quot; class=&quot;font-bold text-lg text-yellow-500&quot;&gt;N/A&lt;/span&gt;&lt;/p&gt;
+        &lt;p&gt;耗时: &lt;span id=&quot;time&quot; class=&quot;font-bold&quot;&gt;0ms&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;pre class=&quot;scroll max-h-96 p-3 bg-gray-900 rounded-lg border border-gray-700&quot;&gt;
+</code></pre>
+<p><code id="resp" class="json"></code><br>        </pre><br>    </div></p>
+<pre><code>&lt;div id=&quot;err&quot; class=&quot;hidden mt-4 p-3 bg-red-700 rounded-lg text-white font-medium&quot;&gt;
+    请求失败。
+&lt;/div&gt;
+</code></pre>
+</div>
+
+<script>
+function addHeaderRow(k = "", v = "") {
+    const row = document.createElement("div");
+    row.className = "flex space-x-2";
+    row.innerHTML = `
+        <input class="flex-1 bg-gray-900 border border-gray-700 text-gray-200 rounded-lg p-2 text-sm k" placeholder="Key" value="${k}">
+        <input class="flex-1 bg-gray-900 border border-gray-700 text-gray-200 rounded-lg p-2 text-sm v" placeholder="Value" value="${v}">
+        <button class="text-red-500 px-2">&times;</button>
+    `;
+    row.querySelector("button").onclick = () => row.remove();
+    document.getElementById("headers").appendChild(row);
+}
+
+addHeaderRow("Content-Type", "application/json");
+addHeaderRow();
+
+document.getElementById("add-header").onclick = () => addHeaderRow();
+
+const PROXY = "http://localhost:3000/proxy";
+
+document.getElementById("send").onclick = async () => {
+    const url = document.getElementById("url").value.trim();
+    const method = document.getElementById("method").value;
+    const bodyText = document.getElementById("body").value.trim();
+
+    const code = document.getElementById("code");
+    const time = document.getElementById("time");
+    const resp = document.getElementById("resp");
+    const errBox = document.getElementById("err");
+
+    errBox.classList.add("hidden");
+    code.textContent = "...";
+    resp.textContent = "";
+
+    const start = performance.now();
+
+    const headers = {};
+    document.querySelectorAll("#headers .k").forEach((k, i) => {
+        const kk = k.value.trim();
+        const vv = document.querySelectorAll("#headers .v")[i].value.trim();
+        if (kk) headers[kk] = vv;
+    });
+
+    let bodyData = undefined;
+    if (["POST", "PUT", "PATCH"].includes(method) && bodyText) {
+        try { bodyData = JSON.parse(bodyText); }
+        catch { bodyData = bodyText; }
+    }
+
+    try {
+        const res = await fetch(PROXY, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ url, method, headers, body: bodyData })
+        });
+
+        const end = performance.now();
+        time.textContent = `${(end - start).toFixed(0)}ms`;
+
+        code.textContent = res.status;
+        code.className = res.ok ? "text-green-400 font-bold" : "text-red-400 font-bold";
+
+        let text = await res.text();
+        try {
+            text = JSON.stringify(JSON.parse(text), null, 2);
+            resp.className = "json";
+        } catch {
+            resp.className = "plaintext";
+        }
+
+        resp.textContent = text;
+        hljs.highlightElement(resp);
+
+    } catch (e) {
+        errBox.classList.remove("hidden");
+        code.textContent = "ERR";
+        resp.textContent = e.message;
+    }
+};
+</script>
+
+</body>
+</html>
+
+    <!-- 渲染文章正文 HTML -->
+    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  </div>
+  <!-- 文章正文结束 -->
 
 </article>
-<!-- 单篇文章卡片结束 -->
-
-        <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
-        <!-- 将当前文章对象 post 传入模板 -->
-        <!--  输出 HTML，不转义，保证标签正常显示 -->
-
-      
-      <!-- 遍历文章结束 -->
-
-    
-    <!-- 条件判断结束 -->
-
-  </div>
-  <!-- 文章列表容器结束 -->
-
-</section>
-<!-- 页面主容器结束 -->
+<!-- 单篇文章容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
