@@ -534,6 +534,90 @@
 <td align="left">ITA 阶段完了报告</td>
 </tr>
 </tbody></table>
+<h1 id="✅-ITA-阶段各部分的责任归属"><a href="#✅-ITA-阶段各部分的责任归属" class="headerlink" title="✅ ITA 阶段各部分的责任归属"></a>✅ ITA 阶段各部分的责任归属</h1><table>
+<thead>
+<tr>
+<th align="left">编号</th>
+<th align="left">关键组成部分</th>
+<th align="left">责任人（R）</th>
+<th align="left">参与者（A&#x2F;C&#x2F;I）</th>
+<th align="left">原因说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>1.</strong></td>
+<td align="left"><strong>ITA 测试计划制定</strong></td>
+<td align="left"><strong>测试负责人</strong>（Test Lead）</td>
+<td align="left">项目经理（PM）、QA</td>
+<td align="left">测试负责人负责整体测试策略和资源规划。</td>
+</tr>
+<tr>
+<td align="left"><strong>2.</strong></td>
+<td align="left"><strong>测试环境构筑与验证</strong></td>
+<td align="left"><strong>基础架构团队</strong>（Infra Team）</td>
+<td align="left">开发团队（确认部署）、测试团队（验证环境）</td>
+<td align="left">环境搭建涉及服务器、网络、Middleware，属于 Infra 职责。</td>
+</tr>
+<tr>
+<td align="left"><strong>3.</strong></td>
+<td align="left"><strong>测试数据准备</strong></td>
+<td align="left"><strong>开发团队 + 测试团队</strong></td>
+<td align="left">-</td>
+<td align="left">开发团队提供真实数据结构，测试团队设计覆盖场景。</td>
+</tr>
+<tr>
+<td align="left"><strong>4.</strong></td>
+<td align="left"><strong>ITA 测试式样书制作</strong></td>
+<td align="left"><strong>测试设计者</strong>（Test Designer）</td>
+<td align="left">开发团队（确认接口）、QA（审查）</td>
+<td align="left">测试团队根据设计书编写测试规格。</td>
+</tr>
+<tr>
+<td align="left"><strong>5.</strong></td>
+<td align="left"><strong>Dry Run &amp; 审查</strong></td>
+<td align="left"><strong>测试团队</strong></td>
+<td align="left">PM、QA</td>
+<td align="left">Dry Run 是测试团队验证流程，审查由 PM 和 QA 批准。</td>
+</tr>
+<tr>
+<td align="left"><strong>6.</strong></td>
+<td align="left"><strong>测试实施</strong>（功能、性能、安全、接口）</td>
+<td align="left"><strong>测试团队</strong></td>
+<td align="left">开发团队（支持调试）、Infra（性能测试支持）</td>
+<td align="left">测试执行是测试团队的核心任务。</td>
+</tr>
+<tr>
+<td align="left"><strong>7.</strong></td>
+<td align="left"><strong>障害对应</strong>（缺陷分析、修正、回归测试）</td>
+<td align="left"><strong>开发团队</strong>（修正） + <strong>测试团队</strong>（回归测试）</td>
+<td align="left">-</td>
+<td align="left">Bug 修复由开发负责，验证由测试负责。</td>
+</tr>
+<tr>
+<td align="left"><strong>8.</strong></td>
+<td align="left"><strong>最新资产发布</strong></td>
+<td align="left"><strong>发布负责人</strong>（Release Manager）</td>
+<td align="left">运维团队（执行发布）、测试团队（Smoke Test）</td>
+<td align="left">发布属于运维和发布管理职责。</td>
+</tr>
+<tr>
+<td align="left"><strong>9.</strong></td>
+<td align="left"><strong>ITA 阶段结束报告与验收</strong></td>
+<td align="left"><strong>项目经理</strong>（PM） + <strong>QA</strong></td>
+<td align="left">-</td>
+<td align="left">最终验收和报告是项目管理与质量保证的职责。</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="✅-总结角色分配"><a href="#✅-总结角色分配" class="headerlink" title="✅ 总结角色分配"></a>✅ 总结角色分配</h1><p>以下是 ITA 阶段中主要角色的职责分配：</p>
+<ul>
+<li><strong>测试负责人 (Test Lead)</strong>：计划、整体协调。</li>
+<li><strong>测试团队</strong>：测试式样书、Dry Run、执行、回归。</li>
+<li><strong>开发团队</strong>：缺陷修正、数据准备。</li>
+<li><strong>基础架构团队 (Infra Team)</strong>：环境构筑。</li>
+<li><strong>发布负责人&#x2F;运维团队</strong>：资产发布。</li>
+<li><strong>PM &amp; QA</strong>：审查、验收。</li>
+</ul>
 
     <!-- 渲染文章正文 HTML -->
     <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
