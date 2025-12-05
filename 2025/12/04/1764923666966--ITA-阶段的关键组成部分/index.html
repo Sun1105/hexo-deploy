@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    Sun Blog
+    ✅ ITA 阶段的关键组成部分 | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -393,86 +393,155 @@
 
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
-    <section class="archive-timeline">
-  <!-- ============================
-       文章归档时间轴模块
-       功能：
-         - 按年份分组文章
-         - 按时间顺序渲染文章列表
-         - 每篇文章显示发布日期、标题、摘要
-  ============================ -->
+    <!--
+  post.ejs
+  文章详情页模板
+  功能：
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
+-->
 
-  
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
-        <div class="archive-year">
-          <!-- 单个年份组容器 -->
-          <h2>2025</h2>
-          <!-- 显示年份标题，例如 2025 -->
-          <div class="timeline">
-            <!-- 时间轴容器 -->
-      
+  <!-- 文章标题 -->
+  <h1 class="post-title">✅ ITA 阶段的关键组成部分</h1>
+  <!-- page.title → 当前文章标题 -->
 
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2025-12-05</span>
+    <!-- 显示文章发布日期 -->
 
-        <div class="timeline-content">
-          <span class="timeline-date">12-05</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
+    
+      <!-- 判断文章是否有标签 -->
 
-          <a href="/2025/12/04/1764923666966--ITA-%E9%98%B6%E6%AE%B5%E7%9A%84%E5%85%B3%E9%94%AE%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/" class="timeline-title">✅ ITA 阶段的关键组成部分</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
-
-        <div class="timeline-content">
-          <span class="timeline-date">12-05</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
-
-          <a href="/2025/12/04/1764896425057--/" class="timeline-title">メモ</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
-
-        <div class="timeline-content">
-          <span class="timeline-date">12-03</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
-
-          <a href="/2025/12/02/1764751774256-%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/" class="timeline-title">测试框架学习路线思维导图</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-            </div> <!-- timeline 结束 -->
-          </div> <!-- archive-year 结束 -->
+      <span>标签：
         
-</section>
-<!-- 文章归档时间轴模块结束 -->
+          <a href="/tags/%E6%A6%82%E8%A6%81/">概要</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+      </span>
+
+    
+    <!-- 标签判断结束 -->
+  </div>
+  <!-- 文章元信息结束 -->
+
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    <h2 id="1-ITA-测试计划制定（Planning）"><a href="#1-ITA-测试计划制定（Planning）" class="headerlink" title="1. ITA 测试计划制定（Planning）"></a>1. ITA 测试计划制定（Planning）</h2><p>在开始测试之前，需要制定详细的测试计划，包括：</p>
+<ul>
+<li><strong>测试范围、目标、策略</strong>（功能、性能、接口、异常系）。</li>
+<li><strong>测试环境、测试数据</strong>准备计划。</li>
+<li><strong>资源分配</strong>（人员、工时、工具）。</li>
+<li><strong>风险管理</strong>与缓解措施。</li>
+</ul>
+<blockquote>
+<p>产出物：<strong>ITA 测试计划书</strong>。</p>
+</blockquote>
+<h2 id="2-测试环境构筑与验证"><a href="#2-测试环境构筑与验证" class="headerlink" title="2. 测试环境构筑与验证"></a>2. 测试环境构筑与验证</h2><ul>
+<li>确保测试环境与<strong>本番环境高度一致</strong>（OS、Middleware、DB、网络配置）。</li>
+<li>验证环境是否满足测试条件（连通性、性能、外部系统模拟）。</li>
+</ul>
+<blockquote>
+<p>产出物：<strong>环境验证报告</strong>。</p>
+</blockquote>
+<h2 id="3-测试数据准备"><a href="#3-测试数据准备" class="headerlink" title="3. 测试数据准备"></a>3. 测试数据准备</h2><p>大型项目中，测试数据必须覆盖：</p>
+<ul>
+<li><strong>正常系</strong>、<strong>异常系</strong>、<strong>边界值</strong>。</li>
+<li><strong>外部系统联动</strong>数据。</li>
+<li><strong>批处理</strong>数据。</li>
+</ul>
+<blockquote>
+<p>产出物：<strong>测试数据集</strong>。</p>
+</blockquote>
+<h2 id="4-测试执行前的事前检查（Dry-Run）"><a href="#4-测试执行前的事前检查（Dry-Run）" class="headerlink" title="4. 测试执行前的事前检查（Dry Run）"></a>4. 测试执行前的事前检查（Dry Run）</h2><p>在正式执行前，进行小规模测试，验证测试流程、工具、数据是否正常。</p>
+<blockquote>
+<p>产出物：<strong>Dry Run 结果报告</strong>。</p>
+</blockquote>
+<h2 id="5-性能测试（負荷試験）"><a href="#5-性能测试（負荷試験）" class="headerlink" title="5. 性能测试（負荷試験）"></a>5. 性能测试（負荷試験）</h2><p>除了功能测试，ITA 阶段通常包含：</p>
+<ul>
+<li><strong>負荷試験</strong>（Load Test）：验证系统在<strong>高并发</strong>下的稳定性。</li>
+<li><strong>ストレス試験</strong>（Stress Test）：验证系统在<strong>极端条件</strong>下的表现。</li>
+</ul>
+<blockquote>
+<p>产出物：<strong>性能测试报告</strong>。</p>
+</blockquote>
+<h2 id="6-セキュリティ試験（安全性测试）"><a href="#6-セキュリティ試験（安全性测试）" class="headerlink" title="6. セキュリティ試験（安全性测试）"></a>6. セキュリティ試験（安全性测试）</h2><p>验证系统是否满足安全要求：</p>
+<ul>
+<li><strong>认证、授权、加密</strong>。</li>
+<li><strong>SQL 注入、XSS</strong> 等漏洞检查。</li>
+</ul>
+<blockquote>
+<p>产出物：<strong>安全测试报告</strong>。</p>
+</blockquote>
+<h2 id="7-外部系统联动测试（Interface-Test）"><a href="#7-外部系统联动测试（Interface-Test）" class="headerlink" title="7. 外部系统联动测试（Interface Test）"></a>7. 外部系统联动测试（Interface Test）</h2><p>大型项目中，接口测试是 ITA 阶段的重点：</p>
+<ul>
+<li>与<strong>外部系统的数据交换</strong>。</li>
+<li><strong>API 调用</strong>、<strong>批处理联动</strong>。</li>
+</ul>
+<blockquote>
+<p>产出物：<strong>接口测试报告</strong>。</p>
+</blockquote>
+<h2 id="8-障害管理与回归测试"><a href="#8-障害管理与回归测试" class="headerlink" title="8. 障害管理与回归测试"></a>8. 障害管理与回归测试</h2><ul>
+<li><strong>缺陷登记、优先级管理</strong>。</li>
+<li>修复后<strong>必须进行回归测试</strong>，确保不影响其他功能。</li>
+</ul>
+<blockquote>
+<p>产出物：<strong>障害管理表</strong>、<strong>回归测试报告</strong>。</p>
+</blockquote>
+<h2 id="9-ITA-阶段结束报告与验收判定"><a href="#9-ITA-阶段结束报告与验收判定" class="headerlink" title="9. ITA 阶段结束报告与验收判定"></a>9. ITA 阶段结束报告与验收判定</h2><ul>
+<li>汇总测试结果、缺陷处理情况。</li>
+<li>项目经理、QA 进行验收判定。</li>
+</ul>
+<blockquote>
+<p>产出物：<strong>ITA 完了报告</strong>。</p>
+</blockquote>
+<hr>
+<h1 id="✅-总结：完整-ITA-阶段的组成"><a href="#✅-总结：完整-ITA-阶段的组成" class="headerlink" title="✅ 总结：完整 ITA 阶段的组成"></a>✅ 总结：完整 ITA 阶段的组成</h1><table>
+<thead>
+<tr>
+<th align="left">阶段</th>
+<th align="left">组成部分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>计划</strong></td>
+<td align="left">测试计划制定、风险管理</td>
+</tr>
+<tr>
+<td align="left"><strong>准备</strong></td>
+<td align="left">环境构筑、测试数据准备</td>
+</tr>
+<tr>
+<td align="left"><strong>执行</strong></td>
+<td align="left">功能测试、<strong>性能测试</strong>、<strong>安全测试</strong>、<strong>接口测试</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>管理</strong></td>
+<td align="left">障害对应、<strong>回归测试</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>发布</strong></td>
+<td align="left">最新资产发布、Smoke Test</td>
+</tr>
+<tr>
+<td align="left"><strong>验收</strong></td>
+<td align="left">ITA 阶段完了报告</td>
+</tr>
+</tbody></table>
+
+    <!-- 渲染文章正文 HTML -->
+    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  </div>
+  <!-- 文章正文结束 -->
+
+</article>
+<!-- 单篇文章容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
