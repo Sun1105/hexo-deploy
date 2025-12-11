@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    Sun Blog
+    📘 つかえている | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -400,90 +400,100 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  tag.ejs
-  标签页面模板
+  post.ejs
+  文章详情页模板
   功能：
-    - 显示当前标签名称
-    - 遍历该标签下的所有文章
-    - 渲染为文章卡片列表
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
 -->
 
-<section class="main-section">
-  <!-- 页面主容器，用于布局和样式控制 -->
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
-  <!-- 标签标题 -->
-  <h2 class="section-title">🏷️ 式样书做成 标签</h2>
-  <!-- emoji 🏷️ 用于视觉增强 -->
-  <!-- 式样书做成 动态输出当前页面所属标签名称 -->
-  <!-- 最终显示效果示例：🏷️ Java 标签 -->
+  <!-- 文章标题 -->
+  <h1 class="post-title">📘 つかえている</h1>
+  <!-- page.title → 当前文章标题 -->
 
-  <div class="post-list">
-    <!-- 文章列表容器，用于存放该标签下的所有文章卡片 -->
-
-    
-    <!-- 判断当前标签下是否有文章 -->
-    <!-- page.posts → 当前页面文章数组 -->
-    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
-
-      
-      <!-- 遍历每篇文章 post -->
-      <!-- post 对象包含文章标题、路径、日期、分类、摘要等信息 -->
-
-        <article class="post-card">
-        <!-- 单篇文章卡片容器 -->
-
-          <!-- 文章标题 -->
-          <h3 class="post-title">
-            <a href="/2025/11/27/1763629370661-ITA%E7%AC%94%E8%AE%B0/">ITA笔记</a>
-            <!-- 链接到文章详情页 -->
-            <!-- url_for(post.path) → 生成文章路径 -->
-            <!-- post.title → 当前文章标题 -->
-          </h3>
-
-          <!-- 文章元信息：发布日期 + 分类 -->
-          <p class="post-meta">
-            发布于 2025-11-27
-            <!-- 显示文章发布日期 -->
-
-             |
-              分类：
-              
-                <a href="/categories/ITA/">ITA</a>
-                
-                <!-- 遍历文章分类 -->
-                <!-- 多个分类用逗号分隔 -->
-              
-            
-          </p>
-          <!-- 文章元信息结束 -->
-
-          <!-- 文章摘要 -->
-          <p class="post-excerpt">
-            （暂无摘要）
-            <!-- 显示文章摘要 -->
-            <!-- 去掉 HTML 标签，只保留纯文本 -->
-            <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
-          </p>
-
-          <!-- 阅读全文按钮 -->
-          <a href="/2025/11/27/1763629370661-ITA%E7%AC%94%E8%AE%B0/" class="read-more">阅读全文 →</a>
-          <!-- 链接到文章详情页 -->
-          <!-- CSS class "read-more" 用于样式化按钮 -->
-
-        </article>
-        <!-- 单篇文章卡片结束 -->
-
-      
-      <!-- 遍历文章结束 -->
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2025-12-11</span>
+    <!-- 显示文章发布日期 -->
 
     
-    <!-- 条件判断结束 -->
+      <!-- 判断文章是否有标签 -->
 
+      <span>标签：
+        
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E5%8D%95%E8%AF%8D/">日语单词</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+      </span>
+
+    
+    <!-- 标签判断结束 -->
   </div>
-  <!-- 文章列表容器结束 -->
+  <!-- 文章元信息结束 -->
 
-</section>
-<!-- 页面主容器结束 -->
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    <h2 id="1-语法"><a href="#1-语法" class="headerlink" title="1. 语法"></a>1. 语法</h2><p>动词「つかえる」的进行形。</p>
+<p><strong>基本结构：</strong></p>
+<p>つかえる → つかえている（正在堵塞、卡住、停滞的状态）。</p>
+<hr>
+<h2 id="2-语感（ニュアンス）"><a href="#2-语感（ニュアンス）" class="headerlink" title="2. 语感（ニュアンス）"></a>2. 语感（ニュアンス）</h2><p>「つかえる」有几种常见的语感：</p>
+<ul>
+<li><p><strong>物理上的堵塞</strong><br>东西卡住、堵住，无法顺畅通过。<br>例：喉につかえる（东西卡在喉咙）。</p>
+</li>
+<li><p><strong>心理上的郁结</strong><br>心里有话说不出来，感觉压抑。<br>例：胸につかえる（心里堵得慌）。</p>
+</li>
+<li><p><strong>进展上的停滞</strong><br>事情不顺利，被卡住。<br>例：仕事がつかえている（工作卡住了）。</p>
+</li>
+</ul>
+<p>👉 「つかえている」强调 <strong>正在被卡住或堵塞的状态</strong>，带有“不畅快、不顺利”的感觉。</p>
+<hr>
+<h2 id="3-使用场景"><a href="#3-使用场景" class="headerlink" title="3. 使用场景"></a>3. 使用场景</h2><ul>
+<li><strong>身体状态</strong>：食物卡在喉咙、呼吸不畅。  </li>
+<li><strong>心理状态</strong>：心里有话说不出来，郁结。  </li>
+<li><strong>事务进展</strong>：工作、手续、流程停滞。</li>
+</ul>
+<hr>
+<h2 id="4-例句"><a href="#4-例句" class="headerlink" title="4. 例句"></a>4. 例句</h2><ul>
+<li><p>食べ物が喉につかえている。<br>（食物卡在喉咙里。）</p>
+</li>
+<li><p>言いたいことが胸につかえている。<br>（想说的话堵在心里。）</p>
+</li>
+<li><p>手続きがつかえていて進まない。<br>（手续卡住了，无法推进。）</p>
+</li>
+</ul>
+<hr>
+<h2 id="5-类似词汇"><a href="#5-类似词汇" class="headerlink" title="5. 类似词汇"></a>5. 类似词汇</h2><ul>
+<li><strong>詰まる（つまる）</strong>：堵塞、塞满（更偏物理）。  </li>
+<li><strong>滞る（とどこおる）</strong>：停滞、延误（更偏事务）。  </li>
+<li><strong>引っかかる（ひっかかる）</strong>：卡住、挂住。</li>
+</ul>
+<hr>
+<h2 id="6-英语对应"><a href="#6-英语对应" class="headerlink" title="6. 英语对应"></a>6. 英语对应</h2><p>根据语境不同：</p>
+<ul>
+<li><strong>be stuck &#x2F; clogged</strong>（物理堵塞）  </li>
+<li><strong>be choked &#x2F; caught in the throat</strong>（卡在喉咙）  </li>
+<li><strong>be held up &#x2F; delayed</strong>（事务停滞）  </li>
+<li><strong>feel stuck &#x2F; bottled up</strong>（心理郁结）</li>
+</ul>
+<hr>
+<h2 id="✅-总结"><a href="#✅-总结" class="headerlink" title="✅ 总结"></a>✅ 总结</h2><p>「つかえている」表示 <strong>正在卡住、堵塞、停滞的状态</strong>。  </p>
+<p>可用于 <strong>身体、心理、事务</strong> 三个层面。  </p>
+<p>语感带有 <strong>“不畅快、不顺利”</strong> 的意味。</p>
+
+    <!-- 渲染文章正文 HTML -->
+    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  </div>
+  <!-- 文章正文结束 -->
+
+</article>
+<!-- 单篇文章容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
