@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    Sun Blog
+    📘 ～一方だ / ～ばかりだ / ～続ける / ～つつある | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -400,113 +400,127 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  category.ejs
-  分类页面模板
+  post.ejs
+  文章详情页模板
   功能：
-    - 显示分类标题
-    - 遍历当前分类下所有文章
-    - 渲染文章卡片列表
-    - 当分类下无文章时显示提示
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
 -->
 
-<section class="main-section">
-  <!-- 页面主容器，控制布局和样式 -->
-
-  <!-- 分类标题 -->
-  <h2 class="section-title">📘 项目管理 分类</h2>
-  <!-- emoji 📘 用于视觉增强 -->
-  <!-- 项目管理 动态输出当前页面所属分类名称 -->
-  <!-- 显示示例：📘 Java 分类 -->
-
-  <div class="post-list">
-    <!-- 文章列表容器，用于放置文章卡片 -->
-
-    
-    <!-- 判断当前分类下是否有文章 -->
-    <!-- page.posts → 当前页面文章数组 -->
-    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
-
-      
-      <!-- 遍历当前分类下每篇文章 post -->
-      <!-- post 对象包含文章标题、路径、日期、分类、标签、摘要等信息 -->
-
-        <!--
-  _partial/post-card.ejs
-  功能：
-    - 渲染单篇文章的卡片
-    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
-    - 可在分类页、标签页、归档页复用
--->
-
-<article class="post-card">
-  <!-- 单篇文章卡片容器，用于布局和样式 -->
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
   <!-- 文章标题 -->
-  <h3 class="post-title">
-    <a href="/2025/11/27/1764231541325-Kick-off-%E8%AA%AC%E6%98%8E/">キックオフ(Kick-off)説明</a>
-    <!-- 链接到文章详情页 -->
-    <!-- url_for(post.path) → 生成文章路径 -->
-    <!-- post.title → 当前文章标题 -->
-  </h3>
+  <h1 class="post-title">📘 ～一方だ / ～ばかりだ / ～続ける / ～つつある</h1>
+  <!-- page.title → 当前文章标题 -->
 
-  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
-  <p class="post-meta">
-    发布于 2025-11-27
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2025-12-11</span>
     <!-- 显示文章发布日期 -->
 
-     |
-      分类：
-      
-        <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理</a>
-        
-        <!-- 遍历文章分类 -->
-        <!-- 多个分类用逗号分隔 -->
-      
     
+      <!-- 判断文章是否有标签 -->
 
-     |
-      标签：
-      
-        <a href="/tags/PMO/">PMO</a>
+      <span>标签：
         
-        <!-- 遍历文章标签 -->
-        <!-- 多个标签用逗号分隔 -->
-      
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E8%AF%AD%E6%B3%95/">日语语法</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+      </span>
+
     
-  </p>
+    <!-- 标签判断结束 -->
+  </div>
   <!-- 文章元信息结束 -->
 
-  <!-- 文章摘要 -->
-  <p class="post-excerpt">
-    （暂无摘要）
-    <!-- 显示文章摘要 -->
-    <!-- 去掉 HTML 标签，只保留纯文本 -->
-    <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
-  </p>
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    <h1 id="四个表达的比较"><a href="#四个表达的比较" class="headerlink" title="四个表达的比较"></a>四个表达的比较</h1><h2 id="1-～一方だ"><a href="#1-～一方だ" class="headerlink" title="1. ～一方だ"></a>1. ～一方だ</h2><ul>
+<li><strong>接续</strong>：动词辞书形 + 一方だ  </li>
+<li><strong>含义</strong>：情况持续单向发展，通常不可逆。  </li>
+<li><strong>语感</strong>：偏书面，常用于负面趋势。  </li>
+<li><strong>例句</strong>：物価は上がる一方だ。 （物价不断上涨。）</li>
+</ul>
+<hr>
+<h2 id="2-～ばかりだ"><a href="#2-～ばかりだ" class="headerlink" title="2. ～ばかりだ"></a>2. ～ばかりだ</h2><ul>
+<li><strong>接续</strong>：动词辞书形 + ばかりだ  </li>
+<li><strong>含义</strong>：情况持续发展，常用于负面。  </li>
+<li><strong>语感</strong>：比「一方だ」更强烈，带有抱怨或无奈。  </li>
+<li><strong>例句</strong>：事故が増えるばかりだ。 （事故越来越多。）</li>
+</ul>
+<hr>
+<h2 id="3-～続ける"><a href="#3-～続ける" class="headerlink" title="3. ～続ける"></a>3. ～続ける</h2><ul>
+<li><strong>接续</strong>：动词连用形 + 続ける  </li>
+<li><strong>含义</strong>：动作或状态持续进行。  </li>
+<li><strong>语感</strong>：中性，强调动作的持续性。  </li>
+<li><strong>例句</strong>：勉強を続ける。 （继续学习。）</li>
+</ul>
+<hr>
+<h2 id="4-～つつある"><a href="#4-～つつある" class="headerlink" title="4. ～つつある"></a>4. ～つつある</h2><ul>
+<li><strong>接续</strong>：动词连用形 + つつある  </li>
+<li><strong>含义</strong>：某种变化正在进行中。  </li>
+<li><strong>语感</strong>：书面语，强调过程。  </li>
+<li><strong>例句</strong>：技術は進歩しつつある。 （技术正在进步。）</li>
+</ul>
+<hr>
+<h2 id="📊-对比表"><a href="#📊-对比表" class="headerlink" title="📊 对比表"></a>📊 对比表</h2><table>
+<thead>
+<tr>
+<th>表达</th>
+<th>接续形式</th>
+<th>含义</th>
+<th>语感</th>
+<th>例句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>～一方だ</td>
+<td>动词辞书形</td>
+<td>趋势单向发展</td>
+<td>偏书面，常负面</td>
+<td>物価は上がる一方だ</td>
+</tr>
+<tr>
+<td>～ばかりだ</td>
+<td>动词辞书形</td>
+<td>越来越…（多负面）</td>
+<td>强烈负面，带抱怨</td>
+<td>事故が増えるばかりだ</td>
+</tr>
+<tr>
+<td>～続ける</td>
+<td>动词连用形</td>
+<td>持续进行</td>
+<td>中性，动作延续</td>
+<td>勉強を続ける</td>
+</tr>
+<tr>
+<td>～つつある</td>
+<td>动词连用形</td>
+<td>正在变化中</td>
+<td>书面语，强调过程</td>
+<td>技術は進歩しつつある</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="✅-总结"><a href="#✅-总结" class="headerlink" title="✅ 总结"></a>✅ 总结</h2><ul>
+<li><strong>一方だ</strong> → 趋势不可逆，常负面。  </li>
+<li><strong>ばかりだ</strong> → 越来越…，更强烈负面。  </li>
+<li><strong>続ける</strong> → 动作持续进行，中性。  </li>
+<li><strong>つつある</strong> → 正在变化中，书面语。</li>
+</ul>
 
-  <!-- 阅读全文按钮 -->
-  <a href="/2025/11/27/1764231541325-Kick-off-%E8%AA%AC%E6%98%8E/" class="read-more">阅读全文 →</a>
-  <!-- 链接到文章详情页 -->
-  <!-- CSS class "read-more" 用于样式化按钮 -->
+    <!-- 渲染文章正文 HTML -->
+    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  </div>
+  <!-- 文章正文结束 -->
 
 </article>
-<!-- 单篇文章卡片结束 -->
-
-        <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
-        <!-- 将当前文章对象 post 传入模板 -->
-        <!--  输出 HTML，不转义，保证标签正常显示 -->
-
-      
-      <!-- 遍历文章结束 -->
-
-    
-    <!-- 条件判断结束 -->
-
-  </div>
-  <!-- 文章列表容器结束 -->
-
-</section>
-<!-- 页面主容器结束 -->
+<!-- 单篇文章容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
