@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    Sun Blog
+    VBA工具 | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -406,253 +406,99 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  category.ejs
-  分类页面模板
+  post.ejs
+  文章详情页模板
   功能：
-    - 显示分类标题
-    - 遍历当前分类下所有文章
-    - 渲染文章卡片列表
-    - 当分类下无文章时显示提示
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
 -->
 
-<section class="main-section">
-  <!-- 页面主容器，控制布局和样式 -->
-
-  <!-- 分类标题 -->
-  <h2 class="section-title">📘 ITA 分类</h2>
-  <!-- emoji 📘 用于视觉增强 -->
-  <!-- ITA 动态输出当前页面所属分类名称 -->
-  <!-- 显示示例：📘 Java 分类 -->
-
-  <div class="post-list">
-    <!-- 文章列表容器，用于放置文章卡片 -->
-
-    
-    <!-- 判断当前分类下是否有文章 -->
-    <!-- page.posts → 当前页面文章数组 -->
-    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
-
-      
-      <!-- 遍历当前分类下每篇文章 post -->
-      <!-- post 对象包含文章标题、路径、日期、分类、标签、摘要等信息 -->
-
-        <!--
-  _partial/post-card.ejs
-  功能：
-    - 渲染单篇文章的卡片
-    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
-    - 可在分类页、标签页、归档页复用
--->
-
-<article class="post-card">
-  <!-- 单篇文章卡片容器，用于布局和样式 -->
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
   <!-- 文章标题 -->
-  <h3 class="post-title">
-    <a href="/2025/12/04/1764923666966--ITA-%E9%98%B6%E6%AE%B5%E7%9A%84%E5%85%B3%E9%94%AE%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/">✅ ITA 阶段的关键组成部分</a>
-    <!-- 链接到文章详情页 -->
-    <!-- url_for(post.path) → 生成文章路径 -->
-    <!-- post.title → 当前文章标题 -->
-  </h3>
+  <h1 class="post-title">VBA工具</h1>
+  <!-- page.title → 当前文章标题 -->
 
-  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
-  <p class="post-meta">
-    发布于 2025-12-05
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2025-12-12</span>
     <!-- 显示文章发布日期 -->
 
-     |
-      分类：
-      
-        <a href="/categories/ITA/">ITA</a>
+    
+      <!-- 判断文章是否有标签 -->
+
+      <span>标签：
         
-        <!-- 遍历文章分类 -->
-        <!-- 多个分类用逗号分隔 -->
-      
-    
-
-     |
-      标签：
-      
-        <a href="/tags/%E6%A6%82%E8%A6%81/">概要</a>
+          <a href="/tags/VBA/">VBA</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
         
-        <!-- 遍历文章标签 -->
-        <!-- 多个标签用逗号分隔 -->
-      
-    
-  </p>
-  <!-- 文章元信息结束 -->
-
-  <!-- 文章摘要 -->
-  <p class="post-excerpt">
-    （暂无摘要）
-    <!-- 显示文章摘要 -->
-    <!-- 去掉 HTML 标签，只保留纯文本 -->
-    <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
-  </p>
-
-  <!-- 阅读全文按钮 -->
-  <a href="/2025/12/04/1764923666966--ITA-%E9%98%B6%E6%AE%B5%E7%9A%84%E5%85%B3%E9%94%AE%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86/" class="read-more">阅读全文 →</a>
-  <!-- 链接到文章详情页 -->
-  <!-- CSS class "read-more" 用于样式化按钮 -->
-
-</article>
-<!-- 单篇文章卡片结束 -->
-
-        <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
-        <!-- 将当前文章对象 post 传入模板 -->
-        <!--  输出 HTML，不转义，保证标签正常显示 -->
-
-      
-      <!-- 遍历当前分类下每篇文章 post -->
-      <!-- post 对象包含文章标题、路径、日期、分类、标签、摘要等信息 -->
-
-        <!--
-  _partial/post-card.ejs
-  功能：
-    - 渲染单篇文章的卡片
-    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
-    - 可在分类页、标签页、归档页复用
--->
-
-<article class="post-card">
-  <!-- 单篇文章卡片容器，用于布局和样式 -->
-
-  <!-- 文章标题 -->
-  <h3 class="post-title">
-    <a href="/2025/11/30/1764510854184-%E8%BD%BB%E9%87%8F%E7%89%88-Web-API/">轻量版 Web API</a>
-    <!-- 链接到文章详情页 -->
-    <!-- url_for(post.path) → 生成文章路径 -->
-    <!-- post.title → 当前文章标题 -->
-  </h3>
-
-  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
-  <p class="post-meta">
-    发布于 2025-11-30
-    <!-- 显示文章发布日期 -->
-
-     |
-      分类：
-      
-        <a href="/categories/ITA/">ITA</a>
-        
-        <!-- 遍历文章分类 -->
-        <!-- 多个分类用逗号分隔 -->
-      
-    
-
-     |
-      标签：
-      
-        <a href="/tags/TOOL/">TOOL</a>
-        
-        <!-- 遍历文章标签 -->
-        <!-- 多个标签用逗号分隔 -->
-      
-    
-  </p>
-  <!-- 文章元信息结束 -->
-
-  <!-- 文章摘要 -->
-  <p class="post-excerpt">
-    （暂无摘要）
-    <!-- 显示文章摘要 -->
-    <!-- 去掉 HTML 标签，只保留纯文本 -->
-    <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
-  </p>
-
-  <!-- 阅读全文按钮 -->
-  <a href="/2025/11/30/1764510854184-%E8%BD%BB%E9%87%8F%E7%89%88-Web-API/" class="read-more">阅读全文 →</a>
-  <!-- 链接到文章详情页 -->
-  <!-- CSS class "read-more" 用于样式化按钮 -->
-
-</article>
-<!-- 单篇文章卡片结束 -->
-
-        <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
-        <!-- 将当前文章对象 post 传入模板 -->
-        <!--  输出 HTML，不转义，保证标签正常显示 -->
-
-      
-      <!-- 遍历当前分类下每篇文章 post -->
-      <!-- post 对象包含文章标题、路径、日期、分类、标签、摘要等信息 -->
-
-        <!--
-  _partial/post-card.ejs
-  功能：
-    - 渲染单篇文章的卡片
-    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
-    - 可在分类页、标签页、归档页复用
--->
-
-<article class="post-card">
-  <!-- 单篇文章卡片容器，用于布局和样式 -->
-
-  <!-- 文章标题 -->
-  <h3 class="post-title">
-    <a href="/2025/11/27/1763629370661-ITA%E7%AC%94%E8%AE%B0/">ITA笔记</a>
-    <!-- 链接到文章详情页 -->
-    <!-- url_for(post.path) → 生成文章路径 -->
-    <!-- post.title → 当前文章标题 -->
-  </h3>
-
-  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
-  <p class="post-meta">
-    发布于 2025-11-27
-    <!-- 显示文章发布日期 -->
-
-     |
-      分类：
-      
-        <a href="/categories/ITA/">ITA</a>
-        
-        <!-- 遍历文章分类 -->
-        <!-- 多个分类用逗号分隔 -->
-      
-    
-
-     |
-      标签：
-      
-        <a href="/tags/%E5%BC%8F%E6%A0%B7%E4%B9%A6%E5%81%9A%E6%88%90/">式样书做成</a>
-        
-        <!-- 遍历文章标签 -->
-        <!-- 多个标签用逗号分隔 -->
-      
-    
-  </p>
-  <!-- 文章元信息结束 -->
-
-  <!-- 文章摘要 -->
-  <p class="post-excerpt">
-    （暂无摘要）
-    <!-- 显示文章摘要 -->
-    <!-- 去掉 HTML 标签，只保留纯文本 -->
-    <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
-  </p>
-
-  <!-- 阅读全文按钮 -->
-  <a href="/2025/11/27/1763629370661-ITA%E7%AC%94%E8%AE%B0/" class="read-more">阅读全文 →</a>
-  <!-- 链接到文章详情页 -->
-  <!-- CSS class "read-more" 用于样式化按钮 -->
-
-</article>
-<!-- 单篇文章卡片结束 -->
-
-        <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
-        <!-- 将当前文章对象 post 传入模板 -->
-        <!--  输出 HTML，不转义，保证标签正常显示 -->
-
-      
-      <!-- 遍历文章结束 -->
+      </span>
 
     
-    <!-- 条件判断结束 -->
-
+    <!-- 标签判断结束 -->
   </div>
-  <!-- 文章列表容器结束 -->
+  <!-- 文章元信息结束 -->
 
-</section>
-<!-- 页面主容器结束 -->
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    <p>■Excel<br>シート名：1<br>想定項目	実施項目	想定値	実施値</p>
+<p>シート名：2<br>実施項目	実施値</p>
+<p>■マクロ</p>
+<p>1,在 Excel 按 Alt + F11 打开 VBA 编辑器。<br>2,在左侧工程窗格找到放置 CommandButton 的工作表（例如 Sheet2）。双击打开。<br>3,选择对象下拉框选 CommandButton1，过程下拉框选 Click（编辑器会自动生成事件框架）。<br>4.在事件里调用你的处理：<br>Private Sub CommandButton1_Click()<br> Call FillItemsAndValues<br>End Sub</p>
+<p>注意：这是工作表代码模块（不是标准模块）。事件名必须与按钮名称一致（比如 CommandButton1_Click）。如果你的按钮名不是 CommandButton1，请在设计模式下选中按钮，在属性窗口把 Name 看清楚或改成一致。</p>
+<p>■VBA</p>
+<p>Option Explicit</p>
+<p>‘——键值清洗：去前后半角空格、去全角空格（必要时可加大小写统一）<br>Private Function CleanKey(ByVal v As Variant) As String<br>    Dim s As String<br>    s &#x3D; CStr(v)<br>    s &#x3D; Replace(s, ChrW(12288), “”)  ‘ 全角空格<br>    s &#x3D; Trim(s)                      ‘ 半角前后空格<br>    ‘ 若需要忽略大小写，可启用下一行：<br>    ‘ s &#x3D; UCase$(s)<br>    CleanKey &#x3D; s<br>End Function</p>
+<p>Public Sub FillItemsAndValues()<br>    Dim wsSrc As Worksheet, wsTgt As Worksheet<br>    Dim lastSrc As Long, lastTgt As Long<br>    Dim r As Long<br>    Dim dict As Object<br>    Dim k As String<br>    Dim itemName As Variant, itemValue As Variant</p>
+<pre><code>&#39; —— 工作表（按你的文件名）
+Set wsTgt = ThisWorkbook.Sheets(&quot;1&quot;) &#39; 黄色：A=想定項目，B=受信項目，D=受信値
+Set wsSrc = ThisWorkbook.Sheets(&quot;2&quot;) &#39; 白色：A=送信項目(实施项目)，B=送信値(实施值)
+
+lastSrc = wsSrc.Cells(wsSrc.Rows.Count, 1).End(xlUp).Row
+lastTgt = wsTgt.Cells(wsTgt.Rows.Count, 1).End(xlUp).Row
+
+&#39; —— 字典：key=来源A（实施项目），value=数组 [实施项目, 实施值]
+Set dict = CreateObject(&quot;Scripting.Dictionary&quot;)
+
+For r = 2 To lastSrc
+    k = CleanKey(wsSrc.Cells(r, 1).Value)     &#39; 实施项目（键）
+    If Len(k) &gt; 0 Then
+        itemName = wsSrc.Cells(r, 1).Value     &#39; 2!A
+        itemValue = wsSrc.Cells(r, 2).Value    &#39; 2!B（保留原始类型）
+        dict(k) = Array(itemName, itemValue)
+    End If
+Next r
+
+Application.ScreenUpdating = False
+Application.Calculation = xlCalculationManual
+
+&#39; —— 按 1!A（想定項目）匹配；命中后写 1!B（受信項目）、1!D（受信値）
+For r = 2 To lastTgt
+    k = CleanKey(wsTgt.Cells(r, 1).Value)  &#39; 1!A 想定項目
+    If dict.Exists(k) Then
+        wsTgt.Cells(r, 2).Value = dict(k)(0)   &#39; 1!B ← 2!A（实施项目）
+        wsTgt.Cells(r, 4).Value = dict(k)(1)   &#39; 1!D ← 2!B（实施值）
+    End If
+Next r
+
+Application.Calculation = xlCalculationAutomatic
+Application.ScreenUpdating = True
+
+MsgBox &quot;完成：2!A→1!B，2!B→1!D（按 A 列键匹配）&quot;, vbInformation
+</code></pre>
+<p>End Sub</p>
+
+    <!-- 渲染文章正文 HTML -->
+    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  </div>
+  <!-- 文章正文结束 -->
+
+</article>
+<!-- 单篇文章容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
