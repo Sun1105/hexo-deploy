@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    Sun Blog
+    📘 腫れる（はれる） | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -405,219 +405,82 @@
 
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
-    <section class="archive-timeline">
-  <!-- ============================
-       文章归档时间轴模块
-       功能：
-         - 按年份分组文章
-         - 按时间顺序渲染文章列表
-         - 每篇文章显示发布日期、标题、摘要
-  ============================ -->
+    <!--
+  post.ejs
+  文章详情页模板
+  功能：
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
+-->
 
-  
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
-        <div class="archive-year">
-          <!-- 单个年份组容器 -->
-          <h2>2025</h2>
-          <!-- 显示年份标题，例如 2025 -->
-          <div class="timeline">
-            <!-- 时间轴容器 -->
-      
+  <!-- 文章标题 -->
+  <h1 class="post-title">📘 腫れる（はれる）</h1>
+  <!-- page.title → 当前文章标题 -->
 
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2025-12-15</span>
+    <!-- 显示文章发布日期 -->
 
-        <div class="timeline-content">
-          <span class="timeline-date">11-30</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
+    
+    <!-- 标签判断结束 -->
+  </div>
+  <!-- 文章元信息结束 -->
 
-          <a href="/2025/11/30/1764510854184-%E8%BD%BB%E9%87%8F%E7%89%88-Web-API/" class="timeline-title">轻量版 Web API</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    <h2 id="1-基本意味"><a href="#1-基本意味" class="headerlink" title="1. 基本意味"></a>1. 基本意味</h2><p>「腫れる」是一个 <strong>自动词</strong>，表示 <strong>身体某部位因炎症或外伤而肿胀</strong>。<br>通常伴随疼痛、发红或不适感。</p>
+<hr>
+<h2 id="2-语感（ニュアンス）"><a href="#2-语感（ニュアンス）" class="headerlink" title="2. 语感（ニュアンス）"></a>2. 语感（ニュアンス）</h2><ul>
+<li><strong>医学&#x2F;身体状态</strong>：强调因病或外伤导致的肿胀。  </li>
+<li><strong>日常用语</strong>：常用于描述脸、手、脚等部位的肿胀。  </li>
+<li><strong>情绪化表达</strong>：有时用于形容哭过之后眼睛肿了。</li>
+</ul>
+<p>👉 「腫れる」带有 <strong>不自然、异常膨胀</strong> 的语感。</p>
+<hr>
+<h2 id="3-使用场景"><a href="#3-使用场景" class="headerlink" title="3. 使用场景"></a>3. 使用场景</h2><ul>
+<li><strong>外伤</strong>：打到或扭伤后部位肿胀。  </li>
+<li><strong>疾病</strong>：炎症、感染导致的肿胀。  </li>
+<li><strong>日常</strong>：哭过之后眼睛肿、牙痛导致脸肿。</li>
+</ul>
+<hr>
+<h2 id="4-例句"><a href="#4-例句" class="headerlink" title="4. 例句"></a>4. 例句</h2><ul>
+<li><p>顔が腫れている。<br>（脸肿了。）</p>
+</li>
+<li><p>足を捻って腫れた。<br>（脚扭伤后肿了。）</p>
+</li>
+<li><p>泣きすぎて目が腫れた。<br>（哭太多眼睛肿了。）</p>
+</li>
+<li><p>虫に刺されて腕が腫れている。<br>（被虫咬后手臂肿了。）</p>
+</li>
+</ul>
+<hr>
+<h2 id="5-类似词汇"><a href="#5-类似词汇" class="headerlink" title="5. 类似词汇"></a>5. 类似词汇</h2><ul>
+<li><strong>膨れる（ふくれる）</strong>：膨胀、鼓起（可用于物体或情绪）。  </li>
+<li><strong>腫らす（はらす）</strong>：使肿胀（他动词）。  </li>
+<li><strong>むくむ</strong>：浮肿（水肿，常用于腿或脸）。</li>
+</ul>
+<hr>
+<h2 id="6-英语对应"><a href="#6-英语对应" class="headerlink" title="6. 英语对应"></a>6. 英语对应</h2><p>根据语境不同：  </p>
+<ul>
+<li><strong>swell &#x2F; be swollen</strong>（肿胀）  </li>
+<li><strong>be puffy</strong>（浮肿，常用于眼睛）  </li>
+<li><strong>be inflamed</strong>（因炎症而肿胀）</li>
+</ul>
+<hr>
+<h2 id="✅-总结"><a href="#✅-总结" class="headerlink" title="✅ 总结"></a>✅ 总结</h2><p>「腫れる」表示 <strong>身体部位因外伤或疾病而肿胀</strong>，常见于日常会话和医学语境。<br>与「膨れる」「むくむ」相比，更强调 <strong>异常的肿胀</strong>。</p>
 
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
+    <!-- 渲染文章正文 HTML -->
+    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  </div>
+  <!-- 文章正文结束 -->
 
-      
-
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
-
-        <div class="timeline-content">
-          <span class="timeline-date">11-30</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
-
-          <a href="/2025/11/30/1764146234548-VBA%E5%B7%A5%E5%85%B7/" class="timeline-title">VBA工具</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
-
-        <div class="timeline-content">
-          <span class="timeline-date">11-28</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
-
-          <a href="/2025/11/28/%E6%97%A5%E6%9C%AC%E8%AA%9E%E6%96%87%E6%B3%95-%E3%81%86%E3%81%A1%E3%81%AB/" class="timeline-title">📖うちに</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
-
-        <div class="timeline-content">
-          <span class="timeline-date">11-28</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
-
-          <a href="/2025/11/28/1762869633094-%E4%B8%80%E6%97%A5%E8%AF%A6%E7%BB%86%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%E5%8D%95-%E4%BB%BB%E5%8A%A1%E7%A1%AE%E8%AE%A4%E7%94%A8-/" class="timeline-title">📖 一日详细学习计划单（任务确认用）</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
-
-        <div class="timeline-content">
-          <span class="timeline-date">11-28</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
-
-          <a href="/2025/11/28/1762867657236-%E5%8D%8A%E5%B9%B4%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92-%E6%AF%8F%E5%91%A8-/" class="timeline-title">📖 半年日语学习计划（每周）</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
-
-        <div class="timeline-content">
-          <span class="timeline-date">11-28</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
-
-          <a href="/2025/11/28/1762867028153-%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92-%E7%9B%AE%E6%A0%87-%E6%8E%A5%E8%BF%91%E6%AF%8D%E8%AF%AD%E6%B0%B4%E5%B9%B3-/" class="timeline-title">📖 日语学习计划（目标：接近母语水平）</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
-
-        <div class="timeline-content">
-          <span class="timeline-date">11-28</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
-
-          <a href="/2025/11/28/%E6%97%A5%E6%9C%AC%E8%AA%9E%E6%96%87%E6%B3%95-%E3%81%B0%E3%81%8B%E3%82%8A/" class="timeline-title">📖 ばかり</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
-
-        <div class="timeline-content">
-          <span class="timeline-date">11-28</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
-
-          <a href="/2025/11/27/1764300787048-A5M2-Oracle-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%99%BB%E5%BD%95%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/" class="timeline-title">✅ A5M2 Oracle 数据库登录设置指南</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
-
-        <div class="timeline-content">
-          <span class="timeline-date">11-27</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
-
-          <a href="/2025/11/27/1764231541325-Kick-off-%E8%AA%AC%E6%98%8E/" class="timeline-title">キックオフ(Kick-off)説明</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-
-      <!-- 单篇文章时间轴项 -->
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <!-- 时间轴节点，用于标记文章位置 -->
-
-        <div class="timeline-content">
-          <span class="timeline-date">11-27</span>
-          <!-- 显示文章发布日期（只显示月-日） -->
-
-          <a href="/2025/11/27/1763629370661-ITA%E7%AC%94%E8%AE%B0/" class="timeline-title">ITA笔记</a>
-          <!-- 文章标题，点击跳转到文章详情页 -->
-
-          
-        </div>
-      </div>
-      <!-- 单篇文章时间轴项结束 -->
-
-      
-            </div> <!-- timeline 结束 -->
-          </div> <!-- archive-year 结束 -->
-        
-</section>
-<!-- 文章归档时间轴模块结束 -->
+</article>
+<!-- 单篇文章容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
