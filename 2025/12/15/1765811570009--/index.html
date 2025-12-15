@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    JUnit单体测试中  全局log出力方法 | Sun Blog
+    📘 ～つつ | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -418,12 +418,12 @@
   <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
   <!-- 文章标题 -->
-  <h1 class="post-title">JUnit单体测试中  全局log出力方法</h1>
+  <h1 class="post-title">📘 ～つつ</h1>
   <!-- page.title → 当前文章标题 -->
 
   <!-- 文章元信息：发布日期 + 标签 -->
   <div class="post-meta">
-    <span>发表于 2025-11-08</span>
+    <span>发表于 2025-12-15</span>
     <!-- 显示文章发布日期 -->
 
     
@@ -431,7 +431,7 @@
 
       <span>标签：
         
-          <a href="/tags/log/">log</a>
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E8%AF%AD%E6%B3%95/">日语语法</a>
           
           <!-- 遍历文章标签，生成标签链接 -->
           <!-- 多个标签用逗号分隔 -->
@@ -445,19 +445,55 @@
 
   <!-- 文章正文内容 -->
   <div class="post-content">
-    <h2 id="工具类：LogTestUtils"><a href="#工具类：LogTestUtils" class="headerlink" title="工具类：LogTestUtils"></a>工具类：<code>LogTestUtils</code></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.test.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.extension.*;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * テスト開始・終了を自動でログ出力</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogTestUtils</span> <span class="keyword">implements</span> <span class="title class_">BeforeTestExecutionCallback</span>, AfterTestExecutionCallback &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> LoggerFactory.getLogger(LogTestUtils.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">beforeTestExecution</span><span class="params">(ExtensionContext context)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">methodName</span> <span class="operator">=</span> context.getTestMethod()</span><br><span class="line">                                   .map(method -&gt; method.getName())</span><br><span class="line">                                   .orElse(<span class="string">&quot;unknownMethod&quot;</span>);</span><br><span class="line">        log.info(<span class="string">&quot;==================================== [START] &#123;&#125; ====================================&quot;</span>, methodName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterTestExecution</span><span class="params">(ExtensionContext context)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">methodName</span> <span class="operator">=</span> context.getTestMethod()</span><br><span class="line">                                   .map(method -&gt; method.getName())</span><br><span class="line">                                   .orElse(<span class="string">&quot;unknownMethod&quot;</span>);</span><br><span class="line">        log.info(<span class="string">&quot;==================================== [END] &#123;&#125; ====================================&quot;</span>, methodName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+    <h2 id="1-语法形式"><a href="#1-语法形式" class="headerlink" title="1. 语法形式"></a>1. 语法形式</h2><p><strong>接续</strong>：動詞連用形（ます形去掉「ます」） + つつ<br>例：考える → 考えつつ、進む → 進みつつ  </p>
 <hr>
-<h2 id="如何启用（使用方法）"><a href="#如何启用（使用方法）" class="headerlink" title="如何启用（使用方法）"></a>如何启用（使用方法）</h2><p>有两种常见方式把这个扩展应用到测试类：</p>
-<h3 id="方式-1：在测试类上使用注解"><a href="#方式-1：在测试类上使用注解" class="headerlink" title="方式 1：在测试类上使用注解"></a>方式 1：在测试类上使用注解</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.extension.ExtendWith;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ExtendWith(LogTestUtils.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SomeTest</span> &#123;</span><br><span class="line">    <span class="comment">// 测试方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="方式-2：通过-JUnit-配置文件全局启用"><a href="#方式-2：通过-JUnit-配置文件全局启用" class="headerlink" title="方式 2：通过 JUnit 配置文件全局启用"></a>方式 2：通过 JUnit 配置文件全局启用</h3><p>在 <code>src/test/resources</code> 下创建或编辑 <code>junit-platform.properties</code> 文件，添加：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">junit.jupiter.extensions.autodetection.enabled=true</span><br></pre></td></tr></table></figure>
-
-<p>并确保 <code>LogTestUtils</code> 类在类路径中。</p>
+<h2 id="2-基本意味"><a href="#2-基本意味" class="headerlink" title="2. 基本意味"></a>2. 基本意味</h2><p>「～つつ」有两种主要用法：</p>
+<ol>
+<li><p><strong>同时进行</strong><br>表示两个动作同时发生，类似「～ながら」。<br>👉 更偏书面语，语感正式。  </p>
+</li>
+<li><p><strong>让步&#x2F;转折</strong><br>表示“虽然…但是…”，类似「～ながらも」。<br>👉 常用于表达矛盾心情或对立情况。</p>
+</li>
+</ol>
 <hr>
-<h2 id="日志输出效果"><a href="#日志输出效果" class="headerlink" title="日志输出效果"></a>日志输出效果</h2><p>每个测试方法执行前后，都会自动输出类似以下日志：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">==================================== [START] testMethodName ====================================</span><br><span class="line">==================================== [END] testMethodName ====================================</span><br></pre></td></tr></table></figure>
+<h2 id="3-语感（ニュアンス）"><a href="#3-语感（ニュアンス）" class="headerlink" title="3. 语感（ニュアンス）"></a>3. 语感（ニュアンス）</h2><ul>
+<li><strong>书面语</strong>：比「～ながら」更正式。  </li>
+<li><strong>同时性</strong>：强调两个动作并行。  </li>
+<li><strong>矛盾性</strong>：在让步用法中，带有“心里明白但仍然…”的意味。</li>
+</ul>
+<hr>
+<h2 id="4-使用场景"><a href="#4-使用场景" class="headerlink" title="4. 使用场景"></a>4. 使用场景</h2><ul>
+<li><strong>学术&#x2F;文章</strong>：正式表达两个动作同时进行。  </li>
+<li><strong>日常会话</strong>：较少使用，多见于书面或演讲。  </li>
+<li><strong>心情表达</strong>：表示矛盾或让步。</li>
+</ul>
+<hr>
+<h2 id="5-例句"><a href="#5-例句" class="headerlink" title="5. 例句"></a>5. 例句</h2><ul>
+<li><p>本を読みつつ音楽を聞く。<br>（一边读书一边听音乐。）</p>
+</li>
+<li><p>危険だと知りつつ、彼は挑戦した。<br>（虽然知道有危险，但他还是挑战了。）</p>
+</li>
+<li><p>環境問題を考えつつ、経済発展を進める。<br>（一边考虑环境问题，一边推进经济发展。）</p>
+</li>
+</ul>
+<hr>
+<h2 id="6-类似表現"><a href="#6-类似表現" class="headerlink" title="6. 类似表現"></a>6. 类似表現</h2><ul>
+<li><strong>～ながら</strong>：同时进行，更口语化。  </li>
+<li><strong>～ながらも</strong>：让步，虽然…但是…。  </li>
+<li><strong>～つつある</strong>：正在变化中，强调过程。</li>
+</ul>
+<hr>
+<h2 id="7-英語対応"><a href="#7-英語対応" class="headerlink" title="7. 英語対応"></a>7. 英語対応</h2><p>根据语境不同：  </p>
+<ul>
+<li><strong>while …ing</strong>（同时进行）  </li>
+<li><strong>although &#x2F; even though</strong>（让步）</li>
+</ul>
+<hr>
+<h2 id="✅-総まとめ"><a href="#✅-総まとめ" class="headerlink" title="✅ 総まとめ"></a>✅ 総まとめ</h2><p>「～つつ」有 <strong>两大用法</strong>：  </p>
+<ol>
+<li>表示 <strong>同时进行</strong>（类似「～ながら」）。  </li>
+<li>表示 <strong>让步&#x2F;转折</strong>（类似「～ながらも」）。</li>
+</ol>
+<p>语感偏正式，常用于 <strong>书面语、演讲、学术表达</strong>。</p>
 
     <!-- 渲染文章正文 HTML -->
     <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
