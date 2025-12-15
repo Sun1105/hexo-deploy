@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    Sun Blog
+    📘 捻って（ひねって） | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -406,90 +406,100 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  tag.ejs
-  标签页面模板
+  post.ejs
+  文章详情页模板
   功能：
-    - 显示当前标签名称
-    - 遍历该标签下的所有文章
-    - 渲染为文章卡片列表
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
 -->
 
-<section class="main-section">
-  <!-- 页面主容器，用于布局和样式控制 -->
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
-  <!-- 标签标题 -->
-  <h2 class="section-title">🏷️ PC配置 标签</h2>
-  <!-- emoji 🏷️ 用于视觉增强 -->
-  <!-- PC配置 动态输出当前页面所属标签名称 -->
-  <!-- 最终显示效果示例：🏷️ Java 标签 -->
+  <!-- 文章标题 -->
+  <h1 class="post-title">📘 捻って（ひねって）</h1>
+  <!-- page.title → 当前文章标题 -->
 
-  <div class="post-list">
-    <!-- 文章列表容器，用于存放该标签下的所有文章卡片 -->
-
-    
-    <!-- 判断当前标签下是否有文章 -->
-    <!-- page.posts → 当前页面文章数组 -->
-    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
-
-      
-      <!-- 遍历每篇文章 post -->
-      <!-- post 对象包含文章标题、路径、日期、分类、摘要等信息 -->
-
-        <article class="post-card">
-        <!-- 单篇文章卡片容器 -->
-
-          <!-- 文章标题 -->
-          <h3 class="post-title">
-            <a href="/2025/11/12/1763008824364-STS4-%E5%9C%A8%E5%A4%A7%E5%B1%8F%E5%B9%95%E5%88%86%E5%B1%8F%E6%98%BE%E7%A4%BA%E6%97%B6%E5%87%BA%E7%8E%B0%E6%A8%A1%E7%B3%8A%E9%97%AE%E9%A2%98/">💻 STS4 在大屏幕分屏显示时出现模糊问题</a>
-            <!-- 链接到文章详情页 -->
-            <!-- url_for(post.path) → 生成文章路径 -->
-            <!-- post.title → 当前文章标题 -->
-          </h3>
-
-          <!-- 文章元信息：发布日期 + 分类 -->
-          <p class="post-meta">
-            发布于 2025-11-13
-            <!-- 显示文章发布日期 -->
-
-             |
-              分类：
-              
-                <a href="/categories/%E9%85%8D%E7%BD%AE/">配置</a>
-                
-                <!-- 遍历文章分类 -->
-                <!-- 多个分类用逗号分隔 -->
-              
-            
-          </p>
-          <!-- 文章元信息结束 -->
-
-          <!-- 文章摘要 -->
-          <p class="post-excerpt">
-            （暂无摘要）
-            <!-- 显示文章摘要 -->
-            <!-- 去掉 HTML 标签，只保留纯文本 -->
-            <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
-          </p>
-
-          <!-- 阅读全文按钮 -->
-          <a href="/2025/11/12/1763008824364-STS4-%E5%9C%A8%E5%A4%A7%E5%B1%8F%E5%B9%95%E5%88%86%E5%B1%8F%E6%98%BE%E7%A4%BA%E6%97%B6%E5%87%BA%E7%8E%B0%E6%A8%A1%E7%B3%8A%E9%97%AE%E9%A2%98/" class="read-more">阅读全文 →</a>
-          <!-- 链接到文章详情页 -->
-          <!-- CSS class "read-more" 用于样式化按钮 -->
-
-        </article>
-        <!-- 单篇文章卡片结束 -->
-
-      
-      <!-- 遍历文章结束 -->
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2025-12-15</span>
+    <!-- 显示文章发布日期 -->
 
     
-    <!-- 条件判断结束 -->
+      <!-- 判断文章是否有标签 -->
 
+      <span>标签：
+        
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E5%8D%95%E8%AF%8D/">日语单词</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+      </span>
+
+    
+    <!-- 标签判断结束 -->
   </div>
-  <!-- 文章列表容器结束 -->
+  <!-- 文章元信息结束 -->
 
-</section>
-<!-- 页面主容器结束 -->
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    <h2 id="1-语法形式"><a href="#1-语法形式" class="headerlink" title="1. 语法形式"></a>1. 语法形式</h2><p>「捻って」是动词 <strong>捻る（ひねる）</strong> 的 <strong>て形</strong>。  </p>
+<ul>
+<li>捻る → 捻って  </li>
+<li>用于连接句子或表示动作的进行。</li>
+</ul>
+<hr>
+<h2 id="2-基本意义"><a href="#2-基本意义" class="headerlink" title="2. 基本意义"></a>2. 基本意义</h2><p>「捻る」的核心含义是 <strong>扭转、拧、转动</strong>。<br>根据语境，可以有以下几种用法：</p>
+<ul>
+<li><strong>物理动作</strong>：用手或身体扭动、拧动。  </li>
+<li><strong>受伤</strong>：扭伤身体某部位。  </li>
+<li><strong>思考&#x2F;创意</strong>：绞尽脑汁、想出点子。  </li>
+<li><strong>比喻</strong>：故意刁难、使事情复杂化。</li>
+</ul>
+<hr>
+<h2 id="3-使用场景"><a href="#3-使用场景" class="headerlink" title="3. 使用场景"></a>3. 使用场景</h2><ul>
+<li><strong>身体动作</strong>：扭动身体或关节。  </li>
+<li><strong>受伤</strong>：脚踝或手腕扭伤。  </li>
+<li><strong>日常行为</strong>：拧瓶盖、转开开关。  </li>
+<li><strong>抽象表达</strong>：绞尽脑汁想办法。</li>
+</ul>
+<hr>
+<h2 id="4-例句"><a href="#4-例句" class="headerlink" title="4. 例句"></a>4. 例句</h2><ul>
+<li><p>ペットボトルのキャップを捻って開ける。<br>（拧开塑料瓶的瓶盖。）</p>
+</li>
+<li><p>足を捻って歩けなくなった。<br>（脚扭伤了，走不了路。）</p>
+</li>
+<li><p>問題を解決するために頭を捻っている。<br>（正在绞尽脑汁解决问题。）</p>
+</li>
+<li><p>彼はいつも話を捻って複雑にする。<br>（他总是把话说得复杂。）</p>
+</li>
+</ul>
+<hr>
+<h2 id="5-类似词汇"><a href="#5-类似词汇" class="headerlink" title="5. 类似词汇"></a>5. 类似词汇</h2><ul>
+<li><strong>回す（まわす）</strong>：转动、旋转。  </li>
+<li><strong>曲げる（まげる）</strong>：弯曲。  </li>
+<li><strong>ひねくれる</strong>：性格或态度扭曲、别扭。</li>
+</ul>
+<hr>
+<h2 id="6-英语对应"><a href="#6-英语对应" class="headerlink" title="6. 英语对应"></a>6. 英语对应</h2><p>根据语境不同：  </p>
+<ul>
+<li><strong>twist &#x2F; turn</strong>（扭动、拧动）  </li>
+<li><strong>sprain</strong>（扭伤）  </li>
+<li><strong>rack one’s brains</strong>（绞尽脑汁）  </li>
+<li><strong>distort &#x2F; complicate</strong>（使复杂化）</li>
+</ul>
+<hr>
+<h2 id="✅-总结"><a href="#✅-总结" class="headerlink" title="✅ 总结"></a>✅ 总结</h2><p>「捻って」是「捻る」的て形，表示 <strong>扭动、拧动、扭伤或绞尽脑汁</strong>。<br>既可用于 <strong>具体动作</strong>，也可用于 <strong>抽象思考或比喻</strong>。</p>
+
+    <!-- 渲染文章正文 HTML -->
+    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  </div>
+  <!-- 文章正文结束 -->
+
+</article>
+<!-- 单篇文章容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
