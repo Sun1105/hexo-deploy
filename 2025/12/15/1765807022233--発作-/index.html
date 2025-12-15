@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    VBA工具 | Sun Blog
+    📘 発作（ほっさ） | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -418,12 +418,12 @@
   <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
   <!-- 文章标题 -->
-  <h1 class="post-title">VBA工具</h1>
+  <h1 class="post-title">📘 発作（ほっさ）</h1>
   <!-- page.title → 当前文章标题 -->
 
   <!-- 文章元信息：发布日期 + 标签 -->
   <div class="post-meta">
-    <span>发表于 2025-12-12</span>
+    <span>发表于 2025-12-15</span>
     <!-- 显示文章发布日期 -->
 
     
@@ -431,7 +431,7 @@
 
       <span>标签：
         
-          <a href="/tags/VBA/">VBA</a>
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E5%8D%95%E8%AF%8D/">日语单词</a>
           
           <!-- 遍历文章标签，生成标签链接 -->
           <!-- 多个标签用逗号分隔 -->
@@ -445,52 +445,40 @@
 
   <!-- 文章正文内容 -->
   <div class="post-content">
-    <p>■Excel<br>シート名：1<br>想定項目	実施項目	想定値	実施値</p>
-<p>シート名：2<br>実施項目	実施値</p>
-<p>■マクロ</p>
-<p>1,在 Excel 按 Alt + F11 打开 VBA 编辑器。<br>2,在左侧工程窗格找到放置 CommandButton 的工作表（例如 Sheet2）。双击打开。<br>3,选择对象下拉框选 CommandButton1，过程下拉框选 Click（编辑器会自动生成事件框架）。<br>4.在事件里调用你的处理：<br>Private Sub CommandButton1_Click()<br> Call FillItemsAndValues<br>End Sub</p>
-<p>注意：这是工作表代码模块（不是标准模块）。事件名必须与按钮名称一致（比如 CommandButton1_Click）。如果你的按钮名不是 CommandButton1，请在设计模式下选中按钮，在属性窗口把 Name 看清楚或改成一致。</p>
-<p>■VBA</p>
-<p>Option Explicit</p>
-<p>‘——键值清洗：去前后半角空格、去全角空格（必要时可加大小写统一）<br>Private Function CleanKey(ByVal v As Variant) As String<br>    Dim s As String<br>    s &#x3D; CStr(v)<br>    s &#x3D; Replace(s, ChrW(12288), “”)  ‘ 全角空格<br>    s &#x3D; Trim(s)                      ‘ 半角前后空格<br>    ‘ 若需要忽略大小写，可启用下一行：<br>    ‘ s &#x3D; UCase$(s)<br>    CleanKey &#x3D; s<br>End Function</p>
-<p>Public Sub FillItemsAndValues()<br>    Dim wsSrc As Worksheet, wsTgt As Worksheet<br>    Dim lastSrc As Long, lastTgt As Long<br>    Dim r As Long<br>    Dim dict As Object<br>    Dim k As String<br>    Dim itemName As Variant, itemValue As Variant</p>
-<pre><code>&#39; —— 工作表（按你的文件名）
-Set wsTgt = ThisWorkbook.Sheets(&quot;1&quot;) &#39; 黄色：A=想定項目，B=受信項目，D=受信値
-Set wsSrc = ThisWorkbook.Sheets(&quot;2&quot;) &#39; 白色：A=送信項目(实施项目)，B=送信値(实施值)
-
-lastSrc = wsSrc.Cells(wsSrc.Rows.Count, 1).End(xlUp).Row
-lastTgt = wsTgt.Cells(wsTgt.Rows.Count, 1).End(xlUp).Row
-
-&#39; —— 字典：key=来源A（实施项目），value=数组 [实施项目, 实施值]
-Set dict = CreateObject(&quot;Scripting.Dictionary&quot;)
-
-For r = 2 To lastSrc
-    k = CleanKey(wsSrc.Cells(r, 1).Value)     &#39; 实施项目（键）
-    If Len(k) &gt; 0 Then
-        itemName = wsSrc.Cells(r, 1).Value     &#39; 2!A
-        itemValue = wsSrc.Cells(r, 2).Value    &#39; 2!B（保留原始类型）
-        dict(k) = Array(itemName, itemValue)
-    End If
-Next r
-
-Application.ScreenUpdating = False
-Application.Calculation = xlCalculationManual
-
-&#39; —— 按 1!A（想定項目）匹配；命中后写 1!B（受信項目）、1!D（受信値）
-For r = 2 To lastTgt
-    k = CleanKey(wsTgt.Cells(r, 1).Value)  &#39; 1!A 想定項目
-    If dict.Exists(k) Then
-        wsTgt.Cells(r, 2).Value = dict(k)(0)   &#39; 1!B ← 2!A（实施项目）
-        wsTgt.Cells(r, 4).Value = dict(k)(1)   &#39; 1!D ← 2!B（实施值）
-    End If
-Next r
-
-Application.Calculation = xlCalculationAutomatic
-Application.ScreenUpdating = True
-
-MsgBox &quot;完成：2!A→1!B，2!B→1!D（按 A 列键匹配）&quot;, vbInformation
-</code></pre>
-<p>End Sub</p>
+    <h2 id="1-基本意味"><a href="#1-基本意味" class="headerlink" title="1. 基本意味"></a>1. 基本意味</h2><p>「発作」指的是 <strong>突然发生的症状或现象</strong>。<br>通常用于医学语境，表示身体或精神上的急性反应。</p>
+<hr>
+<h2 id="2-医学上的用法"><a href="#2-医学上的用法" class="headerlink" title="2. 医学上的用法"></a>2. 医学上的用法</h2><ul>
+<li><strong>てんかん発作</strong>：癲癇患者突然出现的痉挛或意識障害。  </li>
+<li><strong>ぜんそく発作</strong>：哮喘患者突然出现的呼吸困难。  </li>
+<li><strong>心臓発作</strong>：心脏病患者突然出现的胸痛或心功能障碍。  </li>
+<li><strong>くしゃみ発作</strong>：突然连续打喷嚏的情况。</li>
+</ul>
+<p>👉 特点：<strong>急性・突発性</strong>，往往需要立即处理或注意。</p>
+<hr>
+<h2 id="3-非医学上的用法"><a href="#3-非医学上的用法" class="headerlink" title="3. 非医学上的用法"></a>3. 非医学上的用法</h2><p>在比喻意义上，「発作」也可以用来形容 <strong>突然的冲动或行为</strong>。<br>例：笑いの発作（突然大笑）、怒りの発作（突然发怒）。</p>
+<hr>
+<h2 id="4-使用场景"><a href="#4-使用场景" class="headerlink" title="4. 使用场景"></a>4. 使用场景</h2><ul>
+<li><strong>医学</strong>：描述病症的急性发作。  </li>
+<li><strong>日常</strong>：形容突如其来的情绪或行为。</li>
+</ul>
+<hr>
+<h2 id="5-例句"><a href="#5-例句" class="headerlink" title="5. 例句"></a>5. 例句</h2><ul>
+<li><p>彼はぜんそくの発作を起こした。<br>（他出现了哮喘发作。）</p>
+</li>
+<li><p>笑いの発作が止まらなかった。<br>（突然笑个不停。）</p>
+</li>
+<li><p>心臓発作で倒れた。<br>（因心脏病发作而倒下。）</p>
+</li>
+</ul>
+<hr>
+<h2 id="6-英语对应"><a href="#6-英语对应" class="headerlink" title="6. 英语对应"></a>6. 英语对应</h2><p>根据语境不同：</p>
+<ul>
+<li><strong>attack &#x2F; seizure</strong>（医学上的发作，如 asthma attack, epileptic seizure）  </li>
+<li><strong>fit &#x2F; spell</strong>（突发症状或情绪）  </li>
+<li><strong>outburst</strong>（情绪上的突然爆发）</li>
+</ul>
+<hr>
+<h2 id="✅-总结"><a href="#✅-总结" class="headerlink" title="✅ 总结"></a>✅ 总结</h2><p>「発作」主要用于医学语境，表示 <strong>急性症状的突然发生</strong>。<br>也可比喻为 <strong>情绪或行为的突发</strong>。<br>关键词：<strong>突発性・急性・不可预测</strong>。</p>
 
     <!-- 渲染文章正文 HTML -->
     <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
