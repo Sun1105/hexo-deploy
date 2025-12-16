@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    Sun Blog
+    📘 生え始め（はえはじめ） | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -400,90 +400,97 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  tag.ejs
-  标签页面模板
+  post.ejs
+  文章详情页模板
   功能：
-    - 显示当前标签名称
-    - 遍历该标签下的所有文章
-    - 渲染为文章卡片列表
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
 -->
 
-<section class="main-section">
-  <!-- 页面主容器，用于布局和样式控制 -->
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
-  <!-- 标签标题 -->
-  <h2 class="section-title">🏷️ PC配置 标签</h2>
-  <!-- emoji 🏷️ 用于视觉增强 -->
-  <!-- PC配置 动态输出当前页面所属标签名称 -->
-  <!-- 最终显示效果示例：🏷️ Java 标签 -->
+  <!-- 文章标题 -->
+  <h1 class="post-title">📘 生え始め（はえはじめ）</h1>
+  <!-- page.title → 当前文章标题 -->
 
-  <div class="post-list">
-    <!-- 文章列表容器，用于存放该标签下的所有文章卡片 -->
-
-    
-    <!-- 判断当前标签下是否有文章 -->
-    <!-- page.posts → 当前页面文章数组 -->
-    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
-
-      
-      <!-- 遍历每篇文章 post -->
-      <!-- post 对象包含文章标题、路径、日期、分类、摘要等信息 -->
-
-        <article class="post-card">
-        <!-- 单篇文章卡片容器 -->
-
-          <!-- 文章标题 -->
-          <h3 class="post-title">
-            <a href="/2025/11/12/1763008824364-STS4-%E5%9C%A8%E5%A4%A7%E5%B1%8F%E5%B9%95%E5%88%86%E5%B1%8F%E6%98%BE%E7%A4%BA%E6%97%B6%E5%87%BA%E7%8E%B0%E6%A8%A1%E7%B3%8A%E9%97%AE%E9%A2%98/">💻 STS4 在大屏幕分屏显示时出现模糊问题</a>
-            <!-- 链接到文章详情页 -->
-            <!-- url_for(post.path) → 生成文章路径 -->
-            <!-- post.title → 当前文章标题 -->
-          </h3>
-
-          <!-- 文章元信息：发布日期 + 分类 -->
-          <p class="post-meta">
-            发布于 2025-11-13
-            <!-- 显示文章发布日期 -->
-
-             |
-              分类：
-              
-                <a href="/categories/%E9%85%8D%E7%BD%AE/">配置</a>
-                
-                <!-- 遍历文章分类 -->
-                <!-- 多个分类用逗号分隔 -->
-              
-            
-          </p>
-          <!-- 文章元信息结束 -->
-
-          <!-- 文章摘要 -->
-          <p class="post-excerpt">
-            （暂无摘要）
-            <!-- 显示文章摘要 -->
-            <!-- 去掉 HTML 标签，只保留纯文本 -->
-            <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
-          </p>
-
-          <!-- 阅读全文按钮 -->
-          <a href="/2025/11/12/1763008824364-STS4-%E5%9C%A8%E5%A4%A7%E5%B1%8F%E5%B9%95%E5%88%86%E5%B1%8F%E6%98%BE%E7%A4%BA%E6%97%B6%E5%87%BA%E7%8E%B0%E6%A8%A1%E7%B3%8A%E9%97%AE%E9%A2%98/" class="read-more">阅读全文 →</a>
-          <!-- 链接到文章详情页 -->
-          <!-- CSS class "read-more" 用于样式化按钮 -->
-
-        </article>
-        <!-- 单篇文章卡片结束 -->
-
-      
-      <!-- 遍历文章结束 -->
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2025-12-16</span>
+    <!-- 显示文章发布日期 -->
 
     
-    <!-- 条件判断结束 -->
+      <!-- 判断文章是否有标签 -->
 
+      <span>标签：
+        
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E5%8D%95%E8%AF%8D/">日语单词</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+      </span>
+
+    
+    <!-- 标签判断结束 -->
   </div>
-  <!-- 文章列表容器结束 -->
+  <!-- 文章元信息结束 -->
 
-</section>
-<!-- 页面主容器结束 -->
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    <h2 id="1-语法形式"><a href="#1-语法形式" class="headerlink" title="1. 语法形式"></a>1. 语法形式</h2><p>「生え始め」是动词 <strong>生える（はえる，长出、发芽、萌生）</strong> 的 <strong>始め形</strong>。  </p>
+<ul>
+<li>生える → 生え始める → 生え始め  </li>
+<li>表示某物 <strong>刚开始长出</strong> 的状态。</li>
+</ul>
+<hr>
+<h2 id="2-基本意义"><a href="#2-基本意义" class="headerlink" title="2. 基本意义"></a>2. 基本意义</h2><ul>
+<li><strong>植物</strong>：草木、芽刚开始长出。  </li>
+<li><strong>毛发&#x2F;牙齿</strong>：头发、牙齿等刚开始长出来。  </li>
+<li><strong>抽象用法</strong>：新的事物或现象开始出现。</li>
+</ul>
+<p>👉 强调 <strong>“开始生长”</strong> 的阶段。</p>
+<hr>
+<h2 id="3-使用场景"><a href="#3-使用场景" class="headerlink" title="3. 使用场景"></a>3. 使用场景</h2><ul>
+<li><strong>自然现象</strong>：春に草が生え始める（春天草开始长出来）。  </li>
+<li><strong>身体变化</strong>：子供の歯が生え始める（孩子的牙齿开始长出来）。  </li>
+<li><strong>抽象表达</strong>：新しい文化が生え始める（新的文化开始萌芽）。</li>
+</ul>
+<hr>
+<h2 id="4-例句"><a href="#4-例句" class="headerlink" title="4. 例句"></a>4. 例句</h2><ul>
+<li><p>庭に雑草が生え始めた。<br>（院子里开始长杂草了。）</p>
+</li>
+<li><p>赤ちゃんの歯が生え始めている。<br>（婴儿的牙齿开始长出来了。）</p>
+</li>
+<li><p>髭が生え始めた少年。<br>（开始长胡子的少年。）</p>
+</li>
+<li><p>春になると芽が生え始める。<br>（一到春天，芽就开始长出来。）</p>
+</li>
+</ul>
+<hr>
+<h2 id="5-类似表現"><a href="#5-类似表現" class="headerlink" title="5. 类似表現"></a>5. 类似表現</h2><ul>
+<li><strong>芽生える（めばえる）</strong>：萌芽，强调初期出现。  </li>
+<li><strong>伸び始める（のびはじめる）</strong>：开始伸长。  </li>
+<li><strong>出始める（ではじめる）</strong>：开始出现。</li>
+</ul>
+<hr>
+<h2 id="6-英語対応"><a href="#6-英語対応" class="headerlink" title="6. 英語対応"></a>6. 英語対応</h2><p>根据语境不同：  </p>
+<ul>
+<li><strong>begin to grow &#x2F; start to sprout</strong>（植物、草木）  </li>
+<li><strong>start to come in</strong>（牙齿、毛发）  </li>
+<li><strong>emerge &#x2F; sprout up</strong>（抽象事物）</li>
+</ul>
+<hr>
+<h2 id="✅-総まとめ"><a href="#✅-総まとめ" class="headerlink" title="✅ 総まとめ"></a>✅ 総まとめ</h2><p>「生え始め」表示 <strong>某物刚开始长出或萌芽</strong>，既可用于 <strong>植物、毛发、牙齿</strong>，也可用于 <strong>抽象事物的萌芽</strong>。<br>关键词：<strong>开始生长、萌芽、初期阶段</strong>。</p>
+
+    <!-- 渲染文章正文 HTML -->
+    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  </div>
+  <!-- 文章正文结束 -->
+
+</article>
+<!-- 单篇文章容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
