@@ -430,69 +430,141 @@
       <!-- 遍历当前分类下每篇文章 post -->
       <!-- post 对象包含文章标题、路径、日期、分类、标签、摘要等信息 -->
 
-      <!-- 单篇文章卡片 -->
-      <article class="post-card">
-        <!-- post-card 的内容（标题/相关信息/摘要） -->
-        <h3 class="post-title">
-          <a href="/2025/12/15/1765537635892-VBA%E5%B7%A5%E5%85%B7/">VBA工具</a>
-        </h3>
-        <p class="post-meta">
-          发布于 2025-12-15
-        </p>
-        <p class="post-excerpt">
-          （暂无摘要）
-        </p>
+        <!--
+  _partial/post-card.ejs
+  功能：
+    - 渲染单篇文章的卡片
+    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
+    - 可在分类页、标签页、归档页复用
+-->
 
-        <!-- 按钮容器 -->
-        <div class="button-container">
-          <!-- 阅读全文按钮 -->
-          <a href="/2025/12/15/1765537635892-VBA%E5%B7%A5%E5%85%B7/" class="read-more">阅读全文</a>
-          
-          <!-- 编辑全文按钮 -->
-          <a href="javascript:void(0)" class="edit-more" 
-             onclick="openEditor({
-               name: '',
-               download_url: '',
-             })">编辑全文</a>
-        </div>
-        <!-- 按钮容器结束 -->
+<article class="post-card">
+  <!-- 单篇文章卡片容器，用于布局和样式 -->
 
-      </article>
-      <!-- 单篇文章卡片结束 -->
+  <!-- 文章标题 -->
+  <h3 class="post-title">
+    <a href="/2025/12/15/1765537635892-VBA%E5%B7%A5%E5%85%B7/">VBA工具</a>
+    <!-- 链接到文章详情页 -->
+    <!-- url_for(post.path) → 生成文章路径 -->
+    <!-- post.title → 当前文章标题 -->
+  </h3>
+
+  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
+  <p class="post-meta">
+    发布于 2025-12-15
+    <!-- 显示文章发布日期 -->
+
+     |
+      分类：
+      
+        <a href="/categories/VBA/">VBA</a>
+        
+        <!-- 遍历文章分类 -->
+        <!-- 多个分类用逗号分隔 -->
+      
+    
+
+     |
+      标签：
+      
+        <a href="/tags/TOOL/">TOOL</a>
+        
+        <!-- 遍历文章标签 -->
+        <!-- 多个标签用逗号分隔 -->
+      
+    
+  </p>
+  <!-- 文章元信息结束 -->
+
+  <!-- 文章摘要 -->
+  <p class="post-excerpt">
+    （暂无摘要）
+    <!-- 显示文章摘要 -->
+    <!-- 去掉 HTML 标签，只保留纯文本 -->
+    <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
+  </p>
+
+  <!-- 阅读全文按钮 -->
+  <a href="/2025/12/15/1765537635892-VBA%E5%B7%A5%E5%85%B7/" class="read-more">阅读全文 →</a>
+  <!-- 链接到文章详情页 -->
+  <!-- CSS class "read-more" 用于样式化按钮 -->
+
+</article>
+<!-- 单篇文章卡片结束 -->
+
+        <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
+        <!-- 将当前文章对象 post 传入模板 -->
+        <!--  输出 HTML，不转义，保证标签正常显示 -->
 
       
       <!-- 遍历当前分类下每篇文章 post -->
       <!-- post 对象包含文章标题、路径、日期、分类、标签、摘要等信息 -->
 
-      <!-- 单篇文章卡片 -->
-      <article class="post-card">
-        <!-- post-card 的内容（标题/相关信息/摘要） -->
-        <h3 class="post-title">
-          <a href="/2025/11/30/1764146234548-VBA%E5%B7%A5%E5%85%B7/">VBA工具</a>
-        </h3>
-        <p class="post-meta">
-          发布于 2025-11-30
-        </p>
-        <p class="post-excerpt">
-          （暂无摘要）
-        </p>
+        <!--
+  _partial/post-card.ejs
+  功能：
+    - 渲染单篇文章的卡片
+    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
+    - 可在分类页、标签页、归档页复用
+-->
 
-        <!-- 按钮容器 -->
-        <div class="button-container">
-          <!-- 阅读全文按钮 -->
-          <a href="/2025/11/30/1764146234548-VBA%E5%B7%A5%E5%85%B7/" class="read-more">阅读全文</a>
-          
-          <!-- 编辑全文按钮 -->
-          <a href="javascript:void(0)" class="edit-more" 
-             onclick="openEditor({
-               name: '',
-               download_url: '',
-             })">编辑全文</a>
-        </div>
-        <!-- 按钮容器结束 -->
+<article class="post-card">
+  <!-- 单篇文章卡片容器，用于布局和样式 -->
 
-      </article>
-      <!-- 单篇文章卡片结束 -->
+  <!-- 文章标题 -->
+  <h3 class="post-title">
+    <a href="/2025/11/30/1764146234548-VBA%E5%B7%A5%E5%85%B7/">VBA工具</a>
+    <!-- 链接到文章详情页 -->
+    <!-- url_for(post.path) → 生成文章路径 -->
+    <!-- post.title → 当前文章标题 -->
+  </h3>
+
+  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
+  <p class="post-meta">
+    发布于 2025-11-30
+    <!-- 显示文章发布日期 -->
+
+     |
+      分类：
+      
+        <a href="/categories/VBA/">VBA</a>
+        
+        <!-- 遍历文章分类 -->
+        <!-- 多个分类用逗号分隔 -->
+      
+    
+
+     |
+      标签：
+      
+        <a href="/tags/TOOL/">TOOL</a>
+        
+        <!-- 遍历文章标签 -->
+        <!-- 多个标签用逗号分隔 -->
+      
+    
+  </p>
+  <!-- 文章元信息结束 -->
+
+  <!-- 文章摘要 -->
+  <p class="post-excerpt">
+    （暂无摘要）
+    <!-- 显示文章摘要 -->
+    <!-- 去掉 HTML 标签，只保留纯文本 -->
+    <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
+  </p>
+
+  <!-- 阅读全文按钮 -->
+  <a href="/2025/11/30/1764146234548-VBA%E5%B7%A5%E5%85%B7/" class="read-more">阅读全文 →</a>
+  <!-- 链接到文章详情页 -->
+  <!-- CSS class "read-more" 用于样式化按钮 -->
+
+</article>
+<!-- 单篇文章卡片结束 -->
+
+        <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
+        <!-- 将当前文章对象 post 传入模板 -->
+        <!--  输出 HTML，不转义，保证标签正常显示 -->
 
       
       <!-- 遍历文章结束 -->
@@ -506,75 +578,6 @@
 </section>
 <!-- 页面主容器结束 -->
 
-<script>
-  // ========================
-  // 编辑器函数
-  // ========================
-  async function openEditor(file) {
-    editingNote = file;
-    try {
-      const res = await fetch(file.download_url);
-      const contentText = await res.text();
-      const shaRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${postsDir}/${file.name}`);
-      const shaData = await shaRes.json();
-      editingNote.sha = shaData.sha;
-
-      // 编辑器填充
-      document.getElementById('note-title').value = contentText.match(/title:\s*(.*)/)?.[1] || file.name;
-      document.getElementById('note-category').value = contentText.match(/category:\s*(.*)/)?.[1] || "";
-      document.getElementById('note-tags').value = contentText.match(/tags:\s*\[(.*)\]/)?.[1] || "";
-      document.getElementById('note-content').value = contentText.split('---').slice(2).join('---').trim();
-
-      document.getElementById('preview-div').innerHTML = marked.parse(document.getElementById('note-content').value);
-      document.getElementById('editor-modal').style.display = "block";
-    } catch (err) {
-      alert("❌ 打开编辑器失败：" + err.message);
-    }
-  }
-
-  function closeEditor() {
-    document.getElementById('editor-modal').style.display = "none";
-  }
-</script>
-
-<style>
-  /* 按钮容器 */
-  .button-container {
-    display: flex;
-    align-items: center;
-  }
-
-  /* 阅读全文按钮 */
-  .read-more {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-  }
-  .read-more:hover {
-    background-color: #0056b3;
-  }
-
-  /* 编辑全文按钮 */
-  .edit-more {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #28a745;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-    margin-left: auto; /* 将按钮推送到最右侧 */
-  }
-  .edit-more:hover {
-    background-color: #1c7c31;
-  }
-</style>
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
   </main>
