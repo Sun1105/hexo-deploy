@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <!-- 设置字符集为 UTF-8 -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 响应式布局，适配移动设备 -->
+
+  <!-- 页面标题 -->
+  <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
+  <!-- 否则只显示网站标题 config.title -->
+  <title>
+    Json格式的转化以及项目匹配 | Sun Blog
+  </title>
+
+  <!-- 页面描述，用于 SEO -->
+  <meta name="description" content="一个记录开发、学习与生活点滴的博客">
+
+  <!-- ===== 全局样式引入 ===== -->
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/sidebar.css">
+  <link rel="stylesheet" href="/css/post-list.css">
+  <link rel="stylesheet" href="/css/page.css">
+  <link rel="stylesheet" href="/css/category.css">
+  <link rel="stylesheet" href="/css/archive.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <!-- 各模块样式，便于维护 -->
+
+  <!-- ===== 字体与图标 ===== -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <!-- 网站 favicon 和 Google 字体 -->
+
+  <!-- ===== 登录状态检查 ===== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const onLoginPage = window.location.pathname.startsWith("/login");
+      if (!onLoginPage && !localStorage.getItem("isLoggedIn")) {
+        window.location.href = "/login/";
+      }
+      // 如果未登录且不在登录页，自动跳转到登录页
+    });
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  
+    <!-- ===== 顶部导航栏 ===== -->
+    <header class="top-nav">
+  <!-- ============================
+       顶部导航栏模块
+       功能：
+         - 显示网站 logo
+         - 提供主菜单导航
+         - 技术分类下拉菜单
+         - 新建笔记 / 关于我 / 我的项目 / 技能树
+         - 小屏幕汉堡菜单切换
+         - 退出登录按钮
+  ============================ -->
+
+  <!-- 网站 Logo -->
+  <div class="logo">
+    <a href="/">首页</a>
+    <!-- 点击跳转到网站首页 -->
+  </div>
+
+  <!-- 汉堡按钮（小屏幕时显示） -->
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="切换菜单">☰</button>
+  <!-- onclick 调用 toggleMenu() 切换移动端菜单显示状态 -->
+
+  <!-- 主菜单容器 -->
+  <nav class="menu">
+
+    <!-- 普通菜单项 -->
+    <a href="/new-note/">新建笔记</a>
+    <a href="/notes/">笔记列表</a>
+    <a href="/archives/">时间轴</a>
+    <a href="/about/">关于我</a>
+    <a href="/projects/">项目集</a>
+    <a href="/skills/">技能树</a>
+    <!-- 点击跳转到对应页面 -->
+
+    <!-- 技术分类下拉菜单 -->
+    <div class="dropdown">
+      <button class="menu-btn" type="button">技术分类</button>
+      <!-- 下拉按钮，点击显示分类列表 -->
+
+      <div class="dropdown-content">
+        
+
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Java/">Java</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Java')">Java</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/SpringBoot/">SpringBoot</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('SpringBoot')">SpringBoot</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/JUnit/">JUnit</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('JUnit')">JUnit</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Maven/">Maven</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Maven')">Maven</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Mybatis/">Mybatis</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Mybatis')">Mybatis</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Git/">Git</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Git')">Git</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/SQL/">SQL</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('SQL')">SQL</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/VBA/">VBA</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('VBA')">VBA</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Azure/">Azure</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Azure')">Azure</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Docker/">Docker</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Docker')">Docker</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('前端')">前端</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90/">架构分析</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('架构分析')">架构分析</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/%E5%BF%AB%E6%8D%B7%E9%94%AE/">快捷键</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('快捷键')">快捷键</a> -->
+          
+        
+      </div>
+    </div>
+    <!-- 技术分类下拉菜单结束 -->
+
+    <!-- 退出登录按钮 -->
+    <button class="logout" onclick="logout()">退出</button>
+    <!-- 点击调用 logout() 清除登录状态并跳转登录页 -->
+
+  </nav>
+  <!-- 主菜单容器结束 -->
+
+</header>
+<!-- 顶部导航栏结束 -->
+
+    <!-- 导入 header 部分模板 -->
+
+    <!-- ===== 侧边栏 ===== -->
+    <aside class="sidebar" id="sidebar">
+  <!-- ============================
+       侧边栏模块
+       功能：
+         - 自动读取 Hexo 分类数据
+         - 自动读取 Hexo 标签数据
+         - 渲染为分类导航和标签云
+  ============================ -->
+
+  <!-- 分类导航 -->
+  <h3 class="sidebar-title">📘 分类导航</h3>
+  <ul class="category-list">
+    
+      
+        <li>
+          <a href="/categories/API/">
+            API (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/DB%E7%99%BB%E5%BD%95%E8%AE%BE%E7%BD%AE/">
+            DB登录设置 (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/ITA/">
+            ITA (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/JUnit/">
+            JUnit (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/VBA/">
+            VBA (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E3%83%A1%E3%83%A2/">
+            メモ (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/">
+            思维导图 (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E6%97%A5%E8%AF%AD%E7%AC%94%E8%AE%B0/">
+            日语笔记 (41)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E8%AE%A1%E5%88%92/">
+            计划 (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E9%85%8D%E7%BD%AE/">
+            配置 (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">
+            项目管理 (1)
+          </a>
+        </li>
+      
+    
+  </ul>
+
+  <!-- 标签云 -->
+  <h3 class="sidebar-title">🏷️ 标签云</h3>
+  <ul class="tag-list">
+    
+      
+        <li>
+          <a href="/tags/A5M2/">
+            A5M2 (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/Oracle/">
+            Oracle (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/PC%E9%85%8D%E7%BD%AE/">
+            PC配置 (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/PMO/">
+            PMO (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/TOOL/">
+            TOOL (4)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/log/">
+            log (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E3%83%A1%E3%83%A2/">
+            メモ (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E5%BC%8F%E6%A0%B7%E4%B9%A6%E5%81%9A%E6%88%90/">
+            式样书做成 (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E6%89%A7%E8%A1%8C%E7%B1%BB/">
+            执行类 (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E5%8D%95%E8%AF%8D/">
+            日语单词 (31)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">
+            日语学习计划 (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E8%AF%AD%E6%B3%95/">
+            日语语法 (10)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E6%A6%82%E8%A6%81/">
+            概要 (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E6%A8%A1%E6%9D%BF/">
+            模板 (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E9%85%8D%E7%BD%AE/">
+            配置 (1)
+          </a>
+        </li>
+      
+    
+  </ul>
+</aside>
+
+    <!-- 导入 sidebar 部分模板 -->
+  
+
+  <!-- ===== 主体内容区 ===== -->
+  <main id="main-content">
+    <!--
+  post.ejs
+  文章详情页模板
+  功能：
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
+-->
+
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
+
+  <!-- 文章标题 -->
+  <h1 class="post-title">Json格式的转化以及项目匹配</h1>
+  <!-- page.title → 当前文章标题 -->
+
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2025-12-18</span>
+    <!-- 显示文章发布日期 -->
+
+    
+      <!-- 判断文章是否有标签 -->
+
+      <span>标签：
+        
+          <a href="/tags/TOOL/">TOOL</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+      </span>
+
+    
+    <!-- 标签判断结束 -->
+  </div>
+  <!-- 文章元信息结束 -->
+
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    <p>1，JAVA：</p>
+<p>➡　java打包命令</p>
+<h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><p>javac -d out JsonKeyValueExtractorGui.java</p>
+<h1 id="生成-manifest"><a href="#生成-manifest" class="headerlink" title="生成 manifest"></a>生成 manifest</h1><p>echo Main-Class: JsonKeyValueExtractorGui &gt; manifest.txt</p>
+<h1 id="打包-jar"><a href="#打包-jar" class="headerlink" title="打包 jar"></a>打包 jar</h1><p>jar cfm json2txt.jar manifest.txt -C out .</p>
+<p>import javax.swing.<em>; &#x2F;&#x2F; 导入Swing库用于GUI开发<br>import java.awt.</em>; &#x2F;&#x2F; 导入AWT库用于布局<br>import java.awt.event.ActionEvent; &#x2F;&#x2F; 导入AWT事件类（处理按钮事件）<br>import java.awt.event.ActionListener; &#x2F;&#x2F; 导入AWT事件监听器接口<br>import java.io.*; &#x2F;&#x2F; 导入IO库用于文件读写<br>import java.util.prefs.Preferences; &#x2F;&#x2F; 导入Preferences类用于存储用户偏好设置</p>
+<p>➡　java代码</p>
+<p>&#x2F;**</p>
+<ul>
+<li><p>JsonKeyValueExtractorGui</p>
+</li>
+<li><p>用于从JSON文本中提取Key-Value，并输出到TXT文件</p>
+</li>
+<li><p>支持记忆上次保存路径，初次为 D:\Json\text.txt<br> *&#x2F;<br>public class JsonKeyValueExtractorGui {<br> &#x2F;&#x2F; 偏好项的键名，用于存储上次保存路径<br> private static final String PREF_KEY_LAST_PATH &#x3D; “lastSavePath”;<br> &#x2F;&#x2F; 默认的初始保存路径<br> private static final String DEFAULT_PATH &#x3D; “D:\Json\text.txt”;<br> &#x2F;&#x2F; Preferences对象，基于当前类所在包，用于持久化保存&#x2F;读取参数<br> private static Preferences prefs &#x3D; Preferences.userNodeForPackage(JsonKeyValueExtractorGui.class);</p>
+<p> &#x2F;&#x2F; 主方法，程序入口<br> public static void main(String[] args) {<br> &#x2F;&#x2F; 以线程安全方式在Swing UI线程中执行GUI创建<br> SwingUtilities.invokeLater(JsonKeyValueExtractorGui::createAndShowGui);<br> }</p>
+<p> &#x2F;&#x2F; 创建和显示主界面<br> private static void createAndShowGui() {<br> JFrame frame &#x3D; new JFrame(“JSON Key-Value 提取器”); &#x2F;&#x2F; 新建窗口，设置标题<br> frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); &#x2F;&#x2F; 关闭窗口时退出程序<br> frame.setSize(600, 500); &#x2F;&#x2F; 设置窗口尺寸<br> frame.setLocationRelativeTo(null); &#x2F;&#x2F; 居中显示窗口<br><br> JTextArea inputArea &#x3D; new JTextArea(20, 50); &#x2F;&#x2F; 创建20行50列的多行文本输入区<br> JScrollPane scrollPane &#x3D; new JScrollPane(inputArea); &#x2F;&#x2F; 将文本区放入带滚动条的面板<br> JButton processButton &#x3D; new JButton(“确定并输出到TXT”); &#x2F;&#x2F; 新建按钮<br> JLabel infoLabel &#x3D; new JLabel(“请粘贴Postman返回的JSON，然后点击“确定并输出到TXT””); &#x2F;&#x2F; 顶部提示<br><br> frame.setLayout(new BorderLayout()); &#x2F;&#x2F; 设置窗口布局为BorderLayout<br> frame.add(infoLabel, BorderLayout.NORTH); &#x2F;&#x2F; 将提示标签放在顶部<br> frame.add(scrollPane, BorderLayout.CENTER); &#x2F;&#x2F; 将文本区放在中间<br> frame.add(processButton, BorderLayout.SOUTH); &#x2F;&#x2F; 将按钮放到底部<br><br> &#x2F;&#x2F; 为按钮添加点击事件监听器<br> processButton.addActionListener(new ActionListener() {<br>     @Override<br>     public void actionPerformed(ActionEvent e) {<br>         String inputText &#x3D; inputArea.getText(); &#x2F;&#x2F; 获取文本区输入内容<br>         if (inputText.trim().isEmpty()) { &#x2F;&#x2F; 判断输入内容是否为空<br>             &#x2F;&#x2F; 如果为空，弹出错误对话框并退出事件<br>             JOptionPane.showMessageDialog(frame, “输入内容不能为空”, “错误”, JOptionPane.ERROR_MESSAGE);<br>             return;<br>         }<br><br>         String lastPath &#x3D; prefs.get(PREF_KEY_LAST_PATH, DEFAULT_PATH); &#x2F;&#x2F; 获取上次保存路径，如无则用默认<br>         File lastFile &#x3D; new File(lastPath); &#x2F;&#x2F; 构造文件对象<br><br>         JFileChooser fileChooser &#x3D; new JFileChooser(); &#x2F;&#x2F; 新建文件选择器<br>         fileChooser.setDialogTitle(“选择输出txt文件保存位置”); &#x2F;&#x2F; 对话框标题<br><br>         &#x2F;&#x2F; 设置文件选择器的默认目录<br>         if (lastFile.getParentFile() !&#x3D; null &amp;&amp; lastFile.getParentFile().exists()) {<br>             fileChooser.setCurrentDirectory(lastFile.getParentFile()); &#x2F;&#x2F; 父目录存在则设为默认目录<br>         } else {<br>             lastFile.getParentFile().mkdirs(); &#x2F;&#x2F; 如果目录不存在则先创建<br>             fileChooser.setCurrentDirectory(lastFile.getParentFile()); &#x2F;&#x2F; 再设为默认目录<br>         }<br>         fileChooser.setSelectedFile(new File(lastFile.getName())); &#x2F;&#x2F; 默认文件名为上次名<br><br>         int userSelection &#x3D; fileChooser.showSaveDialog(frame); &#x2F;&#x2F; 显示保存对话框，等待用户选择<br><br>         if (userSelection &#x3D;&#x3D; JFileChooser.APPROVE_OPTION) { &#x2F;&#x2F; 用户点击“保存”<br>             File fileToSave &#x3D; fileChooser.getSelectedFile(); &#x2F;&#x2F; 获取用户选定的文件<br>             &#x2F;&#x2F; 使用UTF-8编码写入文件<br>             try (BufferedWriter writer &#x3D; new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileToSave), “UTF-8”))) {<br>                 String processResult &#x3D; processJsonLines(inputText); &#x2F;&#x2F; 处理输入内容为Key-Value串<br>                 writer.write(processResult); &#x2F;&#x2F; 写入文件<br>                 &#x2F;&#x2F; 提示保存成功及保存路径<br>                 JOptionPane.showMessageDialog(frame, “处理完成！结果已保存到:\n” + fileToSave.getAbsolutePath(), “成功”, JOptionPane.INFORMATION_MESSAGE);<br>                 prefs.put(PREF_KEY_LAST_PATH, fileToSave.getAbsolutePath()); &#x2F;&#x2F; 记忆本次保存路径<br>             } catch (Exception ex) { &#x2F;&#x2F; 捕捉写文件过程异常<br>                 JOptionPane.showMessageDialog(frame, “输出时出错: “ + ex.getMessage(), “错误”, JOptionPane.ERROR_MESSAGE);<br>             }<br>         }<br>     }<br> });<br><br> frame.setVisible(true); &#x2F;&#x2F; 显示主窗口<br> }</p>
+<p> &#x2F;**</p>
+<ul>
+<li>处理输入字符串，逐行提取key和value</li>
+<li>@param input 输入的JSON文本</li>
+<li>@return 获取的”key[TAB]value”格式的内容，每行一个键值对<br>  *&#x2F;<br> private static String processJsonLines(String input) {<br> StringBuilder result &#x3D; new StringBuilder(); &#x2F;&#x2F; 用于拼接最后的全部输出字符串<br> String[] lines &#x3D; input.split(“\r?\n”); &#x2F;&#x2F; 将输入按行切分，兼容Windows和Unix换行<br> for (String line : lines) { &#x2F;&#x2F; 遍历每一行<br> String trimmed &#x3D; line.trim(); &#x2F;&#x2F; 去掉首尾空格<br> int colonIdx &#x3D; trimmed.indexOf(‘:’); &#x2F;&#x2F; 查找第一个冒号下标<br> if (colonIdx &gt; 0) { &#x2F;&#x2F; 仅处理含有冒号的行<br>     String beforeColon &#x3D; trimmed.substring(0, colonIdx).trim(); &#x2F;&#x2F; :前为key部分（含引号等）<br>     String afterColon &#x3D; trimmed.substring(colonIdx + 1).trim(); &#x2F;&#x2F; :后为value部分（含逗号或引号等）<br>     String key &#x3D; null, value &#x3D; “”; &#x2F;&#x2F; 初始化key和value变量<br>     int firstQuote &#x3D; beforeColon.indexOf(‘“‘); &#x2F;&#x2F; 查找key第一个引号<br>     int secondQuote &#x3D; beforeColon.indexOf(‘“‘, firstQuote + 1); &#x2F;&#x2F; 查找key第二个引号<br>     if (firstQuote &gt;&#x3D; 0 &amp;&amp; secondQuote &gt; firstQuote) { &#x2F;&#x2F; 确实被””包围<br>         String possibleKey &#x3D; beforeColon.substring(firstQuote + 1, secondQuote); &#x2F;&#x2F; 提取引号内key名<br>         if (possibleKey.matches(“[a-zA-Z0-9_]+”)) {  &#x2F;&#x2F; key只允许英文字母、数字、下划线<br>             key &#x3D; possibleKey; &#x2F;&#x2F; 提取成功<br>         }<br>     }<br>     if (key !&#x3D; null) { &#x2F;&#x2F; 如果key已经提取<br>         afterColon &#x3D; afterColon.replaceAll(“,$”, “”); &#x2F;&#x2F; 去除末尾逗号<br>         if (afterColon.startsWith(“&quot;“)) { &#x2F;&#x2F; value是字符串<br>             int vq1 &#x3D; afterColon.indexOf(‘“‘); &#x2F;&#x2F; 第一个引号<br>             int vq2 &#x3D; afterColon.indexOf(‘“‘, vq1 + 1); &#x2F;&#x2F; 第二个引号<br>             if (vq1 &gt;&#x3D; 0 &amp;&amp; vq2 &gt; vq1)<br>                 value &#x3D; afterColon.substring(vq1 + 1, vq2); &#x2F;&#x2F; 提取引号内的字符串value<br>         }<br>         &#x2F;&#x2F; 追加到输出，格式key+TAB+value+换行<br>         result.append(key).append(“\t”).append(value).append(“\n”);<br>     }<br> }<br> }<br> return result.toString(); &#x2F;&#x2F; 返回全部结果<br> }</li>
+</ul>
+</li>
+</ul>
+<p>}</p>
+<p>2,RunBat（启动java程序）<br>Java程序默认位置：D:\Json</p>
+<p>‘【功能】运行指定文件夹下的“起動.bat”批处理文件，如果文件不存在则弹窗并写入日志<br>Public Sub RunBat(folderPath As String)<br>    ‘ 声明变量：wsh为脚本Shell对象，batPath为批处理文件路径<br>    Dim wsh As Object<br>    Dim batPath As String<br>    ‘ 拼接批处理文件完整路径<br>    batPath &#x3D; folderPath &amp; “\起動.bat”</p>
+<pre><code>&#39; 判断起動.bat文件是否存在
+If Dir(batPath) &lt;&gt; &quot;&quot; Then
+    &#39; 文件存在，创建WScript.Shell对象
+    Set wsh = CreateObject(&quot;WScript.Shell&quot;)
+    &#39; 用cmd切换到目标目录并运行起動.bat，窗口显示，等待命令完成
+    wsh.Run &quot;cmd.exe /k &quot;&quot;cd /d &quot; &amp; folderPath &amp; &quot; &amp; 起動.bat&quot;&quot;&quot;, 1, True
+Else
+    &#39; 文件不存在，弹窗提示
+    MsgBox &quot;文件不存在：&quot; &amp; batPath, vbExclamation
+    &#39; 记录错误到日志
+    LogError &quot;文件不存在：&quot; &amp; batPath
+End If
+</code></pre>
+<p>End Sub</p>
+<p>‘【功能】尝试打开指定的Excel文件（相对路径），如不存在则提示并写入日志<br>Public Sub OpenExcelTool(relativePath As String)<br>    ‘ 声明变量：filePath为要打开的Excel文件的完整路径<br>    Dim filePath As String<br>    ‘ 以当前工作簿的目录为基础拼接目标文件路径<br>    filePath &#x3D; ThisWorkbook.Path &amp; “&quot; &amp; relativePath</p>
+<pre><code>&#39; 判断Excel文件是否存在
+If Dir(filePath) &lt;&gt; &quot;&quot; Then
+    &#39; 存在则直接以新窗口方式打开
+    Workbooks.Open filePath
+Else
+    &#39; 不存在则弹窗提示并写入日志
+    MsgBox &quot;Excel 文件不存在：&quot; &amp; filePath, vbExclamation
+    LogError &quot;Excel 文件不存在：&quot; &amp; filePath
+End If
+</code></pre>
+<p>End Sub</p>
+<p>‘【功能】将错误信息写入当前工作簿目录下的ErrorLog.txt文件，每条带有时间戳<br>Public Sub LogError(errorMsg As String)<br>    ‘ 声明变量：logFile为日志文件路径，fNum为可用文件号<br>    Dim logFile As String<br>    Dim fNum As Integer<br>    ‘ 拼接日志文件路径<br>    logFile &#x3D; ThisWorkbook.Path &amp; “\ErrorLog.txt”</p>
+<pre><code>&#39; 获取空闲文件号，追加方式打开日志文件（无则创建）
+fNum = FreeFile
+Open logFile For Append As #fNum
+&#39; 写入内容：当前时间 + 错误信息
+Print #fNum, Now &amp; &quot; - &quot; &amp; errorMsg
+&#39; 关闭文件
+Close #fNum
+</code></pre>
+<p>End Sub</p>
+<p>‘【功能】用于一键运行D:\Json目录下的起動.bat批处理文件<br>Public Sub RunServerBat()<br>    ‘ 直接调用RunBat子程序，参数为D:\Json<br>    RunBat “D:\Json”<br>End Sub</p>
+<p>3，ImportKeyValueFromTxt（读取java程序生成的文件内容）</p>
+<p>‘【功能】导入由Java工具导出的key-value文本文件，将内容填入Sheet “2” 的A2&#x2F;B2起始的列中<br>Sub ImportKeyValueFromTxt()<br>    ‘ 声明工作表变量<br>    Dim ws As Worksheet<br>    ‘ 存放所有行的字符串数组<br>    Dim arrLines() As String<br>    ‘ 用于存储完整文件内容的字符串<br>    Dim txt As String<br>    ‘ 循环变量<br>    Dim i As Long<br>    ‘ 存储每行分割后的键值对<br>    Dim kv As Variant<br>    ‘ 用于文件读取的ADODB对象<br>    Dim fso As Object<br>    ‘ （未用到的变量，可以去掉）Dim ts As Object<br>    ‘ 存储选中的文件路径<br>    Dim filePath As String</p>
+<pre><code>&#39; 弹出文件选择对话框，让用户选择txt文件
+filePath = Application.GetOpenFilename(&quot;Text Files (*.txt),*.txt&quot;, , &quot;ファイルを選択してください&quot;)
+&#39; 如果用户按了取消，则退出
+If filePath = &quot;False&quot; Then Exit Sub
+
+&#39; 错误捕获：尝试获取名为&quot;2&quot;的工作表
+On Error Resume Next
+Set ws = ThisWorkbook.Sheets(&quot;2&quot;)
+On Error GoTo 0
+&#39; 没有找到Sheet &quot;2&quot;时提醒并退出
+If ws Is Nothing Then
+    MsgBox &quot;シート２が見つかりません&quot;, vbExclamation
+    Exit Sub
+End If
+
+&#39; 激活目标工作表
+ws.Activate
+
+&#39; 清除原有A2:B列的数据，防止残留
+ws.Range(&quot;A2:B&quot; &amp; ws.Rows.Count).ClearContents
+
+&#39; 创建ADODB.Stream对象以utf-8编码方式读取文件
+Set fso = CreateObject(&quot;ADODB.Stream&quot;)
+fso.Charset = &quot;utf-8&quot;
+fso.Open
+fso.LoadFromFile filePath      &#39; 载入用户选择的文件
+txt = fso.ReadText             &#39; 读入全部文本内容
+fso.Close
+
+&#39; 用LF(&#39;\n&#39;)分割成每一行的数组
+arrLines = Split(txt, vbLf)
+
+&#39; 按行写入Excel，A2起为key，B2起为value
+For i = 0 To UBound(arrLines)
+    If Trim(arrLines(i)) &lt;&gt; &quot;&quot; Then                 &#39; 跳过空行
+        kv = Split(arrLines(i), vbTab)              &#39; 用Tab分割为数组
+        ws.Cells(i + 2, 1).Value = kv(0)            &#39; A列写key
+        If UBound(kv) &gt;= 1 Then
+            ws.Cells(i + 2, 2).Value = kv(1)        &#39; B列写value（如有）
+        Else
+            ws.Cells(i + 2, 2).Value = &quot;&quot;           &#39; 否则B列空
+        End If
+    End If
+Next i
+
+&#39; 弹窗提示处理完成
+MsgBox &quot;取得完了&quot;, vbInformation
+</code></pre>
+<p>End Sub</p>
+<p>4，Mapping（项目与值进行匹配）</p>
+<p>Option Explicit</p>
+<p>‘【功能】规范化Key值（去除全角空格并做Trim）<br>Private Function CleanKey(ByVal v As Variant) As String<br>    Dim s As String<br>    ‘ 转换为字符串<br>    s &#x3D; CStr(v)<br>    ‘ 去除全角空格（ChrW(12288) 是全角空格）<br>    s &#x3D; Replace(s, ChrW(12288), “”)<br>    ‘ 去除前后半角空格<br>    s &#x3D; Trim(s)<br>    ‘ 返回处理后的字符串作为Key<br>    CleanKey &#x3D; s<br>End Function</p>
+<p>‘【功能】将Sheet2的key&#x2F;value批量填入Sheet1（并做key清洗，填充前清除旧内容）<br>Public Sub FillItemsAndValues()<br>    ‘ wsSrc：来源sheet2，wsTgt：目标sheet1<br>    Dim wsSrc As Worksheet, wsTgt As Worksheet<br>    Dim lastSrc As Long, lastTgt As Long ‘ 数据的最后一行序号<br>    Dim r As Long                        ‘ 行循环变量<br>    Dim dict As Object                   ‘ 字典，存储清洗后的key与原始key&#x2F;value<br>    Dim k As String                      ‘ 经过CleanKey处理后的key<br>    Dim itemName As Variant, itemValue As Variant</p>
+<pre><code>&#39; 设置目标（1）和来源（2）工作表对象
+Set wsTgt = ThisWorkbook.Sheets(&quot;1&quot;)
+Set wsSrc = ThisWorkbook.Sheets(&quot;2&quot;)
+
+&#39; 查找Sheet2最后一行（A列）
+lastSrc = wsSrc.Cells(wsSrc.Rows.Count, 1).End(xlUp).Row
+&#39; 查找Sheet1最后一行（A列）
+lastTgt = wsTgt.Cells(wsTgt.Rows.Count, 1).End(xlUp).Row
+
+&#39; 创建Scripting.Dictionary对象保存key和(key, value)
+Set dict = CreateObject(&quot;Scripting.Dictionary&quot;)
+
+&#39; 将Sheet2中A、B列的全部数据写入字典，以规范化key为键
+For r = 2 To lastSrc
+    k = CleanKey(wsSrc.Cells(r, 1).Value)
+    If Len(k) &gt; 0 Then
+        itemName = wsSrc.Cells(r, 1).Value
+        itemValue = wsSrc.Cells(r, 2).Value
+        dict(k) = Array(itemName, itemValue)
+    End If
+Next r
+
+&#39; 清空Sheet1中目标填充列（B列、D列；从第2行到底）
+wsTgt.Range(wsTgt.Cells(2, 2), wsTgt.Cells(lastTgt, 2)).ClearContents
+wsTgt.Range(wsTgt.Cells(2, 4), wsTgt.Cells(lastTgt, 4)).ClearContents
+
+&#39; 提高效率：关闭屏幕刷新及自动计算
+Application.ScreenUpdating = False
+Application.Calculation = xlCalculationManual
+
+&#39; 用Sheet1每一行A列的key（做清洗）去字典里查找，
+&#39; 找到就将原始key写到B列，对应value写到D列
+For r = 2 To lastTgt
+    k = CleanKey(wsTgt.Cells(r, 1).Value)
+    If dict.Exists(k) Then
+        wsTgt.Cells(r, 2).Value = dict(k)(0) &#39; B列写原始key
+        wsTgt.Cells(r, 4).Value = dict(k)(1) &#39; D列写value
+    End If
+Next r
+
+&#39; 还原Excel设置
+Application.Calculation = xlCalculationAutomatic
+Application.ScreenUpdating = True
+
+&#39; 处理完成，弹窗提示
+MsgBox &quot;マッピング完了&quot;, vbInformation
+</code></pre>
+<p>End Sub</p>
+
+    <!-- 渲染文章正文 HTML -->
+    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  </div>
+  <!-- 文章正文结束 -->
+
+</article>
+<!-- 单篇文章容器结束 -->
+
+    <!-- 渲染当前页面内容 -->
+    <!--  保证 HTML 正常渲染，不转义 -->
+  </main>
+
+  <!-- ===== 全局脚本区域 ===== -->
+  <script>
+    // ===== 退出登录函数 =====
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "/login/";
+      // 清除登录标记并跳转登录页
+    }
+
+    // ===== 平滑滚动至顶部 =====
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      // 平滑滚动到页面顶部
+    }
+
+    // ===== 切换小屏幕菜单展开/收起 =====
+    function toggleMenu() {
+      const menu = document.querySelector('header.top-nav .menu');
+      if (menu) {
+        menu.classList.toggle('show');
+        // 切换菜单显示状态，便于移动端操作
+      }
+    }
+  </script>
+
+  <!-- ===== 可选的“返回顶部”按钮 ===== -->
+  <button id="backToTop" title="回到顶部">↑</button>
+
+  <script>
+    // ===== 返回顶部按钮逻辑 =====
+    const topBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      // 当页面向下滚动超过 300px 显示按钮，否则隐藏
+      topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    topBtn.addEventListener('click', scrollToTop);
+    // 点击按钮触发平滑滚动到顶部
+  </script>
+</body>
+</html>
