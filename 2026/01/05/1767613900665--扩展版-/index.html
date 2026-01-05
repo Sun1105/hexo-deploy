@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    📒 在线笔记 | Sun Blog
+    ～てからでないと／～てからでなければ（扩展版） | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -399,297 +399,125 @@
 
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
-    <section class="main-section">   
-  <!-- ============================
-       在线笔记系统模块
-       功能：
-         - 列出已有文章
-         - 新建文章
-         - 编辑文章（标题、分类、标签、内容）
-         - 实时 Markdown 预览
-         - 保存到 GitHub 仓库，触发 Vercel 自动部署
-  ============================ -->
-  <h1 style="text-align:center;">📒 在线笔记系统</h1>
+    <!--
+  post.ejs
+  文章详情页模板
+  功能：
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
+-->
 
-  <div style="max-width:1000px; margin:20px auto;">
-    <!-- 新建文章按钮 -->
-    <button id="newNoteBtn" style="padding:10px 15px; background:#0078d7; color:#fff; border:none; border-radius:5px; cursor:pointer;">📝 新建文章</button>
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
-    <!-- 文章列表容器 -->
-    <div id="noteList" style="margin-top:20px;"></div>
+  <!-- 文章标题 -->
+  <h1 class="post-title">～てからでないと／～てからでなければ（扩展版）</h1>
+  <!-- page.title → 当前文章标题 -->
 
-    <!-- 编辑器弹窗 -->
-    <div id="editorModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">
-      <div style="background:#fff; width:90%; max-width:800px; margin:50px auto; padding:20px; border-radius:8px; position:relative;">
-        <h2 id="editorTitle">编辑文章</h2>
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2026-01-05</span>
+    <!-- 显示文章发布日期 -->
 
-        <!-- 标题输入框 -->
-        <input type="text" id="noteTitle" placeholder="标题" style="width:100%; padding:8px; margin-bottom:10px;">
+    
+      <!-- 判断文章是否有标签 -->
 
-        <!-- 分类输入框 -->
-        <input type="text" id="noteCategory" placeholder="分类" style="width:100%; padding:8px; margin-bottom:10px;">
+      <span>标签：
+        
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E8%AF%AD%E6%B3%95/">日语语法</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+      </span>
 
-        <!-- 标签输入框 -->
-        <input type="text" id="noteTags" placeholder="标签，用逗号分隔" style="width:100%; padding:8px; margin-bottom:10px;">
-
-        <!-- 内容输入框 -->
-        <textarea id="noteContent" rows="15" style="width:100%; padding:8px;"></textarea>
-
-        <!-- 保存/取消按钮 -->
-        <div style="margin-top:10px; display:flex; gap:10px;">
-          <button id="saveNoteBtn" style="flex:1; padding:10px; background:#28a745; color:#fff; border:none; border-radius:5px; cursor:pointer;">💾 保存</button>
-          <button id="cancelEditBtn" style="flex:1; padding:10px; background:#dc3545; color:#fff; border:none; border-radius:5px; cursor:pointer;">❌ 取消</button>
-        </div>
-
-        <!-- Markdown 实时预览 -->
-        <div id="preview" style="margin-top:20px; padding:10px; border:1px solid #ddd; border-radius:5px;"></div>
-      </div>
-    </div>
+    
+    <!-- 标签判断结束 -->
   </div>
+  <!-- 文章元信息结束 -->
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-  const owner = "Sun1105";              // 替换成你的 GitHub 用户名
-  const repo = "hexo-source";           // 替换成你的仓库名
-  const postsDir = "source/_posts";     // Hexo 文章目录
-  let editingNote = null;               // 当前正在编辑的文章对象
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    <h2 id="一、中文核心意思"><a href="#一、中文核心意思" class="headerlink" title="一、中文核心意思"></a>一、中文核心意思</h2><p>表示「前项是后项成立的必要条件」，若不先完成前项，后项就无法进行、无法实现或不被允许。</p>
+<h2 id="二、一句话语感本质"><a href="#二、一句话语感本质" class="headerlink" title="二、一句话语感本质"></a>二、一句话语感本质</h2><p><strong>没有A，就绝对不能B；A 是硬性前提。</strong></p>
+<h2 id="三、结构公式（可背）"><a href="#三、结构公式（可背）" class="headerlink" title="三、结构公式（可背）"></a>三、结构公式（可背）</h2><ul>
+<li><strong>Vて + からでないと +（否定／不能／禁止）</strong></li>
+<li><strong>Vて + からでなければ +（否定／不能／禁止）</strong></li>
+</ul>
+<p>两者语气几乎相同，「～てからでなければ」更正式。</p>
+<h2 id="四、使用条件-限制"><a href="#四、使用条件-限制" class="headerlink" title="四、使用条件 &#x2F; 限制"></a>四、使用条件 &#x2F; 限制</h2><ul>
+<li>后项必须是否定、禁止、困难、不可能等内容。</li>
+<li>多用于规则、制度、流程、许可、警告、提醒。</li>
+<li>不用于表达轻松愿望或个人随意行为。</li>
+<li>不用于描述自然现象（如天气变化）。</li>
+<li>不用于表达“首次体验” → 应用「～てはじめて」。</li>
+</ul>
+<h2 id="五、日本人日常会话场景（扩展）"><a href="#五、日本人日常会话场景（扩展）" class="headerlink" title="五、日本人日常会话场景（扩展）"></a>五、日本人日常会话场景（扩展）</h2><ul>
+<li><strong>公司规定</strong><br>「登録してからでないと、システムにアクセスできません。」</li>
+<li><strong>学校规则</strong><br>「保護者の許可をもらってからでなければ、参加できません。」</li>
+<li><strong>医院流程</strong><br>「受付を済ませてからでないと、診察はできません。」</li>
+<li><strong>租房流程</strong><br>「身分証を提示してからでないと、契約はできません。」</li>
+<li><strong>家庭教育</strong><br>「部屋を片付けてからでないと、テレビ見ちゃダメ。」</li>
+</ul>
+<h2 id="六、常见错误-不自然用法（扩展）"><a href="#六、常见错误-不自然用法（扩展）" class="headerlink" title="六、常见错误 &amp; 不自然用法（扩展）"></a>六、常见错误 &amp; 不自然用法（扩展）</h2><ul>
+<li>❌ 后项使用肯定句<br>「勉強してからでないと、合格します。」（不自然）</li>
+<li>❌ 用于表达个人愿望<br>「ご飯を食べてからでないと、遊びたい。」（语感奇怪）</li>
+<li>❌ 用于自然现象<br>「雨が降ってからでないと、寒くなる。」（不自然）</li>
+<li>❌ 用于表达“首次体验”<br>「日本に行ってからでないと、日本の良さが分かった。」（应使用「～てはじめて」）</li>
+</ul>
+<h2 id="七、对比易混语法（扩展）"><a href="#七、对比易混语法（扩展）" class="headerlink" title="七、对比易混语法（扩展）"></a>七、对比易混语法（扩展）</h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>核心含义</th>
+<th>区别点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>～てからでないと／～てからでなければ</td>
+<td>不做A就不能B（必要条件）</td>
+<td>强调“必须先做A”</td>
+</tr>
+<tr>
+<td>～てから</td>
+<td>做完A再做B（顺序）</td>
+<td>不强调必要性</td>
+</tr>
+<tr>
+<td>～ないと／～なければ</td>
+<td>必须做A（义务）</td>
+<td>不强调顺序</td>
+</tr>
+<tr>
+<td>～てはじめて</td>
+<td>做了A之后第一次意识到B</td>
+<td>强调“首次体验”</td>
+</tr>
+<tr>
+<td>～た上で</td>
+<td>在做完A的基础上做B</td>
+<td>多用于正式场合，强调“在A的基础上”</td>
+</tr>
+</tbody></table>
+<h2 id="八、固定搭配-模板（扩展）"><a href="#八、固定搭配-模板（扩展）" class="headerlink" title="八、固定搭配 &#x2F; 模板（扩展）"></a>八、固定搭配 &#x2F; 模板（扩展）</h2><ul>
+<li>「～してからでないと、～できない」  </li>
+<li>「～してからでなければ、～させない」  </li>
+<li>「～してからでないと、困る」  </li>
+<li>「～してからでないと、話にならない」  </li>
+<li>「～してからでなければ、手続きが進まない」  </li>
+<li>「～してからでないと、許可が下りない」</li>
+</ul>
+<h2 id="九、一句话记忆法"><a href="#九、一句话记忆法" class="headerlink" title="九、一句话记忆法"></a>九、一句话记忆法</h2><p><strong>先做A是铁规则，不做A，B连门都没有。</strong></p>
 
-  const noteListDiv = document.getElementById('noteList');
-  const editorModal = document.getElementById('editorModal');
-  const noteTitle = document.getElementById('noteTitle');
-  const noteCategory = document.getElementById('noteCategory'); // 分类输入框
-  const noteTags = document.getElementById('noteTags');
-  const noteContent = document.getElementById('noteContent');
-  const saveNoteBtn = document.getElementById('saveNoteBtn');
-  const cancelEditBtn = document.getElementById('cancelEditBtn');
-  const previewDiv = document.getElementById('preview');
+    <!-- 渲染文章正文 HTML -->
+    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  </div>
+  <!-- 文章正文结束 -->
 
-  // 通用 fetchJson 工具函数
-  async function fetchJson(url, options = {}) {
-    const res = await fetch(url, options);
-    const contentType = res.headers.get("content-type");
-    if (contentType && contentType.includes("application/json")) {
-      const data = await res.json();
-      if (!res.ok) throw new Error(JSON.stringify(data));
-      return data;
-    } else {
-      const text = await res.text();
-      throw new Error("服务器返回的不是 JSON: " + text.slice(0,100));
-    }
-  }
+</article>
+<!-- 单篇文章容器结束 -->
 
-  // ========================
-  // 1️⃣ 列出文章列表
-  // ========================
-  async function loadNotes() {
-    noteListDiv.innerHTML = "加载中...";
-    try {
-      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${postsDir}`);
-      const data = await res.json();
-      if(res.ok){
-        noteListDiv.innerHTML = "";
-        data.forEach(file => {
-        if(file.name.endsWith(".md")){
-          const div = document.createElement('div');
-          div.className = "note-item";
-
-          // 左侧：图标 + 文件名
-          const left = document.createElement('div');
-          left.style.display = "flex";
-          left.style.alignItems = "center";
-
-          const icon = document.createElement('span');
-          icon.className = "note-icon";
-          icon.textContent = "📄";
-
-          const title = document.createElement('span');
-          title.className = "note-title";
-          title.textContent = file.name;
-
-          left.appendChild(icon);
-          left.appendChild(title);
-
-          // 右侧：附加信息（比如更新时间）
-          const meta = document.createElement('span');
-          meta.className = "note-meta";
-          meta.textContent = (file.size / 1024).toFixed(1) + " KB";
-
-          div.appendChild(left);
-          div.appendChild(meta);
-
-          div.addEventListener('click', () => openEditor(file));
-          noteListDiv.appendChild(div);
-        }
-        });
-      } else {
-        noteListDiv.innerHTML = "❌ 获取文章列表失败：" + JSON.stringify(data);
-      }
-    } catch(err){
-      noteListDiv.innerHTML = "❌ 网络错误：" + err.message;
-    }
-  }
-
-  // ========================
-  // 2️⃣ 打开编辑器
-  // ========================
-  async function openEditor(file){
-    editingNote = file;
-    try {
-      const res = await fetch(file.download_url);
-      const contentText = await res.text();
-      const shaRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${postsDir}/${file.name}`);
-      const shaData = await shaRes.json();
-      editingNote.sha = shaData.sha;
-
-      // 填充编辑器
-      noteTitle.value = contentText.match(/title:\s*(.*)/)?.[1] || file.name;
-      noteCategory.value = contentText.match(/category:\s*(.*)/)?.[1] || ""; // 分类
-      noteTags.value = contentText.match(/tags:\s*\[(.*)\]/)?.[1] || "";
-      noteContent.value = contentText.split('---').slice(2).join('---').trim();
-
-      previewDiv.innerHTML = marked.parse(noteContent.value);
-      editorModal.style.display = "block";
-    } catch(err){
-      alert("❌ 打开编辑器失败：" + err.message);
-    }
-  }
-
-  // ========================
-  // 3️⃣ 新建文章
-  // ========================
-  document.getElementById('newNoteBtn').addEventListener('click', () => {
-    editingNote = null;
-    noteTitle.value = "";
-    noteCategory.value = "";
-    noteTags.value = "";
-    noteContent.value = "";
-    previewDiv.innerHTML = "";
-    editorModal.style.display = "block";
-  });
-
-  // ========================
-  // 4️⃣ 保存文章
-  // ========================
-  saveNoteBtn.addEventListener('click', async () => {
-    const title = noteTitle.value.trim();
-    const category = noteCategory.value.trim(); // 分类
-    const tags = noteTags.value.split(',').map(t=>t.trim()).filter(Boolean);
-    const content = noteContent.value.trim();
-
-    if(!title || !content){
-      alert("标题和内容不能为空！");
-      return;
-    }
-
-const mdContent = `\u002d\u002d\u002d
-title: ${title}
-category: ${category}
-tags: [${tags.join(', ')}]
-date: ${new Date().toISOString()}
-\u002d\u002d\u002d
-
-${content}
-`;
-
-    try {
-      let path, sha, message;
-      if(editingNote){
-        path = `${postsDir}/${editingNote.name}`;
-        sha = editingNote.sha;
-        message = `编辑文章: ${title}`;
-      } else {
-        const safeTitle = title.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]+/g, '-');
-        const fileName = `${Date.now()}-${safeTitle}.md`;
-        path = `${postsDir}/${fileName}`;
-        sha = undefined;
-        message = `新建文章: ${title}`;
-      }
-
-    try {
-      const data = await fetchJson(editingNote ? '/api/edit-note' : '/api/new-note', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ path, sha, content: mdContent, message })
-      });
-      alert('✅ 保存成功！请稍等 Vercel 自动部署。');
-      editorModal.style.display = "none";
-      loadNotes();
-    } catch(err){
-      alert("❌ 保存失败：" + err.message);
-    }
-
-    } catch(err){
-      alert("❌ 网络或服务器错误：" + err.message);
-    }
-  });
-
-  // ========================
-  // 5️⃣ 取消编辑
-  // ========================
-  cancelEditBtn.addEventListener('click', () => {
-    editorModal.style.display = "none";
-  });
-
-  // ========================
-  // 6️⃣ 实时 Markdown 预览
-  // ========================
-  noteContent.addEventListener('input', () => {
-    previewDiv.innerHTML = marked.parse(noteContent.value);
-  });
-
-  // ========================
-  // 7️⃣ 初始化加载文章列表
-  // ========================
-  loadNotes();
-  </script>
-  <style>
-    /* 文件列表整体容器 */
-    #noteList {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    /* 单个文章项 */
-    .note-item {
-      padding: 12px 16px;
-      border: 1px solid #e0e0e0;
-      border-radius: 6px;
-      background: #fafafa;
-      transition: all 0.2s ease;
-      font-family: "Segoe UI", sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    /* 鼠标悬停效果 */
-    .note-item:hover {
-      background: #f0f8ff;
-      border-color: #0078d7;
-      transform: translateY(-2px);
-      cursor: pointer;
-    }
-
-    /* 文件名 */
-    .note-title {
-      font-weight: 600;
-      color: #333;
-    }
-
-    /* 文件图标 */
-    .note-icon {
-      margin-right: 8px;
-      color: #0078d7;
-    }
-
-    /* 时间戳或附加信息 */
-    .note-meta {
-      font-size: 12px;
-      color: #666;
-    }
-  </style>
-</section>
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
   </main>
