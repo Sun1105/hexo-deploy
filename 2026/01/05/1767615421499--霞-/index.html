@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    VBA工具 | Sun Blog
+    かすみ（霞） | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -412,12 +412,12 @@
   <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
   <!-- 文章标题 -->
-  <h1 class="post-title">VBA工具</h1>
+  <h1 class="post-title">かすみ（霞）</h1>
   <!-- page.title → 当前文章标题 -->
 
   <!-- 文章元信息：发布日期 + 标签 -->
   <div class="post-meta">
-    <span>发表于 2025-11-30</span>
+    <span>发表于 2026-01-05</span>
     <!-- 显示文章发布日期 -->
 
     
@@ -425,7 +425,7 @@
 
       <span>标签：
         
-          <a href="/tags/TOOL/">TOOL</a>
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E5%8D%95%E8%AF%8D/">日语单词</a>
           
           <!-- 遍历文章标签，生成标签链接 -->
           <!-- 多个标签用逗号分隔 -->
@@ -439,103 +439,96 @@
 
   <!-- 文章正文内容 -->
   <div class="post-content">
-    <h1 id="VBA-工具宏说明文档"><a href="#VBA-工具宏说明文档" class="headerlink" title="VBA 工具宏说明文档"></a>VBA 工具宏说明文档</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a><strong>概述</strong></h2><p>本 VBA 工具提供以下功能：</p>
-<ul>
-<li><strong>运行批处理文件</strong>（如服务器启动脚本）</li>
-<li><strong>打开指定 Excel 工具文件</strong></li>
-<li><strong>记录错误日志</strong></li>
+    <h2 id="一、中文核心意思"><a href="#一、中文核心意思" class="headerlink" title="一、中文核心意思"></a>一、中文核心意思</h2><p>「かすみ」意为<strong>雾气、薄雾、轻烟般的朦胧状态</strong>，也可引申为<strong>模糊、不清楚、朦胧的事物</strong>。</p>
+<h2 id="二、一句话语感本质"><a href="#二、一句话语感本质" class="headerlink" title="二、一句话语感本质"></a>二、一句话语感本质</h2><p><strong>轻轻一层薄雾，让事物变得朦胧、看不清。</strong></p>
+<h2 id="三、结构公式（可背）"><a href="#三、结构公式（可背）" class="headerlink" title="三、结构公式（可背）"></a>三、结构公式（可背）</h2><ul>
+<li><strong>かすみ（名词）＝薄雾、雾气</strong></li>
+<li><strong>かすむ（动词）＝变得模糊／被雾气遮住</strong></li>
+<li><strong>目がかすむ＝视线模糊</strong></li>
 </ul>
-<p>该工具适用于自动化操作，减少手动执行命令和打开文件的工作量。</p>
-<hr>
-<h2 id="功能列表"><a href="#功能列表" class="headerlink" title="功能列表"></a><strong>功能列表</strong></h2><h3 id="1-RunBat"><a href="#1-RunBat" class="headerlink" title="1. RunBat"></a><strong>1. RunBat</strong></h3><p><strong>功能</strong>：运行指定文件夹中的批处理文件（<code>起動.bat</code>）<br><strong>参数</strong>：<code>folderPath</code> - 批处理文件所在的文件夹路径  </p>
-<pre><code class="language-vb">
-&#39;-----------------------------------------------
-&#39; 功能：运行指定文件夹中的批处理文件（起動.bat）
-&#39; 参数：folderPath - 批处理文件所在的文件夹路径
-&#39;-----------------------------------------------
-Public Sub RunBat(folderPath As String)
-    Dim wsh As Object
-    Dim batPath As String
-    
-    &#39; 拼接批处理文件完整路径
-    batPath = folderPath &amp; &quot;\起動.bat&quot;
-    
-    &#39; 判断文件是否存在
-    If Dir(batPath) &lt;&gt; &quot;&quot; Then
-        &#39; 创建 WScript.Shell 对象，用于执行命令行
-        Set wsh = CreateObject(&quot;WScript.Shell&quot;)
-        
-        &#39; 使用 cmd.exe 打开命令行窗口，切换到指定目录并运行起動.bat
-        &#39; /k 表示执行后保持窗口打开
-        wsh.Run &quot;cmd.exe /k &quot;&quot;cd /d &quot; &amp; folderPath &amp; &quot; &amp; 起動.bat&quot;&quot;&quot;, 1, True
-    Else
-        &#39; 文件不存在时弹出提示框，并记录错误日志
-        MsgBox &quot;文件不存在：&quot; &amp; batPath, vbExclamation
-        LogError &quot;文件不存在：&quot; &amp; batPath
-    End If
-End Sub
-
-
-&#39;-----------------------------------------------
-&#39; 功能：打开指定路径的 Excel 文件
-&#39; 参数：relativePath - 相对路径（相对于当前工作簿路径）
-&#39;-----------------------------------------------
-Public Sub OpenExcelTool(relativePath As String)
-    Dim filePath As String
-    
-    &#39; 拼接 Excel 文件完整路径
-    filePath = ThisWorkbook.Path &amp; &quot;\&quot; &amp; relativePath
-    
-    &#39; 判断文件是否存在
-    If Dir(filePath) &lt;&gt; &quot;&quot; Then
-        &#39; 打开 Excel 文件
-        Workbooks.Open filePath
-    Else
-        &#39; 文件不存在时弹出提示框，并记录错误日志
-        MsgBox &quot;Excel 文件不存在：&quot; &amp; filePath, vbExclamation
-        LogError &quot;Excel 文件不存在：&quot; &amp; filePath
-    End If
-End Sub
-
-
-&#39;-----------------------------------------------
-&#39; 功能：记录错误信息到日志文件
-&#39; 参数：errorMsg - 错误信息
-&#39;-----------------------------------------------
-Public Sub LogError(errorMsg As String)
-    Dim logFile As String
-    Dim fNum As Integer
-    
-    &#39; 日志文件路径（与当前工作簿同目录）
-    logFile = ThisWorkbook.Path &amp; &quot;\ErrorLog.txt&quot;
-    
-    &#39; 获取空闲文件号
-    fNum = FreeFile
-    
-    &#39; 以追加模式打开日志文件，并写入当前时间和错误信息
-    Open logFile For Append As #fNum
-    Print #fNum, Now &amp; &quot; - &quot; &amp; errorMsg
-    Close #fNum
-End Sub
-
-
-&#39;-----------------------------------------------
-&#39; 功能：运行服务器工具的批处理文件
-&#39;-----------------------------------------------
-Public Sub RunServerBat()
-    &#39; 调用 RunBat 方法，传入服务器工具路径
-    RunBat &quot;C:\Users\Desktop\TOOL\ServerTool&quot;
-End Sub
-
-
-&#39;-----------------------------------------------
-&#39; 功能：打开 ITA 测试工具 Excel 文件
-&#39;-----------------------------------------------
-Public Sub OpenITATestTool()
-    &#39; 调用 OpenExcelTool 方法，传入 ITA 测试工具相对路径
-    OpenExcelTool &quot;TOOL\ITATestTool\ITaTestTool.xlsm&quot;
-End Sub
-</code></pre>
+<h2 id="四、使用条件-限制"><a href="#四、使用条件-限制" class="headerlink" title="四、使用条件 &#x2F; 限制"></a>四、使用条件 &#x2F; 限制</h2><ul>
+<li>多用于自然景象（山、湖、早晨的雾气）。</li>
+<li>也可用于比喻：事物模糊、印象不清、视线模糊。</li>
+<li>不用于浓雾（那是「霧（きり）」），「かすみ」强调<strong>轻薄、朦胧、美感</strong>。</li>
+</ul>
+<h2 id="五、日本人日常会话场景（含详细中文注解）"><a href="#五、日本人日常会话场景（含详细中文注解）" class="headerlink" title="五、日本人日常会话场景（含详细中文注解）"></a>五、日本人日常会话场景（含详细中文注解）</h2><ol>
+<li><p><strong>朝の山がかすみに包まれている。</strong>  </p>
+<ul>
+<li>かすみに包まれている：被薄雾笼罩  </li>
+<li>中文注解：清晨的山被薄雾轻轻包围着。</li>
+</ul>
+</li>
+<li><p><strong>疲れているのか、目がかすむ。</strong>  </p>
+<ul>
+<li>目がかすむ：视线模糊  </li>
+<li>中文注解：可能是累了，眼睛有些模糊。</li>
+</ul>
+</li>
+<li><p><strong>遠くの景色がかすんで見える。</strong>  </p>
+<ul>
+<li>かすんで見える：看起来模糊  </li>
+<li>中文注解：远处的景色看起来朦朦胧胧的。</li>
+</ul>
+</li>
+<li><p><strong>記憶がかすんでいる。</strong>  </p>
+<ul>
+<li>比喻用法  </li>
+<li>中文注解：记忆变得模糊不清。</li>
+</ul>
+</li>
+</ol>
+<h2 id="六、常见错误-不自然用法"><a href="#六、常见错误-不自然用法" class="headerlink" title="六、常见错误 &amp; 不自然用法"></a>六、常见错误 &amp; 不自然用法</h2><ul>
+<li>❌ <strong>把浓雾说成かすみ</strong>  <ul>
+<li>浓雾应该用「霧（きり）」  </li>
+<li>中文：かすみ是轻雾，不是大雾。</li>
+</ul>
+</li>
+<li>❌ <strong>用于强烈遮挡视线的情况</strong>  <ul>
+<li>如烟雾弥漫、沙尘暴 → 不用かすみ。</li>
+</ul>
+</li>
+<li>❌ <strong>把“模糊不清的声音”说成かすみ</strong>  <ul>
+<li>声音模糊用「ぼやける」「くぐもる」。</li>
+</ul>
+</li>
+</ul>
+<h2 id="七、对比易混词汇"><a href="#七、对比易混词汇" class="headerlink" title="七、对比易混词汇"></a>七、对比易混词汇</h2><table>
+<thead>
+<tr>
+<th>词汇</th>
+<th>含义</th>
+<th>区别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>かすみ（霞）</td>
+<td>轻雾、朦胧</td>
+<td>带美感、轻薄</td>
+</tr>
+<tr>
+<td>霧（きり）</td>
+<td>雾、浓雾</td>
+<td>更厚、更遮挡视线</td>
+</tr>
+<tr>
+<td>もや</td>
+<td>轻雾、雾气</td>
+<td>更口语，不如「かすみ」文雅</td>
+</tr>
+<tr>
+<td>ぼやける</td>
+<td>模糊（视觉）</td>
+<td>不限于雾，可因疲劳、老花等</td>
+</tr>
+</tbody></table>
+<h2 id="八、固定搭配-模板"><a href="#八、固定搭配-模板" class="headerlink" title="八、固定搭配 &#x2F; 模板"></a>八、固定搭配 &#x2F; 模板</h2><ul>
+<li><strong>かすみがかかる</strong>：起薄雾  </li>
+<li><strong>かすみに包まれる</strong>：被薄雾笼罩  </li>
+<li><strong>目がかすむ</strong>：眼睛模糊  </li>
+<li><strong>記憶がかすむ</strong>：记忆模糊  </li>
+<li><strong>かすんで見える</strong>：看起来模糊</li>
+</ul>
+<h2 id="九、一句话记忆法"><a href="#九、一句话记忆法" class="headerlink" title="九、一句话记忆法"></a>九、一句话记忆法</h2><p><strong>かすみ＝轻柔薄雾，让世界变得朦胧。</strong></p>
 
     <!-- 渲染文章正文 HTML -->
     <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
