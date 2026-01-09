@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    📘 巡る（めぐる） | Sun Blog
+    Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -424,91 +424,113 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  post.ejs
-  文章详情页模板
+  category.ejs
+  分类页面模板
   功能：
-    - 显示文章标题
-    - 显示文章发布日期和标签
-    - 渲染文章正文内容
+    - 显示分类标题
+    - 遍历当前分类下所有文章
+    - 渲染文章卡片列表
+    - 当分类下无文章时显示提示
 -->
 
-<article class="post">
-  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
+<section class="main-section">
+  <!-- 页面主容器，控制布局和样式 -->
+
+  <!-- 分类标题 -->
+  <h2 class="section-title">📘 AI组合 分类</h2>
+  <!-- emoji 📘 用于视觉增强 -->
+  <!-- AI组合 动态输出当前页面所属分类名称 -->
+  <!-- 显示示例：📘 Java 分类 -->
+
+  <div class="post-list">
+    <!-- 文章列表容器，用于放置文章卡片 -->
+
+    
+    <!-- 判断当前分类下是否有文章 -->
+    <!-- page.posts → 当前页面文章数组 -->
+    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
+
+      
+      <!-- 遍历当前分类下每篇文章 post -->
+      <!-- post 对象包含文章标题、路径、日期、分类、标签、摘要等信息 -->
+
+        <!--
+  _partial/post-card.ejs
+  功能：
+    - 渲染单篇文章的卡片
+    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
+    - 可在分类页、标签页、归档页复用
+-->
+
+<article class="post-card">
+  <!-- 单篇文章卡片容器，用于布局和样式 -->
 
   <!-- 文章标题 -->
-  <h1 class="post-title">📘 巡る（めぐる）</h1>
-  <!-- page.title → 当前文章标题 -->
+  <h3 class="post-title">
+    <a href="/2026/01/08/1767946666990--%E6%97%A5%E6%9C%AC%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E5%90%84%E9%98%B6%E6%AE%B5-AI-%E7%BB%84%E5%90%88%E6%8E%A8%E8%8D%90/">🇯🇵 日本项目开发各阶段 × AI 组合推荐</a>
+    <!-- 链接到文章详情页 -->
+    <!-- url_for(post.path) → 生成文章路径 -->
+    <!-- post.title → 当前文章标题 -->
+  </h3>
 
-  <!-- 文章元信息：发布日期 + 标签 -->
-  <div class="post-meta">
-    <span>发表于 2025-12-15</span>
+  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
+  <p class="post-meta">
+    发布于 2026-01-09
     <!-- 显示文章发布日期 -->
 
-    
-      <!-- 判断文章是否有标签 -->
-
-      <span>标签：
+     |
+      分类：
+      
+        <a href="/categories/AI%E7%BB%84%E5%90%88/">AI组合</a>
         
-          <a href="/tags/%E6%97%A5%E8%AF%AD%E5%8D%95%E8%AF%8D/">日语单词</a>
-          
-          <!-- 遍历文章标签，生成标签链接 -->
-          <!-- 多个标签用逗号分隔 -->
-        
-      </span>
-
+        <!-- 遍历文章分类 -->
+        <!-- 多个分类用逗号分隔 -->
+      
     
-    <!-- 标签判断结束 -->
-  </div>
+
+     |
+      标签：
+      
+        <a href="/tags/AI%E7%BB%84%E5%90%88/">AI组合</a>
+        
+        <!-- 遍历文章标签 -->
+        <!-- 多个标签用逗号分隔 -->
+      
+    
+  </p>
   <!-- 文章元信息结束 -->
 
-  <!-- 文章正文内容 -->
-  <div class="post-content">
-    <h2 id="1-基本意味"><a href="#1-基本意味" class="headerlink" title="1. 基本意味"></a>1. 基本意味</h2><p>「めぐる」是一个 <strong>自动词（五段动词）</strong>，核心含义是 <strong>围绕、循环、巡回</strong>。<br>常用于表示事物 <strong>围绕某个中心点或主题发生</strong>，或 <strong>不断循环往复</strong>。</p>
-<hr>
-<h2 id="2-语感（ニュアンス）"><a href="#2-语感（ニュアンス）" class="headerlink" title="2. 语感（ニュアンス）"></a>2. 语感（ニュアンス）</h2><ul>
-<li><strong>空间上的循环&#x2F;环绕</strong>：围绕某物移动或巡回。  </li>
-<li><strong>时间上的循环</strong>：季节、时间不断更替。  </li>
-<li><strong>抽象意义</strong>：围绕某个话题、问题展开。</li>
-</ul>
-<p>👉 「めぐる」带有 <strong>反复、循环、围绕主题</strong> 的语感。</p>
-<hr>
-<h2 id="3-使用场景"><a href="#3-使用场景" class="headerlink" title="3. 使用场景"></a>3. 使用场景</h2><ul>
-<li><strong>自然现象</strong>：季節がめぐる（季节循环）。  </li>
-<li><strong>空间移动</strong>：地球が太陽をめぐる（地球绕着太阳转）。  </li>
-<li><strong>抽象话题</strong>：憲法改正をめぐる議論（围绕宪法修改的讨论）。</li>
-</ul>
-<hr>
-<h2 id="4-例句"><a href="#4-例句" class="headerlink" title="4. 例句"></a>4. 例句</h2><ul>
-<li><p>季節がめぐって春になった。<br>（季节更替，到了春天。）</p>
-</li>
-<li><p>地球は太陽をめぐっている。<br>（地球绕着太阳运行。）</p>
-</li>
-<li><p>その問題をめぐって激しい議論が行われた。<br>（围绕那个问题展开了激烈的讨论。）</p>
-</li>
-</ul>
-<hr>
-<h2 id="5-类似词汇"><a href="#5-类似词汇" class="headerlink" title="5. 类似词汇"></a>5. 类似词汇</h2><ul>
-<li><strong>回る（まわる）</strong>：转动、旋转，更偏物理动作。  </li>
-<li><strong>循環する（じゅんかんする）</strong>：循环，强调系统性。  </li>
-<li><strong>取り巻く（とりまく）</strong>：围绕、包围。</li>
-</ul>
-<hr>
-<h2 id="6-英语对应"><a href="#6-英语对应" class="headerlink" title="6. 英语对应"></a>6. 英语对应</h2><p>根据语境不同：  </p>
-<ul>
-<li><strong>go around &#x2F; revolve around</strong>（空间上的环绕）  </li>
-<li><strong>circulate &#x2F; cycle</strong>（时间或事物的循环）  </li>
-<li><strong>be about &#x2F; concern &#x2F; surrounding</strong>（抽象话题的围绕）</li>
-</ul>
-<hr>
-<h2 id="✅-总结"><a href="#✅-总结" class="headerlink" title="✅ 总结"></a>✅ 总结</h2><p>「めぐる」表示 <strong>围绕、循环、巡回</strong>，既可用于 <strong>自然现象、空间运动</strong>，也可用于 <strong>抽象话题</strong>。<br>关键词：<strong>环绕、循环、围绕主题</strong>。</p>
+  <!-- 文章摘要 -->
+  <p class="post-excerpt">
+    （暂无摘要）
+    <!-- 显示文章摘要 -->
+    <!-- 去掉 HTML 标签，只保留纯文本 -->
+    <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
+  </p>
 
-    <!-- 渲染文章正文 HTML -->
-    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
-  </div>
-  <!-- 文章正文结束 -->
+  <!-- 阅读全文按钮 -->
+  <a href="/2026/01/08/1767946666990--%E6%97%A5%E6%9C%AC%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E5%90%84%E9%98%B6%E6%AE%B5-AI-%E7%BB%84%E5%90%88%E6%8E%A8%E8%8D%90/" class="read-more">阅读全文 →</a>
+  <!-- 链接到文章详情页 -->
+  <!-- CSS class "read-more" 用于样式化按钮 -->
 
 </article>
-<!-- 单篇文章容器结束 -->
+<!-- 单篇文章卡片结束 -->
+
+        <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
+        <!-- 将当前文章对象 post 传入模板 -->
+        <!--  输出 HTML，不转义，保证标签正常显示 -->
+
+      
+      <!-- 遍历文章结束 -->
+
+    
+    <!-- 条件判断结束 -->
+
+  </div>
+  <!-- 文章列表容器结束 -->
+
+</section>
+<!-- 页面主容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
