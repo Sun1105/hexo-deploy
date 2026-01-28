@@ -441,66 +441,14 @@
 
     <!-- 文章列表容器 -->
     <div id="noteList" style="margin-top:20px;"></div>
-
-    <!-- 编辑器弹窗 -->
-    <div id="editorModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">
-      <div style="background:#fff; width:90%; max-width:800px; margin:50px auto; padding:20px; border-radius:8px; position:relative;">
-        <h2 id="editorTitle">编辑文章</h2>
-
-        <!-- 标题输入框 -->
-        <input type="text" id="noteTitle" placeholder="标题" style="width:100%; padding:8px; margin-bottom:10px;">
-
-        <!-- 分类输入框 -->
-        <input type="text" id="noteCategory" placeholder="分类" style="width:100%; padding:8px; margin-bottom:10px;">
-
-        <!-- 标签输入框 -->
-        <input type="text" id="noteTags" placeholder="标签，用逗号分隔" style="width:100%; padding:8px; margin-bottom:10px;">
-
-        <!-- 内容输入框 -->
-        <textarea id="noteContent" rows="15" style="width:100%; padding:8px;"></textarea>
-
-        <!-- 保存/取消按钮 -->
-        <div style="margin-top:10px; display:flex; gap:10px;">
-          <button id="saveNoteBtn" style="flex:1; padding:10px; background:#28a745; color:#fff; border:none; border-radius:5px; cursor:pointer;">💾 保存</button>
-          <button id="cancelEditBtn" style="flex:1; padding:10px; background:#dc3545; color:#fff; border:none; border-radius:5px; cursor:pointer;">❌ 取消</button>
-        </div>
-
-        <!-- Markdown 实时预览 -->
-        <div id="preview" style="margin-top:20px; padding:10px; border:1px solid #ddd; border-radius:5px;"></div>
-      </div>
-    </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
   const owner = "Sun1105";              // 替换成你的 GitHub 用户名
   const repo = "hexo-source";           // 替换成你的仓库名
   const postsDir = "source/_posts";     // Hexo 文章目录
-  let editingNote = null;               // 当前正在编辑的文章对象
 
   const noteListDiv = document.getElementById('noteList');
-  const editorModal = document.getElementById('editorModal');
-  const noteTitle = document.getElementById('noteTitle');
-  const noteCategory = document.getElementById('noteCategory'); // 分类输入框
-  const noteTags = document.getElementById('noteTags');
-  const noteContent = document.getElementById('noteContent');
-  const saveNoteBtn = document.getElementById('saveNoteBtn');
-  const cancelEditBtn = document.getElementById('cancelEditBtn');
-  const previewDiv = document.getElementById('preview');
-
-  // 通用 fetchJson 工具函数
-  async function fetchJson(url, options = {}) {
-    const res = await fetch(url, options);
-    const contentType = res.headers.get("content-type");
-    if (contentType && contentType.includes("application/json")) {
-      const data = await res.json();
-      if (!res.ok) throw new Error(JSON.stringify(data));
-      return data;
-    } else {
-      const text = await res.text();
-      throw new Error("服务器返回的不是 JSON: " + text.slice(0,100));
-    }
-  }
 
   // ========================
   // 1️⃣ 列出文章列表
@@ -541,7 +489,14 @@
           div.appendChild(left);
           div.appendChild(meta);
 
-          div.addEventListener('click', () => openEditor(file));
+          // 使用全局 openEditor 函数
+          div.addEventListener('click', () => {
+             if (window.openEditor) {
+                window.openEditor(file);
+             } else {
+                alert('Editor component not loaded.');
+             }
+          });
           noteListDiv.appendChild(div);
         }
         });
@@ -554,117 +509,22 @@
   }
 
   // ========================
-  // 2️⃣ 打开编辑器
-  // ========================
-  async function openEditor(file){
-    editingNote = file;
-    try {
-      const res = await fetch(file.download_url);
-      const contentText = await res.text();
-      const shaRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${postsDir}/${file.name}`);
-      const shaData = await shaRes.json();
-      editingNote.sha = shaData.sha;
-
-      // 填充编辑器
-      noteTitle.value = contentText.match(/title:\s*(.*)/)?.[1] || file.name;
-      noteCategory.value = contentText.match(/category:\s*(.*)/)?.[1] || ""; // 分类
-      noteTags.value = contentText.match(/tags:\s*\[(.*)\]/)?.[1] || "";
-      noteContent.value = contentText.split('---').slice(2).join('---').trim();
-
-      previewDiv.innerHTML = marked.parse(noteContent.value);
-      editorModal.style.display = "block";
-    } catch(err){
-      alert("❌ 打开编辑器失败：" + err.message);
-    }
-  }
-
-  // ========================
-  // 3️⃣ 新建文章
+  // 2️⃣ 新建文章
   // ========================
   document.getElementById('newNoteBtn').addEventListener('click', () => {
-    editingNote = null;
-    noteTitle.value = "";
-    noteCategory.value = "";
-    noteTags.value = "";
-    noteContent.value = "";
-    previewDiv.innerHTML = "";
-    editorModal.style.display = "block";
-  });
-
-  // ========================
-  // 4️⃣ 保存文章
-  // ========================
-  saveNoteBtn.addEventListener('click', async () => {
-    const title = noteTitle.value.trim();
-    const category = noteCategory.value.trim(); // 分类
-    const tags = noteTags.value.split(',').map(t=>t.trim()).filter(Boolean);
-    const content = noteContent.value.trim();
-
-    if(!title || !content){
-      alert("标题和内容不能为空！");
-      return;
-    }
-
-const mdContent = `\u002d\u002d\u002d
-title: ${title}
-category: ${category}
-tags: [${tags.join(', ')}]
-date: ${new Date().toISOString()}
-\u002d\u002d\u002d
-
-${content}
-`;
-
-    try {
-      let path, sha, message;
-      if(editingNote){
-        path = `${postsDir}/${editingNote.name}`;
-        sha = editingNote.sha;
-        message = `编辑文章: ${title}`;
+      if (window.openEditor) {
+          window.openEditor(null);
       } else {
-        const safeTitle = title.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]+/g, '-');
-        const fileName = `${Date.now()}-${safeTitle}.md`;
-        path = `${postsDir}/${fileName}`;
-        sha = undefined;
-        message = `新建文章: ${title}`;
+          alert('Editor component not loaded.');
       }
-
-    try {
-      const data = await fetchJson(editingNote ? '/api/edit-note' : '/api/new-note', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ path, sha, content: mdContent, message })
-      });
-      alert('✅ 保存成功！请稍等 Vercel 自动部署。');
-      editorModal.style.display = "none";
-      loadNotes();
-    } catch(err){
-      alert("❌ 保存失败：" + err.message);
-    }
-
-    } catch(err){
-      alert("❌ 网络或服务器错误：" + err.message);
-    }
   });
 
   // ========================
-  // 5️⃣ 取消编辑
-  // ========================
-  cancelEditBtn.addEventListener('click', () => {
-    editorModal.style.display = "none";
-  });
-
-  // ========================
-  // 6️⃣ 实时 Markdown 预览
-  // ========================
-  noteContent.addEventListener('input', () => {
-    previewDiv.innerHTML = marked.parse(noteContent.value);
-  });
-
-  // ========================
-  // 7️⃣ 初始化加载文章列表
+  // 3️⃣ 初始化加载文章列表
   // ========================
   loadNotes();
+  // 暴露 loadNotes 给全局，以便保存后刷新
+  window.loadNotes = loadNotes;
   </script>
   <style>
     /* 文件列表整体容器 */
@@ -714,6 +574,7 @@ ${content}
     }
   </style>
 </section>
+
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
   </main>
@@ -756,5 +617,273 @@ ${content}
     topBtn.addEventListener('click', scrollToTop);
     // 点击按钮触发平滑滚动到顶部
   </script>
+  <!-- ===== 引入编辑器弹窗组件 ===== -->
+  <div id="editorModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index: 1000;">
+  <div style="background:#fff; width:90%; max-width:800px; margin:50px auto; padding:20px; border-radius:8px; position:relative; max-height: 90vh; overflow-y: auto;">
+    <h2 id="editorTitle">编辑文章</h2>
+
+    <!-- 标题输入框 -->
+    <input type="text" id="noteTitle" placeholder="标题" style="width:100%; padding:8px; margin-bottom:10px;">
+
+    <!-- 分类输入框 -->
+    <input type="text" id="noteCategory" placeholder="分类" style="width:100%; padding:8px; margin-bottom:10px;">
+
+    <!-- 标签输入框 -->
+    <input type="text" id="noteTags" placeholder="标签，用逗号分隔" style="width:100%; padding:8px; margin-bottom:10px;">
+
+    <!-- 内容输入框 -->
+    <textarea id="noteContent" rows="15" style="width:100%; padding:8px; font-family: monospace;"></textarea>
+
+    <!-- 保存/取消按钮 -->
+    <div style="margin-top:10px; display:flex; gap:10px;">
+      <button id="saveNoteBtn" style="flex:1; padding:10px; background:#28a745; color:#fff; border:none; border-radius:5px; cursor:pointer;">💾 保存</button>
+      <button id="cancelEditBtn" style="flex:1; padding:10px; background:#dc3545; color:#fff; border:none; border-radius:5px; cursor:pointer;">❌ 取消</button>
+    </div>
+
+    <!-- Markdown 实时预览 -->
+    <div id="preview" style="margin-top:20px; padding:10px; border:1px solid #ddd; border-radius:5px; background: #f9f9f9;"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+<script>
+(function() {
+  const owner = "Sun1105";              // GitHub 用户名
+  const repo = "hexo-source";           // 仓库名
+  const postsDir = "source/_posts";     // 文章目录
+  let editingNote = null;               // 当前正在编辑的文章对象
+
+  const editorModal = document.getElementById('editorModal');
+  const noteTitle = document.getElementById('noteTitle');
+  const noteCategory = document.getElementById('noteCategory');
+  const noteTags = document.getElementById('noteTags');
+  const noteContent = document.getElementById('noteContent');
+  const saveNoteBtn = document.getElementById('saveNoteBtn');
+  const cancelEditBtn = document.getElementById('cancelEditBtn');
+  const previewDiv = document.getElementById('preview');
+
+  // 暴露给全局的函数
+  window.openEditor = async function(pathOrFile) {
+    let file;
+    
+    if (!pathOrFile) {
+        // 新建文章
+        file = null;
+    } else if (typeof pathOrFile === 'string') {
+        // 如果传入的是字符串（路径），则获取文件信息
+        let cleanPath = pathOrFile.replace(/\\/g, '/'); // 确保是正斜杠
+        if (!cleanPath.startsWith('source/')) {
+            cleanPath = 'source/' + cleanPath;
+        }
+        
+        // 处理中文路径
+        const encodedPath = cleanPath.split('/').map(encodeURIComponent).join('/');
+
+        try {
+            console.log(`正在获取文件信息: ${encodedPath}`);
+            const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${encodedPath}`);
+            if (!res.ok) {
+                const errText = await res.text();
+                throw new Error(`无法获取文件信息 (Status: ${res.status}): ${errText}`);
+            }
+            file = await res.json();
+        } catch (e) {
+            console.error(e);
+            alert('获取文件失败: ' + e.message + '\n请检查控制台 (F12) 获取更多信息。');
+            return;
+        }
+    } else {
+        file = pathOrFile;
+    }
+
+    editingNote = file;
+    editorModal.style.display = "block";
+
+    if (!file) {
+        // 新建模式
+        noteTitle.value = "";
+        noteCategory.value = "";
+        noteTags.value = "";
+        noteContent.value = "";
+        previewDiv.innerHTML = "";
+        document.getElementById('editorTitle').innerText = "新建文章";
+        return;
+    }
+
+    // 编辑模式
+    document.getElementById('editorTitle').innerText = "编辑文章";
+    noteTitle.value = "加载中...";
+    noteContent.value = "加载中...";
+
+    try {
+      // 获取文件内容
+      // 如果没有content属性，可能需要再次获取blob? 通常contents API返回content
+      let content = "";
+      if (file.content) {
+        // GitHub API returns base64 content with newlines
+        content = decodeURIComponent(escape(window.atob(file.content.replace(/\n/g, ""))));
+      } else {
+        // 尝试通过download_url获取? 
+        // 简化起见，假设content存在
+      }
+
+      // 解析Front Matter
+      // 使用 js-yaml 解析
+      const parts = content.split(/^---$/m);
+      if (parts.length >= 3) {
+        const frontMatterRaw = parts[1];
+        const body = parts.slice(2).join('---').trim();
+        
+        try {
+            const frontMatter = jsyaml.load(frontMatterRaw);
+            
+            // 标题
+            noteTitle.value = frontMatter.title || "";
+            
+            // 分类
+            if (frontMatter.categories) {
+                if (Array.isArray(frontMatter.categories)) {
+                    // 如果是数组，展平并用逗号分隔
+                    noteCategory.value = frontMatter.categories.flat().join(", ");
+                } else {
+                    noteCategory.value = frontMatter.categories;
+                }
+            } else if (frontMatter.category) {
+                 // 兼容 category 字段
+                 if (Array.isArray(frontMatter.category)) {
+                    noteCategory.value = frontMatter.category.flat().join(", ");
+                } else {
+                    noteCategory.value = frontMatter.category;
+                }
+            } else {
+                noteCategory.value = "";
+            }
+
+            // 标签
+            if (frontMatter.tags) {
+                if (Array.isArray(frontMatter.tags)) {
+                    noteTags.value = frontMatter.tags.flat().join(", ");
+                } else {
+                    noteTags.value = frontMatter.tags;
+                }
+            } else {
+                noteTags.value = "";
+            }
+
+        } catch (e) {
+            console.error("YAML parsing error:", e);
+            alert("YAML 解析失败，请手动检查 Front Matter 格式");
+        }
+
+        noteContent.value = body;
+        previewDiv.innerHTML = marked.parse(body);
+
+      } else {
+        // 没有Front Matter
+        noteTitle.value = file.name.replace(/\.md$/, '');
+        noteContent.value = content;
+        previewDiv.innerHTML = marked.parse(content);
+      }
+
+    } catch (e) {
+      console.error(e);
+      noteContent.value = "读取内容失败: " + e.message;
+    }
+  };
+
+  // 监听输入，实时预览
+  noteContent.addEventListener('input', () => {
+    previewDiv.innerHTML = marked.parse(noteContent.value);
+  });
+
+  // 关闭
+  cancelEditBtn.onclick = () => {
+    editorModal.style.display = "none";
+    editingNote = null;
+  };
+
+  // 点击外部关闭
+  window.onclick = (event) => {
+    if (event.target == editorModal) {
+      editorModal.style.display = "none";
+      editingNote = null;
+    }
+  };
+
+  // 保存
+  saveNoteBtn.onclick = async () => {
+    const title = noteTitle.value.trim();
+    const content = noteContent.value;
+    const categories = noteCategory.value.trim();
+    const tags = noteTags.value.trim();
+
+    if (!title) {
+      alert("请输入标题");
+      return;
+    }
+
+    // 构造新的文件内容（含 Front Matter）
+    let newFileContent = "---\n";
+    newFileContent += `title: ${title}\n`;
+    newFileContent += `date: ${new Date().toISOString()}\n`;
+    if (categories) newFileContent += `categories: [${categories}]\n`;
+    if (tags) newFileContent += `tags: [${tags}]\n`;
+    newFileContent += "---\n\n";
+    newFileContent += content;
+
+    // Base64 编码
+    const contentBase64 = window.btoa(unescape(encodeURIComponent(newFileContent)));
+
+    const sha = editingNote ? editingNote.sha : null;
+    const path = editingNote ? editingNote.path : `source/_posts/${title}.md`;
+
+    const payload = {
+        path: path,
+        message: sha ? `Update ${title}` : `Create ${title}`,
+        content: contentBase64,
+        sha: sha
+    };
+
+    // 决定调用哪个后端 API (本地代理)
+    // 注意：这里我们调用本地的 Serverless Function 或者 Next.js API 路由
+    // 如果是纯 Hexo 静态站，通常没有后端。
+    // 但用户之前的 new-note.js 暗示了有 Vercel API 支持。
+    // 我们需要确认 API 路径。根据之前的分析，API 在 api/ 目录下。
+    // Vercel 会将 api/ 目录下的文件部署为 Serverless Functions。
+    // 假设路径是 /api/new-note 和 /api/edit-note
+
+    const apiUrl = sha ? '/api/edit-note' : '/api/new-note';
+
+    saveNoteBtn.disabled = true;
+    saveNoteBtn.innerText = "保存中...";
+
+    try {
+        const res = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        
+        if (res.ok) {
+            alert("保存成功！即将刷新...");
+            location.reload();
+        } else {
+            alert("保存失败: " + (data.error || JSON.stringify(data)));
+        }
+    } catch (e) {
+        console.error(e);
+        alert("请求失败: " + e.message);
+    } finally {
+        saveNoteBtn.disabled = false;
+        saveNoteBtn.innerText = "💾 保存";
+    }
+  };
+})();
+</script>
 </body>
 </html>
