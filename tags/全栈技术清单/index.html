@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    📘 ～一方だ | Sun Blog
+    Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -436,132 +436,113 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  post.ejs
-  文章详情页模板
+  tag.ejs
+  标签页面模板
   功能：
-    - 显示文章标题
-    - 显示文章发布日期和标签
-    - 渲染文章正文内容
+    - 显示当前标签名称
+    - 遍历该标签下的所有文章
+    - 渲染为文章卡片列表
 -->
 
-<article class="post">
-  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
+<section class="main-section">
+  <!-- 页面主容器，用于布局和样式控制 -->
+
+  <!-- 标签标题 -->
+  <h2 class="section-title">🏷️ 全栈技术清单 标签</h2>
+  <!-- emoji 🏷️ 用于视觉增强 -->
+  <!-- 全栈技术清单 动态输出当前页面所属标签名称 -->
+  <!-- 最终显示效果示例：🏷️ Java 标签 -->
+
+  <div class="post-list">
+    <!-- 文章列表容器，用于存放该标签下的所有文章卡片 -->
+
+    
+    <!-- 判断当前标签下是否有文章 -->
+    <!-- page.posts → 当前页面文章数组 -->
+    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
+
+      
+      <!-- 遍历每篇文章 post -->
+      
+        <!--
+  _partial/post-card.ejs
+  功能：
+    - 渲染单篇文章的卡片
+    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
+    - 可在分类页、标签页、归档页复用
+-->
+
+<article class="post-card">
+  <!-- 单篇文章卡片容器，用于布局和样式 -->
 
   <!-- 文章标题 -->
-  <h1 class="post-title">📘 ～一方だ</h1>
-  <!-- page.title → 当前文章标题 -->
+  <h3 class="post-title">
+    <a href="/2026/02/04/1770212862109-%E6%97%A5%E6%9C%AC%E5%A4%A7%E6%89%8B%E4%BC%81%E4%B8%9A%20IT%20%E9%A1%B9%E7%9B%AE%EF%BC%9AJava%20+%20Spring%20Boot%20%E5%85%A8%E6%A0%88%E6%8A%80%E6%9C%AF%E6%B8%85%E5%8D%95%20(%E5%BC%80%E5%8F%91%20~%20%E8%BF%90%E7%BB%B4)/">日本大手企业 IT 项目：Java + Spring Boot 全栈技术清单 (开发 ~ 运维)</a>
+    <!-- 链接到文章详情页 -->
+    <!-- url_for(post.path) → 生成文章路径 -->
+    <!-- post.title → 当前文章标题 -->
+  </h3>
 
-  <!-- 文章元信息：发布日期 + 标签 -->
-  <div class="post-meta">
-    <span>发表于 2025-12-11</span>
+  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
+  <p class="post-meta">
+    发布于 2026-02-04
     <!-- 显示文章发布日期 -->
 
-    
-      <!-- 判断文章是否有标签 -->
-
-      <span>标签：
+     |
+      分类：
+      
+        <a href="/categories/%E5%85%A8%E6%A0%88%E6%8A%80%E6%9C%AF%E6%B8%85%E5%8D%95/">全栈技术清单</a>
         
-          <a href="/tags/%E6%97%A5%E8%AF%AD%E8%AF%AD%E6%B3%95/">日语语法</a>
-          
-          <!-- 遍历文章标签，生成标签链接 -->
-          <!-- 多个标签用逗号分隔 -->
-        
-      </span>
-
+        <!-- 遍历文章分类 -->
+        <!-- 多个分类用逗号分隔 -->
+      
     
-    <!-- 标签判断结束 -->
-  </div>
+
+     |
+      标签：
+      
+        <a href="/tags/%E5%85%A8%E6%A0%88%E6%8A%80%E6%9C%AF%E6%B8%85%E5%8D%95/">全栈技术清单</a>
+        
+        <!-- 遍历文章标签 -->
+        <!-- 多个标签用逗号分隔 -->
+      
+    
+  </p>
   <!-- 文章元信息结束 -->
 
-  <!-- 文章正文内容 -->
-  <div class="post-content">
-    <h2 id="1-语法形式"><a href="#1-语法形式" class="headerlink" title="1. 语法形式"></a>1. 语法形式</h2><p><strong>接续</strong>：动词辞书形 + 一方だ<br>属于 <strong>文法表达</strong>，常用于书面语。</p>
-<hr>
-<h2 id="2-意味（含义）"><a href="#2-意味（含义）" class="headerlink" title="2. 意味（含义）"></a>2. 意味（含义）</h2><p>表示某种情况 <strong>不断发展、持续变化</strong>，通常带有 <strong>单向性</strong> 的意味。</p>
-<ul>
-<li>多用于负面情况：事情越来越严重、越来越恶化。  </li>
-<li>有时也可用于积极情况：趋势越来越明显。</li>
-</ul>
-<p>👉 语感上强调 <strong>“只朝一个方向发展”</strong>，没有逆转。</p>
-<hr>
-<h2 id="3-使用场景"><a href="#3-使用场景" class="headerlink" title="3. 使用场景"></a>3. 使用场景</h2><ul>
-<li><strong>社会现象</strong>：环境问题、物价上涨、人口减少。  </li>
-<li><strong>个人状态</strong>：病情恶化、压力增加。  </li>
-<li><strong>抽象趋势</strong>：技术进步、需求增加。</li>
-</ul>
-<hr>
-<h2 id="4-例句"><a href="#4-例句" class="headerlink" title="4. 例句"></a>4. 例句</h2><ul>
-<li><p>物価は上がる一方だ。<br>（物价不断上涨。）</p>
-</li>
-<li><p>環境破壊は進む一方だ。<br>（环境破坏持续加剧。）</p>
-</li>
-<li><p>彼の病気は悪くなる一方だ。<br>（他的病情越来越糟。）</p>
-</li>
-<li><p>インターネット利用者は増える一方だ。<br>（互联网使用者不断增加。）</p>
-</li>
-</ul>
-<hr>
-<h2 id="5-类似表达"><a href="#5-类似表达" class="headerlink" title="5. 类似表达"></a>5. 类似表达</h2><ul>
-<li><strong>～ばかりだ</strong>：强调情况持续发展，多用于负面。  </li>
-<li><strong>～続ける</strong>：表示动作持续进行。  </li>
-<li><strong>～つつある</strong>：表示某种变化正在进行中。</li>
-</ul>
-<hr>
-<h2 id="6-英语对应"><a href="#6-英语对应" class="headerlink" title="6. 英语对应"></a>6. 英语对应</h2><ul>
-<li><strong>keep on …ing</strong>  </li>
-<li><strong>be increasingly …</strong>  </li>
-<li><strong>continue to …</strong>  </li>
-<li><strong>more and more …</strong></li>
-</ul>
-<hr>
-<h2 id="📊-对比表（「～一方だ」-vs-其他表达）"><a href="#📊-对比表（「～一方だ」-vs-其他表达）" class="headerlink" title="📊 对比表（「～一方だ」 vs 其他表达）"></a>📊 对比表（「～一方だ」 vs 其他表达）</h2><table>
-<thead>
-<tr>
-<th>表达</th>
-<th>含义</th>
-<th>语感</th>
-<th>例句</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>～一方だ</td>
-<td>趋势单向发展</td>
-<td>强调不可逆</td>
-<td>物価は上がる一方だ</td>
-</tr>
-<tr>
-<td>～ばかりだ</td>
-<td>越来越…（多负面）</td>
-<td>强烈负面</td>
-<td>事故が増えるばかりだ</td>
-</tr>
-<tr>
-<td>～続ける</td>
-<td>持续进行</td>
-<td>中性</td>
-<td>勉強を続ける</td>
-</tr>
-<tr>
-<td>～つつある</td>
-<td>正在变化中</td>
-<td>进行中</td>
-<td>技術は進歩しつつある</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="✅-总结"><a href="#✅-总结" class="headerlink" title="✅ 总结"></a>✅ 总结</h2><ul>
-<li>「～一方だ」表示 <strong>情况持续单向发展</strong>，常用于负面趋势。  </li>
-<li>接续动词辞书形，语感偏书面。  </li>
-<li>与「～ばかりだ」「～続ける」等表达有细微差别。</li>
-</ul>
+  <!-- 文章摘要 -->
+  <p class="post-excerpt">
+    （暂无摘要）
+    <!-- 显示文章摘要 -->
+    <!-- 去掉 HTML 标签，只保留纯文本 -->
+    <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
+  </p>
 
-    <!-- 渲染文章正文 HTML -->
-    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+  <!-- 操作按钮容器 -->
+  <div class="post-actions">
+    <!-- 阅读全文按钮 -->
+    <a href="/2026/02/04/1770212862109-%E6%97%A5%E6%9C%AC%E5%A4%A7%E6%89%8B%E4%BC%81%E4%B8%9A%20IT%20%E9%A1%B9%E7%9B%AE%EF%BC%9AJava%20+%20Spring%20Boot%20%E5%85%A8%E6%A0%88%E6%8A%80%E6%9C%AF%E6%B8%85%E5%8D%95%20(%E5%BC%80%E5%8F%91%20~%20%E8%BF%90%E7%BB%B4)/" class="read-more">阅读全文 →</a>
+    <!-- 编辑按钮 -->
+    <button onclick="openEditor('_posts/1770212862109-日本大手企业 IT 项目：Java + Spring Boot 全栈技术清单 (开发 ~ 运维).md')" class="read-more">✏️ 编辑</button>
   </div>
-  <!-- 文章正文结束 -->
+  <!-- 链接到文章详情页 -->
+  <!-- CSS class "read-more" 用于样式化按钮 -->
 
 </article>
-<!-- 单篇文章容器结束 -->
+<!-- 单篇文章卡片结束 -->
+
+
+      
+      <!-- 遍历文章结束 -->
+
+    
+    <!-- 条件判断结束 -->
+
+  </div>
+  <!-- 文章列表容器结束 -->
+
+</section>
+<!-- 页面主容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
