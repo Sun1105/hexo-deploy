@@ -453,6 +453,62 @@
 
   <!-- 文章标题 -->
   <h3 class="post-title">
+    <a href="/2026/02/04/IT%E9%A1%B9%E7%9B%AE%E5%B1%82%E7%BA%A7%E4%B8%8E%E8%B7%A8%E4%BA%91%E7%9B%91%E6%8E%A7%E8%AF%A6%E7%BB%86%E5%9B%BE%E8%A7%A3/"></a>
+    <!-- 链接到文章详情页 -->
+    <!-- url_for(post.path) → 生成文章路径 -->
+    <!-- post.title → 当前文章标题 -->
+  </h3>
+
+  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
+  <p class="post-meta">
+    发布于 2026-02-04
+    <!-- 显示文章发布日期 -->
+
+    
+
+    
+  </p>
+  <!-- 文章元信息结束 -->
+
+  <!-- 文章摘要 -->
+  <p class="post-excerpt">
+    （暂无摘要）
+    <!-- 显示文章摘要 -->
+    <!-- 去掉 HTML 标签，只保留纯文本 -->
+    <!-- 截取前 100 个字符，如果为空则显示“暂无摘要” -->
+  </p>
+
+  <!-- 操作按钮容器 -->
+  <div class="post-actions">
+    <!-- 阅读全文按钮 -->
+    <a href="/2026/02/04/IT%E9%A1%B9%E7%9B%AE%E5%B1%82%E7%BA%A7%E4%B8%8E%E8%B7%A8%E4%BA%91%E7%9B%91%E6%8E%A7%E8%AF%A6%E7%BB%86%E5%9B%BE%E8%A7%A3/" class="read-more">阅读全文 →</a>
+    <!-- 编辑按钮 -->
+    <button onclick="openEditor('_posts/IT项目层级与跨云监控详细图解.md')" class="read-more">✏️ 编辑</button>
+  </div>
+  <!-- 链接到文章详情页 -->
+  <!-- CSS class "read-more" 用于样式化按钮 -->
+
+</article>
+<!-- 单篇文章卡片结束 -->
+
+      <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
+
+    
+    <!-- 遍历当前页面的所有文章对象（post） -->
+
+      <!--
+  _partial/post-card.ejs
+  功能：
+    - 渲染单篇文章的卡片
+    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
+    - 可在分类页、标签页、归档页复用
+-->
+
+<article class="post-card">
+  <!-- 单篇文章卡片容器，用于布局和样式 -->
+
+  <!-- 文章标题 -->
+  <h3 class="post-title">
     <a href="/2026/01/27/1764896425057--/">メモ</a>
     <!-- 链接到文章详情页 -->
     <!-- url_for(post.path) → 生成文章路径 -->
