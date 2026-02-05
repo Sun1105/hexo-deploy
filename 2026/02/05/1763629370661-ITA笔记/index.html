@@ -490,7 +490,7 @@
 
   <!-- 文章元信息：发布日期 + 标签 -->
   <div class="post-meta">
-    <span>发表于 2025-11-27</span>
+    <span>发表于 2026-02-05</span>
     <!-- 显示文章发布日期 -->
 
     
@@ -515,101 +515,30 @@
     
 
     
-      <h2 id="ITA测试：将参照资料转化为“自己能用”的式样"><a href="#ITA测试：将参照资料转化为“自己能用”的式样" class="headerlink" title="ITA测试：将参照资料转化为“自己能用”的式样"></a>ITA测试：将参照资料转化为“自己能用”的式样</h2><h3 id="1-自己先吃透，再去问与建议"><a href="#1-自己先吃透，再去问与建议" class="headerlink" title="1. 自己先吃透，再去问与建议"></a>1. 自己先吃透，再去问与建议</h3><ul>
-<li><strong>基本原则：</strong><br>只有自己先将一件事情尽可能地了解透彻之后，才有资格去问别人问题，才有资格向别人提供建议和想法。  </li>
-<li><strong>对应行动：</strong><br>在做ITA测试式样书之前，要先把资料、规格、现有程序行为，都转化成自己能理解、能操作的形式（图、表、例子、请求样本等）。</li>
-</ul>
-<hr>
-<h3 id="2-项目开始时全局统括-mock-的重要性"><a href="#2-项目开始时全局统括-mock-的重要性" class="headerlink" title="2. 项目开始时全局统括 mock 的重要性"></a>2. 项目开始时全局统括 mock 的重要性</h3><ul>
-<li><strong>全局 mock 的目标：</strong><br>在一个项目开始时，做一个统括全局的、可以在多个机能之间跳转页面的 mock，是非常重要的。</li>
-<li><strong>mock 中应包含的内容：</strong>  <ul>
-<li><strong>客户端：</strong> 页面之间的跳转关系、主要画面要素。  </li>
-<li><strong>后端 API 请求：</strong>  <ul>
-<li>请求内容  </li>
-<li>请求格式</li>
-</ul>
-</li>
-<li><strong>后端 API 响应：</strong>  <ul>
-<li>响应内容  </li>
-<li>响应格式</li>
-</ul>
-</li>
-<li><strong>常驻 batch：</strong>  <ul>
-<li>各种正常情况对 DB 的更新  </li>
-<li>各种异常情况对 DB 的更新</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="3-ITA以上结合测试所需的辅助工具准备"><a href="#3-ITA以上结合测试所需的辅助工具准备" class="headerlink" title="3. ITA以上结合测试所需的辅助工具准备"></a>3. ITA以上结合测试所需的辅助工具准备</h3><ul>
-<li><strong>需要的工具：</strong>  <ul>
-<li><strong>シミュレーター</strong>（模拟浏览器送信页面等）  </li>
-<li><strong>Postman 等 API 发送工具</strong></li>
-</ul>
-</li>
-<li><strong>准备的意义：</strong><br>ITA 以上的结合测试，需要借助这些发送请求的辅助工具，才能更好、更高效地进行后续作业。  </li>
-<li><strong>时间点要求：</strong><br>在正式着手 ITA 测试式样书之前，就要把这些前提事项准备好（环境、工具、账号、基础数据等）。</li>
-</ul>
-<hr>
-<h3 id="4-制作结合测试式样书（ITA，ITB）的步骤概述"><a href="#4-制作结合测试式样书（ITA，ITB）的步骤概述" class="headerlink" title="4. 制作结合测试式样书（ITA，ITB）的步骤概述"></a>4. 制作结合测试式样书（ITA，ITB）的步骤概述</h3><h4 id="4-1-前提准备"><a href="#4-1-前提准备" class="headerlink" title="4.1 前提准备"></a>4.1 前提准备</h4><ul>
-<li><strong>前提准备1：</strong><br>使用模拟浏览器送信页面，或者 Postman，配合程序实际执行的过程和结果，来制作测试式样书。  <ul>
-<li>一边实际发送请求，一边确认响应和 DB 变更  </li>
-<li>把“事实行为”整理成测试观点和测试步骤</li>
-</ul>
-</li>
-</ul>
-<h4 id="4-2-步骤一：制作ケース一览"><a href="#4-2-步骤一：制作ケース一览" class="headerlink" title="4.2 步骤一：制作ケース一览"></a>4.2 步骤一：制作ケース一览</h4><ul>
-<li><strong>目的：</strong><br>简单介绍每个 case 的测试内容，形成一个“测试全体地图”。  </li>
-<li><strong>内容示例：</strong>  <ul>
-<li>Case ID  </li>
-<li>测试标题  </li>
-<li>涉及机能（画面 &#x2F; API &#x2F; batch）  </li>
-<li>主要测试目的（正常系 &#x2F; 异常系 &#x2F; 边界值等）</li>
-</ul>
-</li>
-</ul>
-<h4 id="4-3-步骤二：为每条-case-写确认观点"><a href="#4-3-步骤二：为每条-case-写确认观点" class="headerlink" title="4.3 步骤二：为每条 case 写确认观点"></a>4.3 步骤二：为每条 case 写确认观点</h4><ul>
-<li><strong>确认观点示例：</strong>  <ul>
-<li><strong>响应相关：</strong>  <ul>
-<li>响应的 HTTP Status  </li>
-<li>响应 JSON &#x2F; XML 的各项值</li>
-</ul>
-</li>
-<li><strong>DB 相关：</strong>  <ul>
-<li>DB 登录值是否正确  </li>
-<li>DB 更新值是否符合预期  </li>
-<li>记录条数、状态值、时间戳等是否正确</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="4-4-步骤三：写-case-实施的条件与步骤（概要）"><a href="#4-4-步骤三：写-case-实施的条件与步骤（概要）" class="headerlink" title="4.4 步骤三：写 case 实施的条件与步骤（概要）"></a>4.4 步骤三：写 case 实施的条件与步骤（概要）</h4><ul>
-<li><strong>实施条件：</strong>  <ul>
-<li>需要事先准备的前提数据  </li>
-<li>必须满足的业务状态（例如：订单已创建但未支付等）</li>
-</ul>
-</li>
-<li><strong>实施步骤（概要版）：</strong><br>将为了满足测试观点所需的主要条件，按顺序列出，并对实施步骤做简要描述。</li>
-</ul>
-<h4 id="4-5-步骤四：详细写出条件、数据与实施步骤（详细版）"><a href="#4-5-步骤四：详细写出条件、数据与实施步骤（详细版）" class="headerlink" title="4.5 步骤四：详细写出条件、数据与实施步骤（详细版）"></a>4.5 步骤四：详细写出条件、数据与实施步骤（详细版）</h4><ul>
-<li><strong>详细条件与数据：</strong>  <ul>
-<li>请求体中各项目的值（字段、类型、具体示例值）  </li>
-<li>DB 登录值、更新值的具体内容（表名、字段名、预期值）</li>
-</ul>
-</li>
-<li><strong>详细实施步骤：</strong>  <ul>
-<li>具体操作步骤（在模拟画面&#x2F;浏览器&#x2F;工具上的操作）  </li>
-<li>请求发送方式（URL、Method、Headers、Body 等）  </li>
-<li>预期结果检查方法（从响应、日志、DB 等处如何确认）</li>
-</ul>
-</li>
-</ul>
+      <!-- Full HTML content rendered in iframe -->
+      <iframe id="post-content-iframe" style="width:100%; height:800px; border:1px solid #eee; background: #fff;"></iframe>
+      <script>
+        (function() {
+          const frame = document.getElementById('post-content-iframe');
+          // Use rawBody to preserve full HTML structure including DOCTYPE/HEAD
+          const rawContent = decodeURIComponent("%0A%0A%3C!DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22zh%22%3E%0A%3Chead%3E%0A%20%20%3Cmeta%20charset%3D%22UTF-8%22%3E%0A%20%20%3Ctitle%3EITA%20%E6%B5%8B%E8%AF%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E6%96%BD%E6%96%B9%E6%B3%95%E8%AE%BA%E6%89%8B%E5%86%8C%3C%2Ftitle%3E%0A%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1%22%3E%0A%20%20%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmermaid%2Fdist%2Fmermaid.min.js%22%3E%3C%2Fscript%3E%0A%20%20%3Cscript%3Emermaid.initialize(%7B%20startOnLoad%3A%20true%2C%20theme%3A%20'neutral'%20%7D)%3B%3C%2Fscript%3E%0A%20%20%3Cstyle%3E%0A%20%20%20%20%3Aroot%20%7B%0A%20%20%20%20%20%20--sier-blue%3A%20%230056b3%3B%0A%20%20%20%20%20%20--logic-green%3A%20%232e7d32%3B%0A%20%20%20%20%20%20--mock-purple%3A%20%236a1b9a%3B%0A%20%20%20%20%20%20--bg-color%3A%20%23f4f7f6%3B%0A%20%20%20%20%20%20--card-shadow%3A%200%204px%206px%20rgba(0%2C0%2C0%2C0.1)%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20body%20%7B%0A%20%20%20%20%20%20font-family%3A%20'PingFang%20SC'%2C%20'Microsoft%20YaHei'%2C%20'Meiryo'%2C%20sans-serif%3B%0A%20%20%20%20%20%20line-height%3A%201.6%3B%0A%20%20%20%20%20%20color%3A%20%23333%3B%0A%20%20%20%20%20%20background-color%3A%20var(--bg-color)%3B%0A%20%20%20%20%20%20margin%3A%200%3B%0A%20%20%20%20%20%20padding%3A%2040px%2020px%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.container%20%7B%0A%20%20%20%20%20%20max-width%3A%201000px%3B%0A%20%20%20%20%20%20margin%3A%200%20auto%3B%0A%20%20%20%20%20%20background%3A%20%23fff%3B%0A%20%20%20%20%20%20padding%3A%2050px%3B%0A%20%20%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20%20%20box-shadow%3A%20var(--card-shadow)%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20header%20%7B%0A%20%20%20%20%20%20border-bottom%3A%203px%20solid%20var(--sier-blue)%3B%0A%20%20%20%20%20%20margin-bottom%3A%2040px%3B%0A%20%20%20%20%20%20padding-bottom%3A%2010px%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20h1%20%7B%20color%3A%20var(--sier-blue)%3B%20font-size%3A%2028px%3B%20margin%3A%200%3B%20%7D%0A%20%20%20%20h2%20%7B%20%0A%20%20%20%20%20%20color%3A%20%23fff%3B%20%0A%20%20%20%20%20%20background%3A%20var(--sier-blue)%3B%20%0A%20%20%20%20%20%20padding%3A%2010px%2015px%3B%20%0A%20%20%20%20%20%20border-radius%3A%204px%3B%20%0A%20%20%20%20%20%20font-size%3A%2020px%3B%20%0A%20%20%20%20%20%20margin-top%3A%2040px%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.philosophy-box%20%7B%0A%20%20%20%20%20%20background%3A%20%23e3f2fd%3B%0A%20%20%20%20%20%20border-left%3A%205px%20solid%20var(--sier-blue)%3B%0A%20%20%20%20%20%20padding%3A%2020px%3B%0A%20%20%20%20%20%20margin%3A%2020px%200%3B%0A%20%20%20%20%20%20font-style%3A%20italic%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.mock-grid%20%7B%0A%20%20%20%20%20%20display%3A%20grid%3B%0A%20%20%20%20%20%20grid-template-columns%3A%20repeat(auto-fit%2C%20minmax(220px%2C%201fr))%3B%0A%20%20%20%20%20%20gap%3A%2015px%3B%0A%20%20%20%20%20%20margin%3A%2020px%200%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.mock-item%20%7B%0A%20%20%20%20%20%20background%3A%20%23f3e5f5%3B%0A%20%20%20%20%20%20border%3A%201px%20solid%20var(--mock-purple)%3B%0A%20%20%20%20%20%20padding%3A%2015px%3B%0A%20%20%20%20%20%20border-radius%3A%206px%3B%0A%20%20%20%20%20%20font-size%3A%2014px%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.mock-item%20strong%20%7B%20color%3A%20var(--mock-purple)%3B%20display%3A%20block%3B%20margin-bottom%3A%208px%3B%20border-bottom%3A%201px%20dashed%20var(--mock-purple)%3B%20%7D%0A%0A%20%20%20%20.step-box%20%7B%0A%20%20%20%20%20%20border%3A%201px%20solid%20%23ddd%3B%0A%20%20%20%20%20%20margin-bottom%3A%2020px%3B%0A%20%20%20%20%20%20border-radius%3A%206px%3B%0A%20%20%20%20%20%20overflow%3A%20hidden%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.step-header%20%7B%0A%20%20%20%20%20%20background%3A%20%23f1f8e9%3B%0A%20%20%20%20%20%20padding%3A%2010px%2015px%3B%0A%20%20%20%20%20%20font-weight%3A%20bold%3B%0A%20%20%20%20%20%20color%3A%20var(--logic-green)%3B%0A%20%20%20%20%20%20border-bottom%3A%201px%20solid%20%23ddd%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.step-content%20%7B%20padding%3A%2015px%3B%20font-size%3A%2014px%3B%20%7D%0A%0A%20%20%20%20.mermaid-box%20%7B%0A%20%20%20%20%20%20background%3A%20%23fafafa%3B%0A%20%20%20%20%20%20padding%3A%2020px%3B%0A%20%20%20%20%20%20border%3A%201px%20solid%20%23eee%3B%0A%20%20%20%20%20%20margin%3A%2020px%200%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20.highlight-tag%20%7B%0A%20%20%20%20%20%20background%3A%20%23fff9c4%3B%0A%20%20%20%20%20%20padding%3A%202px%206px%3B%0A%20%20%20%20%20%20border-radius%3A%203px%3B%0A%20%20%20%20%20%20font-weight%3A%20bold%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20table%20%7B%20width%3A%20100%25%3B%20border-collapse%3A%20collapse%3B%20margin-top%3A%2010px%3B%20%7D%0A%20%20%20%20th%2C%20td%20%7B%20border%3A%201px%20solid%20%23eee%3B%20padding%3A%2010px%3B%20text-align%3A%20left%3B%20%7D%0A%20%20%20%20th%20%7B%20background%3A%20%23f5f5f5%3B%20font-size%3A%2013px%3B%20%7D%0A%0A%20%20%20%20.action-badge%20%7B%0A%20%20%20%20%20%20display%3A%20inline-block%3B%0A%20%20%20%20%20%20background%3A%20var(--sier-blue)%3B%0A%20%20%20%20%20%20color%3A%20white%3B%0A%20%20%20%20%20%20padding%3A%202px%2010px%3B%0A%20%20%20%20%20%20border-radius%3A%2020px%3B%0A%20%20%20%20%20%20font-size%3A%2012px%3B%0A%20%20%20%20%20%20margin-bottom%3A%2010px%3B%0A%20%20%20%20%7D%0A%20%20%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%0A%3Cdiv%20class%3D%22container%22%3E%0A%20%20%3Cheader%3E%0A%20%20%20%20%3Ch1%3EITA%20%E6%B5%8B%E8%AF%95%E8%AE%BE%E8%AE%A1%E6%A0%B8%E5%BF%83%E5%87%86%E5%88%99%EF%BC%9A%E4%BB%8E%E5%8F%82%E7%85%A7%E5%88%B0%E5%AE%9E%E6%88%98%3C%2Fh1%3E%0A%20%20%3C%2Fheader%3E%0A%0A%20%20%3Cdiv%20class%3D%22philosophy-box%22%3E%0A%20%20%20%20%3Cstrong%3E%E6%A0%B8%E5%BF%83%E5%93%B2%E5%AD%A6%EF%BC%9A%3C%2Fstrong%3E%20%E5%8F%AA%E6%9C%89%E8%87%AA%E5%B7%B1%E5%B0%86%E8%A7%84%E6%A0%BC%E8%BD%AC%E5%8C%96%E6%88%90%E5%9B%BE%E3%80%81%E8%A1%A8%E3%80%81%E6%A0%B7%E6%9C%AC%E5%B9%B6%E2%80%9C%E5%90%83%E9%80%8F%E2%80%9D%E5%90%8E%EF%BC%8C%E6%89%8D%E5%85%B7%E5%A4%87%E6%8F%90%E9%97%AE%E4%B8%8E%E5%BB%BA%E8%AE%AE%E7%9A%84%E8%B5%84%E6%A0%BC%E3%80%82%0A%20%20%20%20%3Cbr%3E%3Csmall%3E%E2%80%94%20%E5%B0%86%E2%80%9C%E4%BB%96%E4%BA%BA%E8%B5%84%E6%96%99%E2%80%9D%E8%BD%AC%E5%8C%96%E4%B8%BA%E2%80%9C%E8%87%AA%E5%B7%B1%E8%83%BD%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E2%80%9D%E3%80%82%3C%2Fsmall%3E%0A%20%20%3C%2Fdiv%3E%0A%0A%20%20%3Ch2%3E%E2%91%A0%20%E5%85%A8%E5%B1%80%E7%BB%9F%E6%8B%AC%20Mock%EF%BC%9A%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%AF%BC%E8%88%AA%E5%9C%B0%E5%9B%BE%3C%2Fh2%3E%0A%20%20%3Cp%3E%E5%9C%A8%E9%A1%B9%E7%9B%AE%E5%88%9D%E6%9C%9F%E5%BB%BA%E7%AB%8B%E5%85%A8%E5%B1%80%20Mock%EF%BC%8C%E7%A1%AE%E4%BF%9D%E5%90%84%E6%9C%BA%E8%83%BD%E8%B7%B3%E8%BD%AC%E3%80%81API%20%E4%BA%A4%E4%BA%92%E5%8F%8A%20Batch%20%E9%80%BB%E8%BE%91%E5%9C%A8%E5%AE%9E%E8%A3%85%E5%89%8D%E5%8F%AF%E8%A7%81%E5%8C%96%E3%80%82%3C%2Fp%3E%0A%20%20%3Cdiv%20class%3D%22mock-grid%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22mock-item%22%3E%0A%20%20%20%20%20%20%3Cstrong%3EClient%20%E7%AB%AF%3C%2Fstrong%3E%0A%20%20%20%20%20%20%E2%80%A2%20%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%E5%85%B3%E7%B3%BB%3Cbr%3E%E2%80%A2%20%E4%B8%BB%E8%A6%81%E7%94%BB%E9%9D%A2%E8%A6%81%E7%B4%A0(UI)%0A%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3Cdiv%20class%3D%22mock-item%22%3E%0A%20%20%20%20%20%20%3Cstrong%3EAPI%20%E8%AF%B7%E6%B1%82%2F%E5%93%8D%E5%BA%94%3C%2Fstrong%3E%0A%20%20%20%20%20%20%E2%80%A2%20%E5%AD%97%E6%AE%B5%E5%86%85%E5%AE%B9%E4%B8%8E%E6%A0%BC%E5%BC%8F%3Cbr%3E%E2%80%A2%20%E7%8A%B6%E6%80%81%E7%A0%81%E5%AE%9A%E4%B9%89%0A%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3Cdiv%20class%3D%22mock-item%22%3E%0A%20%20%20%20%20%20%3Cstrong%3E%E5%B8%B8%E9%A9%BB%20Batch%3C%2Fstrong%3E%0A%20%20%20%20%20%20%E2%80%A2%20DB%20%E6%AD%A3%E5%B8%B8%E6%9B%B4%E6%96%B0%E9%80%BB%E8%BE%91%3Cbr%3E%E2%80%A2%20%E5%BC%82%E5%B8%B8%E5%9B%9E%E6%BB%9A%E5%A4%84%E7%90%86%0A%20%20%20%20%3C%2Fdiv%3E%0A%20%20%3C%2Fdiv%3E%0A%0A%20%20%3Ch2%3E%E2%91%A1%20%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5%EF%BC%9A%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7%E5%85%88%E8%A1%8C%3C%2Fh2%3E%0A%20%20%3Cdiv%20class%3D%22mermaid-box%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22mermaid%22%3E%0A%20%20%20%20%20%20graph%20LR%0A%20%20%20%20%20%20%20%20A%5B%E7%8E%AF%E5%A2%83%2F%E8%B4%A6%E5%8F%B7%E5%87%86%E5%A4%87%5D%20--%3E%20B%5B%E5%B7%A5%E5%85%B7%E5%87%86%E5%A4%87%3A%20Postman%2F%E6%A8%A1%E6%8B%9F%E5%99%A8%5D%0A%20%20%20%20%20%20%20%20B%20--%3E%20C%5B%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E6%90%AD%E5%BB%BA%5D%0A%20%20%20%20%20%20%20%20C%20--%3E%20D%7B%E5%BC%80%E5%A7%8B%E5%88%B6%E4%BD%9C%E5%BC%8F%E6%A0%B7%E4%B9%A6%7D%0A%20%20%20%20%20%20%20%20style%20B%20fill%3A%23fff9c4%2Cstroke%3A%23fbc02d%0A%20%20%20%20%3C%2Fdiv%3E%0A%20%20%3C%2Fdiv%3E%0A%20%20%3Cp%3E%3Cstrong%3E%E5%87%86%E5%A4%87%E6%84%8F%E4%B9%89%EF%BC%9A%3C%2Fstrong%3E%20%E9%80%9A%E8%BF%87%E4%B8%80%E8%BE%B9%E5%8F%91%E9%80%81%E7%9C%9F%E5%AE%9E%E8%AF%B7%E6%B1%82%EF%BC%8C%E4%B8%80%E8%BE%B9%E7%A1%AE%E8%AE%A4%E5%93%8D%E5%BA%94%E4%B8%8E%20DB%20%E5%8F%98%E6%9B%B4%EF%BC%8C%E5%B0%86%E2%80%9C%E4%BA%8B%E5%AE%9E%E8%A1%8C%E4%B8%BA%E2%80%9D%E6%B2%89%E6%B7%80%E4%B8%BA%E6%B5%8B%E8%AF%95%E6%AD%A5%E9%AA%A4%E3%80%82%3C%2Fp%3E%0A%0A%20%20%3Ch2%3E%E2%91%A2%20ITA%2FITB%20%E6%B5%8B%E8%AF%95%E5%BC%8F%E6%A0%B7%E4%B9%A6%E5%88%B6%E4%BD%9C%E5%9B%9B%E9%83%A8%E6%9B%B2%3C%2Fh2%3E%0A%0A%20%20%3Cdiv%20class%3D%22step-box%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22step-header%22%3E%E6%AD%A5%E9%AA%A4%E4%B8%80%EF%BC%9A%E5%88%B6%E4%BD%9C%E3%82%B1%E3%83%BC%E3%82%B9%E4%B8%80%E8%A7%88%20(Testing%20Map)%3C%2Fdiv%3E%0A%20%20%20%20%3Cdiv%20class%3D%22step-content%22%3E%0A%20%20%20%20%20%20%3Ctable%3E%0A%20%20%20%20%20%20%20%20%3Ctr%3E%3Cth%3EID%3C%2Fth%3E%3Cth%3E%E6%B5%8B%E8%AF%95%E6%A0%87%E9%A2%98%3C%2Fth%3E%3Cth%3E%E6%B6%89%E5%8F%8A%E6%9C%BA%E8%83%BD%3C%2Fth%3E%3Cth%3E%E6%B5%8B%E8%AF%95%E7%9B%AE%E7%9A%84%3C%2Fth%3E%3C%2Ftr%3E%0A%20%20%20%20%20%20%20%20%3Ctr%3E%3Ctd%3EC-001%3C%2Ftd%3E%3Ctd%3E%E6%AD%A3%E5%B8%B8%E7%99%BB%E5%BD%95%E5%B9%B6%E5%8F%91%E8%B5%B7%E8%AE%A2%E5%8D%95%3C%2Ftd%3E%3Ctd%3E%E7%94%BB%E9%9D%A2%2FAPI%3C%2Ftd%3E%3Ctd%3E%E9%AA%8C%E8%AF%81%E5%85%A8%E9%93%BE%E8%B7%AF%E9%80%9A%E7%95%85%E6%80%A7%3C%2Ftd%3E%3C%2Ftr%3E%0A%20%20%20%20%20%20%20%20%3Ctr%3E%3Ctd%3EC-002%3C%2Ftd%3E%3Ctd%3E%E5%BA%93%E5%AD%98%E4%B8%8D%E8%B6%B3%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%3C%2Ftd%3E%3Ctd%3EAPI%2FBatch%3C%2Ftd%3E%3Ctd%3E%E8%BE%B9%E7%95%8C%E5%80%BC%E5%8F%8A%E5%BC%82%E5%B8%B8%E6%8F%90%E7%A4%BA%3C%2Ftd%3E%3C%2Ftr%3E%0A%20%20%20%20%20%20%3C%2Ftable%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%20%20%3C%2Fdiv%3E%0A%0A%20%20%3Cdiv%20class%3D%22step-box%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22step-header%22%3E%E6%AD%A5%E9%AA%A4%E4%BA%8C%EF%BC%9A%E5%AE%9A%E4%B9%89%E7%A1%AE%E8%AE%A4%E8%A7%82%E7%82%B9%20(Validation%20Points)%3C%2Fdiv%3E%0A%20%20%20%20%3Cdiv%20class%3D%22step-content%22%3E%0A%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%3Cspan%20class%3D%22highlight-tag%22%3E%E5%93%8D%E5%BA%94%E7%9B%B8%E5%85%B3%EF%BC%9A%3C%2Fspan%3E%20HTTP%20Status%2C%20JSON%20%E5%AD%97%E6%AE%B5%E7%B2%BE%E7%A1%AE%E5%80%BC%E6%A3%80%E6%9F%A5%E3%80%82%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%3Cspan%20class%3D%22highlight-tag%22%3EDB%20%E7%9B%B8%E5%85%B3%EF%BC%9A%3C%2Fspan%3E%20%E7%99%BB%E5%BD%95%2F%E6%9B%B4%E6%96%B0%E5%80%BC%E6%98%AF%E5%90%A6%E7%AC%A6%E5%90%88%E4%B8%9A%E5%8A%A1%E9%A2%84%E6%9C%9F%E3%80%81%E6%97%B6%E9%97%B4%E6%88%B3%E3%80%81%E7%8A%B6%E6%80%81%E4%BD%8D%E5%8F%98%E6%9B%B4%E3%80%82%3C%2Fli%3E%0A%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%20%20%3C%2Fdiv%3E%0A%0A%20%20%3Cdiv%20class%3D%22step-box%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22step-header%22%3E%E6%AD%A5%E9%AA%A4%E4%B8%89%20%26%20%E5%9B%9B%EF%BC%9A%E4%BB%8E%E6%A6%82%E8%A6%81%E5%88%B0%E8%AF%A6%E7%BB%86%E7%9A%84%E5%AE%9E%E6%96%BD%E8%BF%87%E7%A8%8B%3C%2Fdiv%3E%0A%20%20%20%20%3Cdiv%20class%3D%22step-content%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22action-badge%22%3E%E6%A0%B8%E5%BF%83%E8%A1%8C%E5%8A%A8%3C%2Fdiv%3E%0A%20%20%20%20%20%20%3Cp%3E%E8%AF%A6%E7%BB%86%E7%89%88%E8%A6%81%E6%B1%82%E5%86%99%E5%87%BA%EF%BC%9A%E8%AF%B7%E6%B1%82%E4%BD%93%E5%85%B7%E4%BD%93%E7%A4%BA%E4%BE%8B%E5%80%BC%E3%80%81DB%20%E8%A1%A8%E5%90%8D%2F%E5%AD%97%E6%AE%B5%E5%90%8D%E9%A2%84%E6%9C%9F%E5%80%BC%E3%80%81%E4%BB%A5%E5%8F%8A%E5%85%B7%E4%BD%93%E7%9A%84%20URL%2FMethod%2FHeaders%E3%80%82%3C%2Fp%3E%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%3Cdiv%20style%3D%22background%3A%20%23fafafa%3B%20border%3A%201px%20dashed%20%23ccc%3B%20padding%3A%2010px%3B%22%3E%0A%20%20%20%20%20%20%20%20%3Cstrong%3E%E7%A4%BA%E4%BE%8B%EF%BC%9A%3C%2Fstrong%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%3Ccode%3EPOST%20%2Fapi%2Fv1%2Forder%3C%2Fcode%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%3Ccode%3EBody%3A%20%7B%22item_id%22%3A%20%22SKU001%22%2C%20%22qty%22%3A%205%7D%3C%2Fcode%3E%3Cbr%3E%0A%20%20%20%20%20%20%20%20%3Ccode%3E%E9%A2%84%E6%9C%9FDB%3A%20Table%3A%20T_ORDER%2C%20Column%3A%20STATUS%2C%20Value%3A%20'1'%3C%2Fcode%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%20%20%3C%2Fdiv%3E%0A%0A%20%20%3Cfooter%20style%3D%22margin-top%3A%2050px%3B%20text-align%3A%20center%3B%20font-size%3A%2012px%3B%20color%3A%20%23999%3B%20border-top%3A%201px%20solid%20%23eee%3B%20padding-top%3A%2020px%3B%22%3E%0A%20%20%20%20%26copy%3B%202026%20ITA%20Testing%20Standard%20Methodology%20%7C%20Confidential%0A%20%20%3C%2Ffooter%3E%0A%3C%2Fdiv%3E%0A%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E");
+          
+          const doc = frame.contentDocument || frame.contentWindow.document;
+          doc.open();
+          doc.write(rawContent);
+          doc.close();
 
-      <!-- 渲染文章正文 HTML -->
-      <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+          // Auto resize height
+          frame.onload = function() {
+            try {
+              const height = frame.contentWindow.document.body.scrollHeight;
+              if (height > 0) {
+                 frame.style.height = (height + 50) + 'px';
+              }
+            } catch(e) { console.error("Auto resize failed", e); }
+          };
+        })();
+      </script>
     
   </div>
   <!-- 文章正文结束 -->
