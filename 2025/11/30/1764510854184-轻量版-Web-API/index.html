@@ -475,160 +475,34 @@
 
   <!-- 文章正文内容 -->
   <div class="post-content">
-    <!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Tester (Lite)</title>
+    
 
-<pre><code>&lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css&quot;&gt;
-&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js&quot;&gt;&lt;/script&gt;
+    
+      <!-- Full HTML content rendered in iframe -->
+      <iframe id="post-content-iframe" style="width:100%; height:800px; border:1px solid #eee; background: #fff;"></iframe>
+      <script>
+        (function() {
+          const frame = document.getElementById('post-content-iframe');
+          // Use encodeURIComponent on server side (build time) to safely embed content
+          const rawContent = decodeURIComponent("%3C!DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22zh%22%3E%0A%3Chead%3E%0A%20%20%20%20%3Cmeta%20charset%3D%22UTF-8%22%3E%0A%20%20%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1.0%22%3E%0A%20%20%20%20%3Ctitle%3EAPI%20Tester%20(Lite)%3C%2Ftitle%3E%0A%0A%3Cpre%3E%3Ccode%3E%26lt%3Bscript%20src%3D%26quot%3Bhttps%3A%2F%2Fcdn.tailwindcss.com%26quot%3B%26gt%3B%26lt%3B%2Fscript%26gt%3B%0A%26lt%3Blink%20rel%3D%26quot%3Bstylesheet%26quot%3B%20href%3D%26quot%3B%2F%2Fcdnjs.cloudflare.com%2Fajax%2Flibs%2Fhighlight.js%2F11.9.0%2Fstyles%2Fatom-one-dark.min.css%26quot%3B%26gt%3B%0A%26lt%3Bscript%20src%3D%26quot%3B%2F%2Fcdnjs.cloudflare.com%2Fajax%2Flibs%2Fhighlight.js%2F11.9.0%2Fhighlight.min.js%26quot%3B%26gt%3B%26lt%3B%2Fscript%26gt%3B%0A%0A%26lt%3Bstyle%26gt%3B%0A%20%20%20%20body%20%7B%20background-color%3A%20%230f1117%3B%20%7D%0A%20%20%20%20.scroll%3A%3A-webkit-scrollbar%20%7B%20width%3A%208px%3B%20%7D%0A%20%20%20%20.scroll%3A%3A-webkit-scrollbar-thumb%20%7B%20background%3A%20%234b5563%3B%20border-radius%3A%206px%3B%20%7D%0A%26lt%3B%2Fstyle%26gt%3B%0A%3C%2Fcode%3E%3C%2Fpre%3E%0A%3C%2Fhead%3E%0A%0A%3Cbody%20class%3D%22text-gray-200%22%3E%0A%3Cdiv%20class%3D%22max-w-4xl%20mx-auto%20p-6%22%3E%0A%0A%3Cpre%3E%3Ccode%3E%26lt%3Bh1%20class%3D%26quot%3Btext-2xl%20font-bold%20mb-4%20text-indigo-400%26quot%3B%26gt%3BWeb%20API%20Tester%20(Lite)%26lt%3B%2Fh1%26gt%3B%0A%0A%26lt%3Bdiv%20class%3D%26quot%3Bbg-gray-800%20p-4%20rounded-xl%20border%20border-gray-700%20mb-6%26quot%3B%26gt%3B%0A%20%20%20%20%26lt%3Bdiv%20class%3D%26quot%3Bflex%20space-x-3%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%26lt%3Bselect%20id%3D%26quot%3Bmethod%26quot%3B%20class%3D%26quot%3Bw-28%20bg-gray-700%20border%20border-gray-600%20text-white%20text-sm%20rounded-lg%20p-2%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Boption%26gt%3BGET%26lt%3B%2Foption%26gt%3B%26lt%3Boption%26gt%3BPOST%26lt%3B%2Foption%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Boption%26gt%3BPUT%26lt%3B%2Foption%26gt%3B%26lt%3Boption%26gt%3BDELETE%26lt%3B%2Foption%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Boption%26gt%3BPATCH%26lt%3B%2Foption%26gt%3B%0A%20%20%20%20%20%20%20%20%26lt%3B%2Fselect%26gt%3B%0A%0A%20%20%20%20%20%20%20%20%26lt%3Binput%20id%3D%26quot%3Burl%26quot%3B%20type%3D%26quot%3Btext%26quot%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20class%3D%26quot%3Bflex-grow%20bg-gray-700%20border%20border-gray-600%20text-white%20rounded-lg%20p-2%26quot%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20placeholder%3D%26quot%3B%E8%BE%93%E5%85%A5%20URL%26quot%3B%26gt%3B%0A%0A%20%20%20%20%20%20%20%20%26lt%3Bbutton%20id%3D%26quot%3Bsend%26quot%3B%20class%3D%26quot%3Bbg-indigo-600%20hover%3Abg-indigo-700%20text-white%20px-6%20rounded-lg%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%E5%8F%91%E9%80%81%0A%20%20%20%20%20%20%20%20%26lt%3B%2Fbutton%26gt%3B%0A%20%20%20%20%26lt%3B%2Fdiv%26gt%3B%0A%26lt%3B%2Fdiv%26gt%3B%0A%0A%26lt%3Bdiv%20class%3D%26quot%3Bbg-gray-800%20p-4%20rounded-xl%20border%20border-gray-700%20mb-6%26quot%3B%26gt%3B%0A%20%20%20%20%26lt%3Btextarea%20id%3D%26quot%3Bbody%26quot%3B%20rows%3D%26quot%3B6%26quot%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20class%3D%26quot%3Bw-full%20bg-gray-900%20border%20border-gray-700%20text-gray-200%20rounded-lg%20p-3%20font-mono%20text-sm%26quot%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20placeholder%3D%26quot%3B%E8%AF%B7%E6%B1%82%20Body%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89%26quot%3B%26gt%3B%26lt%3B%2Ftextarea%26gt%3B%0A%26lt%3B%2Fdiv%26gt%3B%0A%0A%26lt%3Bdiv%20class%3D%26quot%3Bbg-gray-800%20p-4%20rounded-xl%20border%20border-gray-700%20mb-6%26quot%3B%26gt%3B%0A%20%20%20%20%26lt%3Bdiv%20id%3D%26quot%3Bheaders%26quot%3B%20class%3D%26quot%3Bspace-y-2%26quot%3B%26gt%3B%26lt%3B%2Fdiv%26gt%3B%0A%20%20%20%20%26lt%3Bbutton%20id%3D%26quot%3Badd-header%26quot%3B%20class%3D%26quot%3Bmt-3%20text-indigo-400%20text-sm%26quot%3B%26gt%3B%E2%9E%95%20%E6%B7%BB%E5%8A%A0%20Header%26lt%3B%2Fbutton%26gt%3B%0A%26lt%3B%2Fdiv%26gt%3B%0A%0A%26lt%3Bdiv%20class%3D%26quot%3Bbg-gray-800%20p-4%20rounded-xl%20border%20border-gray-700%20mb-6%26quot%3B%26gt%3B%0A%20%20%20%20%26lt%3Bdiv%20class%3D%26quot%3Bflex%20space-x-6%20text-sm%20mb-3%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%26lt%3Bp%26gt%3B%E7%8A%B6%E6%80%81%3A%20%26lt%3Bspan%20id%3D%26quot%3Bcode%26quot%3B%20class%3D%26quot%3Bfont-bold%20text-lg%20text-yellow-500%26quot%3B%26gt%3BN%2FA%26lt%3B%2Fspan%26gt%3B%26lt%3B%2Fp%26gt%3B%0A%20%20%20%20%20%20%20%20%26lt%3Bp%26gt%3B%E8%80%97%E6%97%B6%3A%20%26lt%3Bspan%20id%3D%26quot%3Btime%26quot%3B%20class%3D%26quot%3Bfont-bold%26quot%3B%26gt%3B0ms%26lt%3B%2Fspan%26gt%3B%26lt%3B%2Fp%26gt%3B%0A%20%20%20%20%26lt%3B%2Fdiv%26gt%3B%0A%0A%20%20%20%20%26lt%3Bpre%20class%3D%26quot%3Bscroll%20max-h-96%20p-3%20bg-gray-900%20rounded-lg%20border%20border-gray-700%26quot%3B%26gt%3B%0A%3C%2Fcode%3E%3C%2Fpre%3E%0A%3Cp%3E%3Ccode%20id%3D%22resp%22%20class%3D%22json%22%3E%3C%2Fcode%3E%3Cbr%3E%20%20%20%20%20%20%20%20%3C%2Fpre%3E%3Cbr%3E%20%20%20%20%3C%2Fdiv%3E%3C%2Fp%3E%0A%3Cpre%3E%3Ccode%3E%26lt%3Bdiv%20id%3D%26quot%3Berr%26quot%3B%20class%3D%26quot%3Bhidden%20mt-4%20p-3%20bg-red-700%20rounded-lg%20text-white%20font-medium%26quot%3B%26gt%3B%0A%20%20%20%20%E8%AF%B7%E6%B1%82%E5%A4%B1%E8%B4%A5%E3%80%82%0A%26lt%3B%2Fdiv%26gt%3B%0A%3C%2Fcode%3E%3C%2Fpre%3E%0A%3C%2Fdiv%3E%0A%0A%3Cscript%3E%0Afunction%20addHeaderRow(k%20%3D%20%22%22%2C%20v%20%3D%20%22%22)%20%7B%0A%20%20%20%20const%20row%20%3D%20document.createElement(%22div%22)%3B%0A%20%20%20%20row.className%20%3D%20%22flex%20space-x-2%22%3B%0A%20%20%20%20row.innerHTML%20%3D%20%60%0A%20%20%20%20%20%20%20%20%3Cinput%20class%3D%22flex-1%20bg-gray-900%20border%20border-gray-700%20text-gray-200%20rounded-lg%20p-2%20text-sm%20k%22%20placeholder%3D%22Key%22%20value%3D%22%24%7Bk%7D%22%3E%0A%20%20%20%20%20%20%20%20%3Cinput%20class%3D%22flex-1%20bg-gray-900%20border%20border-gray-700%20text-gray-200%20rounded-lg%20p-2%20text-sm%20v%22%20placeholder%3D%22Value%22%20value%3D%22%24%7Bv%7D%22%3E%0A%20%20%20%20%20%20%20%20%3Cbutton%20class%3D%22text-red-500%20px-2%22%3E%26times%3B%3C%2Fbutton%3E%0A%20%20%20%20%60%3B%0A%20%20%20%20row.querySelector(%22button%22).onclick%20%3D%20()%20%3D%3E%20row.remove()%3B%0A%20%20%20%20document.getElementById(%22headers%22).appendChild(row)%3B%0A%7D%0A%0AaddHeaderRow(%22Content-Type%22%2C%20%22application%2Fjson%22)%3B%0AaddHeaderRow()%3B%0A%0Adocument.getElementById(%22add-header%22).onclick%20%3D%20()%20%3D%3E%20addHeaderRow()%3B%0A%0Aconst%20PROXY%20%3D%20%22http%3A%2F%2Flocalhost%3A3000%2Fproxy%22%3B%0A%0Adocument.getElementById(%22send%22).onclick%20%3D%20async%20()%20%3D%3E%20%7B%0A%20%20%20%20const%20url%20%3D%20document.getElementById(%22url%22).value.trim()%3B%0A%20%20%20%20const%20method%20%3D%20document.getElementById(%22method%22).value%3B%0A%20%20%20%20const%20bodyText%20%3D%20document.getElementById(%22body%22).value.trim()%3B%0A%0A%20%20%20%20const%20code%20%3D%20document.getElementById(%22code%22)%3B%0A%20%20%20%20const%20time%20%3D%20document.getElementById(%22time%22)%3B%0A%20%20%20%20const%20resp%20%3D%20document.getElementById(%22resp%22)%3B%0A%20%20%20%20const%20errBox%20%3D%20document.getElementById(%22err%22)%3B%0A%0A%20%20%20%20errBox.classList.add(%22hidden%22)%3B%0A%20%20%20%20code.textContent%20%3D%20%22...%22%3B%0A%20%20%20%20resp.textContent%20%3D%20%22%22%3B%0A%0A%20%20%20%20const%20start%20%3D%20performance.now()%3B%0A%0A%20%20%20%20const%20headers%20%3D%20%7B%7D%3B%0A%20%20%20%20document.querySelectorAll(%22%23headers%20.k%22).forEach((k%2C%20i)%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20const%20kk%20%3D%20k.value.trim()%3B%0A%20%20%20%20%20%20%20%20const%20vv%20%3D%20document.querySelectorAll(%22%23headers%20.v%22)%5Bi%5D.value.trim()%3B%0A%20%20%20%20%20%20%20%20if%20(kk)%20headers%5Bkk%5D%20%3D%20vv%3B%0A%20%20%20%20%7D)%3B%0A%0A%20%20%20%20let%20bodyData%20%3D%20undefined%3B%0A%20%20%20%20if%20(%5B%22POST%22%2C%20%22PUT%22%2C%20%22PATCH%22%5D.includes(method)%20%26%26%20bodyText)%20%7B%0A%20%20%20%20%20%20%20%20try%20%7B%20bodyData%20%3D%20JSON.parse(bodyText)%3B%20%7D%0A%20%20%20%20%20%20%20%20catch%20%7B%20bodyData%20%3D%20bodyText%3B%20%7D%0A%20%20%20%20%7D%0A%0A%20%20%20%20try%20%7B%0A%20%20%20%20%20%20%20%20const%20res%20%3D%20await%20fetch(PROXY%2C%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20method%3A%20%22POST%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20headers%3A%20%7B%20%22Content-Type%22%3A%20%22application%2Fjson%22%20%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20body%3A%20JSON.stringify(%7B%20url%2C%20method%2C%20headers%2C%20body%3A%20bodyData%20%7D)%0A%20%20%20%20%20%20%20%20%7D)%3B%0A%0A%20%20%20%20%20%20%20%20const%20end%20%3D%20performance.now()%3B%0A%20%20%20%20%20%20%20%20time.textContent%20%3D%20%60%24%7B(end%20-%20start).toFixed(0)%7Dms%60%3B%0A%0A%20%20%20%20%20%20%20%20code.textContent%20%3D%20res.status%3B%0A%20%20%20%20%20%20%20%20code.className%20%3D%20res.ok%20%3F%20%22text-green-400%20font-bold%22%20%3A%20%22text-red-400%20font-bold%22%3B%0A%0A%20%20%20%20%20%20%20%20let%20text%20%3D%20await%20res.text()%3B%0A%20%20%20%20%20%20%20%20try%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20text%20%3D%20JSON.stringify(JSON.parse(text)%2C%20null%2C%202)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20resp.className%20%3D%20%22json%22%3B%0A%20%20%20%20%20%20%20%20%7D%20catch%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20resp.className%20%3D%20%22plaintext%22%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20resp.textContent%20%3D%20text%3B%0A%20%20%20%20%20%20%20%20hljs.highlightElement(resp)%3B%0A%0A%20%20%20%20%7D%20catch%20(e)%20%7B%0A%20%20%20%20%20%20%20%20errBox.classList.remove(%22hidden%22)%3B%0A%20%20%20%20%20%20%20%20code.textContent%20%3D%20%22ERR%22%3B%0A%20%20%20%20%20%20%20%20resp.textContent%20%3D%20e.message%3B%0A%20%20%20%20%7D%0A%7D%3B%0A%3C%2Fscript%3E%0A%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A");
+          
+          const doc = frame.contentDocument || frame.contentWindow.document;
+          doc.open();
+          doc.write(rawContent);
+          doc.close();
 
-&lt;style&gt;
-    body { background-color: #0f1117; }
-    .scroll::-webkit-scrollbar { width: 8px; }
-    .scroll::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 6px; }
-&lt;/style&gt;
-</code></pre>
-</head>
-
-<body class="text-gray-200">
-<div class="max-w-4xl mx-auto p-6">
-
-<pre><code>&lt;h1 class=&quot;text-2xl font-bold mb-4 text-indigo-400&quot;&gt;Web API Tester (Lite)&lt;/h1&gt;
-
-&lt;div class=&quot;bg-gray-800 p-4 rounded-xl border border-gray-700 mb-6&quot;&gt;
-    &lt;div class=&quot;flex space-x-3&quot;&gt;
-        &lt;select id=&quot;method&quot; class=&quot;w-28 bg-gray-700 border border-gray-600 text-white text-sm rounded-lg p-2&quot;&gt;
-            &lt;option&gt;GET&lt;/option&gt;&lt;option&gt;POST&lt;/option&gt;
-            &lt;option&gt;PUT&lt;/option&gt;&lt;option&gt;DELETE&lt;/option&gt;
-            &lt;option&gt;PATCH&lt;/option&gt;
-        &lt;/select&gt;
-
-        &lt;input id=&quot;url&quot; type=&quot;text&quot;
-               class=&quot;flex-grow bg-gray-700 border border-gray-600 text-white rounded-lg p-2&quot;
-               placeholder=&quot;输入 URL&quot;&gt;
-
-        &lt;button id=&quot;send&quot; class=&quot;bg-indigo-600 hover:bg-indigo-700 text-white px-6 rounded-lg&quot;&gt;
-            发送
-        &lt;/button&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;bg-gray-800 p-4 rounded-xl border border-gray-700 mb-6&quot;&gt;
-    &lt;textarea id=&quot;body&quot; rows=&quot;6&quot;
-              class=&quot;w-full bg-gray-900 border border-gray-700 text-gray-200 rounded-lg p-3 font-mono text-sm&quot;
-              placeholder=&quot;请求 Body（可选）&quot;&gt;&lt;/textarea&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;bg-gray-800 p-4 rounded-xl border border-gray-700 mb-6&quot;&gt;
-    &lt;div id=&quot;headers&quot; class=&quot;space-y-2&quot;&gt;&lt;/div&gt;
-    &lt;button id=&quot;add-header&quot; class=&quot;mt-3 text-indigo-400 text-sm&quot;&gt;➕ 添加 Header&lt;/button&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;bg-gray-800 p-4 rounded-xl border border-gray-700 mb-6&quot;&gt;
-    &lt;div class=&quot;flex space-x-6 text-sm mb-3&quot;&gt;
-        &lt;p&gt;状态: &lt;span id=&quot;code&quot; class=&quot;font-bold text-lg text-yellow-500&quot;&gt;N/A&lt;/span&gt;&lt;/p&gt;
-        &lt;p&gt;耗时: &lt;span id=&quot;time&quot; class=&quot;font-bold&quot;&gt;0ms&lt;/span&gt;&lt;/p&gt;
-    &lt;/div&gt;
-
-    &lt;pre class=&quot;scroll max-h-96 p-3 bg-gray-900 rounded-lg border border-gray-700&quot;&gt;
-</code></pre>
-<p><code id="resp" class="json"></code><br>        </pre><br>    </div></p>
-<pre><code>&lt;div id=&quot;err&quot; class=&quot;hidden mt-4 p-3 bg-red-700 rounded-lg text-white font-medium&quot;&gt;
-    请求失败。
-&lt;/div&gt;
-</code></pre>
-</div>
-
-<script>
-function addHeaderRow(k = "", v = "") {
-    const row = document.createElement("div");
-    row.className = "flex space-x-2";
-    row.innerHTML = `
-        <input class="flex-1 bg-gray-900 border border-gray-700 text-gray-200 rounded-lg p-2 text-sm k" placeholder="Key" value="${k}">
-        <input class="flex-1 bg-gray-900 border border-gray-700 text-gray-200 rounded-lg p-2 text-sm v" placeholder="Value" value="${v}">
-        <button class="text-red-500 px-2">&times;</button>
-    `;
-    row.querySelector("button").onclick = () => row.remove();
-    document.getElementById("headers").appendChild(row);
-}
-
-addHeaderRow("Content-Type", "application/json");
-addHeaderRow();
-
-document.getElementById("add-header").onclick = () => addHeaderRow();
-
-const PROXY = "http://localhost:3000/proxy";
-
-document.getElementById("send").onclick = async () => {
-    const url = document.getElementById("url").value.trim();
-    const method = document.getElementById("method").value;
-    const bodyText = document.getElementById("body").value.trim();
-
-    const code = document.getElementById("code");
-    const time = document.getElementById("time");
-    const resp = document.getElementById("resp");
-    const errBox = document.getElementById("err");
-
-    errBox.classList.add("hidden");
-    code.textContent = "...";
-    resp.textContent = "";
-
-    const start = performance.now();
-
-    const headers = {};
-    document.querySelectorAll("#headers .k").forEach((k, i) => {
-        const kk = k.value.trim();
-        const vv = document.querySelectorAll("#headers .v")[i].value.trim();
-        if (kk) headers[kk] = vv;
-    });
-
-    let bodyData = undefined;
-    if (["POST", "PUT", "PATCH"].includes(method) && bodyText) {
-        try { bodyData = JSON.parse(bodyText); }
-        catch { bodyData = bodyText; }
-    }
-
-    try {
-        const res = await fetch(PROXY, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ url, method, headers, body: bodyData })
-        });
-
-        const end = performance.now();
-        time.textContent = `${(end - start).toFixed(0)}ms`;
-
-        code.textContent = res.status;
-        code.className = res.ok ? "text-green-400 font-bold" : "text-red-400 font-bold";
-
-        let text = await res.text();
-        try {
-            text = JSON.stringify(JSON.parse(text), null, 2);
-            resp.className = "json";
-        } catch {
-            resp.className = "plaintext";
-        }
-
-        resp.textContent = text;
-        hljs.highlightElement(resp);
-
-    } catch (e) {
-        errBox.classList.remove("hidden");
-        code.textContent = "ERR";
-        resp.textContent = e.message;
-    }
-};
-</script>
-
-</body>
-</html>
-
-    <!-- 渲染文章正文 HTML -->
-    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+          // Auto resize height
+          frame.onload = function() {
+            try {
+              const height = frame.contentWindow.document.body.scrollHeight;
+              if (height > 0) {
+                 frame.style.height = (height + 50) + 'px';
+              }
+            } catch(e) { console.error("Auto resize failed", e); }
+          };
+        })();
+      </script>
+    
   </div>
   <!-- 文章正文结束 -->
 

@@ -475,7 +475,10 @@
 
   <!-- 文章正文内容 -->
   <div class="post-content">
-    <p>‘&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>‘【概要】<br>‘ 本宏用于将当前激活工作表中的“树型结构”数据导出为 JSON 文件。<br>‘ 支持多级嵌套结构及数组结构（key以”_list”结尾）。<br>‘<br>‘【代码处理流程】<br>‘ 1. 计算有效数据的最大行与最大列。<br>‘ 2. 调用递归函数 ParseRows 将工作表内容解析为 JSON 字符串。<br>‘ 3. 若有多余的逗号结尾，进行清理。<br>‘ 4. 弹出保存对话框，选择文件保存路径。<br>‘ 5. 使用 FileSystemObject 写入 JSON 内容到文件。<br>‘ 6. 完成后弹窗提示。<br>‘&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+    
+
+    
+      <p>‘&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>‘【概要】<br>‘ 本宏用于将当前激活工作表中的“树型结构”数据导出为 JSON 文件。<br>‘ 支持多级嵌套结构及数组结构（key以”_list”结尾）。<br>‘<br>‘【代码处理流程】<br>‘ 1. 计算有效数据的最大行与最大列。<br>‘ 2. 调用递归函数 ParseRows 将工作表内容解析为 JSON 字符串。<br>‘ 3. 若有多余的逗号结尾，进行清理。<br>‘ 4. 弹出保存对话框，选择文件保存路径。<br>‘ 5. 使用 FileSystemObject 写入 JSON 内容到文件。<br>‘ 6. 完成后弹窗提示。<br>‘&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
 <p>‘——————————————-<br>‘ 主过程：导出树型结构数据为 JSON 文件<br>‘——————————————-<br>Sub ExportJsonFromExcelTreeLikeData()<br>    ‘ 定义并获取当前激活工作表<br>    Dim ws As Worksheet<br>    Set ws &#x3D; ActiveSheet</p>
 <pre><code>&#39; 计算有效数据的最后一列（最大有数据的列号）
 Dim lastCol As Long
@@ -657,8 +660,9 @@ ParseRows = result
 <p>End Function</p>
 <p>‘——————————————-<br>‘ 字符串 JSON 转义函数<br>‘ str - 待处理字符串<br>‘ return - 返回转码后的字符串<br>‘——————————————-<br>Function EscJson(str As String) As String<br>    ‘ 替换反斜杠为双反斜杠<br>    str &#x3D; Replace(str, “&quot;, “\“)<br>    ‘ 替换英文双引号为带转义的双引号<br>    str &#x3D; Replace(str, “”””, “&quot;“”)<br>    ‘ 替换换行回车为 \n<br>    str &#x3D; Replace(str, vbCrLf, “\n”)<br>    str &#x3D; Replace(str, vbLf, “\n”)<br>    ‘ 替换制表符为 \t<br>    str &#x3D; Replace(str, vbTab, “\t”)<br>    ‘ 返回处理结果<br>    EscJson &#x3D; str<br>End Function</p>
 
-    <!-- 渲染文章正文 HTML -->
-    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+      <!-- 渲染文章正文 HTML -->
+      <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+    
   </div>
   <!-- 文章正文结束 -->
 

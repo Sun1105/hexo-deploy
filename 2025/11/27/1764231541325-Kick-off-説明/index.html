@@ -475,224 +475,34 @@
 
   <!-- 文章正文内容 -->
   <div class="post-content">
-    <!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8">
-  <title>🚀 项目 Kick-off 会议重点内容</title>
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true });
-  </script>
-  <style>
-    body {
-      font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
-      margin: 40px;
-      background-color: #f9f9f9;
-      line-height: 1.8;
-    }
-    h2 {
-      color: #2c3e50;
-      margin-top: 40px;
-    }
-    .mermaid {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 40px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 12px;
-      vertical-align: top;
-    }
-    th {
-      background-color: #eee;
-    }
-    ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-    blockquote {
-      background: #f0f0f0;
-      padding: 10px 20px;
-      border-left: 5px solid #ccc;
-      margin: 20px 0;
-    }
-  </style>
-</head>
-<body>
+    
 
-  <h1>🚀 项目 Kick-off 会议重点内容</h1>
-  <blockquote>本文档适用于 IT 项目团队 Kick-off 会议，通过结构化、图表化方式明确会议各项重点内容。</blockquote>
+    
+      <!-- Full HTML content rendered in iframe -->
+      <iframe id="post-content-iframe" style="width:100%; height:800px; border:1px solid #eee; background: #fff;"></iframe>
+      <script>
+        (function() {
+          const frame = document.getElementById('post-content-iframe');
+          // Use encodeURIComponent on server side (build time) to safely embed content
+          const rawContent = decodeURIComponent("%3C!DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22zh%22%3E%0A%3Chead%3E%0A%20%20%3Cmeta%20charset%3D%22UTF-8%22%3E%0A%20%20%3Ctitle%3E%F0%9F%9A%80%20%E9%A1%B9%E7%9B%AE%20Kick-off%20%E4%BC%9A%E8%AE%AE%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%3C%2Ftitle%3E%0A%20%20%3Cscript%20type%3D%22module%22%3E%0A%20%20%20%20import%20mermaid%20from%20'https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmermaid%4010%2Fdist%2Fmermaid.esm.min.mjs'%3B%0A%20%20%20%20mermaid.initialize(%7B%20startOnLoad%3A%20true%20%7D)%3B%0A%20%20%3C%2Fscript%3E%0A%20%20%3Cstyle%3E%0A%20%20%20%20body%20%7B%0A%20%20%20%20%20%20font-family%3A%20%22Segoe%20UI%22%2C%20%22Microsoft%20YaHei%22%2C%20sans-serif%3B%0A%20%20%20%20%20%20margin%3A%2040px%3B%0A%20%20%20%20%20%20background-color%3A%20%23f9f9f9%3B%0A%20%20%20%20%20%20line-height%3A%201.8%3B%0A%20%20%20%20%7D%0A%20%20%20%20h2%20%7B%0A%20%20%20%20%20%20color%3A%20%232c3e50%3B%0A%20%20%20%20%20%20margin-top%3A%2040px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.mermaid%20%7B%0A%20%20%20%20%20%20background%3A%20%23fff%3B%0A%20%20%20%20%20%20padding%3A%2020px%3B%0A%20%20%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20%20%20box-shadow%3A%200%200%2010px%20rgba(0%2C0%2C0%2C0.1)%3B%0A%20%20%20%20%20%20margin-bottom%3A%2040px%3B%0A%20%20%20%20%7D%0A%20%20%20%20table%20%7B%0A%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20border-collapse%3A%20collapse%3B%0A%20%20%20%20%20%20margin-bottom%3A%2040px%3B%0A%20%20%20%20%7D%0A%20%20%20%20th%2C%20td%20%7B%0A%20%20%20%20%20%20border%3A%201px%20solid%20%23ccc%3B%0A%20%20%20%20%20%20padding%3A%2012px%3B%0A%20%20%20%20%20%20vertical-align%3A%20top%3B%0A%20%20%20%20%7D%0A%20%20%20%20th%20%7B%0A%20%20%20%20%20%20background-color%3A%20%23eee%3B%0A%20%20%20%20%7D%0A%20%20%20%20ul%20%7B%0A%20%20%20%20%20%20margin%3A%200%3B%0A%20%20%20%20%20%20padding-left%3A%2020px%3B%0A%20%20%20%20%7D%0A%20%20%20%20blockquote%20%7B%0A%20%20%20%20%20%20background%3A%20%23f0f0f0%3B%0A%20%20%20%20%20%20padding%3A%2010px%2020px%3B%0A%20%20%20%20%20%20border-left%3A%205px%20solid%20%23ccc%3B%0A%20%20%20%20%20%20margin%3A%2020px%200%3B%0A%20%20%20%20%7D%0A%20%20%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%0A%20%20%3Ch1%3E%F0%9F%9A%80%20%E9%A1%B9%E7%9B%AE%20Kick-off%20%E4%BC%9A%E8%AE%AE%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%3C%2Fh1%3E%0A%20%20%3Cblockquote%3E%E6%9C%AC%E6%96%87%E6%A1%A3%E9%80%82%E7%94%A8%E4%BA%8E%20IT%20%E9%A1%B9%E7%9B%AE%E5%9B%A2%E9%98%9F%20Kick-off%20%E4%BC%9A%E8%AE%AE%EF%BC%8C%E9%80%9A%E8%BF%87%E7%BB%93%E6%9E%84%E5%8C%96%E3%80%81%E5%9B%BE%E8%A1%A8%E5%8C%96%E6%96%B9%E5%BC%8F%E6%98%8E%E7%A1%AE%E4%BC%9A%E8%AE%AE%E5%90%84%E9%A1%B9%E9%87%8D%E7%82%B9%E5%86%85%E5%AE%B9%E3%80%82%3C%2Fblockquote%3E%0A%0A%20%20%3Ch2%3E1%EF%B8%8F%E2%83%A3%20%E4%BC%9A%E8%AE%AE%E7%9B%AE%E7%9A%84%3C%2Fh2%3E%0A%20%20%3Cul%3E%0A%20%20%20%20%3Cli%3E%E6%98%8E%E7%A1%AE%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E7%9A%84%E6%84%8F%E4%B9%89%E5%92%8C%E7%9B%AE%E6%A0%87%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%E7%BB%9F%E4%B8%80%E5%9B%A2%E9%98%9F%E8%AE%A4%E7%9F%A5%EF%BC%8C%E7%A1%AE%E4%BF%9D%E6%89%80%E6%9C%89%E6%88%90%E5%91%98%E7%90%86%E8%A7%A3%E9%A1%B9%E7%9B%AE%E8%8C%83%E5%9B%B4%E5%92%8C%E8%81%8C%E8%B4%A3%3C%2Fli%3E%0A%20%20%3C%2Ful%3E%0A%20%20%3Cblockquote%3E%0A%20%20%20%20%E4%BE%8B%EF%BC%9A%E6%9C%AC%E6%AC%A1%20Kick-off%20%E4%BC%9A%E8%AE%AE%E6%97%A8%E5%9C%A8%E6%AD%A3%E5%BC%8F%E5%90%AF%E5%8A%A8%20CRM%20%E4%B8%8E%20ERP%20%E9%9B%86%E6%88%90%E9%A1%B9%E7%9B%AE%EF%BC%8C%E7%A1%AE%E4%BF%9D%E6%89%80%E6%9C%89%E6%88%90%E5%91%98%E6%B8%85%E6%A5%9A%E9%A1%B9%E7%9B%AE%E7%9B%AE%E6%A0%87%E4%B8%8E%E4%BA%A4%E4%BB%98%E8%A6%81%E6%B1%82%EF%BC%8C%E7%BB%9F%E4%B8%80%E5%9B%A2%E9%98%9F%E5%AF%B9%E9%A1%B9%E7%9B%AE%E8%8C%83%E5%9B%B4%E3%80%81%E8%A7%92%E8%89%B2%E5%88%86%E5%B7%A5%E5%92%8C%E8%BF%9B%E5%BA%A6%E8%AE%A1%E5%88%92%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%8C%E8%BE%BE%E6%88%90%E4%B8%80%E8%87%B4%E5%85%B1%E8%AF%86%E3%80%82%0A%20%20%3C%2Fblockquote%3E%0A%0A%20%20%3Ch2%3E2%EF%B8%8F%E2%83%A3%20%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF%E4%B8%8E%E7%9B%AE%E6%A0%87%3C%2Fh2%3E%0A%20%20%3Cstrong%3E%E8%83%8C%E6%99%AF%EF%BC%9A%3C%2Fstrong%3E%0A%20%20%3Cul%3E%3Cli%3E%E5%85%AC%E5%8F%B8%E4%B8%9A%E5%8A%A1%E5%A2%9E%E9%95%BF%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E4%BD%9C%E9%87%8F%E5%A4%A7%EF%BC%8C%E6%89%8B%E5%B7%A5%E5%A4%84%E7%90%86%E5%AE%B9%E6%98%93%E5%87%BA%E9%94%99%E3%80%82%3C%2Fli%3E%3C%2Ful%3E%0A%20%20%3Cstrong%3E%E7%9B%AE%E6%A0%87%EF%BC%9A%3C%2Fstrong%3E%0A%20%20%3Cul%3E%3Cli%3E%E5%AE%9E%E7%8E%B0%20CRM%20%E4%B8%8E%20ERP%20%E7%B3%BB%E7%BB%9F%E6%97%A0%E7%BC%9D%E9%9B%86%E6%88%90%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5%E5%AE%A2%E6%88%B7%E4%B8%8E%E8%AE%A2%E5%8D%95%E6%95%B0%E6%8D%AE%E3%80%82%3C%2Fli%3E%3C%2Ful%3E%0A%20%20%3Cstrong%3E%E9%A1%B9%E7%9B%AE%20KPI%EF%BC%9A%3C%2Fstrong%3E%0A%20%20%3Cul%3E%0A%20%20%20%20%3Cli%3E%E5%90%8C%E6%AD%A5%E5%BB%B6%E8%BF%9F%E5%B0%8F%E4%BA%8E%20%3Ccode%3E1%E5%88%86%E9%92%9F%3C%2Fcode%3E%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%E6%8E%A5%E5%8F%A3%E6%95%85%E9%9A%9C%E7%8E%87%E4%BD%8E%E4%BA%8E%20%3Ccode%3E1%25%3C%2Fcode%3E%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%E6%B5%8B%E8%AF%95%E9%98%B6%E6%AE%B5%E5%8F%91%E7%8E%B0%E7%9A%84%E9%87%8D%E8%A6%81%E7%BC%BA%E9%99%B7%E5%85%A8%E9%83%A8%E5%85%B3%E9%97%AD%3C%2Fli%3E%0A%20%20%3C%2Ful%3E%0A%0A%20%20%3Ch2%3E3%EF%B8%8F%E2%83%A3%20%E9%A1%B9%E7%9B%AE%E8%8C%83%E5%9B%B4%3C%2Fh2%3E%0A%20%20%3Ctable%3E%0A%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%3Cth%3EIn%20Scope%3C%2Fth%3E%0A%20%20%20%20%20%20%3Cth%3EOut%20of%20Scope%3C%2Fth%3E%0A%20%20%20%20%20%20%3Cth%3E%E4%BA%A4%E4%BB%98%E7%89%A9%E6%B8%85%E5%8D%95%3C%2Fth%3E%0A%20%20%20%20%3C%2Ftr%3E%0A%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%3Ctd%3E%0A%20%20%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3ECRM%E7%B3%BB%E7%BB%9F%E4%B8%8EERP%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3EITA%E7%BB%93%E5%90%88%E6%B5%8B%E8%AF%95%EF%BC%8C%E9%AA%8C%E8%AF%81%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E6%AD%A3%E7%A1%AE%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%9A%84%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%3C%2Ftd%3E%0A%20%20%20%20%20%20%3Ctd%3E%0A%20%20%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9B%86%E6%88%90%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%A5%E8%A1%A8%E5%BC%80%E5%8F%91%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%3C%2Ftd%3E%0A%20%20%20%20%20%20%3Ctd%3E%0A%20%20%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E4%B8%8E%E6%8A%A5%E5%91%8A%EF%BC%88%E5%8C%85%E5%90%ABITA%E6%B5%8B%E8%AF%95%E9%98%B6%E6%AE%B5%E6%8A%A5%E5%91%8A%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E5%AE%8C%E6%95%B4%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%3C%2Ftd%3E%0A%20%20%20%20%3C%2Ftr%3E%0A%20%20%3C%2Ftable%3E%0A%0A%20%20%3Ch2%3E4%EF%B8%8F%E2%83%A3%20%E6%97%B6%E9%97%B4%E8%AE%A1%E5%88%92%E4%B8%8E%E9%87%8C%E7%A8%8B%E7%A2%91%3C%2Fh2%3E%0A%20%20%3Cdiv%20class%3D%22mermaid%22%3E%0A%20%20%20%20gantt%0A%20%20%20%20%20%20dateFormat%20%20YYYY-MM-DD%0A%20%20%20%20%20%20title%20%E9%A1%B9%E7%9B%AE%E5%85%B3%E9%94%AE%E6%97%B6%E9%97%B4%E8%8A%82%E7%82%B9%0A%20%20%20%20%20%20section%20%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%0A%20%20%20%20%20%20Kick-off%E4%BC%9A%E8%AE%AE%20%20%20%20%20%20%20%20%20%20%3Adone%2C%20%202024-12-01%2C%201d%0A%20%20%20%20%20%20section%20%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%0A%20%20%20%20%20%20%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E5%AE%8C%E6%88%90%20%20%20%20%20%20%20%20%20%20%20%3A%20%20%20%20%20%20%202024-12-10%2C%205d%0A%20%20%20%20%20%20section%20ITA%E6%B5%8B%E8%AF%95%0A%20%20%20%20%20%20ITA%E7%BB%93%E5%90%88%E6%B5%8B%E8%AF%95%E5%BC%80%E5%A7%8B%20%20%20%20%20%20%20%20%3A%20%20%20%20%20%20%202024-12-15%2C%202d%0A%20%20%20%20%20%20ITA%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9D%9F%E6%8F%90%E4%BA%A4%E6%8A%A5%E5%91%8A%20%20%20%20%20%3A%20%20%20%20%20%20%202024-12-22%2C%203d%0A%20%20%20%20%20%20section%20%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%BA%BF%0A%20%20%20%20%20%20%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%BA%BF%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3A%20%20%20%20%20%20%202024-12-30%2C%201d%0A%20%20%3C%2Fdiv%3E%0A%0A%3Cp%3E%20%20%3Cstrong%3E%E5%85%B3%E9%94%AE%E9%87%8C%E7%A8%8B%E7%A2%91%EF%BC%9A%3C%2Fstrong%3E%3Cbr%3E%20%20%3Cul%3E%3Cbr%3E%20%20%20%20%3Cli%3E12%E6%9C%881%E6%97%A5%EF%BC%9A%E9%A1%B9%E7%9B%AE%E6%AD%A3%E5%BC%8F%E5%90%AF%E5%8A%A8%EF%BC%88Kick-off%EF%BC%89%3C%2Fli%3E%3Cbr%3E%20%20%20%20%3Cli%3E12%E6%9C%8810%E6%97%A5%EF%BC%9A%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%E5%AE%8C%E6%88%90%3C%2Fli%3E%3Cbr%3E%20%20%20%20%3Cli%3E12%E6%9C%8815%E6%97%A5%EF%BC%9A%E5%BC%80%E5%A7%8B%20ITA%20%E7%BB%93%E5%90%88%E6%B5%8B%E8%AF%95%3C%2Fli%3E%3Cbr%3E%20%20%20%20%3Cli%3E12%E6%9C%8822%E6%97%A5%EF%BC%9AITA%20%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9D%9F%E5%B9%B6%E6%8F%90%E4%BA%A4%E6%8A%A5%E5%91%8A%3C%2Fli%3E%3Cbr%3E%20%20%20%20%3Cli%3E12%E6%9C%8830%E6%97%A5%EF%BC%9A%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%BA%BF%3C%2Fli%3E%3Cbr%3E%20%20%3C%2Ful%3E%3C%2Fp%3E%0A%20%20%3Ch2%3E5%EF%B8%8F%E2%83%A3%20%E7%BB%84%E7%BB%87%E6%9E%B6%E6%9E%84%E4%B8%8E%E8%A7%92%E8%89%B2%E5%88%86%E5%B7%A5%3C%2Fh2%3E%0A%20%20%3Ctable%3E%0A%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%3Cth%3E%E8%A7%92%E8%89%B2%3C%2Fth%3E%0A%20%20%20%20%20%20%3Cth%3E%E5%A7%93%E5%90%8D%3C%2Fth%3E%0A%20%20%20%20%20%20%3Cth%3E%E8%81%8C%E8%B4%A3%E8%AF%B4%E6%98%8E%3C%2Fth%3E%0A%20%20%20%20%3C%2Ftr%3E%0A%20%20%20%20%3Ctr%3E%3Ctd%3E%E9%A1%B9%E7%9B%AE%E7%BB%8F%E7%90%86%3C%2Ftd%3E%3Ctd%3E%E7%8E%8B%E6%98%8E%3C%2Ftd%3E%3Ctd%3E%E6%95%B4%E4%BD%93%E6%8E%A8%E8%BF%9B%E4%B8%8E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86%3C%2Ftd%3E%3C%2Ftr%3E%0A%20%20%20%20%3Ctr%3E%3Ctd%3E%E5%BC%80%E5%8F%91%E8%B4%9F%E8%B4%A3%E4%BA%BA%3C%2Ftd%3E%3Ctd%3E%E6%9D%8E%E5%88%9A%3C%2Ftd%3E%3Ctd%3E%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91%3C%2Ftd%3E%3C%2Ftr%3E%0A%20%20%20%20%3Ctr%3E%3Ctd%3E%E6%B5%8B%E8%AF%95%E8%B4%9F%E8%B4%A3%E4%BA%BA%3C%2Ftd%3E%3Ctd%3E%E8%B5%B5%E4%BC%9F%3C%2Ftd%3E%3Ctd%3EITA%E7%BB%93%E5%90%88%E6%B5%8B%E8%AF%95%E3%80%81%E7%BC%BA%E9%99%B7%E8%B7%9F%E8%B8%AA%3C%2Ftd%3E%3C%2Ftr%3E%0A%20%20%20%20%3Ctr%3E%3Ctd%3E%E4%B8%9A%E5%8A%A1%E4%BB%A3%E8%A1%A8%3C%2Ftd%3E%3Ctd%3E%E5%AD%99%E4%B8%BD%3C%2Ftd%3E%3Ctd%3E%E9%9C%80%E6%B1%82%E6%BE%84%E6%B8%85%E4%B8%8E%E4%B8%9A%E5%8A%A1%E9%AA%8C%E6%94%B6%3C%2Ftd%3E%3C%2Ftr%3E%0A%20%20%20%20%3Ctr%3E%3Ctd%3E%E4%BE%9B%E5%BA%94%E5%95%86%E8%81%94%E7%BB%9C%3C%2Ftd%3E%3Ctd%3E%E9%99%88%E8%95%BE%3C%2Ftd%3E%3Ctd%3E%E5%A4%96%E9%83%A8%E8%B5%84%E6%BA%90%E5%8D%8F%E8%B0%83%3C%2Ftd%3E%3C%2Ftr%3E%0A%20%20%3C%2Ftable%3E%0A%20%20%3Cstrong%3E%E5%86%B3%E7%AD%96%E6%9C%BA%E5%88%B6%EF%BC%9A%3C%2Fstrong%3E%20%E6%8E%A5%E5%8F%A3%E5%8F%98%E6%9B%B4%E9%9C%80%E9%A1%B9%E7%9B%AE%E7%BB%8F%E7%90%86%E5%92%8C%E4%B8%9A%E5%8A%A1%E4%BB%A3%E8%A1%A8%E5%85%B1%E5%90%8C%E5%AE%A1%E6%89%B9%E3%80%82%0A%0A%20%20%3Ch2%3E6%EF%B8%8F%E2%83%A3%20%E9%A3%8E%E9%99%A9%E4%B8%8E%E5%AF%B9%E7%AD%96%3C%2Fh2%3E%0A%20%20%3Ctable%3E%0A%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%3Cth%3E%E8%AF%86%E5%88%AB%E9%A3%8E%E9%99%A9%3C%2Fth%3E%0A%20%20%20%20%20%20%3Cth%3E%E5%BA%94%E5%AF%B9%E7%AD%96%E7%95%A5%3C%2Fth%3E%0A%20%20%20%20%20%20%3Cth%3E%E5%BA%94%E6%80%A5%E9%A2%84%E6%A1%88%3C%2Fth%3E%0A%20%20%20%20%3C%2Ftr%3E%0A%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%3Ctd%3E%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%BB%B6%E8%BF%9F%3C%2Ftd%3E%0A%20%20%20%20%20%20%3Ctd%3E%E6%8F%90%E5%89%8D%E4%B8%A4%E5%91%A8%E5%87%86%E5%A4%87%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%3C%2Ftd%3E%0A%20%20%20%20%20%20%3Ctd%3E%E5%A6%82%E6%8E%A5%E5%8F%A3%E4%B8%8D%E5%85%BC%E5%AE%B9%EF%BC%8C%E6%AF%8F%E5%A4%A9%E6%BB%9A%E5%8A%A8%E5%BC%8F%E4%BF%AE%E5%A4%8D%2B%E5%9B%9E%E5%BD%92%E6%B5%8B%E8%AF%95%E7%94%B1%E6%B5%8B%E8%AF%95%E8%B4%9F%E8%B4%A3%E4%BA%BA%2F%E5%BC%80%E5%8F%91%E7%BB%84%E5%8D%8F%E5%90%8C%3C%2Ftd%3E%0A%20%20%20%20%3C%2Ftr%3E%0A%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%3Ctd%3E%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E5%8F%98%E6%9B%B4%E5%BD%B1%E5%93%8D%E6%8E%A5%E5%8F%A3%E5%85%BC%E5%AE%B9%3C%2Ftd%3E%0A%20%20%20%20%20%20%3Ctd%3E%E8%AE%BE%E8%AE%A1%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%B7%A5%E5%85%B7%EF%BC%8C%E5%87%8F%E5%B0%91%E6%89%8B%E5%B7%A5%E8%B0%83%E6%95%B4%3C%2Ftd%3E%0A%20%20%20%20%20%20%3Ctd%3E%3C%2Ftd%3E%0A%20%20%20%20%3C%2Ftr%3E%0A%20%20%3C%2Ftable%3E%0A%0A%20%20%3Ch2%3E7%EF%B8%8F%E2%83%A3%20%E6%B2%9F%E9%80%9A%E4%B8%8E%E5%8D%8F%E4%BD%9C%E8%A7%84%E5%88%99%3C%2Fh2%3E%0A%20%20%3Cul%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E6%B2%9F%E9%80%9A%E6%B8%A0%E9%81%93%EF%BC%9A%3C%2Fstrong%3E%20%E9%A1%B9%E7%9B%AE%E7%BE%A4%E7%BB%84%EF%BC%88%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%EF%BC%89%E6%97%A5%E5%B8%B8%E4%BA%A4%E6%B5%81%EF%BC%8C%E9%82%AE%E4%BB%B6%E5%90%8C%E6%AD%A5%E9%87%8D%E8%A6%81%E6%96%87%E6%A1%A3%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E4%BC%9A%E8%AE%AE%E9%A2%91%E7%8E%87%EF%BC%9A%3C%2Fstrong%3E%20%E6%AF%8F%E5%91%A8%E4%B8%80%E4%B8%8B%E5%8D%882%E7%82%B9%E4%BE%8B%E4%BC%9A%EF%BC%8C%E6%B5%8B%E8%AF%95%E6%9C%9F%E6%AF%8F%E6%97%A5%E7%AB%99%E4%BC%9A%EF%BC%88ITA%E7%BB%93%E5%90%88%E6%B5%8B%E8%AF%95%E6%9C%9F%E9%97%B4%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E6%96%87%E6%A1%A3%E7%AE%A1%E7%90%86%EF%BC%9A%3C%2Fstrong%3E%20%E6%89%80%E6%9C%89%E6%96%87%E6%A1%A3%E5%AD%98%E6%94%BE%E5%9C%A8%E5%85%AC%E5%8F%B8SharePoint%EF%BC%8C%E7%BB%9F%E4%B8%80%E7%89%88%E6%9C%AC%E5%8F%B7%E7%AE%A1%E7%90%86%3C%2Fli%3E%0A%20%20%3C%2Ful%3E%0A%20%20%3Cblockquote%3E%E5%85%B7%E4%BD%93%E5%BB%BA%E8%AE%AE%EF%BC%9A%E9%87%87%E7%94%A8%E7%94%98%E7%89%B9%E5%9B%BE%E5%B1%95%E7%A4%BA%E9%A1%B9%E7%9B%AE%E6%8E%92%E6%9C%9F%EF%BC%8C%E6%89%80%E6%9C%89%E6%96%87%E6%A1%A3%E4%BD%BF%E7%94%A8%E7%BB%9F%E4%B8%80%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9%E7%AE%A1%E7%90%86%E3%80%82%3C%2Fblockquote%3E%0A%0A%20%20%3Ch2%3E8%EF%B8%8F%E2%83%A3%20%E5%90%8E%E7%BB%AD%E8%A1%8C%E5%8A%A8%3C%2Fh2%3E%0A%20%20%3Cul%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3EKick-off%E5%90%8E%E7%AB%8B%E5%8D%B3%E5%8A%A8%E4%BD%9C%EF%BC%9A%3C%2Fstrong%3E%0A%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E6%89%80%E6%9C%89%E6%88%90%E5%91%98%E8%A1%A5%E5%85%85%E9%A1%B9%E7%9B%AE%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E4%BB%8A%E6%97%A5%E4%B8%8B%E7%8F%AD%E5%89%8D%E7%A1%AE%E8%AE%A4%E5%90%84%E8%87%AA%E8%B4%A3%E4%BB%BB%E4%BB%BB%E5%8A%A1%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E7%AC%AC%E4%B8%80%E6%89%B9%E6%8E%A5%E5%8F%A3%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E5%BC%80%E5%8F%91%E8%B4%9F%E8%B4%A3%E4%BA%BA%E4%BA%8E%3Ccode%3E12%E6%9C%882%E6%97%A5%E5%89%8D%3C%2Fcode%3E%E5%AE%8C%E6%88%90%3C%2Fli%3E%0A%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E4%B8%8B%E4%B8%80%E6%AC%A1%E4%BC%9A%E8%AE%AE%EF%BC%9A%3C%2Fstrong%3E%20%3Ccode%3E12%E6%9C%885%E6%97%A5%E4%B8%8A%E5%8D%8810%E7%82%B9%3C%2Fcode%3E%EF%BC%88%E8%BF%9B%E5%B1%95%E6%9B%B4%E6%96%B0%E4%B8%8E%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87%E7%A1%AE%E8%AE%A4%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E8%B4%A3%E4%BB%BB%E4%BA%BA%E7%A1%AE%E8%AE%A4%EF%BC%9A%3C%2Fstrong%3E%20%E5%90%84%E9%98%B6%E6%AE%B5%E8%B4%A3%E4%BB%BB%E4%BA%BA%E5%B7%B2%E5%88%97%E6%98%8E%3C%2Fli%3E%0A%20%20%3C%2Ful%3E%0A%0A%20%20%3Ch2%3E%F0%9F%93%88%20%E8%A1%A5%E5%85%85%E5%BB%BA%E8%AE%AE%3C%2Fh2%3E%0A%20%20%3Cul%3E%0A%20%20%20%20%3Cli%3E%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B%E5%9B%BE%E6%88%96%E8%A1%A8%E6%A0%BC%E5%8C%96%E5%B1%95%E7%A4%BA%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%EF%BC%8C%E5%A6%82%20CRM%20%E4%B8%8E%20ERP%20%E6%95%B0%E6%8D%AE%0A%20%20%20%20%3Cli%3EITA%E6%B5%8B%E8%AF%95%E7%8E%AF%E8%8A%82%E7%94%B1%E6%B5%8B%E8%AF%95%E8%B4%9F%E8%B4%A3%E4%BA%BA%E4%BB%8B%E7%BB%8D%E7%9B%AE%E6%A0%87%E3%80%81%E6%AD%A5%E9%AA%A4%EF%BC%8C%E5%88%86%E9%85%8D%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%BC%96%E5%86%99%E4%BA%BA%E5%92%8C%E7%BC%BA%E9%99%B7%E8%B7%9F%E8%B8%AA%E8%B4%A3%E4%BB%BB%EF%BC%8C%E5%B9%B6%E7%A1%AE%E8%AE%A4%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87%E6%97%A5%E7%A8%8B%E3%80%82%0A%0A%3Chr%3E%0A%3Ch4%20id%3D%22%E7%A4%BA%E4%BE%8B%EF%BC%9A%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90%E6%9E%B6%E6%9E%84%E5%9B%BE%EF%BC%88Mermaid%EF%BC%89%22%3E%3Ca%20href%3D%22%23%E7%A4%BA%E4%BE%8B%EF%BC%9A%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90%E6%9E%B6%E6%9E%84%E5%9B%BE%EF%BC%88Mermaid%EF%BC%89%22%20class%3D%22headerlink%22%20title%3D%22%E7%A4%BA%E4%BE%8B%EF%BC%9A%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90%E6%9E%B6%E6%9E%84%E5%9B%BE%EF%BC%88Mermaid%EF%BC%89%22%3E%3C%2Fa%3E%E7%A4%BA%E4%BE%8B%EF%BC%9A%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90%E6%9E%B6%E6%9E%84%E5%9B%BE%EF%BC%88Mermaid%EF%BC%89%3C%2Fh4%3E%3Cscript%20type%3D%22module%22%3E%0A%20%20import%20mermaid%20from%20'https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmermaid%4010%2Fdist%2Fmermaid.esm.min.mjs'%3B%0A%20%20mermaid.initialize(%7B%20startOnLoad%3A%20true%20%7D)%3B%0A%3C%2Fscript%3E%0A%0A%3Cdiv%20class%3D%22mermaid%22%3E%0Agraph%20LR%0A%20%20CRM((CRM%E7%B3%BB%E7%BB%9F))%0A%20%20ERP((ERP%E7%B3%BB%E7%BB%9F))%0A%20%20ITA%5BITA%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%5D%0A%20%20CRM%20--%20%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%8F%A3%20--%3E%20ERP%0A%20%20ERP%20--%20%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%86%99%20--%3E%20CRM%0A%20%20CRM%20--%20%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%20--%3E%20ITA%0A%20%20ERP%20--%20%E6%A0%A1%E9%AA%8C%E7%BB%93%E6%9E%9C%20--%3E%20ITA%0A%3C%2Fdiv%3E%0A%0A%0A%3Chr%3E%0A%3Cblockquote%3E%0A%3Cp%3E%F0%9F%9A%A9%20%3Cstrong%3EPPT%E5%BB%BA%E8%AE%AE%3C%2Fstrong%3E%20%20%3C%2Fp%3E%0A%3Cul%3E%0A%3Cli%3E%E5%B0%BD%E9%87%8F%E5%9B%BE%E8%A1%A8%E5%B1%95%E7%A4%BA%EF%BC%8C%E9%87%8D%E7%82%B9%E7%AA%81%E5%87%BA%3C%2Fli%3E%0A%3Cli%3E%E6%96%87%E5%AD%97%E7%AE%80%E7%BB%83%EF%BC%8C%E9%81%BF%E5%85%8D%E5%A4%A7%E6%AE%B5%E5%8F%99%E8%BF%B0%20%20%3C%2Fli%3E%0A%3Cli%3E%E6%AF%8F%E4%B8%AA%E5%85%B3%E9%94%AE%E7%82%B9%E4%B8%80%E9%A1%B5%3C%2Fli%3E%0A%3C%2Ful%3E%0A%3C%2Fblockquote%3E%0A%3Chr%3E%0A%3Cp%3E%3Cstrong%3E%E6%9C%80%E5%90%8E%EF%BC%8C%E7%A5%9D%E9%A1%B9%E7%9B%AE%E9%A1%BA%E5%88%A9%E5%90%AF%E5%8A%A8%EF%BC%81%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%E9%AB%98%E6%95%88%EF%BC%81%F0%9F%8E%89%3C%2Fstrong%3E%3C%2Fp%3E%0A");
+          
+          const doc = frame.contentDocument || frame.contentWindow.document;
+          doc.open();
+          doc.write(rawContent);
+          doc.close();
 
-  <h2>1️⃣ 会议目的</h2>
-  <ul>
-    <li>明确项目启动的意义和目标</li>
-    <li>统一团队认知，确保所有成员理解项目范围和职责</li>
-  </ul>
-  <blockquote>
-    例：本次 Kick-off 会议旨在正式启动 CRM 与 ERP 集成项目，确保所有成员清楚项目目标与交付要求，统一团队对项目范围、角色分工和进度计划的理解，达成一致共识。
-  </blockquote>
-
-  <h2>2️⃣ 项目背景与目标</h2>
-  <strong>背景：</strong>
-  <ul><li>公司业务增长导致数据同步工作量大，手工处理容易出错。</li></ul>
-  <strong>目标：</strong>
-  <ul><li>实现 CRM 与 ERP 系统无缝集成，自动同步客户与订单数据。</li></ul>
-  <strong>项目 KPI：</strong>
-  <ul>
-    <li>同步延迟小于 <code>1分钟</code></li>
-    <li>接口故障率低于 <code>1%</code></li>
-    <li>测试阶段发现的重要缺陷全部关闭</li>
-  </ul>
-
-  <h2>3️⃣ 项目范围</h2>
-  <table>
-    <tr>
-      <th>In Scope</th>
-      <th>Out of Scope</th>
-      <th>交付物清单</th>
-    </tr>
-    <tr>
-      <td>
-        <ul>
-          <li>CRM系统与ERP系统的数据接口开发</li>
-          <li>ITA结合测试，验证数据同步与业务逻辑正确</li>
-          <li>用户权限管理的接口规范</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>移动端集成</li>
-          <li>数据分析报表开发</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>接口设计文档</li>
-          <li>测试用例与报告（包含ITA测试阶段报告）</li>
-          <li>完整的系统操作手册</li>
-        </ul>
-      </td>
-    </tr>
-  </table>
-
-  <h2>4️⃣ 时间计划与里程碑</h2>
-  <div class="mermaid">
-    gantt
-      dateFormat  YYYY-MM-DD
-      title 项目关键时间节点
-      section 项目启动
-      Kick-off会议          :done,  2024-12-01, 1d
-      section 接口开发
-      接口开发完成           :       2024-12-10, 5d
-      section ITA测试
-      ITA结合测试开始        :       2024-12-15, 2d
-      ITA测试结束提交报告     :       2024-12-22, 3d
-      section 系统上线
-      系统上线              :       2024-12-30, 1d
-  </div>
-
-<p>  <strong>关键里程碑：</strong><br>  <ul><br>    <li>12月1日：项目正式启动（Kick-off）</li><br>    <li>12月10日：接口开发完成</li><br>    <li>12月15日：开始 ITA 结合测试</li><br>    <li>12月22日：ITA 测试结束并提交报告</li><br>    <li>12月30日：系统上线</li><br>  </ul></p>
-  <h2>5️⃣ 组织架构与角色分工</h2>
-  <table>
-    <tr>
-      <th>角色</th>
-      <th>姓名</th>
-      <th>职责说明</th>
-    </tr>
-    <tr><td>项目经理</td><td>王明</td><td>整体推进与风险管理</td></tr>
-    <tr><td>开发负责人</td><td>李刚</td><td>接口开发</td></tr>
-    <tr><td>测试负责人</td><td>赵伟</td><td>ITA结合测试、缺陷跟踪</td></tr>
-    <tr><td>业务代表</td><td>孙丽</td><td>需求澄清与业务验收</td></tr>
-    <tr><td>供应商联络</td><td>陈蕾</td><td>外部资源协调</td></tr>
-  </table>
-  <strong>决策机制：</strong> 接口变更需项目经理和业务代表共同审批。
-
-  <h2>6️⃣ 风险与对策</h2>
-  <table>
-    <tr>
-      <th>识别风险</th>
-      <th>应对策略</th>
-      <th>应急预案</th>
-    </tr>
-    <tr>
-      <td>测试环境搭建延迟</td>
-      <td>提前两周准备测试环境</td>
-      <td>如接口不兼容，每天滚动式修复+回归测试由测试负责人/开发组协同</td>
-    </tr>
-    <tr>
-      <td>数据格式变更影响接口兼容</td>
-      <td>设计数据格式转换工具，减少手工调整</td>
-      <td></td>
-    </tr>
-  </table>
-
-  <h2>7️⃣ 沟通与协作规则</h2>
-  <ul>
-    <li><strong>沟通渠道：</strong> 项目群组（企业微信）日常交流，邮件同步重要文档</li>
-    <li><strong>会议频率：</strong> 每周一下午2点例会，测试期每日站会（ITA结合测试期间）</li>
-    <li><strong>文档管理：</strong> 所有文档存放在公司SharePoint，统一版本号管理</li>
-  </ul>
-  <blockquote>具体建议：采用甘特图展示项目排期，所有文档使用统一命名规则和文件夹管理。</blockquote>
-
-  <h2>8️⃣ 后续行动</h2>
-  <ul>
-    <li><strong>Kick-off后立即动作：</strong>
-      <ul>
-        <li>所有成员补充项目联系方式</li>
-        <li>今日下班前确认各自责任任务</li>
-        <li>第一批接口需求文档开发负责人于<code>12月2日前</code>完成</li>
-      </ul>
-    </li>
-    <li><strong>下一次会议：</strong> <code>12月5日上午10点</code>（进展更新与环境准备确认）</li>
-    <li><strong>责任人确认：</strong> 各阶段责任人已列明</li>
-  </ul>
-
-  <h2>📈 补充建议</h2>
-  <ul>
-    <li>使用流程图或表格化展示系统架构，如 CRM 与 ERP 数据
-    <li>ITA测试环节由测试负责人介绍目标、步骤，分配测试用例编写人和缺陷跟踪责任，并确认测试环境搭建及数据准备日程。
-
-<hr>
-<h4 id="示例：系统集成架构图（Mermaid）"><a href="#示例：系统集成架构图（Mermaid）" class="headerlink" title="示例：系统集成架构图（Mermaid）"></a>示例：系统集成架构图（Mermaid）</h4><script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
-
-<div class="mermaid">
-graph LR
-  CRM((CRM系统))
-  ERP((ERP系统))
-  ITA[ITA测试环境]
-  CRM -- 数据接口 --> ERP
-  ERP -- 数据回写 --> CRM
-  CRM -- 测试用例 --> ITA
-  ERP -- 校验结果 --> ITA
-</div>
-
-
-<hr>
-<blockquote>
-<p>🚩 <strong>PPT建议</strong>  </p>
-<ul>
-<li>尽量图表展示，重点突出</li>
-<li>文字简练，避免大段叙述  </li>
-<li>每个关键点一页</li>
-</ul>
-</blockquote>
-<hr>
-<p><strong>最后，祝项目顺利启动！团队协作高效！🎉</strong></p>
-
-    <!-- 渲染文章正文 HTML -->
-    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+          // Auto resize height
+          frame.onload = function() {
+            try {
+              const height = frame.contentWindow.document.body.scrollHeight;
+              if (height > 0) {
+                 frame.style.height = (height + 50) + 'px';
+              }
+            } catch(e) { console.error("Auto resize failed", e); }
+          };
+        })();
+      </script>
+    
   </div>
   <!-- 文章正文结束 -->
 

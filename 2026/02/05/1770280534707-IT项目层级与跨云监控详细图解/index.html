@@ -475,161 +475,34 @@
 
   <!-- 文章正文内容 -->
   <div class="post-content">
-    <!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT项目层级与跨云监控详细图解</title>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <style>
-        :root {
-            --azure-blue: #0078d4;
-            --openshift-red: #ee0000;
-            --argo-orange: #f47e50;
-            --dark-bg: #2d3436;
-        }
-        /* 优化后的系统字体族，确保在各平台下均有良好的无衬线显示效果 */
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; 
-            background: #f0f2f5; 
-            margin: 0; 
-            padding: 20px; 
-            color: #333; 
-            line-height: 1.6;
-        }
-        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); overflow: hidden; }
-        .header { background: var(--dark-bg); color: white; padding: 30px; border-bottom: 4px solid var(--azure-blue); }
-        .header h1 { margin: 0; font-size: 24px; letter-spacing: 1px; font-weight: 600; }
-        
-<pre><code>    .main-layout &#123; display: flex; flex-wrap: wrap; border-top: 1px solid #eee; &#125;
-    .desc-panel &#123; flex: 1; min-width: 350px; padding: 30px; background: #fafafa; border-right: 1px solid #eee; &#125;
-    .diagram-panel &#123; flex: 2; min-width: 600px; padding: 30px; position: relative; &#125;
-
-    .detail-card &#123; background: white; border: 1px solid #e1e4e8; border-radius: 8px; padding: 15px; margin-bottom: 15px; &#125;
-    .detail-card h4 &#123; margin: 0 0 10px 0; color: var(--azure-blue); border-bottom: 1px solid #eee; padding-bottom: 5px; font-weight: 600; &#125;
-    .step-list &#123; font-size: 0.9em; padding-left: 20px; &#125;
-    .step-list li &#123; margin-bottom: 8px; &#125;
-
-    .status-bar &#123; display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; &#125;
-    .badge &#123; padding: 4px 12px; border-radius: 20px; font-size: 12px; color: white; font-weight: bold; &#125;
     
-    .mermaid &#123; background: white; border: 1px solid #eee; padding: 10px; border-radius: 8px; &#125;
-&lt;/style&gt;
-</code></pre>
-</head>
-<body>
 
-<div class="container">
-    <div class="header">
-        <h1>オートローン（车贷系统）跨环境部署与监控深度解析</h1>
-        <p>Windows 终端 ➔ Azure Portal ➔ Argo CD ➔ OpenShift 层级流向图</p>
-    </div>
+    
+      <!-- Full HTML content rendered in iframe -->
+      <iframe id="post-content-iframe" style="width:100%; height:800px; border:1px solid #eee; background: #fff;"></iframe>
+      <script>
+        (function() {
+          const frame = document.getElementById('post-content-iframe');
+          // Use encodeURIComponent on server side (build time) to safely embed content
+          const rawContent = decodeURIComponent("%3C!DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22ja%22%3E%0A%3Chead%3E%0A%20%20%20%20%3Cmeta%20charset%3D%22UTF-8%22%3E%0A%20%20%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1.0%22%3E%0A%20%20%20%20%3Ctitle%3EIT%E9%A1%B9%E7%9B%AE%E5%B1%82%E7%BA%A7%E4%B8%8E%E8%B7%A8%E4%BA%91%E7%9B%91%E6%8E%A7%E8%AF%A6%E7%BB%86%E5%9B%BE%E8%A7%A3%3C%2Ftitle%3E%0A%20%20%20%20%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmermaid%2Fdist%2Fmermaid.min.js%22%3E%3C%2Fscript%3E%0A%20%20%20%20%3Cstyle%3E%0A%20%20%20%20%20%20%20%20%3Aroot%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20--azure-blue%3A%20%230078d4%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--openshift-red%3A%20%23ee0000%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--argo-orange%3A%20%23f47e50%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--dark-bg%3A%20%232d3436%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%2F*%20%E4%BC%98%E5%8C%96%E5%90%8E%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%AD%97%E4%BD%93%E6%97%8F%EF%BC%8C%E7%A1%AE%E4%BF%9D%E5%9C%A8%E5%90%84%E5%B9%B3%E5%8F%B0%E4%B8%8B%E5%9D%87%E6%9C%89%E8%89%AF%E5%A5%BD%E7%9A%84%E6%97%A0%E8%A1%AC%E7%BA%BF%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C%20*%2F%0A%20%20%20%20%20%20%20%20body%20%7B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20-apple-system%2C%20BlinkMacSystemFont%2C%20%22Segoe%20UI%22%2C%20Roboto%2C%20%22Helvetica%20Neue%22%2C%20Arial%2C%20%22Noto%20Sans%22%2C%20%22PingFang%20SC%22%2C%20%22Hiragino%20Sans%20GB%22%2C%20%22Microsoft%20YaHei%22%2C%20sans-serif%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23f0f2f5%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2020px%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23333%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20line-height%3A%201.6%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.container%20%7B%20max-width%3A%201200px%3B%20margin%3A%200%20auto%3B%20background%3A%20white%3B%20border-radius%3A%2012px%3B%20box-shadow%3A%200%2010px%2040px%20rgba(0%2C0%2C0%2C0.1)%3B%20overflow%3A%20hidden%3B%20%7D%0A%20%20%20%20%20%20%20%20.header%20%7B%20background%3A%20var(--dark-bg)%3B%20color%3A%20white%3B%20padding%3A%2030px%3B%20border-bottom%3A%204px%20solid%20var(--azure-blue)%3B%20%7D%0A%20%20%20%20%20%20%20%20.header%20h1%20%7B%20margin%3A%200%3B%20font-size%3A%2024px%3B%20letter-spacing%3A%201px%3B%20font-weight%3A%20600%3B%20%7D%0A%20%20%20%20%20%20%20%20%0A%3Cpre%3E%3Ccode%3E%20%20%20%20.main-layout%20%26%23123%3B%20display%3A%20flex%3B%20flex-wrap%3A%20wrap%3B%20border-top%3A%201px%20solid%20%23eee%3B%20%26%23125%3B%0A%20%20%20%20.desc-panel%20%26%23123%3B%20flex%3A%201%3B%20min-width%3A%20350px%3B%20padding%3A%2030px%3B%20background%3A%20%23fafafa%3B%20border-right%3A%201px%20solid%20%23eee%3B%20%26%23125%3B%0A%20%20%20%20.diagram-panel%20%26%23123%3B%20flex%3A%202%3B%20min-width%3A%20600px%3B%20padding%3A%2030px%3B%20position%3A%20relative%3B%20%26%23125%3B%0A%0A%20%20%20%20.detail-card%20%26%23123%3B%20background%3A%20white%3B%20border%3A%201px%20solid%20%23e1e4e8%3B%20border-radius%3A%208px%3B%20padding%3A%2015px%3B%20margin-bottom%3A%2015px%3B%20%26%23125%3B%0A%20%20%20%20.detail-card%20h4%20%26%23123%3B%20margin%3A%200%200%2010px%200%3B%20color%3A%20var(--azure-blue)%3B%20border-bottom%3A%201px%20solid%20%23eee%3B%20padding-bottom%3A%205px%3B%20font-weight%3A%20600%3B%20%26%23125%3B%0A%20%20%20%20.step-list%20%26%23123%3B%20font-size%3A%200.9em%3B%20padding-left%3A%2020px%3B%20%26%23125%3B%0A%20%20%20%20.step-list%20li%20%26%23123%3B%20margin-bottom%3A%208px%3B%20%26%23125%3B%0A%0A%20%20%20%20.status-bar%20%26%23123%3B%20display%3A%20flex%3B%20gap%3A%2010px%3B%20margin-bottom%3A%2020px%3B%20justify-content%3A%20center%3B%20%26%23125%3B%0A%20%20%20%20.badge%20%26%23123%3B%20padding%3A%204px%2012px%3B%20border-radius%3A%2020px%3B%20font-size%3A%2012px%3B%20color%3A%20white%3B%20font-weight%3A%20bold%3B%20%26%23125%3B%0A%20%20%20%20%0A%20%20%20%20.mermaid%20%26%23123%3B%20background%3A%20white%3B%20border%3A%201px%20solid%20%23eee%3B%20padding%3A%2010px%3B%20border-radius%3A%208px%3B%20%26%23125%3B%0A%26lt%3B%2Fstyle%26gt%3B%0A%3C%2Fcode%3E%3C%2Fpre%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%0A%3Cdiv%20class%3D%22container%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22header%22%3E%0A%20%20%20%20%20%20%20%20%3Ch1%3E%E3%82%AA%E3%83%BC%E3%83%88%E3%83%AD%E3%83%BC%E3%83%B3%EF%BC%88%E8%BD%A6%E8%B4%B7%E7%B3%BB%E7%BB%9F%EF%BC%89%E8%B7%A8%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E4%B8%8E%E7%9B%91%E6%8E%A7%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%3C%2Fh1%3E%0A%20%20%20%20%20%20%20%20%3Cp%3EWindows%20%E7%BB%88%E7%AB%AF%20%E2%9E%94%20Azure%20Portal%20%E2%9E%94%20Argo%20CD%20%E2%9E%94%20OpenShift%20%E5%B1%82%E7%BA%A7%E6%B5%81%E5%90%91%E5%9B%BE%3C%2Fp%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%0A%3Cpre%3E%3Ccode%3E%26lt%3Bdiv%20class%3D%26quot%3Bmain-layout%26quot%3B%26gt%3B%0A%20%20%20%20%26lt%3Bdiv%20class%3D%26quot%3Bdesc-panel%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%26lt%3Bdiv%20class%3D%26quot%3Bdetail-card%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bh4%26gt%3B1.%20%E8%A7%82%E5%AF%9F%E5%B1%82%20(Observation)%26lt%3B%2Fh4%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bul%20class%3D%26quot%3Bstep-list%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bli%26gt%3B%26lt%3Bb%26gt%3BWindows%20%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%26lt%3B%2Fb%26gt%3B%20%E4%BD%A0%E7%9A%84%E5%94%AF%E4%B8%80%E6%93%8D%E4%BD%9C%E5%85%A5%E5%8F%A3%E3%80%82%26lt%3B%2Fli%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bli%26gt%3B%26lt%3Bb%26gt%3BAzure%20Portal%20%E8%81%8C%E8%B4%A3%EF%BC%9A%26lt%3B%2Fb%26gt%3B%20%E9%80%9A%E8%BF%87%20%26lt%3Bi%26gt%3BContainer%20Insights%26lt%3B%2Fi%26gt%3B%20%E8%A7%82%E5%AF%9F%20Pod%20%E7%9A%84%20CPU%2F%E5%86%85%E5%AD%98%E6%B3%A2%E5%8A%A8%EF%BC%8C%E6%9F%A5%E7%9C%8B%E7%A8%8B%E5%BA%8F%20Crash%20%E6%97%A5%E5%BF%97%EF%BC%8C%E7%9B%91%E6%8E%A7%20Azure%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8%E7%8A%B6%E6%80%81%E3%80%82%26lt%3B%2Fli%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3B%2Ful%26gt%3B%0A%20%20%20%20%20%20%20%20%26lt%3B%2Fdiv%26gt%3B%0A%0A%20%20%20%20%20%20%20%20%26lt%3Bdiv%20class%3D%26quot%3Bdetail-card%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bh4%26gt%3B2.%20%E6%8E%A7%E5%88%B6%E5%B1%82%20(Control%20%2F%20Argo)%26lt%3B%2Fh4%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bul%20class%3D%26quot%3Bstep-list%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bli%26gt%3B%26lt%3Bb%26gt%3B%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%EF%BC%9A%26lt%3B%2Fb%26gt%3B%20%E7%8B%AC%E7%AB%8B%E7%9A%84%20Linux%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%82%26lt%3B%2Fli%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bli%26gt%3B%26lt%3Bb%26gt%3B%E6%9C%BA%E8%83%BD%EF%BC%9A%26lt%3B%2Fb%26gt%3B%20GitOps%20%E8%87%AA%E5%8A%A8%E5%8C%96%E3%80%82%E5%AE%83%E5%AF%B9%E6%AF%94%20Git%20%E4%BB%93%E5%BA%93%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E4%B8%8E%20OpenShift%20%E4%B8%AD%E7%9A%84%E8%BF%90%E8%A1%8C%E7%89%88%E6%9C%AC%E3%80%82%26lt%3B%2Fli%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bli%26gt%3B%26lt%3Bb%26gt%3B%E5%85%B3%E9%94%AE%E5%8A%A8%E4%BD%9C%EF%BC%9A%26lt%3B%2Fb%26gt%3B%20%E5%8F%91%E7%8E%B0%E5%B7%AE%E5%BC%82%20%E2%9E%94%20%E8%A7%A6%E5%8F%91%20Sync%20%E2%9E%94%20%E8%B0%83%E7%94%A8%20OpenShift%20API%20%E6%9B%B4%E6%96%B0%E5%AE%B9%E5%99%A8%E3%80%82%26lt%3B%2Fli%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3B%2Ful%26gt%3B%0A%20%20%20%20%20%20%20%20%26lt%3B%2Fdiv%26gt%3B%0A%0A%20%20%20%20%20%20%20%20%26lt%3Bdiv%20class%3D%26quot%3Bdetail-card%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bh4%26gt%3B3.%20%E8%BF%90%E8%A1%8C%E5%B1%82%20(Runtime%20%2F%20OCP)%26lt%3B%2Fh4%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bul%20class%3D%26quot%3Bstep-list%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bli%26gt%3B%26lt%3Bb%26gt%3B%E6%A0%B8%E5%BF%83%EF%BC%9A%26lt%3B%2Fb%26gt%3B%20Red%20Hat%20OpenShift%20(ARO)%E3%80%82%26lt%3B%2Fli%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bli%26gt%3B%26lt%3Bb%26gt%3B%E5%86%85%E9%83%A8%E9%80%BB%E8%BE%91%EF%BC%9A%26lt%3B%2Fb%26gt%3B%20%E8%BF%90%E8%A1%8C%E5%85%B7%E4%BD%93%E7%9A%84%26lt%3Bb%26gt%3B%E7%B1%BB%20(Class)%26lt%3B%2Fb%26gt%3B%EF%BC%8C%E5%A6%82%20%26lt%3Bi%26gt%3BInterestCalcService%26lt%3B%2Fi%26gt%3B%E3%80%82%26lt%3B%2Fli%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bli%26gt%3B%26lt%3Bb%26gt%3B%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA%EF%BC%9A%26lt%3B%2Fb%26gt%3B%20%E6%8C%81%E7%BB%AD%E5%90%91%20Azure%20Monitor%20%E5%8F%91%E9%80%81%E8%BF%90%E8%A1%8C%E6%8C%87%E6%A0%87%E3%80%82%26lt%3B%2Fli%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3B%2Ful%26gt%3B%0A%20%20%20%20%20%20%20%20%26lt%3B%2Fdiv%26gt%3B%0A%0A%20%20%20%20%20%20%20%20%26lt%3Bdiv%20class%3D%26quot%3Bdetail-card%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bh4%26gt%3B4.%20%E4%B8%9A%E5%8A%A1%E5%B1%82%E7%BA%A7%E5%AF%B9%E5%BA%94%20(Mapping)%26lt%3B%2Fh4%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Btable%20style%3D%26quot%3Bwidth%3A100%25%3B%20font-size%3A%200.8em%3B%20border-collapse%3A%20collapse%3B%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Btr%20style%3D%26quot%3Bbackground%3A%23eee%3B%26quot%3B%26gt%3B%26lt%3Bth%26gt%3B%E5%B1%82%E7%BA%A7%26lt%3B%2Fth%26gt%3B%26lt%3Bth%26gt%3B%E9%A1%B9%E7%9B%AE%E5%AE%9E%E4%BE%8B%26lt%3B%2Fth%26gt%3B%26lt%3B%2Ftr%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Btr%26gt%3B%26lt%3Btd%26gt%3B%E7%B3%BB%E7%BB%9F%26lt%3B%2Ftd%26gt%3B%26lt%3Btd%26gt%3B%E3%82%AA%E3%83%BC%E3%83%88%E3%83%AD%E3%83%BC%E3%83%B3%E7%B3%BB%E7%BB%9F%26lt%3B%2Ftd%26gt%3B%26lt%3B%2Ftr%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Btr%26gt%3B%26lt%3Btd%26gt%3B%E6%9C%BA%E8%83%BD%26lt%3B%2Ftd%26gt%3B%26lt%3Btd%26gt%3B%E8%BF%98%E6%AC%BE%E4%BB%BF%E7%9C%9F%E6%9C%BA%E8%83%BD%26lt%3B%2Ftd%26gt%3B%26lt%3B%2Ftr%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Btr%26gt%3B%26lt%3Btd%26gt%3B%E7%B1%BB%26lt%3B%2Ftd%26gt%3B%26lt%3Btd%26gt%3BSimulationEngine%26lt%3B%2Ftd%26gt%3B%26lt%3B%2Ftr%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Btr%26gt%3B%26lt%3Btd%26gt%3B%E6%96%B9%E6%B3%95%26lt%3B%2Ftd%26gt%3B%26lt%3Btd%26gt%3BcalcAPR()%26lt%3B%2Ftd%26gt%3B%26lt%3B%2Ftr%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3B%2Ftable%26gt%3B%0A%20%20%20%20%20%20%20%20%26lt%3B%2Fdiv%26gt%3B%0A%20%20%20%20%26lt%3B%2Fdiv%26gt%3B%0A%0A%20%20%20%20%26lt%3Bdiv%20class%3D%26quot%3Bdiagram-panel%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%26lt%3Bdiv%20class%3D%26quot%3Bstatus-bar%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bspan%20class%3D%26quot%3Bbadge%26quot%3B%20style%3D%26quot%3Bbackground%3Avar(--azure-blue)%26quot%3B%26gt%3BAzure%20%E4%BA%91%E7%AB%AF%26lt%3B%2Fspan%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bspan%20class%3D%26quot%3Bbadge%26quot%3B%20style%3D%26quot%3Bbackground%3Avar(--argo-orange)%26quot%3B%26gt%3B%E5%A4%96%E9%83%A8%20Linux%26lt%3B%2Fspan%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%26lt%3Bspan%20class%3D%26quot%3Bbadge%26quot%3B%20style%3D%26quot%3Bbackground%3A%232ecc71%26quot%3B%26gt%3BWin%20%E7%94%A8%E6%88%B7%E7%AB%AF%26lt%3B%2Fspan%26gt%3B%0A%20%20%20%20%20%20%20%20%26lt%3B%2Fdiv%26gt%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%26lt%3Bdiv%20class%3D%26quot%3Bmermaid%26quot%3B%26gt%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20graph%20TD%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%25%25%20%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20User((Windows%20User))%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20subgraph%20Azure_Cloud%20%5BAzure%20%E6%89%98%E7%AE%A1%E7%8E%AF%E5%A2%83%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Portal%5BAzure%20Portal%26lt%3Bbr%2F%26gt%3B%E7%9B%91%E6%8E%A7%E4%B8%8E%E6%97%A5%E5%BF%97%E9%9D%A2%E6%9D%BF%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ARO%5BOpenShift%20Cluster%26lt%3Bbr%2F%26gt%3B%E5%AE%B9%E5%99%A8%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Monitor%5BAzure%20Monitor%20%2F%20Insights%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20end%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20subgraph%20Linux_Server%20%5B%E7%8B%AC%E7%AB%8B%20Linux%20%E6%9C%8D%E5%8A%A1%E5%99%A8%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Argo%5BArgo%20CD%20%E5%BC%95%E6%93%8E%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20end%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20subgraph%20Business_Logic%20%5B%E4%BB%A3%E7%A0%81%E9%80%BB%E8%BE%91%E6%8B%86%E8%A7%A3%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Func1(%E8%BF%98%E6%AC%BE%E6%A8%A1%E6%8B%9F%E6%9C%BA%E8%83%BD)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Class1%5BRepaymentCalculator%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Method1%26%23123%3B%26%23123%3BcalcMonthlyPayment%26%23125%3B%26%23125%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20end%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%25%25%20%E4%BA%A4%E4%BA%92%E6%B5%81%E5%90%91%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20User%20--%26gt%3B%7C1.%20%E8%AE%BF%E9%97%AE%20HTTPS%7C%20Portal%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20User%20--%26gt%3B%7C2.%20%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%8F%B0%7C%20Argo%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Argo%20--%26gt%3B%7C3.%20%E6%8C%87%E4%BB%A4%E4%B8%8B%E5%8F%91%2FSync%7C%20ARO%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ARO%20--%26gt%3B%7C4.%20%E8%BF%90%E8%A1%8C%20App%20%E5%AE%9E%E4%BE%8B%7C%20Business_Logic%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%25%25%20%E7%9B%91%E6%8E%A7%E6%95%B0%E6%8D%AE%E6%B5%81%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Business_Logic%20-.-%26gt%3B%7C%E4%BA%A7%E7%94%9F%E6%8C%87%E6%A0%87%7C%20Monitor%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Monitor%20-.-%26gt%3B%7C%E8%81%9A%E5%90%88%E6%95%B0%E6%8D%AE%7C%20Portal%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%25%25%20%E6%A0%B7%E5%BC%8F%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20style%20User%20fill%3A%23d1d8e0%2Cstroke%3A%23333%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20style%20Portal%20fill%3A%230078d4%2Ccolor%3A%23fff%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20style%20Argo%20fill%3A%23f47e50%2Ccolor%3A%23fff%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20style%20ARO%20fill%3A%23ee0000%2Ccolor%3A%23fff%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20style%20Monitor%20fill%3A%2300a8ff%2Ccolor%3A%23fff%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20style%20Business_Logic%20fill%3A%23f9f9f9%2Cstroke-dasharray%3A%205%205%0A%20%20%20%20%20%20%20%20%26lt%3B%2Fdiv%26gt%3B%0A%20%20%20%20%26lt%3B%2Fdiv%26gt%3B%0A%26lt%3B%2Fdiv%26gt%3B%0A%3C%2Fcode%3E%3C%2Fpre%3E%0A%3C%2Fdiv%3E%0A%0A%3Cscript%3E%0A%20%20%20%20mermaid.initialize(%7B%20%0A%20%20%20%20%20%20%20%20startOnLoad%3A%20true%2C%20%0A%20%20%20%20%20%20%20%20theme%3A%20'neutral'%2C%0A%20%20%20%20%20%20%20%20flowchart%3A%20%7B%20useMaxWidth%3A%20true%2C%20htmlLabels%3A%20true%2C%20curve%3A%20'basis'%20%7D%0A%20%20%20%20%7D)%3B%0A%3C%2Fscript%3E%0A%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E");
+          
+          const doc = frame.contentDocument || frame.contentWindow.document;
+          doc.open();
+          doc.write(rawContent);
+          doc.close();
 
-<pre><code>&lt;div class=&quot;main-layout&quot;&gt;
-    &lt;div class=&quot;desc-panel&quot;&gt;
-        &lt;div class=&quot;detail-card&quot;&gt;
-            &lt;h4&gt;1. 观察层 (Observation)&lt;/h4&gt;
-            &lt;ul class=&quot;step-list&quot;&gt;
-                &lt;li&gt;&lt;b&gt;Windows 浏览器：&lt;/b&gt; 你的唯一操作入口。&lt;/li&gt;
-                &lt;li&gt;&lt;b&gt;Azure Portal 职责：&lt;/b&gt; 通过 &lt;i&gt;Container Insights&lt;/i&gt; 观察 Pod 的 CPU/内存波动，查看程序 Crash 日志，监控 Azure 负载均衡器状态。&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/div&gt;
-
-        &lt;div class=&quot;detail-card&quot;&gt;
-            &lt;h4&gt;2. 控制层 (Control / Argo)&lt;/h4&gt;
-            &lt;ul class=&quot;step-list&quot;&gt;
-                &lt;li&gt;&lt;b&gt;运行环境：&lt;/b&gt; 独立的 Linux 服务器。&lt;/li&gt;
-                &lt;li&gt;&lt;b&gt;机能：&lt;/b&gt; GitOps 自动化。它对比 Git 仓库中的代码与 OpenShift 中的运行版本。&lt;/li&gt;
-                &lt;li&gt;&lt;b&gt;关键动作：&lt;/b&gt; 发现差异 ➔ 触发 Sync ➔ 调用 OpenShift API 更新容器。&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/div&gt;
-
-        &lt;div class=&quot;detail-card&quot;&gt;
-            &lt;h4&gt;3. 运行层 (Runtime / OCP)&lt;/h4&gt;
-            &lt;ul class=&quot;step-list&quot;&gt;
-                &lt;li&gt;&lt;b&gt;核心：&lt;/b&gt; Red Hat OpenShift (ARO)。&lt;/li&gt;
-                &lt;li&gt;&lt;b&gt;内部逻辑：&lt;/b&gt; 运行具体的&lt;b&gt;类 (Class)&lt;/b&gt;，如 &lt;i&gt;InterestCalcService&lt;/i&gt;。&lt;/li&gt;
-                &lt;li&gt;&lt;b&gt;数据输出：&lt;/b&gt; 持续向 Azure Monitor 发送运行指标。&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/div&gt;
-
-        &lt;div class=&quot;detail-card&quot;&gt;
-            &lt;h4&gt;4. 业务层级对应 (Mapping)&lt;/h4&gt;
-            &lt;table style=&quot;width:100%; font-size: 0.8em; border-collapse: collapse;&quot;&gt;
-                &lt;tr style=&quot;background:#eee;&quot;&gt;&lt;th&gt;层级&lt;/th&gt;&lt;th&gt;项目实例&lt;/th&gt;&lt;/tr&gt;
-                &lt;tr&gt;&lt;td&gt;系统&lt;/td&gt;&lt;td&gt;オートローン系统&lt;/td&gt;&lt;/tr&gt;
-                &lt;tr&gt;&lt;td&gt;机能&lt;/td&gt;&lt;td&gt;还款仿真机能&lt;/td&gt;&lt;/tr&gt;
-                &lt;tr&gt;&lt;td&gt;类&lt;/td&gt;&lt;td&gt;SimulationEngine&lt;/td&gt;&lt;/tr&gt;
-                &lt;tr&gt;&lt;td&gt;方法&lt;/td&gt;&lt;td&gt;calcAPR()&lt;/td&gt;&lt;/tr&gt;
-            &lt;/table&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;diagram-panel&quot;&gt;
-        &lt;div class=&quot;status-bar&quot;&gt;
-            &lt;span class=&quot;badge&quot; style=&quot;background:var(--azure-blue)&quot;&gt;Azure 云端&lt;/span&gt;
-            &lt;span class=&quot;badge&quot; style=&quot;background:var(--argo-orange)&quot;&gt;外部 Linux&lt;/span&gt;
-            &lt;span class=&quot;badge&quot; style=&quot;background:#2ecc71&quot;&gt;Win 用户端&lt;/span&gt;
-        &lt;/div&gt;
-        
-        &lt;div class=&quot;mermaid&quot;&gt;
-            graph TD
-                %% 定义节点
-                User((Windows User))
-                
-                subgraph Azure_Cloud [Azure 托管环境]
-                    Portal[Azure Portal&lt;br/&gt;监控与日志面板]
-                    ARO[OpenShift Cluster&lt;br/&gt;容器运行环境]
-                    Monitor[Azure Monitor / Insights]
-                end
-                
-                subgraph Linux_Server [独立 Linux 服务器]
-                    Argo[Argo CD 引擎]
-                end
-                
-                subgraph Business_Logic [代码逻辑拆解]
-                    Func1(还款模拟机能)
-                    Class1[RepaymentCalculator]
-                    Method1&#123;&#123;calcMonthlyPayment&#125;&#125;
-                end
-
-                %% 交互流向
-                User --&gt;|1. 访问 HTTPS| Portal
-                User --&gt;|2. 访问控制台| Argo
-                
-                Argo --&gt;|3. 指令下发/Sync| ARO
-                ARO --&gt;|4. 运行 App 实例| Business_Logic
-                
-                %% 监控数据流
-                Business_Logic -.-&gt;|产生指标| Monitor
-                Monitor -.-&gt;|聚合数据| Portal
-                
-                %% 样式
-                style User fill:#d1d8e0,stroke:#333
-                style Portal fill:#0078d4,color:#fff
-                style Argo fill:#f47e50,color:#fff
-                style ARO fill:#ee0000,color:#fff
-                style Monitor fill:#00a8ff,color:#fff
-                style Business_Logic fill:#f9f9f9,stroke-dasharray: 5 5
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-</div>
-
-<script>
-    mermaid.initialize({ 
-        startOnLoad: true, 
-        theme: 'neutral',
-        flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
-    });
-</script>
-
-</body>
-</html>
-    <!-- 渲染文章正文 HTML -->
-    <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+          // Auto resize height
+          frame.onload = function() {
+            try {
+              const height = frame.contentWindow.document.body.scrollHeight;
+              if (height > 0) {
+                 frame.style.height = (height + 50) + 'px';
+              }
+            } catch(e) { console.error("Auto resize failed", e); }
+          };
+        })();
+      </script>
+    
   </div>
   <!-- 文章正文结束 -->
 
