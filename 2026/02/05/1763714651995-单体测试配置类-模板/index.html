@@ -490,7 +490,7 @@
 
   <!-- 文章元信息：发布日期 + 标签 -->
   <div class="post-meta">
-    <span>发表于 2025-11-21</span>
+    <span>发表于 2026-02-05</span>
     <!-- 显示文章发布日期 -->
 
     
@@ -515,22 +515,30 @@
     
 
     
-      <h1 id="单体测试配置类-模板"><a href="#单体测试配置类-模板" class="headerlink" title="单体测试配置类_模板"></a>单体测试配置类_模板</h1><pre><code class="language-java">@Configuration
-@ComponentScan({
-        &quot;jp.co.orico.webappbatch.service0000&quot;,
-        &quot;jp.co.orico.webapp.common.service.common0001&quot;,
-        &quot;jp.co.orico.webapp.common.service.common0002&quot;, })
-@MapperScan({
-        &quot;jp.co.orico.webapp.common.service.mapper&quot;,
-        &quot;jp.co.orico.webappbatch.service0000.mapper&quot; })
-@TestPropertySource(locations = &quot;classpath:application.yml&quot;)
-public class TestConfig {
+      <!-- Full HTML content rendered in iframe -->
+      <iframe id="post-content-iframe" style="width:100%; height:800px; border:1px solid #eee; background: #fff;"></iframe>
+      <script>
+        (function() {
+          const frame = document.getElementById('post-content-iframe');
+          // Use rawBody to preserve full HTML structure including DOCTYPE/HEAD
+          const rawContent = decodeURIComponent("%0A%0A%3C!DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22ja%22%3E%0A%3Chead%3E%0A%20%20%20%20%3Cmeta%20charset%3D%22UTF-8%22%3E%0A%20%20%20%20%3Ctitle%3E%E5%8D%98%E4%BD%93%E3%83%86%E3%82%B9%E3%83%88%E6%A7%8B%E6%88%90%E5%AE%9A%E7%BE%A9%E6%9B%B8%20-%20TestConfig%3C%2Ftitle%3E%0A%20%20%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1%22%3E%0A%20%20%20%20%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fmermaid%2Fdist%2Fmermaid.min.js%22%3E%3C%2Fscript%3E%0A%20%20%20%20%3Cscript%3E%0A%20%20%20%20%20%20%20%20mermaid.initialize(%7B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20startOnLoad%3A%20true%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20theme%3A%20'neutral'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20flowchart%3A%20%7B%20useMaxWidth%3A%20false%2C%20htmlLabels%3A%20true%20%7D%0A%20%20%20%20%20%20%20%20%7D)%3B%0A%20%20%20%20%3C%2Fscript%3E%0A%20%20%20%20%3Cstyle%3E%0A%20%20%20%20%20%20%20%20%3Aroot%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20--sier-blue%3A%20%23003366%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--sier-light%3A%20%23f0f4f8%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--zh-accent%3A%20%23d32f2f%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--code-bg%3A%20%23282c34%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20body%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20%22Meiryo%22%2C%20%22MS%20PGothic%22%2C%20%22Microsoft%20YaHei%22%2C%20sans-serif%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-color%3A%20%23f5f5f5%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23333%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2040px%2020px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.doc-container%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20max-width%3A%201000px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23fff%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2040px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%200%204px%2015px%20rgba(0%2C0%2C0%2C0.1)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-top%3A%206px%20solid%20var(--sier-blue)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20h1%20%7B%20color%3A%20var(--sier-blue)%3B%20font-size%3A%2024px%3B%20border-bottom%3A%202px%20solid%20var(--sier-blue)%3B%20padding-bottom%3A%2010px%3B%20%7D%0A%20%20%20%20%20%20%20%20h1%20.zh-title%20%7B%20display%3A%20block%3B%20font-size%3A%2016px%3B%20color%3A%20%23666%3B%20font-weight%3A%20normal%3B%20margin-top%3A%205px%3B%20%7D%0A%0A%20%20%20%20%20%20%20%20h2%20%7B%20border-left%3A%205px%20solid%20var(--sier-blue)%3B%20padding-left%3A%2015px%3B%20font-size%3A%2018px%3B%20margin-top%3A%2030px%3B%20background%3A%20var(--sier-light)%3B%20padding-top%3A%205px%3B%20padding-bottom%3A%205px%3B%20%7D%0A%20%20%20%20%20%20%20%20h2%20.zh-sub%20%7B%20font-size%3A%2014px%3B%20color%3A%20var(--zh-accent)%3B%20margin-left%3A%2010px%3B%20font-weight%3A%20normal%3B%20%7D%0A%0A%20%20%20%20%20%20%20%20.bilingual-block%20%7B%20margin%3A%2015px%200%3B%20border-left%3A%203px%20solid%20%23ddd%3B%20padding-left%3A%2015px%3B%20%7D%0A%20%20%20%20%20%20%20%20.lang-jp%20%7B%20font-weight%3A%20bold%3B%20display%3A%20block%3B%20margin-bottom%3A%204px%3B%20%7D%0A%20%20%20%20%20%20%20%20.lang-zh%20%7B%20color%3A%20%23555%3B%20display%3A%20block%3B%20font-size%3A%200.9em%3B%20%7D%0A%0A%20%20%20%20%20%20%20%20pre%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20var(--code-bg)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23abb2bf%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2015px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%204px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2013px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20overflow-x%3A%20auto%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.anno%20%7B%20color%3A%20%23d19a66%3B%20%7D%0A%0A%20%20%20%20%20%20%20%20table%20%7B%20width%3A%20100%25%3B%20border-collapse%3A%20collapse%3B%20margin-top%3A%2015px%3B%20%7D%0A%20%20%20%20%20%20%20%20th%2C%20td%20%7B%20border%3A%201px%20solid%20%23ccc%3B%20padding%3A%2012px%3B%20font-size%3A%2014px%3B%20%7D%0A%20%20%20%20%20%20%20%20th%20%7B%20background%3A%20%23f8f9fa%3B%20color%3A%20var(--sier-blue)%3B%20text-align%3A%20left%3B%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20.type-label%20%7B%20font-size%3A%2011px%3B%20padding%3A%202px%206px%3B%20border-radius%3A%203px%3B%20color%3A%20white%3B%20margin-right%3A%205px%3B%20%7D%0A%20%20%20%20%20%20%20%20.label-scan%20%7B%20background%3A%20%232e7d32%3B%20%7D%0A%20%20%20%20%20%20%20%20.label-prop%20%7B%20background%3A%20%231976d2%3B%20%7D%0A%20%20%20%20%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%0A%3Cdiv%20class%3D%22doc-container%22%3E%0A%20%20%20%20%3Ch2%3E%E8%A8%AD%E5%AE%9A%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%20%3Cspan%20class%3D%22zh-sub%22%3E%E9%85%8D%E7%BD%AE%E6%BA%90%E4%BB%A3%E7%A0%81%3C%2Fspan%3E%3C%2Fh2%3E%0A%20%20%20%20%3Cpre%3E%3Ccode%3E%3Cspan%20class%3D%22anno%22%3E%40Configuration%3C%2Fspan%3E%0A%3Cspan%20class%3D%22anno%22%3E%40ComponentScan%3C%2Fspan%3E(%7B%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22string%22%3E%22jp.co.orico.webappbatch.service0000%22%3C%2Fspan%3E%2C%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22string%22%3E%22jp.co.orico.webapp.common.service.common0001%22%3C%2Fspan%3E%2C%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22string%22%3E%22jp.co.orico.webapp.common.service.common0002%22%3C%2Fspan%3E%2C%20%7D)%0A%3Cspan%20class%3D%22anno%22%3E%40MapperScan%3C%2Fspan%3E(%7B%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22string%22%3E%22jp.co.orico.webapp.common.service.mapper%22%3C%2Fspan%3E%2C%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22string%22%3E%22jp.co.orico.webappbatch.service0000.mapper%22%3C%2Fspan%3E%20%7D)%0A%3Cspan%20class%3D%22anno%22%3E%40TestPropertySource%3C%2Fspan%3E(locations%20%3D%20%3Cspan%20class%3D%22string%22%3E%22classpath%3Aapplication.yml%22%3C%2Fspan%3E)%0A%3Cspan%20class%3D%22keyword%22%3Epublic%20class%3C%2Fspan%3E%20TestConfig%20%7B%0A%20%20%20%20%3Cspan%20class%3D%22comment%22%3E%2F%2F%20%E3%83%86%E3%82%B9%E3%83%88%E7%94%A8%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0Bean%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%AA%E5%A0%B4%E5%90%88%E3%81%AF%E3%81%93%E3%81%93%E3%81%AB%E8%BF%BD%E8%A8%98%3C%2Fspan%3E%0A%20%20%20%20%3Cspan%20class%3D%22comment%22%3E%2F%2F%20%E9%9C%80%E8%A6%81%E6%B5%8B%E8%AF%95%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%20Bean%20%E6%97%B6%E5%9C%A8%E6%AD%A4%E8%BF%BD%E5%8A%A0%3C%2Fspan%3E%0A%7D%3C%2Fcode%3E%3C%2Fpre%3E%0A%0A%20%20%20%20%3Cdiv%20style%3D%22margin-top%3A%2040px%3B%20border-top%3A%201px%20solid%20%23eee%3B%20padding-top%3A%2010px%3B%20color%3A%20%23999%3B%20font-size%3A%2011px%3B%20text-align%3A%20center%3B%22%3E%0A%20%20%20%20%20%20%20%20%26copy%3B%202026%20Orico%20Project%20-%20Batch%20System%20Unit%20Test%20Environment%0A%20%20%20%20%3C%2Fdiv%3E%0A%3C%2Fdiv%3E%0A%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E");
+          
+          const doc = frame.contentDocument || frame.contentWindow.document;
+          doc.open();
+          doc.write(rawContent);
+          doc.close();
 
-}
-</code></pre>
-
-      <!-- 渲染文章正文 HTML -->
-      <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+          // Auto resize height
+          frame.onload = function() {
+            try {
+              const height = frame.contentWindow.document.body.scrollHeight;
+              if (height > 0) {
+                 frame.style.height = (height + 50) + 'px';
+              }
+            } catch(e) { console.error("Auto resize failed", e); }
+          };
+        })();
+      </script>
     
   </div>
   <!-- 文章正文结束 -->
