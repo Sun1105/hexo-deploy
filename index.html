@@ -236,13 +236,6 @@
         </li>
       
         <li>
-          <a href="/categories/API/">
-            <span class="sidebar-name">API</span>
-            <span class="sidebar-count">1</span>
-          </a>
-        </li>
-      
-        <li>
           <a href="/categories/DB%E7%99%BB%E5%BD%95%E8%AE%BE%E7%BD%AE/">
             <span class="sidebar-name">DB登录设置</span>
             <span class="sidebar-count">1</span>
@@ -306,6 +299,13 @@
         </li>
       
         <li>
+          <a href="/categories/%E6%A8%A1%E6%9D%BF/">
+            <span class="sidebar-name">模板</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
           <a href="/categories/%E8%AE%A1%E5%88%92/">
             <span class="sidebar-name">计划</span>
             <span class="sidebar-count">3</span>
@@ -347,6 +347,13 @@
         <li>
           <a href="/tags/AI%E7%BB%84%E5%90%88/">
             <span class="sidebar-name">AI组合</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/Controller/">
+            <span class="sidebar-name">Controller</span>
             <span class="sidebar-count">1</span>
           </a>
         </li>
@@ -450,13 +457,6 @@
         </li>
       
         <li>
-          <a href="/tags/%E6%A8%A1%E6%9D%BF/">
-            <span class="sidebar-name">模板</span>
-            <span class="sidebar-count">1</span>
-          </a>
-        </li>
-      
-        <li>
           <a href="/tags/%E9%85%8D%E7%BD%AE/">
             <span class="sidebar-name">配置</span>
             <span class="sidebar-count">1</span>
@@ -486,6 +486,84 @@
 
   <!-- 博文列表容器 -->
   <div class="post-list">
+    
+    <!-- 遍历当前页面的所有文章对象（post） -->
+
+      <!--
+  _partial/post-card.ejs
+  功能：
+    - 渲染单篇文章的卡片
+    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
+    - 可在分类页、标签页、归档页复用
+-->
+
+<article class="post-card">
+  <!-- 单篇文章卡片容器，用于布局和样式 -->
+
+  <!-- 文章标题 -->
+  <h3 class="post-title">
+    <a href="/2026/02/05/1764059427247-API-Controller%E7%B1%BB/">APIのControllerクラス</a>
+    <!-- 链接到文章详情页 -->
+    <!-- url_for(post.path) → 生成文章路径 -->
+    <!-- post.title → 当前文章标题 -->
+  </h3>
+
+  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
+  <p class="post-meta">
+    发布于 2026-02-05
+    <!-- 显示文章发布日期 -->
+
+     |
+      分类：
+      
+        <a href="/categories/%E6%A8%A1%E6%9D%BF/">模板</a>
+        
+        <!-- 遍历文章分类 -->
+        <!-- 多个分类用逗号分隔 -->
+      
+    
+
+     |
+      标签：
+      
+        <a href="/tags/Controller/">Controller</a>
+        
+        <!-- 遍历文章标签 -->
+        <!-- 多个标签用逗号分隔 -->
+      
+    
+  </p>
+  <!-- 文章元信息结束 -->
+
+  <!-- 文章摘要 -->
+  <p class="post-excerpt">
+    
+    
+
+
+    
+    
+    詳細設計書 - TestController.java
+    
+        :root {
+            --primary-blue: #00336...
+  </p>
+
+  <!-- 操作按钮容器 -->
+  <div class="post-actions">
+    <!-- 阅读全文按钮 -->
+    <a href="/2026/02/05/1764059427247-API-Controller%E7%B1%BB/" class="read-more">阅读全文 →</a>
+    <!-- 编辑按钮 -->
+    <button onclick="openEditor('_posts/1764059427247-API-Controller类.md')" class="read-more">✏️ 编辑</button>
+  </div>
+  <!-- 链接到文章详情页 -->
+  <!-- CSS class "read-more" 用于样式化按钮 -->
+
+</article>
+<!-- 单篇文章卡片结束 -->
+
+      <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
+
     
     <!-- 遍历当前页面的所有文章对象（post） -->
 
@@ -6666,82 +6744,6 @@ Vて + からで...
     <a href="/2025/11/27/1763629370661-ITA%E7%AC%94%E8%AE%B0/" class="read-more">阅读全文 →</a>
     <!-- 编辑按钮 -->
     <button onclick="openEditor('_posts/1763629370661-ITA笔记.md')" class="read-more">✏️ 编辑</button>
-  </div>
-  <!-- 链接到文章详情页 -->
-  <!-- CSS class "read-more" 用于样式化按钮 -->
-
-</article>
-<!-- 单篇文章卡片结束 -->
-
-      <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
-
-    
-    <!-- 遍历当前页面的所有文章对象（post） -->
-
-      <!--
-  _partial/post-card.ejs
-  功能：
-    - 渲染单篇文章的卡片
-    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
-    - 可在分类页、标签页、归档页复用
--->
-
-<article class="post-card">
-  <!-- 单篇文章卡片容器，用于布局和样式 -->
-
-  <!-- 文章标题 -->
-  <h3 class="post-title">
-    <a href="/2025/11/25/1764059427247-API-Controller%E7%B1%BB/">APIのController类</a>
-    <!-- 链接到文章详情页 -->
-    <!-- url_for(post.path) → 生成文章路径 -->
-    <!-- post.title → 当前文章标题 -->
-  </h3>
-
-  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
-  <p class="post-meta">
-    发布于 2025-11-25
-    <!-- 显示文章发布日期 -->
-
-     |
-      分类：
-      
-        <a href="/categories/API/">API</a>
-        
-        <!-- 遍历文章分类 -->
-        <!-- 多个分类用逗号分隔 -->
-      
-    
-
-     |
-      标签：
-      
-        <a href="/tags/%E6%A8%A1%E6%9D%BF/">模板</a>
-        
-        <!-- 遍历文章标签 -->
-        <!-- 多个标签用逗号分隔 -->
-      
-    
-  </p>
-  <!-- 文章元信息结束 -->
-
-  <!-- 文章摘要 -->
-  <p class="post-excerpt">
-    
-    TestController.java/**
- * APIのControllerクラス
- */
-@RestController
-@RequiredArgsConstructor
-@Slf4j
-publ...
-  </p>
-
-  <!-- 操作按钮容器 -->
-  <div class="post-actions">
-    <!-- 阅读全文按钮 -->
-    <a href="/2025/11/25/1764059427247-API-Controller%E7%B1%BB/" class="read-more">阅读全文 →</a>
-    <!-- 编辑按钮 -->
-    <button onclick="openEditor('_posts/1764059427247-API-Controller类.md')" class="read-more">✏️ 编辑</button>
   </div>
   <!-- 链接到文章详情页 -->
   <!-- CSS class "read-more" 用于样式化按钮 -->

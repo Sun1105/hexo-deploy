@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    APIのController类 | Sun Blog
+    APIのControllerクラス | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -236,13 +236,6 @@
         </li>
       
         <li>
-          <a href="/categories/API/">
-            <span class="sidebar-name">API</span>
-            <span class="sidebar-count">1</span>
-          </a>
-        </li>
-      
-        <li>
           <a href="/categories/DB%E7%99%BB%E5%BD%95%E8%AE%BE%E7%BD%AE/">
             <span class="sidebar-name">DB登录设置</span>
             <span class="sidebar-count">1</span>
@@ -306,6 +299,13 @@
         </li>
       
         <li>
+          <a href="/categories/%E6%A8%A1%E6%9D%BF/">
+            <span class="sidebar-name">模板</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
           <a href="/categories/%E8%AE%A1%E5%88%92/">
             <span class="sidebar-name">计划</span>
             <span class="sidebar-count">3</span>
@@ -347,6 +347,13 @@
         <li>
           <a href="/tags/AI%E7%BB%84%E5%90%88/">
             <span class="sidebar-name">AI组合</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/Controller/">
+            <span class="sidebar-name">Controller</span>
             <span class="sidebar-count">1</span>
           </a>
         </li>
@@ -450,13 +457,6 @@
         </li>
       
         <li>
-          <a href="/tags/%E6%A8%A1%E6%9D%BF/">
-            <span class="sidebar-name">模板</span>
-            <span class="sidebar-count">1</span>
-          </a>
-        </li>
-      
-        <li>
           <a href="/tags/%E9%85%8D%E7%BD%AE/">
             <span class="sidebar-name">配置</span>
             <span class="sidebar-count">1</span>
@@ -485,12 +485,12 @@
   <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
   <!-- 文章标题 -->
-  <h1 class="post-title">APIのController类</h1>
+  <h1 class="post-title">APIのControllerクラス</h1>
   <!-- page.title → 当前文章标题 -->
 
   <!-- 文章元信息：发布日期 + 标签 -->
   <div class="post-meta">
-    <span>发表于 2025-11-25</span>
+    <span>发表于 2026-02-05</span>
     <!-- 显示文章发布日期 -->
 
     
@@ -498,7 +498,7 @@
 
       <span>标签：
         
-          <a href="/tags/%E6%A8%A1%E6%9D%BF/">模板</a>
+          <a href="/tags/Controller/">Controller</a>
           
           <!-- 遍历文章标签，生成标签链接 -->
           <!-- 多个标签用逗号分隔 -->
@@ -515,40 +515,30 @@
     
 
     
-      <h1 id="TestController-java"><a href="#TestController-java" class="headerlink" title="TestController.java"></a>TestController.java</h1><pre><code class="language-java">/**
- * APIのControllerクラス
- */
-@RestController
-@RequiredArgsConstructor
-@Slf4j
-public class TestController extends BaseController {
+      <!-- Full HTML content rendered in iframe -->
+      <iframe id="post-content-iframe" style="width:100%; height:800px; border:1px solid #eee; background: #fff;"></iframe>
+      <script>
+        (function() {
+          const frame = document.getElementById('post-content-iframe');
+          // Use rawBody to preserve full HTML structure including DOCTYPE/HEAD
+          const rawContent = decodeURIComponent("%0A%0A%3C!DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22ja%22%3E%0A%3Chead%3E%0A%20%20%20%20%3Cmeta%20charset%3D%22UTF-8%22%3E%0A%20%20%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1.0%22%3E%0A%20%20%20%20%3Ctitle%3E%E8%A9%B3%E7%B4%B0%E8%A8%AD%E8%A8%88%E6%9B%B8%20-%20TestController.java%3C%2Ftitle%3E%0A%20%20%20%20%3Cstyle%3E%0A%20%20%20%20%20%20%20%20%3Aroot%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20--primary-blue%3A%20%23003366%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--bg-gray%3A%20%23f8f9fa%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--border-color%3A%20%23dee2e6%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20--code-bg%3A%20%23282c34%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20body%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20%22Meiryo%22%2C%20%22MS%20PGothic%22%2C%20sans-serif%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-color%3A%20%23f0f2f5%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23333%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20line-height%3A%201.6%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2040px%2020px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.doc-sheet%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20max-width%3A%201100px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%20auto%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23fff%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2040px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%200%204px%2012px%20rgba(0%2C0%2C0%2C0.1)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%204px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.header%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-bottom%3A%202px%20solid%20var(--primary-blue)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin-bottom%3A%2030px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20justify-content%3A%20space-between%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20align-items%3A%20flex-end%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20h1%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20var(--primary-blue)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2024px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%200%2010px%200%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.section-title%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20var(--primary-blue)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23fff%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%208px%2015px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2018px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%2030px%200%2015px%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%202px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%2F*%20%E4%BB%A3%E7%A0%81%E5%9D%97%E6%A0%B7%E5%BC%8F%20*%2F%0A%20%20%20%20%20%20%20%20pre%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-color%3A%20var(--code-bg)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23abb2bf%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2020px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%206px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20overflow-x%3A%20auto%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20'Consolas'%2C%20'Monaco'%2C%20monospace%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2014px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20line-height%3A%201.5%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%20inset%200%202px%204px%20rgba(0%2C0%2C0%2C0.3)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.keyword%20%7B%20color%3A%20%23c678dd%3B%20%7D%0A%20%20%20%20%20%20%20%20.comment%20%7B%20color%3A%20%235c6370%3B%20font-style%3A%20italic%3B%20%7D%0A%20%20%20%20%20%20%20%20.string%20%7B%20color%3A%20%2398c379%3B%20%7D%0A%20%20%20%20%20%20%20%20.function%20%7B%20color%3A%20%2361afef%3B%20%7D%0A%20%20%20%20%20%20%20%20.annotation%20%7B%20color%3A%20%23d19a66%3B%20%7D%0A%0A%20%20%20%20%20%20%20%20%2F*%20%E8%AF%B4%E6%98%8E%E8%A1%A8%E6%A0%BC%E6%A0%B7%E5%BC%8F%20*%2F%0A%20%20%20%20%20%20%20%20table%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-collapse%3A%20collapse%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%2015px%200%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20th%2C%20td%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%201px%20solid%20var(--border-color)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2012px%2015px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2014px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20th%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-color%3A%20%23e9ecef%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2020%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20text-align%3A%20left%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.process-list%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23fffdf0%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%201px%20solid%20%23ffe4b5%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2020px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%204px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.tag%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20inline-block%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23e2e8f0%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%202px%208px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%204px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2012px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-weight%3A%20bold%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23475569%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%0A%3Cdiv%20class%3D%22doc-sheet%22%3E%0A%20%20%20%20%3Cdiv%20class%3D%22header%22%3E%0A%20%20%20%20%20%20%20%20%3Ch1%3E%E8%A9%B3%E7%B4%B0%E8%A8%AD%E8%A8%88%E6%9B%B8%20(Program%20Specification)%3C%2Fh1%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20style%3D%22font-size%3A%2012px%3B%20color%3A%20%23666%3B%22%3E%E4%BD%9C%E6%88%90%E6%97%A5%3A%202026-02-05%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22section-title%22%3E1.%20%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%20(Source%20Code)%3C%2Fdiv%3E%0A%20%20%20%20%3Cpre%3E%3Ccode%3E%3Cspan%20class%3D%22comment%22%3E%2F**%0A%20*%20API%E3%81%AEController%E3%82%AF%E3%83%A9%E3%82%B9%0A%20*%2F%3C%2Fspan%3E%0A%3Cspan%20class%3D%22annotation%22%3E%40RestController%3C%2Fspan%3E%0A%3Cspan%20class%3D%22annotation%22%3E%40RequiredArgsConstructor%3C%2Fspan%3E%0A%3Cspan%20class%3D%22annotation%22%3E%40Slf4j%3C%2Fspan%3E%0A%3Cspan%20class%3D%22keyword%22%3Epublic%20class%3C%2Fspan%3E%20%3Cspan%20class%3D%22function%22%3ETestController%3C%2Fspan%3E%20%3Cspan%20class%3D%22keyword%22%3Eextends%3C%2Fspan%3E%20%3Cspan%20class%3D%22function%22%3EBaseController%3C%2Fspan%3E%20%7B%0A%0A%20%20%20%20%3Cspan%20class%3D%22comment%22%3E%2F**%20API%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%AF%E3%83%A9%E3%82%B9%20*%2F%3C%2Fspan%3E%0A%20%20%20%20%3Cspan%20class%3D%22keyword%22%3Eprivate%20final%3C%2Fspan%3E%20TestService%20testService%3B%0A%0A%20%20%20%20%3Cspan%20class%3D%22comment%22%3E%2F**%0A%20%20%20%20%20*%20API%E3%81%AE%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%0A%20%20%20%20%20*%0A%20%20%20%20%20*%20%40param%20request%20%20%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E6%83%85%E5%A0%B1%0A%20%20%20%20%20*%20%40param%20response%20%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E6%83%85%E5%A0%B1%0A%20%20%20%20%20*%2F%3C%2Fspan%3E%0A%20%20%20%20%3Cspan%20class%3D%22annotation%22%3E%40PostMapping%3C%2Fspan%3E(%3Cspan%20class%3D%22string%22%3E%22%2FTEST0001%22%3C%2Fspan%3E)%0A%20%20%20%20%3Cspan%20class%3D%22keyword%22%3Epublic%20void%3C%2Fspan%3E%20%3Cspan%20class%3D%22function%22%3Eexecute%3C%2Fspan%3E(HttpServletRequest%20request%2C%20HttpServletResponse%20response)%20%7B%0A%20%20%20%20%20%20%20%20log.info(%3Cspan%20class%3D%22string%22%3E%22TestController%23execute()%20Start%22%3C%2Fspan%3E)%3B%0A%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22comment%22%3E%2F%2F%20%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E5%87%A6%E7%90%86%20%E2%86%92%20%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97%20%E2%86%92%20%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E5%87%A6%E7%90%86%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20responseProcess(%0A%20%20%20%20%20%20%20%20%20%20%20%20response%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20testService.execute(requestProcess(request))%0A%20%20%20%20%20%20%20%20)%3B%0A%0A%20%20%20%20%20%20%20%20log.info(%3Cspan%20class%3D%22string%22%3E%22TestController%23execute()%20End%22%3C%2Fspan%3E)%3B%0A%20%20%20%20%7D%0A%7D%3C%2Fcode%3E%3C%2Fpre%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22section-title%22%3E2.%20%E6%A9%9F%E8%83%BD%E8%AA%AC%E6%98%8E%20(Functional%20Description)%3C%2Fdiv%3E%0A%20%20%20%20%3Ctable%3E%0A%20%20%20%20%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cth%3E%E7%89%A9%E7%90%86%E5%90%8D%20%2F%20ID%3C%2Fth%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Ctd%3ETestController%20%2F%20%3Cspan%20class%3D%22tag%22%3ETEST0001%3C%2Fspan%3E%3C%2Ftd%3E%0A%20%20%20%20%20%20%20%20%3C%2Ftr%3E%0A%20%20%20%20%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cth%3E%E8%AB%96%E7%90%86%E5%90%8D%3C%2Fth%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Ctd%3E%E3%83%86%E3%82%B9%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E5%87%A6%E7%90%86API%3C%2Ftd%3E%0A%20%20%20%20%20%20%20%20%3C%2Ftr%3E%0A%20%20%20%20%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cth%3E%E5%87%A6%E7%90%86%E6%A6%82%E8%A6%81%3C%2Fth%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Ctd%3E%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E5%8F%97%E3%81%91%E5%8F%96%E3%82%8A%E3%80%81%E6%A5%AD%E5%8B%99%E3%83%AD%E3%82%B8%E3%83%83%E3%82%AF%EF%BC%88Service%E5%B1%A4%EF%BC%89%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97%E3%81%9F%E5%BE%8C%E3%80%81%E7%B5%90%E6%9E%9C%E3%82%92%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%A8%E3%81%97%E3%81%A6%E8%BF%94%E5%8D%B4%E3%81%99%E3%82%8B%E3%80%82%3C%2Ftd%3E%0A%20%20%20%20%20%20%20%20%3C%2Ftr%3E%0A%20%20%20%20%3C%2Ftable%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22section-title%22%3E3.%20%E3%83%AD%E3%82%B8%E3%83%83%E3%82%AF%E8%A9%B3%E7%B4%B0%20(Logic%20Details)%3C%2Fdiv%3E%0A%20%20%20%20%3Cdiv%20class%3D%22process-list%22%3E%0A%20%20%20%20%20%20%20%20%3Cstrong%3E%E2%96%A0%20%E5%AE%9F%E8%A1%8C%E3%83%95%E3%83%AD%E3%83%BC%20(Execution%20Flow)%3C%2Fstrong%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Col%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cli%3E%3Cstrong%3E%E5%89%8D%E5%87%A6%E7%90%86%E3%83%AD%E3%82%B0%3A%3C%2Fstrong%3E%20%E5%87%A6%E7%90%86%E9%96%8B%E5%A7%8B%E6%99%82%E3%81%AB%E3%82%AF%E3%83%A9%E3%82%B9%E5%90%8D%E3%81%A8%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E5%90%8D%E3%82%92%E3%83%AD%E3%82%B0%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B%E3%80%82%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cli%3E%3Cstrong%3E%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E8%A7%A3%E6%9E%90%20(requestProcess)%3A%3C%2Fstrong%3E%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cli%3E%3Ccode%3EBaseController%3C%2Fcode%3E%E3%81%8B%E3%82%89%E7%B6%99%E6%89%BF%E3%81%97%E3%81%9F%E5%85%B1%E9%80%9A%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99%E3%80%82%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cli%3EHTTP%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E3%83%AD%E3%82%B8%E3%83%83%E3%82%AF%E3%81%A7%E5%88%A9%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA%E5%BD%A2%E5%BC%8F%E3%81%AB%E5%A4%89%E6%8F%9B%E3%81%99%E3%82%8B%E3%80%82%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cli%3E%3Cstrong%3E%E6%A5%AD%E5%8B%99%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E5%AE%9F%E8%A1%8C%20(testService.execute)%3A%3C%2Fstrong%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%95%E3%82%8C%E3%81%9F%20%3Ccode%3ETestService%3C%2Fcode%3E%20%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97%E3%80%81%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%AE%E6%A5%AD%E5%8B%99%E5%87%A6%E7%90%86%E3%82%92%E8%A1%8C%E3%81%86%E3%80%82%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cli%3E%3Cstrong%3E%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E5%87%A6%E7%90%86%20(responseProcess)%3A%3C%2Fstrong%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cli%3EService%E5%B1%A4%E3%81%AE%E5%AE%9F%E8%A1%8C%E7%B5%90%E6%9E%9C%E3%82%92HTTP%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%AB%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%82%80%E3%80%82%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cli%3E%3Cstrong%3E%E5%BE%8C%E5%87%A6%E7%90%86%E3%83%AD%E3%82%B0%3A%3C%2Fstrong%3E%20%E6%AD%A3%E5%B8%B8%E7%B5%82%E4%BA%86%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E3%82%A8%E3%83%B3%E3%83%89%E3%83%AD%E3%82%B0%E3%82%92%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B%E3%80%82%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3C%2Fol%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22section-title%22%3E4.%20%E5%82%99%E8%80%83%20(Remarks)%3C%2Fdiv%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E6%9C%AC%E3%82%AF%E3%83%A9%E3%82%B9%E3%81%AF%20%3Ccode%3E%40RequiredArgsConstructor%3C%2Fcode%3E%20%E3%81%AB%E3%82%88%E3%82%8A%E3%80%81%3Ccode%3ETestService%3C%2Fcode%3E%20%E3%81%AE%E3%82%B3%E3%83%B3%E3%82%B9%E3%83%88%E3%83%A9%E3%82%AF%E3%82%BF%E6%B3%A8%E5%85%A5%E3%82%92%E8%87%AA%E5%8B%95%E5%8C%96%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%80%82%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E4%BE%8B%E5%A4%96%E5%87%A6%E7%90%86%E3%81%AF%20%3Ccode%3EBaseController%3C%2Fcode%3E%20%E3%81%BE%E3%81%9F%E3%81%AF%20%3Ccode%3EGlobalExceptionHandler%3C%2Fcode%3E%20%E3%81%A7%E4%B8%80%E6%8B%AC%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%82%92%E5%89%8D%E6%8F%90%E3%81%A8%E3%81%99%E3%82%8B%E3%80%82%3C%2Fli%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cdiv%20style%3D%22margin-top%3A%2040px%3B%20text-align%3A%20center%3B%20color%3A%20%23999%3B%20font-size%3A%2012px%3B%22%3E%0A%20%20%20%20%20%20%20%20%26copy%3B%202026%20IT%20Development%20Team%20%7C%20Confidential%0A%20%20%20%20%3C%2Fdiv%3E%0A%3C%2Fdiv%3E%0A%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E");
+          
+          const doc = frame.contentDocument || frame.contentWindow.document;
+          doc.open();
+          doc.write(rawContent);
+          doc.close();
 
-    /** APIのサービスクラス */
-    private final TestService testService;
-
-    /**
-     * APIのメインメソッド
-     *
-     * @param request  リクエスト情報
-     * @param response レスポンス情報
-     */
-    @PostMapping(&quot;/TEST0001&quot;)
-    public void execute(HttpServletRequest request, HttpServletResponse response) {
-        log.info(&quot;TestController#execute() Start&quot;);
-
-        // リクエスト処理 → サービス呼び出し → レスポンス処理
-        responseProcess(
-            response,
-            testService.execute(requestProcess(request))
-        );
-
-        log.info(&quot;TestController#execute() End&quot;);
-    }
-}
-</code></pre>
-
-      <!-- 渲染文章正文 HTML -->
-      <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+          // Auto resize height
+          frame.onload = function() {
+            try {
+              const height = frame.contentWindow.document.body.scrollHeight;
+              if (height > 0) {
+                 frame.style.height = (height + 50) + 'px';
+              }
+            } catch(e) { console.error("Auto resize failed", e); }
+          };
+        })();
+      </script>
     
   </div>
   <!-- 文章正文结束 -->
