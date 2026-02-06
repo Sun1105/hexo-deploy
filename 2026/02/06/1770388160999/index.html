@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <!-- 设置字符集为 UTF-8 -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 响应式布局，适配移动设备 -->
+
+  <!-- 页面标题 -->
+  <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
+  <!-- 否则只显示网站标题 config.title -->
+  <title>
+    完整IT项目技术地图 | Sun Blog
+  </title>
+
+  <!-- 页面描述，用于 SEO -->
+  <meta name="description" content="一个记录开发、学习与生活点滴的博客">
+
+  <!-- ===== 全局样式引入 ===== -->
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/sidebar.css">
+  <link rel="stylesheet" href="/css/post-list.css">
+  <link rel="stylesheet" href="/css/page.css">
+  <link rel="stylesheet" href="/css/category.css">
+  <link rel="stylesheet" href="/css/archive.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <!-- 各模块样式，便于维护 -->
+
+  <!-- ===== 字体与图标 ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <!-- 网站 favicon 和 Google 字体 -->
+
+  <!-- ===== 登录状态检查 ===== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const onLoginPage = window.location.pathname.startsWith("/login");
+      if (!onLoginPage && !localStorage.getItem("isLoggedIn")) {
+        window.location.href = "/login/";
+      }
+      // 如果未登录且不在登录页，自动跳转到登录页
+    });
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  
+    <!-- ===== 顶部导航栏 ===== -->
+    <header class="top-nav">
+  <!-- ============================
+       顶部导航栏模块
+       功能：
+         - 显示网站 logo
+         - 提供主菜单导航
+         - 技术分类下拉菜单
+         - 新建笔记 / 关于我 / 我的项目 / 技能树
+         - 小屏幕汉堡菜单切换
+         - 退出登录按钮
+  ============================ -->
+
+  <!-- 网站 Logo -->
+  <div class="logo">
+    <a href="/">首页</a>
+    <!-- 点击跳转到网站首页 -->
+  </div>
+
+  <!-- 汉堡按钮（小屏幕时显示） -->
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="切换菜单">☰</button>
+  <!-- onclick 调用 toggleMenu() 切换移动端菜单显示状态 -->
+
+  <!-- 主菜单容器 -->
+  <nav class="menu">
+
+    <!-- 普通菜单项 -->
+    <a href="/new-note/">新建笔记</a>
+    <a href="/notes/">笔记列表</a>
+    <a href="/archives/">时间轴</a>
+    <a href="/about/">关于我</a>
+    <a href="/projects/">项目集</a>
+    <a href="/skills/">技能树</a>
+    <!-- 点击跳转到对应页面 -->
+
+    <!-- 技术分类下拉菜单 -->
+    <div class="dropdown">
+      <button class="menu-btn" type="button">技术分类</button>
+      <!-- 下拉按钮，点击显示分类列表 -->
+
+      <div class="dropdown-content">
+        
+
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Java/">Java</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Java')">Java</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/SpringBoot/">SpringBoot</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('SpringBoot')">SpringBoot</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/JUnit/">JUnit</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('JUnit')">JUnit</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Maven/">Maven</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Maven')">Maven</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Mybatis/">Mybatis</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Mybatis')">Mybatis</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Git/">Git</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Git')">Git</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/SQL/">SQL</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('SQL')">SQL</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/VBA/">VBA</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('VBA')">VBA</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Azure/">Azure</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Azure')">Azure</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/Docker/">Docker</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('Docker')">Docker</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('前端')">前端</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90/">架构分析</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('架构分析')">架构分析</a> -->
+          
+        
+          <!-- 遍历技术分类数组，生成菜单项 -->
+          <!-- 跳转到 /categories/分类名/ 页面 -->
+          <a href="/categories/%E5%BF%AB%E6%8D%B7%E9%94%AE/">快捷键</a>
+
+          <!-- 如果希望点击动态更新侧边栏而不是跳转，可改为：
+          <a href="javascript:void(0)" onclick="selectMenu('快捷键')">快捷键</a> -->
+          
+        
+      </div>
+    </div>
+    <!-- 技术分类下拉菜单结束 -->
+
+    <!-- 退出登录按钮 -->
+    <button class="logout" onclick="logout()">退出</button>
+    <!-- 点击调用 logout() 清除登录状态并跳转登录页 -->
+
+  </nav>
+  <!-- 主菜单容器结束 -->
+
+</header>
+<!-- 顶部导航栏结束 -->
+
+    <!-- 导入 header 部分模板 -->
+
+    <!-- ===== 侧边栏 ===== -->
+    <aside class="sidebar" id="sidebar">
+  <!-- ============================
+       侧边栏模块
+       功能：
+         - 自动读取 Hexo 分类数据
+         - 自动读取 Hexo 标签数据
+         - 渲染为分类导航和标签云
+  ============================ -->
+
+  <!-- 分类导航 -->
+  <h3 class="sidebar-title">📘 分类导航</h3>
+  <ul class="category-list">
+    
+      
+        <li>
+          <a href="/categories/AI%E7%BB%84%E5%90%88/">
+            <span class="sidebar-name">AI组合</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/DB%E7%99%BB%E5%BD%95%E8%AE%BE%E7%BD%AE/">
+            <span class="sidebar-name">DB登录设置</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/ITA/">
+            <span class="sidebar-name">ITA</span>
+            <span class="sidebar-count">3</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/JUnit/">
+            <span class="sidebar-name">JUnit</span>
+            <span class="sidebar-count">3</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/URL/">
+            <span class="sidebar-name">URL</span>
+            <span class="sidebar-count">2</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/VBA/">
+            <span class="sidebar-name">VBA</span>
+            <span class="sidebar-count">7</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E3%83%A1%E3%83%A2/">
+            <span class="sidebar-name">メモ</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E5%85%A8%E6%A0%88%E6%8A%80%E6%9C%AF%E6%B8%85%E5%8D%95/">
+            <span class="sidebar-name">全栈技术清单</span>
+            <span class="sidebar-count">5</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/">
+            <span class="sidebar-name">思维导图</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E6%97%A5%E8%AF%AD%E7%AC%94%E8%AE%B0/">
+            <span class="sidebar-name">日语笔记</span>
+            <span class="sidebar-count">59</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E6%A8%A1%E6%9D%BF/">
+            <span class="sidebar-name">模板</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E8%AE%A1%E5%88%92/">
+            <span class="sidebar-name">计划</span>
+            <span class="sidebar-count">3</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E9%85%8D%E7%BD%AE/">
+            <span class="sidebar-name">配置</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">
+            <span class="sidebar-name">项目管理</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+    
+  </ul>
+
+  <!-- 分割线 -->
+  <div class="sidebar-divider"></div>
+
+  <!-- 标签云 -->
+  <h3 class="sidebar-title">🏷️ 标签云</h3>
+  <ul class="tag-list">
+    
+      
+        <li>
+          <a href="/tags/A5M2/">
+            <span class="sidebar-name">A5M2</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/AI%E7%BB%84%E5%90%88/">
+            <span class="sidebar-name">AI组合</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/Controller/">
+            <span class="sidebar-name">Controller</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/Oracle/">
+            <span class="sidebar-name">Oracle</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/PC%E9%85%8D%E7%BD%AE/">
+            <span class="sidebar-name">PC配置</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/PMO/">
+            <span class="sidebar-name">PMO</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/TOOL/">
+            <span class="sidebar-name">TOOL</span>
+            <span class="sidebar-count">8</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/log/">
+            <span class="sidebar-name">log</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E3%83%A1%E3%83%A2/">
+            <span class="sidebar-name">メモ</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E5%85%A8%E6%A0%88%E6%8A%80%E6%9C%AF%E6%B8%85%E5%8D%95/">
+            <span class="sidebar-name">全栈技术清单</span>
+            <span class="sidebar-count">5</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E5%B7%A5%E5%85%B7/">
+            <span class="sidebar-name">工具</span>
+            <span class="sidebar-count">2</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E5%BC%8F%E6%A0%B7%E4%B9%A6%E5%81%9A%E6%88%90/">
+            <span class="sidebar-name">式样书做成</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E6%89%A7%E8%A1%8C%E7%B1%BB/">
+            <span class="sidebar-name">执行类</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E5%8D%95%E8%AF%8D/">
+            <span class="sidebar-name">日语单词</span>
+            <span class="sidebar-count">44</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">
+            <span class="sidebar-name">日语学习计划</span>
+            <span class="sidebar-count">3</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E6%97%A5%E8%AF%AD%E8%AF%AD%E6%B3%95/">
+            <span class="sidebar-name">日语语法</span>
+            <span class="sidebar-count">15</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E6%A6%82%E8%A6%81/">
+            <span class="sidebar-name">概要</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/tags/%E9%85%8D%E7%BD%AE/">
+            <span class="sidebar-name">配置</span>
+            <span class="sidebar-count">1</span>
+          </a>
+        </li>
+      
+    
+  </ul>
+</aside>
+
+    <!-- 导入 sidebar 部分模板 -->
+  
+
+  <!-- ===== 主体内容区 ===== -->
+  <main id="main-content">
+    <!--
+  post.ejs
+  文章详情页模板
+  功能：
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
+-->
+
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
+
+  <!-- 文章标题 -->
+  <h1 class="post-title">完整IT项目技术地图</h1>
+  <!-- page.title → 当前文章标题 -->
+
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2026-02-06</span>
+    <!-- 显示文章发布日期 -->
+
+    
+      <!-- 判断文章是否有标签 -->
+
+      <span>标签：
+        
+          <a href="/tags/%E5%85%A8%E6%A0%88%E6%8A%80%E6%9C%AF%E6%B8%85%E5%8D%95/">全栈技术清单</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+      </span>
+
+    
+    <!-- 标签判断结束 -->
+  </div>
+  <!-- 文章元信息结束 -->
+
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    
+
+    
+      <!-- Full HTML content rendered in iframe -->
+      <iframe id="post-content-iframe" style="width:100%; height:800px; border:1px solid #eee; background: #fff;"></iframe>
+      <script>
+        (function() {
+          const frame = document.getElementById('post-content-iframe');
+          // Use rawBody to preserve full HTML structure including DOCTYPE/HEAD
+          const rawContent = decodeURIComponent("%0A%0A%3C!DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22zh-CN%22%3E%0A%3Chead%3E%0A%20%20%3Cmeta%20charset%3D%22UTF-8%22%20%2F%3E%0A%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1%22%2F%3E%0A%20%20%3Ctitle%3EAzure%20%2B%20Linux%20%2B%20OpenShift%20%2B%20Argo%20%2B%20%E5%AE%8C%E6%95%B4IT%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E5%9C%B0%E5%9B%BE%3C%2Ftitle%3E%0A%20%20%3Cstyle%3E%0A%20%20%20%20%3Aroot%7B%0A%20%20%20%20%20%20--bg%3A%23f6f8fa%3B%0A%20%20%20%20%20%20--paper%3A%23ffffff%3B%0A%20%20%20%20%20%20--ink%3A%23111827%3B%0A%20%20%20%20%20%20--muted%3A%234b5563%3B%0A%20%20%20%20%20%20--line%3A%23e5e7eb%3B%0A%20%20%20%20%20%20--brand%3A%232563eb%3B%0A%20%20%20%20%20%20--brand2%3A%2306b6d4%3B%0A%20%20%20%20%20%20--ok%3A%2316a34a%3B%0A%20%20%20%20%20%20--warn%3A%23f59e0b%3B%0A%20%20%20%20%20%20--bad%3A%23ef4444%3B%0A%20%20%20%20%20%20--codebg%3A%230f172a%3B%0A%20%20%20%20%20%20--codefg%3A%23e5e7eb%3B%0A%20%20%20%20%20%20--shadow%3A%200%2010px%2024px%20rgba(0%2C0%2C0%2C.08)%3B%0A%20%20%20%20%20%20--shadow2%3A%200%204px%2012px%20rgba(0%2C0%2C0%2C.08)%3B%0A%20%20%20%20%20%20--radius%3A12px%3B%0A%20%20%20%20%7D%0A%20%20%20%20*%7Bbox-sizing%3Aborder-box%7D%0A%20%20%20%20body%7B%0A%20%20%20%20%20%20margin%3A0%3B%0A%20%20%20%20%20%20font-family%3A-apple-system%2CBlinkMacSystemFont%2C%22Segoe%20UI%22%2C%22PingFang%20SC%22%2C%22Hiragino%20Sans%20GB%22%2C%22Microsoft%20YaHei%22%2CArial%2Csans-serif%3B%0A%20%20%20%20%20%20background%3Avar(--bg)%3B%0A%20%20%20%20%20%20color%3Avar(--ink)%3B%0A%20%20%20%20%20%20line-height%3A1.75%3B%0A%20%20%20%20%7D%0A%20%20%20%20.container%7B%0A%20%20%20%20%20%20max-width%3A1060px%3B%0A%20%20%20%20%20%20margin%3A32px%20auto%3B%0A%20%20%20%20%20%20padding%3A28px%3B%0A%20%20%20%20%20%20background%3Avar(--paper)%3B%0A%20%20%20%20%20%20border-radius%3Avar(--radius)%3B%0A%20%20%20%20%20%20box-shadow%3Avar(--shadow)%3B%0A%20%20%20%20%7D%0A%20%20%20%20header%7B%0A%20%20%20%20%20%20padding%3A10px%200%2018px%200%3B%0A%20%20%20%20%20%20border-bottom%3A1px%20solid%20var(--line)%3B%0A%20%20%20%20%20%20margin-bottom%3A22px%3B%0A%20%20%20%20%7D%0A%20%20%20%20h1%7B%0A%20%20%20%20%20%20margin%3A0%200%208px%200%3B%0A%20%20%20%20%20%20text-align%3Acenter%3B%0A%20%20%20%20%20%20letter-spacing%3A.3px%3B%0A%20%20%20%20%20%20font-size%3A28px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.subtitle%7B%0A%20%20%20%20%20%20text-align%3Acenter%3B%0A%20%20%20%20%20%20color%3Avar(--muted)%3B%0A%20%20%20%20%20%20margin%3A0%3B%0A%20%20%20%20%20%20font-size%3A14px%3B%0A%20%20%20%20%7D%0A%20%20%20%20nav%7B%0A%20%20%20%20%20%20margin-top%3A14px%3B%0A%20%20%20%20%20%20display%3Aflex%3B%0A%20%20%20%20%20%20flex-wrap%3Awrap%3B%0A%20%20%20%20%20%20gap%3A10px%3B%0A%20%20%20%20%20%20justify-content%3Acenter%3B%0A%20%20%20%20%7D%0A%20%20%20%20nav%20a%7B%0A%20%20%20%20%20%20text-decoration%3Anone%3B%0A%20%20%20%20%20%20color%3Avar(--ink)%3B%0A%20%20%20%20%20%20border%3A1px%20solid%20var(--line)%3B%0A%20%20%20%20%20%20padding%3A8px%2010px%3B%0A%20%20%20%20%20%20border-radius%3A999px%3B%0A%20%20%20%20%20%20font-size%3A13px%3B%0A%20%20%20%20%20%20background%3A%23fff%3B%0A%20%20%20%20%20%20transition%3A.15s%20ease%3B%0A%20%20%20%20%7D%0A%20%20%20%20nav%20a%3Ahover%7B%0A%20%20%20%20%20%20border-color%3A%23c7d2fe%3B%0A%20%20%20%20%20%20box-shadow%3A0%206px%2014px%20rgba(37%2C99%2C235%2C.12)%3B%0A%20%20%20%20%20%20transform%3AtranslateY(-1px)%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20h2%7B%0A%20%20%20%20%20%20margin-top%3A44px%3B%0A%20%20%20%20%20%20margin-bottom%3A10px%3B%0A%20%20%20%20%20%20padding-left%3A12px%3B%0A%20%20%20%20%20%20border-left%3A6px%20solid%20var(--brand)%3B%0A%20%20%20%20%20%20font-size%3A20px%3B%0A%20%20%20%20%7D%0A%20%20%20%20h3%7B%0A%20%20%20%20%20%20margin-top%3A22px%3B%0A%20%20%20%20%20%20margin-bottom%3A10px%3B%0A%20%20%20%20%20%20font-size%3A17px%3B%0A%20%20%20%20%7D%0A%20%20%20%20p%7Bmargin%3A10px%200%7D%0A%20%20%20%20ul%7Bmargin%3A10px%200%2010px%2022px%7D%0A%20%20%20%20li%7Bmargin%3A6px%200%7D%0A%20%20%20%20.highlight%7B%0A%20%20%20%20%20%20background%3A%23eff6ff%3B%0A%20%20%20%20%20%20border-left%3A5px%20solid%20%233b82f6%3B%0A%20%20%20%20%20%20padding%3A12px%2014px%3B%0A%20%20%20%20%20%20margin%3A14px%200%3B%0A%20%20%20%20%20%20border-radius%3A10px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.callout%7B%0A%20%20%20%20%20%20background%3A%23ecfeff%3B%0A%20%20%20%20%20%20border-left%3A5px%20solid%20var(--brand2)%3B%0A%20%20%20%20%20%20padding%3A12px%2014px%3B%0A%20%20%20%20%20%20margin%3A14px%200%3B%0A%20%20%20%20%20%20border-radius%3A10px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.note%7B%0A%20%20%20%20%20%20background%3A%23fefce8%3B%0A%20%20%20%20%20%20border-left%3A5px%20solid%20var(--warn)%3B%0A%20%20%20%20%20%20padding%3A12px%2014px%3B%0A%20%20%20%20%20%20margin%3A14px%200%3B%0A%20%20%20%20%20%20border-radius%3A10px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.ok%7B%0A%20%20%20%20%20%20color%3Avar(--ok)%3B%0A%20%20%20%20%20%20font-weight%3A600%3B%0A%20%20%20%20%7D%0A%20%20%20%20.bad%7B%0A%20%20%20%20%20%20color%3Avar(--bad)%3B%0A%20%20%20%20%20%20font-weight%3A600%3B%0A%20%20%20%20%7D%0A%20%20%20%20pre%2C%20code%7B%0A%20%20%20%20%20%20font-family%3AConsolas%2CMonaco%2Cmonospace%3B%0A%20%20%20%20%7D%0A%20%20%20%20pre%7B%0A%20%20%20%20%20%20background%3Avar(--codebg)%3B%0A%20%20%20%20%20%20color%3Avar(--codefg)%3B%0A%20%20%20%20%20%20padding%3A16px%3B%0A%20%20%20%20%20%20border-radius%3A12px%3B%0A%20%20%20%20%20%20overflow%3Aauto%3B%0A%20%20%20%20%20%20margin%3A16px%200%3B%0A%20%20%20%20%20%20box-shadow%3Avar(--shadow2)%3B%0A%20%20%20%20%7D%0A%20%20%20%20.grid%7B%0A%20%20%20%20%20%20display%3Agrid%3B%0A%20%20%20%20%20%20grid-template-columns%3Arepeat(12%2C1fr)%3B%0A%20%20%20%20%20%20gap%3A14px%3B%0A%20%20%20%20%20%20margin%3A16px%200%206px%200%3B%0A%20%20%20%20%7D%0A%20%20%20%20.card%7B%0A%20%20%20%20%20%20border%3A1px%20solid%20var(--line)%3B%0A%20%20%20%20%20%20border-radius%3A14px%3B%0A%20%20%20%20%20%20padding%3A14px%3B%0A%20%20%20%20%20%20background%3A%23fff%3B%0A%20%20%20%20%20%20box-shadow%3A0%206px%2016px%20rgba(0%2C0%2C0%2C.05)%3B%0A%20%20%20%20%7D%0A%20%20%20%20.card%20h4%7B%0A%20%20%20%20%20%20margin%3A0%200%208px%200%3B%0A%20%20%20%20%20%20font-size%3A14px%3B%0A%20%20%20%20%20%20letter-spacing%3A.2px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.pill%7B%0A%20%20%20%20%20%20display%3Ainline-block%3B%0A%20%20%20%20%20%20font-size%3A12px%3B%0A%20%20%20%20%20%20padding%3A3px%2010px%3B%0A%20%20%20%20%20%20border-radius%3A999px%3B%0A%20%20%20%20%20%20border%3A1px%20solid%20var(--line)%3B%0A%20%20%20%20%20%20background%3A%23f8fafc%3B%0A%20%20%20%20%20%20color%3Avar(--muted)%3B%0A%20%20%20%20%20%20margin-right%3A6px%3B%0A%20%20%20%20%20%20margin-top%3A4px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.kcol-6%7Bgrid-column%3Aspan%206%7D%0A%20%20%20%20.kcol-4%7Bgrid-column%3Aspan%204%7D%0A%20%20%20%20.kcol-12%7Bgrid-column%3Aspan%2012%7D%0A%20%20%20%20%40media%20(max-width%3A900px)%7B%0A%20%20%20%20%20%20.kcol-6%2C.kcol-4%7Bgrid-column%3Aspan%2012%7D%0A%20%20%20%20%20%20.container%7Bmargin%3A0%3B%20border-radius%3A0%7D%0A%20%20%20%20%7D%0A%20%20%20%20table%7B%0A%20%20%20%20%20%20width%3A100%25%3B%0A%20%20%20%20%20%20border-collapse%3Acollapse%3B%0A%20%20%20%20%20%20margin%3A18px%200%3B%0A%20%20%20%20%20%20font-size%3A14px%3B%0A%20%20%20%20%7D%0A%20%20%20%20th%2C%20td%7B%0A%20%20%20%20%20%20border%3A1px%20solid%20var(--line)%3B%0A%20%20%20%20%20%20padding%3A10px%2012px%3B%0A%20%20%20%20%20%20text-align%3Aleft%3B%0A%20%20%20%20%20%20vertical-align%3Atop%3B%0A%20%20%20%20%7D%0A%20%20%20%20th%7B%0A%20%20%20%20%20%20background%3A%23f1f5f9%3B%0A%20%20%20%20%20%20color%3A%230f172a%3B%0A%20%20%20%20%7D%0A%20%20%20%20.footer%7B%0A%20%20%20%20%20%20margin-top%3A42px%3B%0A%20%20%20%20%20%20padding-top%3A18px%3B%0A%20%20%20%20%20%20border-top%3A1px%20dashed%20var(--line)%3B%0A%20%20%20%20%20%20color%3Avar(--muted)%3B%0A%20%20%20%20%20%20font-size%3A12px%3B%0A%20%20%20%20%20%20text-align%3Acenter%3B%0A%20%20%20%20%7D%0A%20%20%20%20.svgwrap%7B%0A%20%20%20%20%20%20border%3A1px%20solid%20var(--line)%3B%0A%20%20%20%20%20%20border-radius%3A14px%3B%0A%20%20%20%20%20%20overflow%3Ahidden%3B%0A%20%20%20%20%20%20box-shadow%3A0%206px%2016px%20rgba(0%2C0%2C0%2C.05)%3B%0A%20%20%20%20%20%20background%3A%23fff%3B%0A%20%20%20%20%20%20margin%3A14px%200%3B%0A%20%20%20%20%7D%0A%20%20%20%20.legend%7B%0A%20%20%20%20%20%20display%3Aflex%3B%0A%20%20%20%20%20%20gap%3A10px%3B%0A%20%20%20%20%20%20flex-wrap%3Awrap%3B%0A%20%20%20%20%20%20margin%3A10px%200%3B%0A%20%20%20%20%20%20color%3Avar(--muted)%3B%0A%20%20%20%20%20%20font-size%3A13px%3B%0A%20%20%20%20%7D%0A%20%20%20%20.legend%20span%7B%0A%20%20%20%20%20%20display%3Ainline-flex%3B%0A%20%20%20%20%20%20align-items%3Acenter%3B%0A%20%20%20%20%20%20gap%3A6px%3B%0A%20%20%20%20%20%20border%3A1px%20solid%20var(--line)%3B%0A%20%20%20%20%20%20border-radius%3A999px%3B%0A%20%20%20%20%20%20padding%3A6px%2010px%3B%0A%20%20%20%20%20%20background%3A%23fff%3B%0A%20%20%20%20%7D%0A%20%20%20%20.dot%7B%0A%20%20%20%20%20%20width%3A10px%3Bheight%3A10px%3Bborder-radius%3A50%25%3B%0A%20%20%20%20%20%20display%3Ainline-block%3B%0A%20%20%20%20%7D%0A%20%20%20%20.dot.brand%7Bbackground%3Avar(--brand)%7D%0A%20%20%20%20.dot.cyan%7Bbackground%3Avar(--brand2)%7D%0A%20%20%20%20.dot.ok%7Bbackground%3Avar(--ok)%7D%0A%20%20%20%20.dot.warn%7Bbackground%3Avar(--warn)%7D%0A%20%20%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%0A%3Cbody%3E%0A%20%20%3Cdiv%20class%3D%22container%22%3E%0A%20%20%20%20%3Cheader%3E%0A%20%20%20%20%20%20%3Ch1%3ELinux%20%2B%20XFCE%20%2B%20OpenShift%20%2B%20Argo%20%2B%20Azure%20%E5%85%B3%E7%B3%BB%E8%AF%B4%E6%98%8E%EF%BC%88%E5%90%AB%E5%AE%8C%E6%95%B4IT%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E5%9C%B0%E5%9B%BE%EF%BC%89%3C%2Fh1%3E%0A%20%20%20%20%20%20%3Cp%20class%3D%22subtitle%22%3E%E6%95%B4%E5%90%88%EF%BC%9A%E5%9F%BA%E7%A1%80%E5%85%B3%E7%B3%BB%E8%AF%B4%E6%98%8E%20%2B%20%E5%AE%8C%E6%95%B4IT%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%A0%88%2F%E5%B7%A5%E5%85%B7%2F%E7%8E%AF%E5%A2%83%20%2B%20%E6%8A%80%E6%9C%AF%E5%9C%B0%E5%9B%BE%EF%BC%88%E6%96%87%E5%AD%97%E7%89%88%20%26%20SVG%E5%9B%BE%E5%BD%A2%E7%89%88%EF%BC%89%3C%2Fp%3E%0A%20%20%20%20%20%20%3Cnav%3E%0A%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23sec-old-1%22%3E%E4%B8%80%E3%80%81%E6%95%B4%E4%BD%93%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%90%86%E8%A7%A3%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23sec-old-2%22%3E%E4%BA%8C%E3%80%81%E6%8C%89%E5%B1%82%E8%AF%A6%E7%BB%86%E6%8B%86%E8%A7%A3%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23sec-old-3%22%3E%E4%B8%89%E3%80%81%E6%96%87%E5%AD%97%E6%9E%B6%E6%9E%84%E5%9B%BE%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23sec-old-4%22%3E%E5%9B%9B%E3%80%81%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23sec-new-a%22%3E%E6%96%B0%E5%A2%9EA%EF%BC%9A%E5%AE%8C%E6%95%B4IT%E9%A1%B9%E7%9B%AE%E5%85%A8%E6%99%AF%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23sec-new-b%22%3E%E6%96%B0%E5%A2%9EB%EF%BC%9A%E6%8A%80%E6%9C%AF%E5%88%86%E5%B1%82%EF%BC%88Stack%EF%BC%89%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23sec-new-c%22%3E%E6%96%B0%E5%A2%9EC%EF%BC%9A%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%88Lifecycle%EF%BC%89%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%23sec-map%22%3E%E6%8A%80%E6%9C%AF%E5%9C%B0%E5%9B%BE%EF%BC%88%E6%96%87%E5%AD%97%2F%E5%9B%BE%E5%BD%A2%EF%BC%89%3C%2Fa%3E%0A%20%20%20%20%20%20%3C%2Fnav%3E%0A%20%20%20%20%3C%2Fheader%3E%0A%0A%20%20%20%20%3C!--%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0A%20%20%20%20%20%20%20%20%20%E6%97%A7%E5%86%85%E5%AE%B9%EF%BC%9A%E5%AE%8C%E5%85%A8%E4%BF%9D%E7%95%99%EF%BC%88%E4%B8%8D%E6%94%B9%E5%8A%A8%E6%96%87%E5%AD%97%EF%BC%89%0A%20%20%20%20%20%20%20%20%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%20--%3E%0A%0A%20%20%20%20%3Ch2%20id%3D%22sec-old-1%22%3E%E4%B8%80%E3%80%81%E6%95%B4%E4%BD%93%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%90%86%E8%A7%A3%EF%BC%88%E5%85%88%E7%BB%99%E4%BD%A0%E4%B8%80%E4%B8%AA%E5%85%A8%E6%99%AF%EF%BC%89%3C%2Fh2%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22highlight%22%3E%0A%20%20%20%20%20%20%3Cp%3EAzure%20%E5%9F%BA%E7%9B%98%EF%BC%88IaaS%EF%BC%89%20%E6%8F%90%E4%BE%9B%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8E%E7%BD%91%E7%BB%9C%3Cbr%3E%0A%20%20%20%20%20%20%E2%AC%87%3Cbr%3E%0A%20%20%20%20%20%20Linux%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%20%2B%20XFCE%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%20%E8%BF%90%E8%A1%8C%E5%9C%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%EF%BC%8C%E4%BE%9B%E4%BA%BA%E6%93%8D%E4%BD%9C%3Cbr%3E%0A%20%20%20%20%20%20%E2%AC%87%3Cbr%3E%0A%20%20%20%20%20%20OpenShift%EF%BC%88Red%20Hat%EF%BC%89%20%E5%9C%A8%20Linux%20%E4%B9%8B%E4%B8%8A%E6%8F%90%E4%BE%9B%E4%BC%81%E4%B8%9A%E7%BA%A7%20Kubernetes%20%E5%AE%B9%E5%99%A8%E5%B9%B3%E5%8F%B0%3Cbr%3E%0A%20%20%20%20%20%20%E2%AC%87%3Cbr%3E%0A%20%20%20%20%20%20Argo%EF%BC%88Argo%20CD%20%2F%20Argo%20Workflows%EF%BC%89%20%E5%9C%A8%20OpenShift%20%2F%20Kubernetes%20%E4%B8%8A%E5%AE%9E%E7%8E%B0%20GitOps%20%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%3C%2Fp%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%3Ch2%20id%3D%22sec-old-2%22%3E%E4%BA%8C%E3%80%81%E6%8C%89%E5%B1%82%E8%AF%A6%E7%BB%86%E6%8B%86%E8%A7%A3%E8%AF%B4%E6%98%8E%3C%2Fh2%3E%0A%0A%20%20%20%20%3Ch3%3E1%EF%B8%8F%E2%83%A3%20Azure%20%E5%9F%BA%E7%9B%98%EF%BC%88Azure%20Infrastructure%EF%BC%89%3C%2Fh3%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3E%E6%98%AF%E4%BB%80%E4%B9%88%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3EMicrosoft%20Azure%20%E6%8F%90%E4%BE%9B%E7%9A%84%E4%BA%91%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3E%E6%9C%AC%E8%B4%A8%E6%98%AF%20IaaS%EF%BC%88Infrastructure%20as%20a%20Service%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3E%E6%8F%90%E4%BE%9B%E7%9A%84%E8%83%BD%E5%8A%9B%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3E%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88VM%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3E%E7%BD%91%E7%BB%9C%EF%BC%88VNet%20%2F%20Load%20Balancer%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3E%E5%AD%98%E5%82%A8%EF%BC%88Disk%20%2F%20Blob%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3E%E5%AE%89%E5%85%A8%EF%BC%88NSG%20%2F%20IAM%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%E2%9C%85%20Azure%20%E6%9C%AC%E8%BA%AB%E4%B8%8D%E7%AE%A1%E4%BD%A0%E8%B7%91%E4%BB%80%E4%B9%88%E5%BA%94%E7%94%A8%EF%BC%8C%E5%AE%83%E5%8F%AA%E8%B4%9F%E8%B4%A3%E2%80%9C%E6%8F%90%E4%BE%9B%E7%A1%AC%E4%BB%B6%E8%83%BD%E5%8A%9B%E7%9A%84%E4%BA%91%E5%8C%96%E7%89%88%E6%9C%AC%E2%80%9D%E3%80%82%3C%2Fp%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3E%E5%9C%A8%E4%BD%A0%E8%BF%99%E5%A5%97%E4%BD%93%E7%B3%BB%E4%B8%AD%E7%9A%84%E8%A7%92%E8%89%B2%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3E%E6%89%BF%E8%BD%BD%E4%B8%80%E5%88%87%E7%9A%84%E7%89%A9%E7%90%86%E5%9F%BA%E7%A1%80%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3E%E4%B8%8A%E9%9D%A2%E4%BC%9A%E5%88%9B%E5%BB%BA%20Linux%20%E8%99%9A%E6%8B%9F%E6%9C%BA%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3EOpenShift%20%E9%9B%86%E7%BE%A4%E6%9C%80%E7%BB%88%E5%B0%B1%E6%98%AF%E8%B7%91%E5%9C%A8%20Azure%20VM%20%E4%B8%8A%3C%2Fli%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%F0%9F%93%8C%20%E7%B1%BB%E6%AF%94%EF%BC%9A%3Cbr%3E%0A%20%20%20%20Azure%20%3D%20%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%20%2B%20%E6%9C%8D%E5%8A%A1%E5%99%A8%20%2B%20%E4%BA%A4%E6%8D%A2%E6%9C%BA%3C%2Fp%3E%0A%0A%20%20%20%20%3Ch3%3E2%EF%B8%8F%E2%83%A3%20Linux%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%3C%2Fh3%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3E%E6%98%AF%E4%BB%80%E4%B9%88%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%87%8C%E5%AE%89%E8%A3%85%E7%9A%84%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3E%E5%B8%B8%E8%A7%81%EF%BC%9ARed%20Hat%20Enterprise%20Linux%20%2F%20CentOS%20%2F%20Rocky%20%2F%20Ubuntu%20%E7%AD%89%3C%2Fli%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%9C%E7%94%A8%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3E%E8%B4%9F%E8%B4%A3%EF%BC%9A%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E7%BD%91%E7%BB%9C%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E5%AD%98%E5%82%A8%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E5%AE%B9%E5%99%A8%E8%BF%90%E8%A1%8C%EF%BC%88CRI%20%2F%20cgroups%20%2F%20namespace%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%B8%8E%20Azure%20%E7%9A%84%E5%85%B3%E7%B3%BB%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3EAzure%20%E5%8F%AA%E7%BB%99%E4%BD%A0%20VM%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3ELinux%20%E6%98%AF%E4%BD%A0%E5%9C%A8%20VM%20%E4%B8%8A%E5%AE%89%E8%A3%85%E7%9A%84%20OS%3C%2Fli%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%F0%9F%93%8C%20%E7%B1%BB%E6%AF%94%EF%BC%9A%3Cbr%3E%0A%20%20%20%20Azure%20%E7%BB%99%E4%BD%A0%E4%B8%80%E5%8F%B0%E2%80%9C%E7%A9%BA%E7%94%B5%E8%84%91%E2%80%9D%EF%BC%8CLinux%20%E6%98%AF%E4%BD%A0%E8%A3%85%E7%9A%84%20Windows%20%2F%20macOS%3C%2Fp%3E%0A%0A%20%20%20%20%3Ch3%3E3%EF%B8%8F%E2%83%A3%20XFCE%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%EF%BC%88Desktop%20Environment%EF%BC%89%3C%2Fh3%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3E%E6%98%AF%E4%BB%80%E4%B9%88%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3ELinux%20%E7%9A%84%E5%9B%BE%E5%BD%A2%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3E%E9%9D%9E%E5%BF%85%E9%A1%BB%E7%BB%84%E4%BB%B6%3C%2Fli%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%9C%E7%94%A8%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3E%E6%8F%90%E4%BE%9B%EF%BC%9A%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%3C%2Fli%3E%0A%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%3Cli%3E%E4%B8%BB%E8%A6%81%E7%94%A8%E4%BA%8E%EF%BC%9A%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E8%BF%90%E7%BB%B4%E4%BA%BA%E5%91%98%E7%99%BB%E5%BD%95%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E7%AE%A1%E7%90%86%20%2F%20%E8%B0%83%E8%AF%95%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E5%AD%A6%E4%B9%A0%E6%88%96%E6%BC%94%E7%A4%BA%E7%8E%AF%E5%A2%83%3C%2Fli%3E%0A%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3E%E5%9C%A8%E4%BC%81%E4%B8%9A%E5%AE%B9%E5%99%A8%E5%B9%B3%E5%8F%B0%E4%B8%AD%E7%9A%84%E5%AE%9E%E9%99%85%E6%83%85%E5%86%B5%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3E%E2%9C%85%20%E7%AE%A1%E7%90%86%E8%8A%82%E7%82%B9%20%2F%20%E8%B7%B3%E6%9D%BF%E6%9C%BA%20%E5%B8%B8%E8%A7%81%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3E%E2%9D%8C%20%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%20OpenShift%20%E8%8A%82%E7%82%B9%E4%B8%80%E8%88%AC%E4%B8%8D%E8%A3%85%E6%A1%8C%E9%9D%A2%3C%2Fli%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%F0%9F%93%8C%20%E9%87%8D%E7%82%B9%E7%90%86%E8%A7%A3%3Cbr%3E%0A%20%20%20%20XFCE%20%E2%89%A0%20%E5%AE%B9%E5%99%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86%3Cbr%3E%0A%20%20%20%20%E5%AE%83%E5%8F%AA%E6%98%AF%20%E2%80%9C%E4%BA%BA%E6%93%8D%E4%BD%9C%20Linux%20%E7%9A%84%E6%96%B9%E5%BC%8F%E4%B9%8B%E4%B8%80%E2%80%9D%3C%2Fp%3E%0A%0A%20%20%20%20%3Ch3%3E4%EF%B8%8F%E2%83%A3%20OpenShift%EF%BC%88Red%20Hat%EF%BC%89%3C%2Fh3%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3E%E6%98%AF%E4%BB%80%E4%B9%88%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3ERed%20Hat%20%E6%8F%90%E4%BE%9B%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7%20Kubernetes%20%E5%B9%B3%E5%8F%B0%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3E%3D%20Kubernetes%20%2B%20%E5%AE%89%E5%85%A8%20%2B%20%E8%BF%90%E7%BB%B4%E5%B7%A5%E5%85%B7%20%2B%20%E4%BC%81%E4%B8%9A%E6%94%AF%E6%8C%81%3C%2Fli%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3E%E6%A0%B8%E5%BF%83%E8%83%BD%E5%8A%9B%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3E%E5%AE%B9%E5%99%A8%E7%BC%96%E6%8E%92%EF%BC%88%E5%9F%BA%E4%BA%8E%20Kubernetes%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3ECI%2FCD%20%E9%9B%86%E6%88%90%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3E%E5%A4%9A%E7%A7%9F%E6%88%B7%E9%9A%94%E7%A6%BB%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3E%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5%EF%BC%88SELinux%20%2F%20SCC%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3EWeb%20%E6%8E%A7%E5%88%B6%E5%8F%B0%EF%BC%88OpenShift%20Console%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%B8%8E%20Linux%20%E7%9A%84%E5%85%B3%E7%B3%BB%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3EOpenShift%20%E5%AE%89%E8%A3%85%E5%9C%A8%20Linux%20%E4%B8%8A%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3ELinux%20%E6%8F%90%E4%BE%9B%EF%BC%9A%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E5%86%85%E6%A0%B8%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E5%AE%B9%E5%99%A8%E8%83%BD%E5%8A%9B%3C%2Fli%3E%0A%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%3Cli%3EOpenShift%20%E7%AE%A1%E7%90%86%EF%BC%9A%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%3Cli%3EPod%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3EService%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3EDeployment%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3ERoute%3C%2Fli%3E%0A%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%F0%9F%93%8C%20%E7%B1%BB%E6%AF%94%3Cbr%3E%0A%20%20%20%20Linux%20%3D%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%3Cbr%3E%0A%20%20%20%20OpenShift%20%3D%20%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%B9%B3%E5%8F%B0%EF%BC%89%3C%2Fp%3E%0A%0A%20%20%20%20%3Ch3%3E5%EF%B8%8F%E2%83%A3%20Argo%EF%BC%88%E9%80%9A%E5%B8%B8%E6%8C%87%20Argo%20CD%EF%BC%89%3C%2Fh3%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3E%E6%98%AF%E4%BB%80%E4%B9%88%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3ECNCF%20%E9%A1%B9%E7%9B%AE%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3EKubernetes%20%E5%8E%9F%E7%94%9F%E7%9A%84%20GitOps%20%E5%B7%A5%E5%85%B7%3C%2Fli%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3E%E6%A0%B8%E5%BF%83%E4%BD%9C%E7%94%A8%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3EGit%20%3D%20%E7%9C%9F%E7%9B%B8%E6%BA%90%EF%BC%88Single%20Source%20of%20Truth%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3E%E8%87%AA%E5%8A%A8%E5%B0%86%EF%BC%9A%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%3Cli%3EGit%20%E4%B8%AD%E7%9A%84%20YAML%20%2F%20Helm%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E5%90%8C%E6%AD%A5%E5%88%B0%20OpenShift%20%2F%20Kubernetes%20%E9%9B%86%E7%BE%A4%3C%2Fli%3E%0A%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3EArgo%20%E5%9C%A8%E5%93%AA%E9%87%8C%E8%BF%90%E8%A1%8C%EF%BC%9F%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%3Cli%3E%E2%9C%85%20%E8%BF%90%E8%A1%8C%E5%9C%A8%20OpenShift%20%2F%20Kubernetes%20%E4%B9%8B%E4%B8%8A%3C%2Fli%3E%0A%20%20%20%20%20%20%3Cli%3E%E6%9C%AC%E8%BA%AB%E4%B9%9F%E6%98%AF%E4%B8%80%E7%BB%84%20%E5%AE%B9%E5%99%A8%E5%BA%94%E7%94%A8%3C%2Fli%3E%0A%20%20%20%20%3C%2Ful%3E%0A%0A%20%20%20%20%3Cp%3E%3Cstrong%3EArgo%20%E4%B8%8E%20OpenShift%20%E7%9A%84%E5%85%B3%E7%B3%BB%3C%2Fstrong%3E%3C%2Fp%3E%0A%0A%20%20%20%20%3Ctable%3E%0A%20%20%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%20%20%3Cth%3E%E9%A1%B9%E7%9B%AE%3C%2Fth%3E%0A%20%20%20%20%20%20%20%20%3Cth%3EOpenShift%3C%2Fth%3E%0A%20%20%20%20%20%20%20%20%3Cth%3EArgo%3C%2Fth%3E%0A%20%20%20%20%20%20%3C%2Ftr%3E%0A%20%20%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%20%20%3Ctd%3E%E7%B1%BB%E5%9E%8B%3C%2Ftd%3E%0A%20%20%20%20%20%20%20%20%3Ctd%3E%E5%AE%B9%E5%99%A8%E5%B9%B3%E5%8F%B0%3C%2Ftd%3E%0A%20%20%20%20%20%20%20%20%3Ctd%3E%E5%BA%94%E7%94%A8%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%3C%2Ftd%3E%0A%20%20%20%20%20%20%3C%2Ftr%3E%0A%20%20%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%20%20%3Ctd%3E%E8%A7%92%E8%89%B2%3C%2Ftd%3E%0A%20%20%20%20%20%20%20%20%3Ctd%3E%E6%8F%90%E4%BE%9B%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%3C%2Ftd%3E%0A%20%20%20%20%20%20%20%20%3Ctd%3E%E7%AE%A1%E7%90%86%E9%83%A8%E7%BD%B2%3C%2Ftd%3E%0A%20%20%20%20%20%20%3C%2Ftr%3E%0A%20%20%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%20%20%3Ctd%3E%E4%BE%9D%E8%B5%96%3C%2Ftd%3E%0A%20%20%20%20%20%20%20%20%3Ctd%3ELinux%3C%2Ftd%3E%0A%20%20%20%20%20%20%20%20%3Ctd%3EKubernetes%20%2F%20OpenShift%3C%2Ftd%3E%0A%20%20%20%20%20%20%3C%2Ftr%3E%0A%20%20%20%20%3C%2Ftable%3E%0A%0A%20%20%20%20%3Cpre%3E%0A%E5%BC%80%E5%8F%91%E8%80%85%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%20%E2%86%92%20Git%0A%20%20%20%20%20%20%20%20%E2%86%93%0A%20%20%20%20%20Argo%20CD%0A%20%20%20%20%20%20%20%20%E2%86%93%0A%20%20%20OpenShift%20%E9%9B%86%E7%BE%A4%0A%20%20%20%20%20%20%20%20%E2%86%93%0A%20%20%20%20%20%E5%AE%B9%E5%99%A8%E5%BA%94%E7%94%A8%E8%BF%90%E8%A1%8C%0A%20%20%20%20%3C%2Fpre%3E%0A%0A%20%20%20%20%3Ch2%20id%3D%22sec-old-3%22%3E%E4%B8%89%E3%80%81%E6%8A%8A%E6%89%80%E6%9C%89%E4%B8%9C%E8%A5%BF%E6%94%BE%E5%9C%A8%E4%B8%80%E5%BC%A0%E2%80%9C%E6%96%87%E5%AD%97%E6%9E%B6%E6%9E%84%E5%9B%BE%E2%80%9D%E9%87%8C%3C%2Fh2%3E%0A%0A%20%20%20%20%3Cpre%3E%0A%E2%94%8C%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%90%0A%E2%94%82%20%20%20%20%20%20%20%20Argo%20CD%20%2F%20Argo%20WF%20%20%20%20%20%20%E2%94%82%20%20%E2%86%90%20GitOps%20%2F%20%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%0A%E2%94%9C%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%A4%0A%E2%94%82%20%20%20%20%20%20OpenShift%20(Kubernetes)%20%20%E2%94%82%20%20%E2%86%90%20%E5%AE%B9%E5%99%A8%E5%B9%B3%E5%8F%B0%0A%E2%94%9C%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%A4%0A%E2%94%82%20%20%20%20%20%20%20%20Linux%20OS%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%82%20%20%E2%86%90%20VM%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%0A%E2%94%82%20%20%20%20%20(%2B%20XFCE%20%E6%A1%8C%E9%9D%A2%EF%BC%8C%E5%8F%AF%E9%80%89)%20%20%20%20%20%20%20%E2%94%82%0A%E2%94%9C%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%A4%0A%E2%94%82%20%20%20%20%20%20%20%20Azure%20VM%20%2F%20Network%20%20%20%20%20%E2%94%82%20%20%E2%86%90%20%E4%BA%91%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%0A%E2%94%94%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%98%0A%20%20%20%20%3C%2Fpre%3E%0A%0A%20%20%20%20%3Ch2%20id%3D%22sec-old-4%22%3E%E5%9B%9B%E3%80%81%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93%EF%BC%88%E9%9D%A2%E8%AF%95%20%2F%20%E6%96%87%E6%A1%A3%E5%8F%AF%E7%94%A8%EF%BC%89%3C%2Fh2%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22highlight%22%3E%0A%20%20%20%20%20%20%3Cp%3E%0A%20%20%20%20%20%20%20%20Azure%20%E6%8F%90%E4%BE%9B%E4%BA%91%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%EF%BC%8CLinux%20%E8%BF%90%E8%A1%8C%E5%9C%A8%20Azure%20%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%EF%BC%8COpenShift%20%E6%9E%84%E5%BB%BA%E5%9C%A8%20Linux%20%E4%B9%8B%E4%B8%8A%E6%8F%90%E4%BE%9B%E4%BC%81%E4%B8%9A%E7%BA%A7%20Kubernetes%20%E5%AE%B9%E5%99%A8%E5%B9%B3%E5%8F%B0%EF%BC%8C%E8%80%8C%20Argo%20%E4%BD%9C%E4%B8%BA%20GitOps%20%E5%B7%A5%E5%85%B7%E8%BF%90%E8%A1%8C%E5%9C%A8%20OpenShift%20%E4%B8%8A%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%BA%94%E7%94%A8%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%8C%81%E7%BB%AD%E4%BA%A4%E4%BB%98%E3%80%82%0A%20%20%20%20%20%20%3C%2Fp%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%0A%0A%20%20%20%20%3C!--%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0A%20%20%20%20%20%20%20%20%20%E6%96%B0%E5%A2%9E%E5%86%85%E5%AE%B9%EF%BC%9A%E5%AE%8C%E6%95%B4IT%E9%A1%B9%E7%9B%AE%E6%89%A9%E5%B1%95%0A%20%20%20%20%20%20%20%20%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%20--%3E%0A%0A%20%20%20%20%3Ch2%20id%3D%22sec-new-a%22%3E%E6%96%B0%E5%A2%9EA%EF%BC%9A%E5%AE%8C%E6%95%B4%20IT%20%E9%A1%B9%E7%9B%AE%E7%9A%84%E2%80%9C%E5%88%86%E5%B1%82%20%2B%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E2%80%9D%E8%A7%86%E8%A7%92%3C%2Fh2%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22callout%22%3E%0A%20%20%20%20%20%20%3Cp%3E%E5%8F%AF%E4%BB%A5%E7%9A%84%EF%BC%8C%E8%80%8C%E4%B8%94%3Cstrong%3E%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E9%9D%9E%E5%B8%B8%E2%80%9C%E6%9E%B6%E6%9E%84%E5%B8%88%20%2F%20%E9%AB%98%E7%BA%A7SE%20%2F%20%E8%AE%BE%E8%AE%A1%E8%B4%9F%E8%B4%A3%E4%BA%BA%E2%80%9D%E7%BA%A7%E5%88%AB%E7%9A%84%E9%97%AE%E9%A2%98%3C%2Fstrong%3E%E3%80%82%3Cbr%3E%0A%20%20%20%20%20%20%E6%88%91%E4%BC%9A%3Cstrong%3E%E4%BB%A5%E4%B8%8A%E9%9D%A2%E4%BD%A0%E5%B7%B2%E7%BB%8F%E7%90%86%E8%A7%A3%E7%9A%84%E5%86%85%E5%AE%B9%E4%B8%BA%E6%A0%B8%E5%BF%83%EF%BC%88Azure%20%2B%20Linux%20%2B%20OpenShift%20%2B%20Argo%EF%BC%89%3C%2Fstrong%3E%EF%BC%8C%3Cstrong%3E%E5%90%91%E5%A4%96%E6%89%A9%E5%B1%95%3C%2Fstrong%3E%EF%BC%8C%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%AF%B4%E6%98%8E%EF%BC%9A%3C%2Fp%3E%0A%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E2%9C%85%20%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%20IT%20%E9%A1%B9%E7%9B%AE%E4%B8%AD%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E2%9C%85%20%E4%BB%8E%E7%AB%8B%E9%A1%B9%20%E2%86%92%20%E5%BC%80%E5%8F%91%20%E2%86%92%20%E6%B5%8B%E8%AF%95%20%E2%86%92%20%E9%83%A8%E7%BD%B2%20%E2%86%92%20%E8%BF%90%E7%BB%B4%20%E2%86%92%20%E7%9B%91%E6%8E%A7%20%E2%86%92%20%E4%BA%A4%E4%BB%98%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E2%9C%85%20%E4%BC%9A%E6%B6%89%E5%8F%8A%E5%93%AA%E4%BA%9B%E6%8A%80%E6%9C%AF%20%2F%20%E5%B7%A5%E5%85%B7%20%2F%20%E7%8E%AF%E5%A2%83%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E2%9C%85%20%E5%AE%83%E4%BB%AC%E5%90%84%E8%87%AA%E7%9A%84%E4%BD%9C%E7%94%A8%E3%80%81%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E3%80%81%E4%BD%BF%E7%94%A8%E6%97%B6%E6%9C%BA%3C%2Fli%3E%0A%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%3Cp%3E%E4%BD%A0%E5%8F%AF%E4%BB%A5%E6%8A%8A%E4%B8%8B%E9%9D%A2%E5%86%85%E5%AE%B9%E7%9B%B4%E6%8E%A5%E5%BD%93%E4%BD%9C%EF%BC%9A%3C%2Fp%3E%0A%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E9%A1%B9%E7%9B%AE%E8%AF%B4%E6%98%8E%E7%94%A8%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E6%9E%B6%E6%9E%84%E8%AF%B4%E6%98%8E%E7%94%A8%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E9%9D%A2%E8%AF%95%E2%80%9C%E6%95%B4%E4%BD%93%E6%8A%8A%E6%8E%A7%E8%83%BD%E5%8A%9B%E2%80%9D%E5%9B%9E%E7%AD%94%E7%94%A8%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%E8%AE%BE%E8%AE%A1%E4%B9%A6%E3%80%8C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%A6%81%E3%80%8D%E7%AB%A0%E8%8A%82%E7%9A%84%E7%B4%A0%E6%9D%90%3C%2Fli%3E%0A%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%3Ch2%20id%3D%22sec-new-b%22%3E%E6%96%B0%E5%A2%9EB%EF%BC%9A%E4%BB%8E%E4%B8%8B%E5%88%B0%E4%B8%8A%E7%9A%84%E6%8A%80%E6%9C%AF%E5%85%A8%E6%99%AF%EF%BC%88%E6%8A%80%E6%9C%AF%E5%88%86%E5%B1%82%EF%BC%89%3C%2Fh2%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22grid%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E1%EF%B8%8F%E2%83%A3%20%E4%BA%91%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E5%B1%82%EF%BC%88IaaS%EF%BC%89%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EAzure%20%2F%20AWS%20%2F%20GCP%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EVM%20%2F%20VNet%20%2F%20LB%20%2F%20Disk%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%9C%E7%94%A8%3C%2Fstrong%3E%EF%BC%9A%E6%8F%90%E4%BE%9B%20%E8%AE%A1%E7%AE%97%20%2F%20%E7%BD%91%E7%BB%9C%20%2F%20%E5%AD%98%E5%82%A8%EF%BC%8C%E6%9B%BF%E4%BB%A3%E4%BC%A0%E7%BB%9F%E6%9C%BA%E6%88%BF%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%BF%E7%94%A8%E6%97%B6%E6%9C%BA%3C%2Fstrong%3E%EF%BC%9A%E9%A1%B9%E7%9B%AE%E6%9C%80%E5%BC%80%E5%A7%8B%E3%80%81%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E8%B0%81%E5%9C%A8%E7%94%A8%3C%2Fstrong%3E%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84%E5%9B%A2%E9%98%9F%E3%80%81%E4%BA%91%E5%B9%B3%E5%8F%B0%E5%9B%A2%E9%98%9F%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%F0%9F%93%8C%20%E4%BD%A0%E5%89%8D%E9%9D%A2%E5%B7%B2%E7%BB%8F%E6%8E%8C%E6%8F%A1%EF%BC%9AAzure%20%E5%9F%BA%E7%9B%98%20%3D%20%E4%B8%80%E5%88%87%E7%9A%84%E2%80%9C%E5%9C%B0%E5%9F%BA%E2%80%9D%3C%2Fp%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E2%EF%B8%8F%E2%83%A3%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%B1%82%EF%BC%88OS%EF%BC%89%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3ELinux%20(RHEL%2FRocky%2FUbuntu)%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3Esystemd%20%2F%20iptables%20%2F%20SELinux%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%9C%E7%94%A8%3C%2Fstrong%3E%EF%BC%9A%E7%AE%A1%E7%90%86%20CPU%20%2F%20%E5%86%85%E5%AD%98%20%2F%20%E8%BF%9B%E7%A8%8B%20%2F%20%E7%BD%91%E7%BB%9C%EF%BC%8C%E4%B8%BA%E5%AE%B9%E5%99%A8%E5%92%8C%E5%BA%94%E7%94%A8%E6%8F%90%E4%BE%9B%E8%BF%90%E8%A1%8C%E5%9F%BA%E7%A1%80%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%BF%E7%94%A8%E6%97%B6%E6%9C%BA%3C%2Fstrong%3E%EF%BC%9AVM%20%E5%88%9B%E5%BB%BA%E5%90%8E%E7%AB%8B%E5%8D%B3%E9%85%8D%E7%BD%AE%E3%80%81%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E9%98%B6%E6%AE%B5%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E8%B0%81%E5%9C%A8%E7%94%A8%3C%2Fstrong%3E%EF%BC%9AOS%20%E8%BF%90%E7%BB%B4%E3%80%81%E5%B9%B3%E5%8F%B0%E5%B7%A5%E7%A8%8B%E5%B8%88%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%F0%9F%93%8C%20%E5%85%B3%E9%94%AE%E8%AE%A4%E7%9F%A5%EF%BC%9A%E6%B2%A1%E6%9C%89%20Linux%EF%BC%8C%E5%B0%B1%E6%B2%A1%E6%9C%89%E5%AE%B9%E5%99%A8%E5%B9%B3%E5%8F%B0%3C%2Fp%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E3%EF%B8%8F%E2%83%A3%20%E6%93%8D%E4%BD%9C%20%2F%20%E7%AE%A1%E7%90%86%E7%8E%AF%E5%A2%83%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EXFCE%20%2F%20GNOME%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EBastion%EF%BC%88%E8%B7%B3%E6%9D%BF%E6%9C%BA%EF%BC%89%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%9C%E7%94%A8%3C%2Fstrong%3E%EF%BC%9A%E6%8F%90%E4%BE%9B%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%EF%BC%8C%E8%BF%90%E7%BB%B4%E3%80%81%E6%8E%92%E6%9F%A5%E3%80%81%E5%AD%A6%E4%B9%A0%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%BF%E7%94%A8%E6%97%B6%E6%9C%BA%3C%2Fstrong%3E%EF%BC%9A%E7%AE%A1%E7%90%86%E8%8A%82%E7%82%B9%E3%80%81%E9%9D%9E%E7%94%9F%E4%BA%A7%E8%8A%82%E7%82%B9%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%F0%9F%93%8C%20%E9%87%8D%E8%A6%81%E5%8E%9F%E5%88%99%EF%BC%9A%E7%94%9F%E4%BA%A7%E8%8A%82%E7%82%B9%20%E2%89%A0%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%3C%2Fp%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E4%EF%B8%8F%E2%83%A3%20%E5%AE%B9%E5%99%A8%E5%B9%B3%E5%8F%B0%E5%B1%82%EF%BC%88PaaS%EF%BC%89%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EOpenShift%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EKubernetes%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%9C%E7%94%A8%3C%2Fstrong%3E%EF%BC%9A%E5%AE%B9%E5%99%A8%E7%BC%96%E6%8E%92%E3%80%81%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E3%80%81%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9%E3%80%81%E5%A4%9A%E7%A7%9F%E6%88%B7%E7%AE%A1%E7%90%86%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%BF%E7%94%A8%E6%97%B6%E6%9C%BA%3C%2Fstrong%3E%EF%BC%9A%E5%BA%94%E7%94%A8%E5%AE%B9%E5%99%A8%E5%8C%96%E4%B9%8B%E5%90%8E%E3%80%81%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E7%A1%AE%E5%AE%9A%E4%B8%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%97%B6%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E8%B0%81%E5%9C%A8%E7%94%A8%3C%2Fstrong%3E%EF%BC%9A%E5%B9%B3%E5%8F%B0%E5%9B%A2%E9%98%9F%E3%80%81%E5%BA%94%E7%94%A8%E5%9B%A2%E9%98%9F%EF%BC%88%E9%80%9A%E8%BF%87%20API%20%2F%20Console%EF%BC%89%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%F0%9F%93%8C%20%E4%B8%80%E5%8F%A5%E8%AF%9D%EF%BC%9AOpenShift%20%3D%20%E4%BC%81%E4%B8%9A%E7%BA%A7%20Kubernetes%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%3C%2Fp%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E5%EF%B8%8F%E2%83%A3%20%E5%BA%94%E7%94%A8%E4%BA%A4%E4%BB%98%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%88CI%2FCD%20%26%20GitOps%EF%BC%89%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EGitHub%20%2F%20GitLab%20%2F%20Azure%20DevOps%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EArgo%20CD%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EJenkins%20%2F%20Tekton%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%9C%E7%94%A8%3C%2Fstrong%3E%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E3%80%81%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E3%80%81%E7%8E%AF%E5%A2%83%E4%B8%80%E8%87%B4%E6%80%A7%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%BF%E7%94%A8%E6%97%B6%E6%9C%BA%3C%2Fstrong%3E%EF%BC%9A%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5%E5%BC%80%E5%A7%8B%E5%8D%B3%E5%BC%95%E5%85%A5%E3%80%81%E6%8C%81%E7%BB%AD%E8%B4%AF%E7%A9%BF%E9%A1%B9%E7%9B%AE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3EArgo%20%E7%9A%84%E5%AE%9A%E4%BD%8D%3C%2Fstrong%3E%EF%BC%9A%E4%B8%8D%E6%98%AF%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%EF%BC%9B%E6%98%AF%E9%83%A8%E7%BD%B2%E6%8E%A7%E5%88%B6%E5%99%A8%EF%BC%9BGit%20%3D%20%E7%9C%9F%E7%9B%B8%E6%BA%90%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%F0%9F%93%8C%20%E4%BD%A0%E5%89%8D%E9%9D%A2%E5%86%85%E5%AE%B9%E7%9A%84%E8%87%AA%E7%84%B6%E5%BB%B6%E4%BC%B8%EF%BC%9AArgo%20%E8%BF%90%E8%A1%8C%E5%9C%A8%20OpenShift%20%E4%B8%8A%EF%BC%8C%E6%8E%A7%E5%88%B6%E2%80%9C%E9%83%A8%E7%BD%B2%E8%A1%8C%E4%B8%BA%E2%80%9D%3C%2Fp%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E6%EF%B8%8F%E2%83%A3%20%E5%BA%94%E7%94%A8%E5%B1%82%EF%BC%88%E4%B8%9A%E5%8A%A1%E7%B3%BB%E7%BB%9F%EF%BC%89%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EJava%20%2F%20Spring%20Boot%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3E.NET%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3ENode.js%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EPython%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%9C%E7%94%A8%3C%2Fstrong%3E%EF%BC%9A%E5%AE%9E%E7%8E%B0%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E3%80%81%E5%AF%B9%E5%A4%96%E6%8F%90%E4%BE%9B%20API%20%2F%20UI%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%BF%E7%94%A8%E6%97%B6%E6%9C%BA%3C%2Fstrong%3E%EF%BC%9A%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E8%B0%81%E5%9C%A8%E7%94%A8%3C%2Fstrong%3E%EF%BC%9A%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%F0%9F%93%8C%20%E6%B3%A8%E6%84%8F%EF%BC%9A%E5%BA%94%E7%94%A8%E4%B8%8D%E5%85%B3%E5%BF%83%20Azure%EF%BC%9B%E5%8F%AA%E5%85%B3%E5%BF%83%20%E2%80%9C%E6%88%91%E5%9C%A8%E5%AE%B9%E5%99%A8%E9%87%8C%E8%83%BD%E4%B8%8D%E8%83%BD%E8%B7%91%E2%80%9D%3C%2Fp%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E7%EF%B8%8F%E2%83%A3%20%E6%95%B0%E6%8D%AE%E4%B8%8E%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%B1%82%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EPostgreSQL%20%2F%20Oracle%20%2F%20MySQL%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3ERedis%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EKafka%20%2F%20RabbitMQ%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%9C%E7%94%A8%3C%2Fstrong%3E%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96%E3%80%81%E8%A7%A3%E8%80%A6%E7%B3%BB%E7%BB%9F%E3%80%81%E6%8F%90%E5%8D%87%E6%80%A7%E8%83%BD%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%BF%E7%94%A8%E6%97%B6%E6%9C%BA%3C%2Fstrong%3E%EF%BC%9A%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E9%98%B6%E6%AE%B5%E5%B0%B1%E5%BF%85%E9%A1%BB%E7%A1%AE%E5%AE%9A%3C%2Fp%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E8%EF%B8%8F%E2%83%A3%20%E7%9B%91%E6%8E%A7%20%2F%20%E6%97%A5%E5%BF%97%20%2F%20%E8%BF%90%E7%BB%B4%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EPrometheus%20%2F%20Grafana%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EELK%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EAzure%20Monitor%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%9C%E7%94%A8%3C%2Fstrong%3E%EF%BC%9A%E7%B3%BB%E7%BB%9F%E5%8F%AF%E8%A7%86%E5%8C%96%E3%80%81%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E3%80%81SLA%20%E4%BF%9D%E9%9A%9C%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%BF%E7%94%A8%E6%97%B6%E6%9C%BA%3C%2Fstrong%3E%EF%BC%9A%E4%B8%8A%E7%BA%BF%E5%89%8D%E5%BF%85%E9%A1%BB%E5%AE%8C%E6%88%90%E3%80%81%E8%BF%90%E7%BB%B4%E9%98%B6%E6%AE%B5%E6%8C%81%E7%BB%AD%E4%BD%BF%E7%94%A8%3C%2Fp%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E9%EF%B8%8F%E2%83%A3%20%E5%AE%89%E5%85%A8%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3EIAM%20%2F%20RBAC%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3ESecret%20%2F%20Vault%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22pill%22%3ETLS%20%2F%20Certificate%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%9C%E7%94%A8%3C%2Fstrong%3E%EF%BC%9A%E6%9D%83%E9%99%90%E9%9A%94%E7%A6%BB%E3%80%81%E6%95%B0%E6%8D%AE%E4%BF%9D%E6%8A%A4%E3%80%81%E5%90%88%E8%A7%84%E8%A6%81%E6%B1%82%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E4%BD%BF%E7%94%A8%E6%97%B6%E6%9C%BA%3C%2Fstrong%3E%EF%BC%9A%E5%85%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%3C%2Fp%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E%E5%9B%9B%E3%80%81%E7%94%A8%E4%B8%80%E5%8F%A5%E2%80%9C%E6%9E%B6%E6%9E%84%E7%BA%A7%E6%80%BB%E7%BB%93%E2%80%9D%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%0A%20%20%20%20%20%20%20%20%20%20%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%20IT%20%E9%A1%B9%E7%9B%AE%E4%B8%AD%EF%BC%8CAzure%20%E6%8F%90%E4%BE%9B%E4%BA%91%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%EF%BC%8CLinux%20%E4%BD%9C%E4%B8%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%89%BF%E8%BD%BD%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%EF%BC%8COpenShift%20%E6%8F%90%E4%BE%9B%E5%AE%B9%E5%99%A8%E5%8C%96%E4%B8%8E%E5%B9%B3%E5%8F%B0%E8%83%BD%E5%8A%9B%EF%BC%8CArgo%20%E5%AE%9E%E7%8E%B0%20GitOps%20%E9%A9%B1%E5%8A%A8%E7%9A%84%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2%EF%BC%8C%E5%BA%94%E7%94%A8%E4%B8%8E%E4%B8%AD%E9%97%B4%E4%BB%B6%E8%BF%90%E8%A1%8C%E5%85%B6%E4%B8%8A%EF%BC%8C%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%AE%89%E5%85%A8%E4%BD%93%E7%B3%BB%E8%B4%AF%E7%A9%BF%E5%85%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%8C%E4%BB%8E%E8%80%8C%E5%BD%A2%E6%88%90%E5%8F%AF%E6%89%A9%E5%B1%95%E3%80%81%E5%8F%AF%E7%BB%B4%E6%8A%A4%E3%80%81%E5%8F%AF%E6%8C%81%E7%BB%AD%E4%BA%A4%E4%BB%98%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E3%80%82%0A%20%20%20%20%20%20%20%20%3C%2Fp%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-12%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E%E4%BA%94%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E2%80%9C%E5%BE%88%E4%B8%93%E4%B8%9A%E2%80%9D%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%E5%9B%A0%E4%B8%BA%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BB%8E%EF%BC%9A%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%E2%9D%8C%20%E5%8D%95%E4%B8%AA%E6%8A%80%E6%9C%AF%3Cbr%3E%E2%9E%A1%20%E2%9C%85%20%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%90%86%E8%A7%A3%E2%80%9C%E6%8A%80%E6%9C%AF%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%E4%B8%8E%E6%97%B6%E6%9C%BA%E2%80%9D%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cp%3E%E8%BF%99%E6%98%AF%EF%BC%9A%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E6%9E%B6%E6%9E%84%E5%B8%88%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3ETech%20Lead%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E9%AB%98%E7%BA%A7SE%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E6%89%8D%E4%BC%9A%E4%B8%BB%E5%8A%A8%E9%97%AE%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%3Ch2%20id%3D%22sec-new-c%22%3E%E6%96%B0%E5%A2%9EC%EF%BC%9A%E6%8A%8A%E8%BF%99%E4%BA%9B%E6%8A%80%E6%9C%AF%E6%94%BE%E8%BF%9B%E2%80%9C%E9%A1%B9%E7%9B%AE%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E2%80%9D%3C%2Fh2%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22grid%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E%E2%91%A0%20%E4%BC%81%E5%88%92%20%2F%20%E9%9C%80%E6%B1%82%E9%98%B6%E6%AE%B5%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E6%9E%B6%E6%9E%84%E9%80%89%E5%9E%8B%EF%BC%88%E6%98%AF%E5%90%A6%E7%94%A8%E4%BA%91%20%2F%20%E5%AE%B9%E5%99%A8%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E6%8A%80%E6%9C%AF%E6%A0%88%E7%A1%AE%E5%AE%9A%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E%E2%91%A1%20%E8%AE%BE%E8%AE%A1%E9%98%B6%E6%AE%B5%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3EAzure%20%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3EOpenShift%20%E6%9E%B6%E6%9E%84%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3ECI%2FCD%20%E8%AE%BE%E8%AE%A1%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E%E2%91%A2%20%E5%BC%80%E5%8F%91%E9%98%B6%E6%AE%B5%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3EGit%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E%E2%91%A3%20%E6%B5%8B%E8%AF%95%E9%98%B6%E6%AE%B5%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%20OpenShift%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%EF%BC%88Argo%EF%BC%89%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E%E2%91%A4%20%E4%B8%8A%E7%BA%BF%E9%98%B6%E6%AE%B5%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83%20%2F%20%E5%9B%9E%E6%BB%9A%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E7%9B%91%E6%8E%A7%E7%A1%AE%E8%AE%A4%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%20kcol-6%22%3E%0A%20%20%20%20%20%20%20%20%3Ch4%3E%E2%91%A5%20%E8%BF%90%E7%BB%B4%E9%98%B6%E6%AE%B5%3C%2Fh4%3E%0A%20%20%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E7%9B%91%E6%8E%A7%20%2F%20%E5%91%8A%E8%AD%A6%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cli%3E%E6%89%A9%E5%AE%B9%20%2F%20%E5%8D%87%E7%BA%A7%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22note%22%3E%0A%20%20%20%20%20%20%3Cp%3E%3Cstrong%3E%E8%A1%A5%E5%85%85%E6%8F%90%E7%A4%BA%EF%BC%88%E5%86%99%E8%AE%BE%E8%AE%A1%E4%B9%A6%E6%97%B6%E5%BE%88%E5%AE%9E%E7%94%A8%EF%BC%89%3C%2Fstrong%3E%3C%2Fp%3E%0A%20%20%20%20%20%20%3Cul%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%3Cspan%20class%3D%22ok%22%3E%E8%B6%8A%E9%9D%A0%E4%B8%8B%E5%B1%82%3C%2Fspan%3E%EF%BC%9A%E8%B6%8A%E5%81%8F%E2%80%9C%E5%B9%B3%E5%8F%B0%E5%9B%A2%E9%98%9F%2F%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E5%9B%A2%E9%98%9F%E2%80%9D%E8%B4%9F%E8%B4%A3%EF%BC%8C%E5%8F%98%E6%9B%B4%E9%A2%91%E7%8E%87%E4%BD%8E%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%3Cspan%20class%3D%22ok%22%3E%E8%B6%8A%E9%9D%A0%E4%B8%8A%E5%B1%82%3C%2Fspan%3E%EF%BC%9A%E8%B6%8A%E5%81%8F%E2%80%9C%E5%BA%94%E7%94%A8%E5%9B%A2%E9%98%9F%2F%E4%B8%9A%E5%8A%A1%E5%9B%A2%E9%98%9F%E2%80%9D%E8%B4%9F%E8%B4%A3%EF%BC%8C%E8%BF%AD%E4%BB%A3%E9%A2%91%E7%8E%87%E9%AB%98%3C%2Fli%3E%0A%20%20%20%20%20%20%20%20%3Cli%3E%3Cspan%20class%3D%22ok%22%3E%E7%9B%91%E6%8E%A7%E4%B8%8E%E5%AE%89%E5%85%A8%3C%2Fspan%3E%EF%BC%9A%E8%B4%AF%E7%A9%BF%E5%85%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%8C%E8%B6%8A%E6%97%A9%E7%BA%B3%E5%85%A5%E8%B6%8A%E7%9C%81%E6%88%90%E6%9C%AC%3C%2Fli%3E%0A%20%20%20%20%20%20%3C%2Ful%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%3C!--%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0A%20%20%20%20%20%20%20%20%20%E6%8A%80%E6%9C%AF%E5%9C%B0%E5%9B%BE%EF%BC%9A%E6%96%87%E5%AD%97%E7%89%88%20%2B%20%E5%9B%BE%E5%BD%A2%E7%89%88%EF%BC%88SVG%EF%BC%89%0A%20%20%20%20%20%20%20%20%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%20--%3E%0A%0A%20%20%20%20%3Ch2%20id%3D%22sec-map%22%3E%E6%8A%80%E6%9C%AF%E5%9C%B0%E5%9B%BE%EF%BC%88%E6%96%87%E5%AD%97%20%2F%20%E5%9B%BE%E5%BD%A2%EF%BC%89%3C%2Fh2%3E%0A%0A%20%20%20%20%3Ch3%3E1)%20%E6%96%87%E5%AD%97%E7%89%88%EF%BC%9A%E5%AE%8C%E6%95%B4%20IT%20%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E5%9C%B0%E5%9B%BE%EF%BC%88Stack%20%2B%20Lifecycle%EF%BC%89%3C%2Fh3%3E%0A%0A%20%20%20%20%3Cpre%3E%0A%E3%80%90Stack%EF%BC%88%E5%88%86%E5%B1%82%EF%BC%89%E8%A7%86%E8%A7%92%EF%BC%9A%E4%BB%8E%E5%BA%95%E5%88%B0%E9%A1%B6%E3%80%91%0A%0A%E2%94%8C%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%90%0A%E2%94%82%20%E4%B8%9A%E5%8A%A1%E5%BA%94%E7%94%A8%E5%B1%82%EF%BC%9AWeb%20%2F%20API%20%2F%20Batch%EF%BC%88Java%2F.NET%2FNode%2FPython%EF%BC%89%20%20%20%20%20%20%20%20%20%E2%94%82%0A%E2%94%9C%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%A4%0A%E2%94%82%20%E4%BA%A4%E4%BB%98%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%9ACI%EF%BC%88Jenkins%2FTekton%EF%BC%89%20%2B%20CD%2FGitOps%EF%BC%88Argo%20CD%EF%BC%89%20%20%20%20%20%20%20%20%E2%94%82%0A%E2%94%9C%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%A4%0A%E2%94%82%20%E5%AE%B9%E5%99%A8%E5%B9%B3%E5%8F%B0%EF%BC%9AOpenShift%EF%BC%88Kubernetes%EF%BC%89%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%82%0A%E2%94%9C%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%A4%0A%E2%94%82%20OS%2F%E8%BF%90%E8%A1%8C%EF%BC%9ALinux%EF%BC%88cgroups%2Fnamespace%2FSELinux%2Fsystemd%EF%BC%89%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%82%0A%E2%94%82%20%E7%AE%A1%E7%90%86%E5%8F%AF%E9%80%89%EF%BC%9AXFCE%EF%BC%88%E9%80%9A%E5%B8%B8%E7%94%A8%E4%BA%8E%E8%B7%B3%E6%9D%BF%E6%9C%BA%2F%E7%AE%A1%E7%90%86%E8%8A%82%E7%82%B9%EF%BC%89%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%82%0A%E2%94%9C%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%A4%0A%E2%94%82%20%E4%BA%91%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%EF%BC%9AAzure%EF%BC%88VM%2FVNet%2FLB%2FDisk%2FIAM%EF%BC%89%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%82%0A%E2%94%94%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%98%0A%0A%E3%80%90Lifecycle%EF%BC%88%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%89%E8%A7%86%E8%A7%92%EF%BC%9A%E4%BB%8E%E9%9C%80%E6%B1%82%E5%88%B0%E8%BF%90%E7%BB%B4%E3%80%91%0A%0A%E9%9C%80%E6%B1%82%2F%E4%BC%81%E5%88%92%20%E2%86%92%20%E8%AE%BE%E8%AE%A1%20%E2%86%92%20%E5%BC%80%E5%8F%91%20%E2%86%92%20%E6%B5%8B%E8%AF%95%20%E2%86%92%20%E4%B8%8A%E7%BA%BF%20%E2%86%92%20%E8%BF%90%E7%BB%B4%0A%20%20%20%7C%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%7C%20%20%20%20%20%20%7C%20%20%20%20%20%20%7C%20%20%20%20%20%20%7C%0A%20%20%20%7C%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%7C%20%20%20%20%20%20%7C%20%20%20%20%20%20%7C%20%20%20%20%20%20%E2%94%94%E2%94%80%20%E7%9B%91%E6%8E%A7%2F%E5%91%8A%E8%AD%A6%2F%E6%97%A5%E5%BF%97%2F%E6%89%A9%E5%AE%B9%2F%E5%8D%87%E7%BA%A7%0A%20%20%20%7C%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%7C%20%20%20%20%20%20%7C%20%20%20%20%20%20%E2%94%94%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%20%E7%81%B0%E5%BA%A6%2F%E5%9B%9E%E6%BB%9A%2F%E5%8F%98%E6%9B%B4%E7%AE%A1%E7%90%86%0A%20%20%20%7C%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%7C%20%20%20%20%20%20%E2%94%94%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%20%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%EF%BC%88Argo%EF%BC%89%2F%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%0A%20%20%20%7C%20%20%20%20%20%20%20%20%20%7C%20%20%20%20%20%20%E2%94%94%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%20Git%2F%E5%88%86%E6%94%AF%E7%AD%96%E7%95%A5%2F%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%0A%20%20%20%7C%20%20%20%20%20%20%20%20%20%E2%94%94%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%20%E6%9E%B6%E6%9E%84%2FIaC%2F%E5%AE%89%E5%85%A8%2F%E7%BD%91%E7%BB%9C%2F%E4%B8%AD%E9%97%B4%E4%BB%B6%E9%80%89%E5%9E%8B%0A%20%20%20%E2%94%94%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%20%E6%8A%80%E6%9C%AF%E6%A0%88%2F%E6%88%90%E6%9C%AC%2FSLA%2F%E5%90%88%E8%A7%84%0A%20%20%20%20%3C%2Fpre%3E%0A%0A%20%20%20%20%3Ch3%3E2)%20%E5%9B%BE%E5%BD%A2%E7%89%88%EF%BC%9ASVG%20%E6%8A%80%E6%9C%AF%E5%9C%B0%E5%9B%BE%EF%BC%88%E5%88%86%E5%B1%82%20%2B%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%89%3C%2Fh3%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22legend%22%3E%0A%20%20%20%20%20%20%3Cspan%3E%3Ci%20class%3D%22dot%20brand%22%3E%3C%2Fi%3E%20%E5%88%86%E5%B1%82%EF%BC%88Stack%EF%BC%89%3C%2Fspan%3E%0A%20%20%20%20%20%20%3Cspan%3E%3Ci%20class%3D%22dot%20cyan%22%3E%3C%2Fi%3E%20%E4%BA%A4%E4%BB%98%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%88CI%2FCD%2FGitOps%EF%BC%89%3C%2Fspan%3E%0A%20%20%20%20%20%20%3Cspan%3E%3Ci%20class%3D%22dot%20ok%22%3E%3C%2Fi%3E%20%E8%BF%90%E7%BB%B4%E5%8F%AF%E8%A7%82%E6%B5%8B%EF%BC%88%E7%9B%91%E6%8E%A7%2F%E6%97%A5%E5%BF%97%EF%BC%89%3C%2Fspan%3E%0A%20%20%20%20%20%20%3Cspan%3E%3Ci%20class%3D%22dot%20warn%22%3E%3C%2Fi%3E%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%88Lifecycle%EF%BC%89%3C%2Fspan%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22svgwrap%22%3E%0A%20%20%20%20%20%20%3Csvg%20viewBox%3D%220%200%201100%20560%22%20width%3D%22100%25%22%20height%3D%22auto%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20role%3D%22img%22%20aria-label%3D%22%E5%AE%8C%E6%95%B4IT%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E5%9C%B0%E5%9B%BE%EF%BC%9A%E5%88%86%E5%B1%82%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%22%3E%0A%20%20%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g1%22%20x1%3D%220%22%20x2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232563eb%22%20stop-opacity%3D%220.12%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2306b6d4%22%20stop-opacity%3D%220.12%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cfilter%20id%3D%22shadow%22%20x%3D%22-20%25%22%20y%3D%22-20%25%22%20width%3D%22140%25%22%20height%3D%22140%25%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3CfeDropShadow%20dx%3D%220%22%20dy%3D%228%22%20stdDeviation%3D%2210%22%20flood-color%3D%22%23000%22%20flood-opacity%3D%220.12%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3C%2Ffilter%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstyle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20.t%20%7B%20font%3A%2014px%20-apple-system%2CBlinkMacSystemFont%2C%22Segoe%20UI%22%2C%22PingFang%20SC%22%2C%22Microsoft%20YaHei%22%2CArial%2Csans-serif%3B%20fill%3A%230f172a%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20.s%20%7B%20font%3A%2012px%20-apple-system%2CBlinkMacSystemFont%2C%22Segoe%20UI%22%2C%22PingFang%20SC%22%2C%22Microsoft%20YaHei%22%2CArial%2Csans-serif%3B%20fill%3A%23334155%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20.box%20%7B%20rx%3A14%3B%20ry%3A14%3B%20fill%3A%23fff%3B%20stroke%3A%23e5e7eb%3B%20stroke-width%3A1.2%3B%20filter%3Aurl(%23shadow)%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20.head%20%7B%20font-weight%3A700%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20.stack%20%7B%20stroke%3A%232563eb%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20.cicd%20%7B%20stroke%3A%2306b6d4%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20.ops%20%20%7B%20stroke%3A%2316a34a%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20.life%20%7B%20stroke%3A%23f59e0b%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20.arrow%20%7B%20stroke%3A%2364748b%3B%20stroke-width%3A2%3B%20marker-end%3Aurl(%23m)%3B%20%7D%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fstyle%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cmarker%20id%3D%22m%22%20markerWidth%3D%2210%22%20markerHeight%3D%2210%22%20refX%3D%228%22%20refY%3D%223%22%20orient%3D%22auto%22%20markerUnits%3D%22strokeWidth%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M0%2C0%20L9%2C3%20L0%2C6%20z%22%20fill%3D%22%2364748b%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3C%2Fmarker%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdefs%3E%0A%0A%20%20%20%20%20%20%20%20%3C!--%20Background%20--%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%2218%22%20y%3D%2218%22%20width%3D%221064%22%20height%3D%22524%22%20rx%3D%2218%22%20ry%3D%2218%22%20fill%3D%22url(%23g1)%22%20stroke%3D%22%23e5e7eb%22%2F%3E%0A%0A%20%20%20%20%20%20%20%20%3C!--%20Title%20--%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%20head%22%20x%3D%2240%22%20y%3D%2255%22%3E%E5%AE%8C%E6%95%B4%20IT%20%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E5%9C%B0%E5%9B%BE%EF%BC%88Stack%20%E5%88%86%E5%B1%82%20%2B%20Lifecycle%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%89%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%2240%22%20y%3D%2278%22%3E%E4%BB%A5%20Azure%20%2B%20Linux%20%2B%20OpenShift%20%2B%20Argo%20%E4%B8%BA%E6%A0%B8%E5%BF%83%E5%90%91%E5%A4%96%E6%89%A9%E5%B1%95%EF%BC%9A%E5%BA%94%E7%94%A8%2F%E6%95%B0%E6%8D%AE%2F%E7%9B%91%E6%8E%A7%2F%E5%AE%89%E5%85%A8%E8%B4%AF%E7%A9%BF%E5%85%A8%E7%A8%8B%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%3C!--%20Stack%20boxes%20(left)%20--%3E%0A%20%20%20%20%20%20%20%20%3Crect%20class%3D%22box%20stack%22%20x%3D%2240%22%20y%3D%22110%22%20width%3D%22520%22%20height%3D%2270%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%20head%22%20x%3D%2260%22%20y%3D%22140%22%3E%E4%B8%9A%E5%8A%A1%E5%BA%94%E7%94%A8%E5%B1%82%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%2260%22%20y%3D%22162%22%3EWeb%20%2F%20API%20%2F%20Batch%EF%BC%88Java%20%2F%20.NET%20%2F%20Node.js%20%2F%20Python%EF%BC%89%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%3Crect%20class%3D%22box%20cicd%22%20x%3D%2240%22%20y%3D%22200%22%20width%3D%22520%22%20height%3D%2282%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%20head%22%20x%3D%2260%22%20y%3D%22232%22%3E%E4%BA%A4%E4%BB%98%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%88CI%2FCD%20%26%20GitOps%EF%BC%89%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%2260%22%20y%3D%22254%22%3ECI%EF%BC%9AJenkins%20%2F%20Tekton%E3%80%80CD%EF%BC%9AArgo%20CD%EF%BC%88Git%20%3D%20%E7%9C%9F%E7%9B%B8%E6%BA%90%EF%BC%89%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%3Crect%20class%3D%22box%20stack%22%20x%3D%2240%22%20y%3D%22300%22%20width%3D%22520%22%20height%3D%2270%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%20head%22%20x%3D%2260%22%20y%3D%22330%22%3E%E5%AE%B9%E5%99%A8%E5%B9%B3%E5%8F%B0%E5%B1%82%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%2260%22%20y%3D%22352%22%3EOpenShift%EF%BC%88Kubernetes%EF%BC%9A%E7%BC%96%E6%8E%92%20%2F%20%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%20%2F%20%E5%BC%B9%E6%80%A7%E4%BC%B8%E7%BC%A9%20%2F%20%E5%A4%9A%E7%A7%9F%E6%88%B7%EF%BC%89%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%3Crect%20class%3D%22box%20stack%22%20x%3D%2240%22%20y%3D%22390%22%20width%3D%22520%22%20height%3D%2282%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%20head%22%20x%3D%2260%22%20y%3D%22422%22%3EOS%20%2F%20%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%B1%82%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%2260%22%20y%3D%22444%22%3ELinux%EF%BC%88cgroups%2Fnamespace%2FSELinux%2Fsystemd%EF%BC%89%20%2B%20XFCE%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%9A%E8%B7%B3%E6%9D%BF%E6%9C%BA%2F%E7%AE%A1%E7%90%86%EF%BC%89%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%3Crect%20class%3D%22box%20stack%22%20x%3D%2240%22%20y%3D%22490%22%20width%3D%22520%22%20height%3D%2270%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%20head%22%20x%3D%2260%22%20y%3D%22520%22%3E%E4%BA%91%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E5%B1%82%EF%BC%88IaaS%EF%BC%89%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%2260%22%20y%3D%22542%22%3EAzure%EF%BC%88VM%20%2F%20VNet%20%2F%20LB%20%2F%20Disk%20%2F%20IAM%EF%BC%89%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%3C!--%20arrows%20stack%20--%3E%0A%20%20%20%20%20%20%20%20%3Cline%20class%3D%22arrow%22%20x1%3D%22300%22%20y1%3D%22180%22%20x2%3D%22300%22%20y2%3D%22200%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cline%20class%3D%22arrow%22%20x1%3D%22300%22%20y1%3D%22282%22%20x2%3D%22300%22%20y2%3D%22300%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cline%20class%3D%22arrow%22%20x1%3D%22300%22%20y1%3D%22370%22%20x2%3D%22300%22%20y2%3D%22390%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cline%20class%3D%22arrow%22%20x1%3D%22300%22%20y1%3D%22472%22%20x2%3D%22300%22%20y2%3D%22490%22%2F%3E%0A%0A%20%20%20%20%20%20%20%20%3C!--%20Lifecycle%20lane%20(right)%20--%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%20head%22%20x%3D%22615%22%20y%3D%22120%22%3ELifecycle%EF%BC%88%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%89%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%3C!--%20timeline%20bar%20--%3E%0A%20%20%20%20%20%20%20%20%3Crect%20x%3D%22610%22%20y%3D%22140%22%20width%3D%22450%22%20height%3D%2210%22%20rx%3D%225%22%20fill%3D%22%23fde68a%22%20stroke%3D%22%23f59e0b%22%2F%3E%0A%0A%20%20%20%20%20%20%20%20%3C!--%20lifecycle%20nodes%20--%3E%0A%20%20%20%20%20%20%20%20%3Cg%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22620%22%20cy%3D%22145%22%20r%3D%2210%22%20fill%3D%22%23fff%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%22%20x%3D%22610%22%20y%3D%22175%22%3E%E9%9C%80%E6%B1%82%2F%E4%BC%81%E5%88%92%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22710%22%20cy%3D%22145%22%20r%3D%2210%22%20fill%3D%22%23fff%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%22%20x%3D%22700%22%20y%3D%22175%22%3E%E8%AE%BE%E8%AE%A1%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22800%22%20cy%3D%22145%22%20r%3D%2210%22%20fill%3D%22%23fff%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%22%20x%3D%22790%22%20y%3D%22175%22%3E%E5%BC%80%E5%8F%91%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22890%22%20cy%3D%22145%22%20r%3D%2210%22%20fill%3D%22%23fff%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%22%20x%3D%22880%22%20y%3D%22175%22%3E%E6%B5%8B%E8%AF%95%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22980%22%20cy%3D%22145%22%20r%3D%2210%22%20fill%3D%22%23fff%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%22%20x%3D%22970%22%20y%3D%22175%22%3E%E4%B8%8A%E7%BA%BF%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%221060%22%20cy%3D%22145%22%20r%3D%2210%22%20fill%3D%22%23fff%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%223%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%22%20x%3D%221050%22%20y%3D%22175%22%3E%E8%BF%90%E7%BB%B4%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%0A%20%20%20%20%20%20%20%20%3C!--%20lifecycle%20detail%20cards%20--%3E%0A%20%20%20%20%20%20%20%20%3Crect%20class%3D%22box%20life%22%20x%3D%22610%22%20y%3D%22210%22%20width%3D%22450%22%20height%3D%2295%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%20head%22%20x%3D%22630%22%20y%3D%22240%22%3E%E8%AE%BE%E8%AE%A1%E9%98%B6%E6%AE%B5%E9%87%8D%E7%82%B9%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%22630%22%20y%3D%22262%22%3EAzure%20%E6%9E%B6%E6%9E%84%20%2F%20OpenShift%20%E6%9E%B6%E6%9E%84%20%2F%20CI%2FCD%20%E8%AE%BE%E8%AE%A1%20%2F%20%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%22630%22%20y%3D%22284%22%3E%E4%B8%AD%E9%97%B4%E4%BB%B6%E9%80%89%E5%9E%8B%EF%BC%9ADB%2FCache%2FMQ%EF%BC%9B%E7%BD%91%E7%BB%9C%E4%B8%8E%E8%AF%81%E4%B9%A6%E8%A7%84%E5%88%92%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%3Crect%20class%3D%22box%20cicd%22%20x%3D%22610%22%20y%3D%22320%22%20width%3D%22450%22%20height%3D%2295%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%20head%22%20x%3D%22630%22%20y%3D%22350%22%3E%E5%BC%80%E5%8F%91%20%26%20%E6%B5%8B%E8%AF%95%E9%98%B6%E6%AE%B5%E9%87%8D%E7%82%B9%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%22630%22%20y%3D%22372%22%3EGit%20%E5%88%86%E6%94%AF%E7%AD%96%E7%95%A5%E3%80%81%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E3%80%81%E9%95%9C%E5%83%8F%E6%9E%84%E5%BB%BA%EF%BC%88CI%EF%BC%89%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%22630%22%20y%3D%22394%22%3EArgo%20%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E5%88%B0%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E3%80%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E3%80%81%E5%9B%9E%E5%BD%92%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%3Crect%20class%3D%22box%20ops%22%20x%3D%22610%22%20y%3D%22430%22%20width%3D%22450%22%20height%3D%2295%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22t%20head%22%20x%3D%22630%22%20y%3D%22460%22%3E%E4%B8%8A%E7%BA%BF%20%26%20%E8%BF%90%E7%BB%B4%E9%98%B6%E6%AE%B5%E9%87%8D%E7%82%B9%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%22630%22%20y%3D%22482%22%3E%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83%2F%E5%9B%9E%E6%BB%9A%E3%80%81%E7%9B%91%E6%8E%A7%E7%A1%AE%E8%AE%A4%EF%BC%88SLA%EF%BC%89%3C%2Ftext%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%22630%22%20y%3D%22504%22%3E%E5%91%8A%E8%AD%A6%E3%80%81%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E3%80%81%E6%89%A9%E5%AE%B9%E3%80%81%E5%8D%87%E7%BA%A7%E3%80%81%E6%88%90%E6%9C%AC%E6%B2%BB%E7%90%86%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%3C!--%20cross%20hints%20--%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M560%20240%20C%20585%20240%2C%20590%20240%2C%20610%20240%22%20fill%3D%22none%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%222%22%20stroke-dasharray%3D%226%205%22%20marker-end%3D%22url(%23m)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%22565%22%20y%3D%22228%22%3E%E5%B9%B3%E5%8F%B0%E8%83%BD%E5%8A%9B%E6%94%AF%E6%92%91%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M560%20350%20C%20585%20350%2C%20590%20350%2C%20610%20350%22%20fill%3D%22none%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%222%22%20stroke-dasharray%3D%226%205%22%20marker-end%3D%22url(%23m)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%22565%22%20y%3D%22338%22%3E%E4%BA%A4%E4%BB%98%E8%87%AA%E5%8A%A8%E5%8C%96%E8%B4%AF%E7%A9%BF%3C%2Ftext%3E%0A%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M560%20460%20C%20585%20460%2C%20590%20460%2C%20610%20460%22%20fill%3D%22none%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%222%22%20stroke-dasharray%3D%226%205%22%20marker-end%3D%22url(%23m)%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Ctext%20class%3D%22s%22%20x%3D%22565%22%20y%3D%22448%22%3E%E5%8F%AF%E8%A7%82%E6%B5%8B%E4%B8%8E%E5%AE%89%E5%85%A8%E8%B4%AF%E7%A9%BF%3C%2Ftext%3E%0A%20%20%20%20%20%20%3C%2Fsvg%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%0A%20%20%20%20%3Cdiv%20class%3D%22footer%22%3E%0A%20%20%20%20%20%20%3Cp%3E%E6%8F%90%E7%A4%BA%EF%BC%9A%E5%A6%82%E9%9C%80%E6%8A%8A%E6%AD%A4%E6%96%87%E6%A1%A3%E7%94%A8%E4%BA%8E%E2%80%9C%E8%AE%BE%E8%AE%A1%E4%B9%A6%2F%E8%BF%90%E7%BB%B4%E6%89%8B%E9%A1%BA%E4%B9%A6%2FWiki%E2%80%9D%EF%BC%8C%E6%88%91%E4%B9%9F%E5%8F%AF%E4%BB%A5%E6%8C%89%E8%B4%B5%E5%8F%B8%E6%A8%A1%E6%9D%BF%EF%BC%88%E7%AB%A0%E8%8A%82%2F%E7%BC%96%E5%8F%B7%2F%E6%9C%AF%E8%AF%AD%E8%A1%A8%2F%E9%9D%9E%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82%EF%BC%89%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%94%B9%E6%88%90%E6%AD%A3%E5%BC%8F%E7%89%88%E3%80%82%3C%2Fp%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%20%20%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E");
+          
+          const doc = frame.contentDocument || frame.contentWindow.document;
+          doc.open();
+          doc.write(rawContent);
+          doc.close();
+
+          // Auto resize height
+          frame.onload = function() {
+            try {
+              const height = frame.contentWindow.document.body.scrollHeight;
+              if (height > 0) {
+                 frame.style.height = (height + 50) + 'px';
+              }
+            } catch(e) { console.error("Auto resize failed", e); }
+          };
+        })();
+      </script>
+    
+  </div>
+  <!-- 文章正文结束 -->
+
+</article>
+<!-- 单篇文章容器结束 -->
+
+    <!-- 渲染当前页面内容 -->
+    <!--  保证 HTML 正常渲染，不转义 -->
+  </main>
+
+  <!-- ===== 全局脚本区域 ===== -->
+  <script>
+    // ===== 退出登录函数 =====
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "/login/";
+      // 清除登录标记并跳转登录页
+    }
+
+    // ===== 平滑滚动至顶部 =====
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      // 平滑滚动到页面顶部
+    }
+
+    // ===== 切换小屏幕菜单展开/收起 =====
+    function toggleMenu() {
+      const menu = document.querySelector('header.top-nav .menu');
+      if (menu) {
+        menu.classList.toggle('show');
+        // 切换菜单显示状态，便于移动端操作
+      }
+    }
+  </script>
+
+  <!-- ===== 可选的“返回顶部”按钮 ===== -->
+  <button id="backToTop" title="回到顶部">↑</button>
+
+  <script>
+    // ===== 返回顶部按钮逻辑 =====
+    const topBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      // 当页面向下滚动超过 300px 显示按钮，否则隐藏
+      topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    topBtn.addEventListener('click', scrollToTop);
+    // 点击按钮触发平滑滚动到顶部
+  </script>
+
+  <!-- ===== Mermaid 流程图支持 ===== -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    
+    document.addEventListener("DOMContentLoaded", async () => {
+      mermaid.initialize({ startOnLoad: false, theme: 'default' });
+
+      // 查找并转换 mermaid 代码块
+      const mermaidBlocks = document.querySelectorAll('pre > code.language-mermaid');
+      if (mermaidBlocks.length > 0) {
+        mermaidBlocks.forEach(block => {
+          const content = block.textContent;
+          const pre = block.parentElement;
+          const div = document.createElement('div');
+          div.className = 'mermaid';
+          div.textContent = content;
+          pre.parentNode.replaceChild(div, pre);
+        });
+
+        // 渲染
+        await mermaid.run({
+          querySelector: '.mermaid'
+        });
+      }
+    });
+  </script>
+  <!-- ===== 引入编辑器弹窗组件 ===== -->
+  <div id="editorModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index: 1000;">
+  <div style="background:#fff; width:90%; max-width:800px; margin:50px auto; padding:20px; border-radius:8px; position:relative; max-height: 90vh; overflow-y: auto;">
+    <h2 id="editorTitle">编辑文章</h2>
+
+    <!-- 标题输入框 -->
+    <input type="text" id="noteTitle" placeholder="标题" style="width:100%; padding:8px; margin-bottom:10px;">
+
+    <!-- 文件名输入框 (新增) -->
+    <div style="margin-bottom: 10px; font-size: 0.85rem; color: #666; display: flex; align-items: center; gap: 10px;">
+        <label for="noteFilename" style="white-space: nowrap;">文件路径:</label>
+        <input type="text" id="noteFilename" placeholder="source/_posts/filename.md" style="flex: 1; padding: 5px; font-family: monospace; color: #555;">
+    </div>
+
+    <!-- 分类输入框 -->
+    <input type="text" id="noteCategory" placeholder="分类" style="width:100%; padding:8px; margin-bottom:10px;">
+
+    <!-- 标签输入框 -->
+    <input type="text" id="noteTags" placeholder="标签，用逗号分隔" style="width:100%; padding:8px; margin-bottom:10px;">
+
+    <!-- 内容输入框 -->
+    <textarea id="noteContent" rows="15" style="width:100%; padding:8px; font-family: monospace;"></textarea>
+
+    <!-- 保存/取消按钮 -->
+    <div style="margin-top:10px; display:flex; gap:10px;">
+      <button id="saveNoteBtn" style="flex:1; padding:10px; background:#28a745; color:#fff; border:none; border-radius:5px; cursor:pointer;">💾 保存</button>
+      <button id="cancelEditBtn" style="flex:1; padding:10px; background:#dc3545; color:#fff; border:none; border-radius:5px; cursor:pointer;">❌ 取消</button>
+    </div>
+
+    <!-- Markdown 实时预览 -->
+    <div id="preview" style="margin-top:20px; padding:10px; border:1px solid #ddd; border-radius:5px; background: #f9f9f9;"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  window.mermaid = mermaid;
+  mermaid.initialize({ startOnLoad: false });
+</script>
+<script>
+(function() {
+  const owner = "Sun1105";              // GitHub 用户名
+  const repo = "hexo-source";           // 仓库名
+  const postsDir = "source/_posts";     // 文章目录
+  let editingNote = null;               // 当前正在编辑的文章对象
+
+  const editorModal = document.getElementById('editorModal');
+  const noteTitle = document.getElementById('noteTitle');
+  const noteFilename = document.getElementById('noteFilename');
+  const noteCategory = document.getElementById('noteCategory');
+  const noteTags = document.getElementById('noteTags');
+  const noteContent = document.getElementById('noteContent');
+  const saveNoteBtn = document.getElementById('saveNoteBtn');
+  const cancelEditBtn = document.getElementById('cancelEditBtn');
+  const previewDiv = document.getElementById('preview');
+
+  // 渲染预览（含 Mermaid 支持）
+  const renderPreview = async (content) => {
+    const trimmed = content.trim();
+    // 检测是否为完整 HTML 文档
+    const isFullHtml = trimmed.match(/^\s*<!DOCTYPE/i) || trimmed.match(/^\s*<html/i);
+
+    if (isFullHtml) {
+        // 使用 iframe 渲染完整 HTML
+        previewDiv.innerHTML = '<iframe id="previewFrame" style="width:100%; height:500px; border:1px solid #eee;"></iframe>';
+        const frame = document.getElementById('previewFrame');
+        if (frame) {
+            const doc = frame.contentDocument || frame.contentWindow.document;
+            doc.open();
+            doc.write(content);
+            doc.close();
+        }
+        return;
+    }
+
+    // Markdown 渲染
+    previewDiv.innerHTML = marked.parse(content);
+
+    if (window.mermaid) {
+      const mermaidBlocks = previewDiv.querySelectorAll('code.language-mermaid');
+      if (mermaidBlocks.length > 0) {
+        mermaidBlocks.forEach(block => {
+          const content = block.textContent;
+          const pre = block.parentElement;
+          const div = document.createElement('div');
+          div.className = 'mermaid';
+          div.textContent = content;
+          if (pre && pre.parentNode) {
+            pre.parentNode.replaceChild(div, pre);
+          }
+        });
+        try {
+          await window.mermaid.run({ querySelector: '#preview .mermaid' });
+        } catch (e) {
+          console.error("Mermaid render error:", e);
+        }
+      }
+    }
+  };
+
+  // 暴露给全局的函数
+  window.openEditor = async function(pathOrFile) {
+    let file;
+    
+    if (!pathOrFile) {
+        // 新建文章
+        file = null;
+    } else if (typeof pathOrFile === 'string') {
+        // 如果传入的是字符串（路径），则获取文件信息
+        let cleanPath = pathOrFile.replace(/\\/g, '/'); // 确保是正斜杠
+        if (!cleanPath.startsWith('source/')) {
+            cleanPath = 'source/' + cleanPath;
+        }
+        
+        // 处理中文路径
+        const encodedPath = cleanPath.split('/').map(encodeURIComponent).join('/');
+
+        try {
+            console.log(`正在获取文件信息: ${encodedPath}`);
+            const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${encodedPath}`);
+            if (!res.ok) {
+                const errText = await res.text();
+                throw new Error(`无法获取文件信息 (Status: ${res.status}): ${errText}`);
+            }
+            file = await res.json();
+        } catch (e) {
+            console.error(e);
+            alert('获取文件失败: ' + e.message + '\n请检查控制台 (F12) 获取更多信息。');
+            return;
+        }
+    } else {
+        file = pathOrFile;
+    }
+
+    editingNote = file;
+    editorModal.style.display = "block";
+
+    if (!file) {
+        // 新建模式
+        noteTitle.value = "";
+        noteFilename.value = "source/_posts/" + Date.now() + ".md"; // 默认文件名
+        noteCategory.value = "";
+        noteTags.value = "";
+        noteContent.value = "";
+        previewDiv.innerHTML = "";
+        document.getElementById('editorTitle').innerText = "新建文章";
+        return;
+    }
+
+    // 编辑模式
+    document.getElementById('editorTitle').innerText = "编辑文章";
+    noteTitle.value = "加载中...";
+    noteFilename.value = file.path || ""; // 填充文件路径
+    noteContent.value = "加载中...";
+
+    try {
+      // 获取文件内容
+      let content = "";
+      if (file.content && file.encoding === 'base64') {
+          // 使用 TextDecoder 处理 UTF-8 字符，比 escape/decodeURIComponent 更现代且稳健
+          try {
+              const binaryString = window.atob(file.content.replace(/\n/g, ""));
+              const bytes = new Uint8Array(binaryString.length);
+              for (let i = 0; i < binaryString.length; i++) {
+                  bytes[i] = binaryString.charCodeAt(i);
+              }
+              content = new TextDecoder('utf-8').decode(bytes);
+          } catch (e) {
+              console.warn("TextDecoder failed, falling back to legacy decode:", e);
+              content = decodeURIComponent(escape(window.atob(file.content.replace(/\n/g, ""))));
+          }
+      } else if (file.download_url) {
+          // 文件较大时（>1MB），API 不返回 content，需从 download_url 获取
+          console.log("File content too large, fetching from download_url...");
+          const rawRes = await fetch(file.download_url);
+          if (!rawRes.ok) {
+              throw new Error(`无法从 download_url 获取内容: ${rawRes.status}`);
+          }
+          content = await rawRes.text();
+      } else {
+          // 兜底：如果 API 返回结构不符合预期
+          if (file.content) {
+             // 非 base64 编码？直接使用
+             content = file.content;
+          } else {
+             throw new Error("未找到文件内容 (No content field and no download_url)");
+          }
+      }
+
+      // 解析Front Matter
+      // 使用 js-yaml 解析
+      const parts = content.split(/^---$/m);
+      if (parts.length >= 3) {
+        const frontMatterRaw = parts[1];
+        const body = parts.slice(2).join('---').trim();
+        
+        try {
+            const frontMatter = jsyaml.load(frontMatterRaw);
+            
+            // 标题
+            noteTitle.value = frontMatter.title || "";
+            
+            // 分类
+            if (frontMatter.categories) {
+                if (Array.isArray(frontMatter.categories)) {
+                    // 如果是数组，展平并用逗号分隔
+                    noteCategory.value = frontMatter.categories.flat().join(", ");
+                } else {
+                    noteCategory.value = frontMatter.categories;
+                }
+            } else if (frontMatter.category) {
+                 // 兼容 category 字段
+                 if (Array.isArray(frontMatter.category)) {
+                    noteCategory.value = frontMatter.category.flat().join(", ");
+                } else {
+                    noteCategory.value = frontMatter.category;
+                }
+            } else {
+                noteCategory.value = "";
+            }
+
+            // 标签
+            if (frontMatter.tags) {
+                if (Array.isArray(frontMatter.tags)) {
+                    noteTags.value = frontMatter.tags.flat().join(", ");
+                } else {
+                    noteTags.value = frontMatter.tags;
+                }
+            } else {
+                noteTags.value = "";
+            }
+
+        } catch (e) {
+            console.error("YAML parsing error:", e);
+            alert("YAML 解析失败，请手动检查 Front Matter 格式");
+        }
+
+        noteContent.value = body;
+        renderPreview(body);
+
+      } else {
+        // 没有Front Matter
+        noteTitle.value = file.name.replace(/\.md$/, '');
+        noteContent.value = content;
+        renderPreview(content);
+      }
+
+    } catch (e) {
+      console.error(e);
+      noteContent.value = "读取内容失败: " + e.message;
+    }
+  };
+
+  // 监听输入，实时预览
+  noteContent.addEventListener('input', () => {
+    renderPreview(noteContent.value);
+  });
+
+  // 关闭
+  cancelEditBtn.onclick = () => {
+    editorModal.style.display = "none";
+    editingNote = null;
+  };
+
+  // 点击外部关闭
+  window.onclick = (event) => {
+    if (event.target == editorModal) {
+      editorModal.style.display = "none";
+      editingNote = null;
+    }
+  };
+
+  // 保存
+  saveNoteBtn.onclick = async () => {
+    const title = noteTitle.value.trim();
+    const content = noteContent.value;
+    const categories = noteCategory.value.trim();
+    const tags = noteTags.value.trim();
+    let filepath = noteFilename.value.trim();
+
+    if (!title) {
+      alert("请输入标题");
+      return;
+    }
+    
+    if (!filepath) {
+        alert("请输入文件路径");
+        return;
+    }
+    
+    // 确保路径以 source/ 开头 (可选，视需求而定，Hexo通常在source下)
+    if (!filepath.startsWith('source/')) {
+        filepath = 'source/' + filepath;
+    }
+    // 确保以 .md 结尾
+    if (!filepath.endsWith('.md')) {
+        filepath += '.md';
+    }
+
+    // 构造新的文件内容（含 Front Matter）
+    let newFileContent = "---\n";
+    newFileContent += `title: ${title}\n`;
+    newFileContent += `date: ${new Date().toISOString()}\n`;
+    if (categories) newFileContent += `categories: [${categories}]\n`;
+    if (tags) newFileContent += `tags: [${tags}]\n`;
+    newFileContent += "---\n\n";
+    newFileContent += content;
+
+    // Base64 编码
+    // const contentBase64 = window.btoa(unescape(encodeURIComponent(newFileContent)));
+    // API 期望直接的字符串，它会在后端进行 Base64 编码
+    
+    const sha = editingNote ? editingNote.sha : null;
+    // const path = editingNote ? editingNote.path : `source/_posts/${Date.now()}-${title}.md`;
+    
+    // 使用用户指定的文件路径
+    // 注意：如果是重命名（修改了路径），sha 应该为 null（视为新文件），或者后端支持移动操作
+    // 这里简化处理：如果路径变了，就视为创建新文件。旧文件依然存在（除非后端有处理逻辑）。
+    // 真正的重命名需要 delete old + create new
+    
+    const isRename = editingNote && (editingNote.path !== filepath);
+    const finalSha = isRename ? null : sha; 
+    
+    const payload = {
+        path: filepath,
+        message: sha ? `Update ${title}` : `Create ${title}`,
+        content: newFileContent, // 直接发送内容，后端处理 Base64
+        sha: finalSha
+    };
+
+    // 决定调用哪个后端 API (本地代理)
+    // 注意：这里我们调用本地的 Serverless Function 或者 Next.js API 路由
+    // 如果是纯 Hexo 静态站，通常没有后端。
+    // 但用户之前的 new-note.js 暗示了有 Vercel API 支持。
+    // 我们需要确认 API 路径。根据之前的分析，API 在 api/ 目录下。
+    // Vercel 会将 api/ 目录下的文件部署为 Serverless Functions。
+    // 假设路径是 /api/new-note 和 /api/edit-note
+
+    // 修复：如果是重命名（isRename=true）或者新建文件（!editingNote），finalSha 为 null
+    // 此时应该调用 /api/new-note，而不是 /api/edit-note
+    const apiUrl = finalSha ? '/api/edit-note' : '/api/new-note';
+
+    saveNoteBtn.disabled = true;
+    saveNoteBtn.innerText = "保存中...";
+
+    try {
+        const res = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        
+        if (res.ok) {
+            alert("保存成功！即将刷新...");
+            location.reload();
+        } else {
+            alert("保存失败: " + (data.error || JSON.stringify(data)));
+        }
+    } catch (e) {
+        console.error(e);
+        alert("请求失败: " + e.message);
+    } finally {
+        saveNoteBtn.disabled = false;
+        saveNoteBtn.innerText = "💾 保存";
+    }
+  };
+})();
+</script>
+</body>
+</html>
