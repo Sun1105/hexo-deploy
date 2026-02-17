@@ -859,9 +859,7 @@ MsgBox &quot;完成：2!A→1!B，2!B→1!D（按 A 列键匹配）&quot;, vbInf
           }
 
           try {
-            const res = await fetch(
-              'https://api.github.com/repos/Sun1105/hexo-source/contents/source/study/' + cat.key
-            );
+            const res = await fetch('/api/study-list?category=' + encodeURIComponent(cat.key));
 
             if (!res.ok) {
               if (sideList) sideList.innerHTML = '<li>暂无文件</li>';
@@ -870,9 +868,7 @@ MsgBox &quot;完成：2!A→1!B，2!B→1!D（按 A 列键匹配）&quot;, vbInf
             }
 
             const data = await res.json();
-            const files = Array.isArray(data)
-              ? data.filter(item => item.name && /\.(pdf|png|jpe?g|gif|webp|svg)$/i.test(item.name))
-              : [];
+            const files = Array.isArray(data.files) ? data.files : [];
 
             if (!files.length) {
               if (sideList) sideList.innerHTML = '<li>暂无文件</li>';
@@ -881,7 +877,10 @@ MsgBox &quot;完成：2!A→1!B，2!B→1!D（按 A 列键匹配）&quot;, vbInf
             }
 
             const parts = files.map(file => {
-              const href = file.download_url || file.html_url || '/' + file.path.replace(/^source\//, '');
+              const href =
+                file.download_url ||
+                file.html_url ||
+                (file.path ? '/' + file.path.replace(/^source\//, '') : '#');
               return (
                 '<li>' +
                   '<a href="' + href + '" target="_blank">' +
