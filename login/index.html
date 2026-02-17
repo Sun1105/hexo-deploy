@@ -155,6 +155,48 @@
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
+
+    <section id="study-main-panel" style="display:none; margin-top:24px;">
+      <h2 style="font-size:1.2rem; margin-bottom:12px;">📚 学习资料列表</h2>
+      <div id="study-main-groups">
+        <div class="study-group">
+          <div class="study-group-title">标初上</div>
+          <ul id="study-main-bcs">
+            <li>暂无文件</li>
+          </ul>
+        </div>
+        <div class="study-group">
+          <div class="study-group-title">标初下</div>
+          <ul id="study-main-bcx">
+            <li>暂无文件</li>
+          </ul>
+        </div>
+        <div class="study-group">
+          <div class="study-group-title">标中上</div>
+          <ul id="study-main-bzs">
+            <li>暂无文件</li>
+          </ul>
+        </div>
+        <div class="study-group">
+          <div class="study-group-title">标中下</div>
+          <ul id="study-main-bzx">
+            <li>暂无文件</li>
+          </ul>
+        </div>
+        <div class="study-group">
+          <div class="study-group-title">标高上</div>
+          <ul id="study-main-bgs">
+            <li>暂无文件</li>
+          </ul>
+        </div>
+        <div class="study-group">
+          <div class="study-group-title">标高下</div>
+          <ul id="study-main-bgx">
+            <li>暂无文件</li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- ===== 全局脚本区域 ===== -->
@@ -180,6 +222,9 @@
       const uploadBtn = document.getElementById('pdf-upload-btn');
       const typeSelect = document.getElementById('file-type-select');
       const categorySelect = document.getElementById('category-select');
+      const studyPanel = document.getElementById('study-main-panel');
+      const studyMainBtn = document.getElementById('study-main-btn');
+      const sidebarStudyTitle = document.getElementById('sidebar-study-title');
 
       const CATEGORY_CONFIG = [
         { key: 'bcs', label: '标初上' },
@@ -194,6 +239,10 @@
         return document.getElementById('study-' + key);
       }
 
+      function getMainListEl(key) {
+        return document.getElementById('study-main-' + key);
+      }
+
       function updateAccept() {
         if (!uploadInput || !typeSelect) return;
         if (typeSelect.value === 'image') {
@@ -205,9 +254,15 @@
 
       async function loadResources() {
         for (const cat of CATEGORY_CONFIG) {
-          const listEl = getListEl(cat.key);
-          if (!listEl) continue;
-          listEl.innerHTML = '<li>加载中...</li>';
+          const sideList = getListEl(cat.key);
+          const mainList = getMainListEl(cat.key);
+
+          if (sideList) {
+            sideList.innerHTML = '<li>加载中...</li>';
+          }
+          if (mainList) {
+            mainList.innerHTML = '<li>加载中...</li>';
+          }
 
           try {
             const res = await fetch(
@@ -215,7 +270,8 @@
             );
 
             if (!res.ok) {
-              listEl.innerHTML = '<li>暂无文件</li>';
+              if (sideList) sideList.innerHTML = '<li>暂无文件</li>';
+              if (mainList) mainList.innerHTML = '<li>暂无文件</li>';
               continue;
             }
 
@@ -225,7 +281,8 @@
               : [];
 
             if (!files.length) {
-              listEl.innerHTML = '<li>暂无文件</li>';
+              if (sideList) sideList.innerHTML = '<li>暂无文件</li>';
+              if (mainList) mainList.innerHTML = '<li>暂无文件</li>';
               continue;
             }
 
@@ -240,9 +297,11 @@
               );
             });
 
-            listEl.innerHTML = parts.join('');
+            if (sideList) sideList.innerHTML = parts.join('');
+            if (mainList) mainList.innerHTML = parts.join('');
           } catch (e) {
-            listEl.innerHTML = '<li>加载失败</li>';
+            if (sideList) sideList.innerHTML = '<li>加载失败</li>';
+            if (mainList) mainList.innerHTML = '<li>加载失败</li>';
           }
         }
       }
@@ -252,6 +311,29 @@
       if (typeSelect) {
         typeSelect.addEventListener('change', updateAccept);
         updateAccept();
+      }
+
+      function showStudyPanel() {
+        if (!studyPanel) return;
+        studyPanel.style.display = 'block';
+        const main = document.getElementById('main-content');
+        if (main) {
+          main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      if (studyMainBtn) {
+        studyMainBtn.addEventListener('click', () => {
+          showStudyPanel();
+          loadResources();
+        });
+      }
+
+      if (sidebarStudyTitle) {
+        sidebarStudyTitle.addEventListener('click', () => {
+          showStudyPanel();
+          loadResources();
+        });
       }
 
       const groupTitles = document.querySelectorAll('.study-group-title');
