@@ -911,7 +911,6 @@ https://www.markdownlang.com/ja/markdo...
       const studyPanel = document.getElementById('study-main-panel');
       const studyMainBtn = document.getElementById('study-main-btn');
       const sidebarStudyTitle = document.getElementById('sidebar-study-title');
-      const sidebarStudyDetails = sidebarStudyTitle ? sidebarStudyTitle.parentElement : null;
 
       const CATEGORY_CONFIG = [
         { key: 'bcs', label: '标初上' },
@@ -928,24 +927,6 @@ https://www.markdownlang.com/ja/markdo...
 
       function getMainListEl(key) {
         return document.getElementById('study-main-' + key);
-      }
-
-      function expandCategory(key) {
-        const sideList = getListEl(key);
-        if (sideList) {
-          const group = sideList.closest('.study-group');
-          if (group) {
-            group.classList.remove('collapsed');
-          }
-        }
-
-        const mainList = getMainListEl(key);
-        if (mainList) {
-          const group = mainList.closest('.study-group');
-          if (group) {
-            group.classList.remove('collapsed');
-          }
-        }
       }
 
       function updateAccept() {
@@ -1032,10 +1013,6 @@ https://www.markdownlang.com/ja/markdo...
           });
           main.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-
-        if (sidebarStudyDetails) {
-          sidebarStudyDetails.open = true;
-        }
       }
 
       if (studyMainBtn) {
@@ -1045,12 +1022,7 @@ https://www.markdownlang.com/ja/markdo...
         });
       }
 
-      if (sidebarStudyTitle) {
-        sidebarStudyTitle.addEventListener('click', () => {
-          showStudyPanel();
-          loadResources();
-        });
-      }
+      // 左侧“学习资料”标题只负责展开侧边栏，不再强制切换主内容
 
       const groupTitles = document.querySelectorAll('.study-group-title');
       groupTitles.forEach(title => {
@@ -1105,10 +1077,6 @@ https://www.markdownlang.com/ja/markdo...
               const message = '上传完成：成功 ' + successCount + ' 个，失败 ' + failCount + ' 个';
               alert(message);
               uploadInput.value = '';
-              if (successCount > 0) {
-                showStudyPanel();
-                expandCategory(category);
-              }
               loadResources();
               uploadBtn.disabled = false;
               uploadBtn.textContent = '上传文件';
