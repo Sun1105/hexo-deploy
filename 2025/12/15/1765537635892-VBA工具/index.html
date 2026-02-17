@@ -819,6 +819,7 @@ MsgBox &quot;完成：2!A→1!B，2!B→1!D（按 A 列键匹配）&quot;, vbInf
       const studyPanel = document.getElementById('study-main-panel');
       const studyMainBtn = document.getElementById('study-main-btn');
       const sidebarStudyTitle = document.getElementById('sidebar-study-title');
+      const sidebarStudyDetails = sidebarStudyTitle ? sidebarStudyTitle.parentElement.parentElement : null;
 
       const CATEGORY_CONFIG = [
         { key: 'bcs', label: '标初上' },
@@ -835,6 +836,24 @@ MsgBox &quot;完成：2!A→1!B，2!B→1!D（按 A 列键匹配）&quot;, vbInf
 
       function getMainListEl(key) {
         return document.getElementById('study-main-' + key);
+      }
+
+      function expandCategory(key) {
+        const sideList = getListEl(key);
+        if (sideList) {
+          const group = sideList.closest('.study-group');
+          if (group) {
+            group.classList.remove('collapsed');
+          }
+        }
+
+        const mainList = getMainListEl(key);
+        if (mainList) {
+          const group = mainList.closest('.study-group');
+          if (group) {
+            group.classList.remove('collapsed');
+          }
+        }
       }
 
       function updateAccept() {
@@ -921,6 +940,10 @@ MsgBox &quot;完成：2!A→1!B，2!B→1!D（按 A 列键匹配）&quot;, vbInf
           });
           main.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+
+        if (sidebarStudyDetails) {
+          sidebarStudyDetails.open = true;
+        }
       }
 
       if (studyMainBtn) {
@@ -990,6 +1013,10 @@ MsgBox &quot;完成：2!A→1!B，2!B→1!D（按 A 列键匹配）&quot;, vbInf
               const message = '上传完成：成功 ' + successCount + ' 个，失败 ' + failCount + ' 个';
               alert(message);
               uploadInput.value = '';
+              if (successCount > 0) {
+                showStudyPanel();
+                expandCategory(category);
+              }
               loadResources();
               uploadBtn.disabled = false;
               uploadBtn.textContent = '上传文件';
@@ -1026,6 +1053,12 @@ MsgBox &quot;完成：2!A→1!B，2!B→1!D（按 A 列键匹配）&quot;, vbInf
                   if (res.ok) {
                     successCount += 1;
                   } else {
+                    try {
+                      const errData = await res.json();
+                      if (errData && errData.error) {
+                        console.error('上传失败', file.name, errData.error);
+                      }
+                    } catch (e2) {}
                     failCount += 1;
                   }
                 } catch (e) {
