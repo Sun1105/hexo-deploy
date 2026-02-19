@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    SQL生成工具 | Sun Blog
+    .HTA类型文件説明 | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -686,12 +686,12 @@
   <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
   <!-- 文章标题 -->
-  <h1 class="post-title">SQL生成工具</h1>
+  <h1 class="post-title">.HTA类型文件説明</h1>
   <!-- page.title → 当前文章标题 -->
 
   <!-- 文章元信息：发布日期 + 标签 -->
   <div class="post-meta">
-    <span>发表于 2026-01-05</span>
+    <span>发表于 2026-02-19</span>
     <!-- 显示文章发布日期 -->
 
     
@@ -699,7 +699,7 @@
 
       <span>标签：
         
-          <a href="/tags/TOOL/">TOOL</a>
+          <a href="/tags/%E6%8A%80%E6%9C%AF%E7%82%B9%E8%AF%B4%E6%98%8E/">技术点说明</a>
           
           <!-- 遍历文章标签，生成标签链接 -->
           <!-- 多个标签用逗号分隔 -->
@@ -716,336 +716,30 @@
     
 
     
-      <style>
-  table.sweb-report {
-    border-collapse: collapse;
-    width: 90%;
-    margin: 30px auto;
-    font-family: 'Segoe UI', 'Meiryo', 'Arial', sans-serif;
-    font-size: 15px;
-    background: #fcfcfc;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  }
-  table.sweb-report th, table.sweb-report td {
-    border: 1px solid #d8d8d8;
-    padding: 8px 12px;
-    text-align: center;
-    background: #fff;
-    transition: background 0.15s;
-  }
-  table.sweb-report th {
-    background: #0177cb;
-    color: #fff;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-  table.sweb-report tr.title-row th {
-    background: linear-gradient(90deg, #eaf0fa, #e3eaff 80%);
-    color: #15335c;
-    font-size: 18px;
-    text-align: left;
-    border: none;
-    padding: 16px;
-    letter-spacing: 2px;
-  }
-  table.sweb-report tr.meta-row td {
-    background: #f1f7fb;
-    color: #448;
-    text-align: left;
-    border: none;
-    font-size: 13px;
-    padding: 7px 16px;
-    font-weight: 500;
-  }
-  table.sweb-report tr.data-title td {
-    background: #fffbe6;
-    color: #887444;
-    text-align: left;
-    font-weight: 600;
-    border: none;
-    padding: 10px 16px;
-    font-size: 14px;
-    letter-spacing: 1px;
-  }
-  /* 橘黄色专用于カラム名（和名）列，包括表头和所有数据行（包括最后一行） */
-  table.sweb-report td.col-jp, 
-  table.sweb-report th.col-jp {
-    background: #ffe3c1 !important;
-    color: #ba6900 !important;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: 0.5px;
-  }
-  /* 数据区数据色加深（深蓝）*/
-  table.sweb-report tr.data-row td:not(.col-jp) {
-    background: #a3c9e8 !important;
-    color: #15335c !important;
-    font-weight: 600;
-  }
-  /* 给最后一行除了第一列以外添加白色 */
-  table.sweb-report tr.last-row td:not(.col-jp) {
-    background: #fff !important;
-    color: #383838 !important;
-    font-weight: 400;
-  }
-  /* 鼠标悬停行高亮 */
-  table.sweb-report tr:not(.title-row):not(.meta-row):hover td {
-    background: #e7f5fe !important;
-    transition: background 0.2s;
-  }
-</style>
-<table class="sweb-report">
-  <tr class="title-row">
-    <th colspan="5">テスト用SQL生成_シート名【テストデータ】</th>
-  </tr>
-  <tr class="meta-row">
-    <td colspan="3">作成者</td>
-    <td colspan="2">修正者</td>
-  </tr>
-  <tr class="meta-row">
-    <td colspan="3">作成日</td>
-    <td colspan="2">修正日</td>
-  </tr>
-  <tr class="data-title">
-    <td colspan="5">テストデータ</td>
-  </tr>
-  <tr class="data-title">
-    <td colspan="5">テーブル名：商品</td>
-  </tr>
-  <tr>
-    <th class="col-jp">カラム名（和名）</th>
-    <th>WEB申込商品ID</th>
-    <th>WEB申込商品名称</th>
-    <th>分類区分</th>
-    <th>体系区分</th>
-  </tr>
-  <tr class="data-row">
-    <td class="col-jp">データ型</td>
-    <td>CHAR</td>
-    <td>VARCHAR2</td>
-    <td>CHAR</td>
-    <td>CHAR</td>
-  </tr>
-  <tr class="data-row">
-    <td class="col-jp">桁数</td>
-    <td>4</td>
-    <td>50</td>
-    <td>1</td>
-    <td>1</td>
-  </tr>
-  <tr class="data-row">
-    <td class="col-jp">小数以下桁数</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr class="data-row">
-    <td class="col-jp">NULL</td>
-    <td>不可</td>
-    <td>不可</td>
-    <td>不可</td>
-    <td>不可</td>
-  </tr>
-  <tr class="data-row">
-    <td class="col-jp">主キー</td>
-    <td>1</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr class="last-row">
-    <td class="col-jp">01</td>
-    <td>0000</td>
-    <td>WEB申込商品名称</td>
-    <td>1</td>
-    <td>1</td>
-  </tr>
-</table>
+      <!-- Full HTML content rendered in iframe -->
+      <iframe id="post-content-iframe" style="width:100%; height:800px; border:1px solid #eee; background: #fff;"></iframe>
+      <script>
+        (function() {
+          const frame = document.getElementById('post-content-iframe');
+          // Use rawBody to preserve full HTML structure including DOCTYPE/HEAD
+          const rawContent = decodeURIComponent("%0A%0A%3C!DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22zh-CN%22%3E%0A%3Chead%3E%0A%20%20%3Cmeta%20charset%3D%22UTF-8%22%20%2F%3E%0A%20%20%3Ctitle%3E.HTA%20%E7%9A%84%E7%AE%80%E5%8D%95%E6%98%8E%E4%BA%86%E4%BB%8B%E7%BB%8D%3C%2Ftitle%3E%0A%20%20%3Cstyle%3E%0A%20%20%20%20body%20%7B%0A%20%20%20%20%20%20font-family%3A%20-apple-system%2C%20BlinkMacSystemFont%2C%20%22Segoe%20UI%22%2C%20Roboto%2C%20%22Helvetica%20Neue%22%2C%20Arial%2C%20%22Noto%20Sans%22%2C%20sans-serif%3B%0A%20%20%20%20%20%20line-height%3A%201.6%3B%0A%20%20%20%20%20%20margin%3A%2040px%3B%0A%20%20%20%20%20%20color%3A%20%23222%3B%0A%20%20%20%20%7D%0A%20%20%20%20h1%2C%20h2%2C%20h3%20%7B%0A%20%20%20%20%20%20color%3A%20%231a1a1a%3B%0A%20%20%20%20%7D%0A%20%20%20%20code%20%7B%0A%20%20%20%20%20%20background%3A%20%23f5f5f5%3B%0A%20%20%20%20%20%20padding%3A%202px%204px%3B%0A%20%20%20%20%20%20border-radius%3A%203px%3B%0A%20%20%20%20%20%20font-family%3A%20Consolas%2C%20%22Courier%20New%22%2C%20monospace%3B%0A%20%20%20%20%7D%0A%20%20%20%20pre%20%7B%0A%20%20%20%20%20%20background%3A%20%23f5f5f5%3B%0A%20%20%20%20%20%20padding%3A%2012px%3B%0A%20%20%20%20%20%20border-radius%3A%204px%3B%0A%20%20%20%20%20%20overflow-x%3A%20auto%3B%0A%20%20%20%20%7D%0A%20%20%20%20hr%20%7B%0A%20%20%20%20%20%20margin%3A%2024px%200%3B%0A%20%20%20%20%7D%0A%20%20%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%20%20%3Ch1%3E.HTA%20%E7%9A%84%E7%AE%80%E5%8D%95%E6%98%8E%E4%BA%86%E4%BB%8B%E7%BB%8D%3C%2Fh1%3E%0A%0A%20%20%3Chr%20%2F%3E%0A%0A%20%20%3Ch2%3E%E4%BB%80%E4%B9%88%E6%98%AF%20.HTA%EF%BC%88HTML%20Application%EF%BC%89%3C%2Fh2%3E%0A%20%20%3Cp%3E%0A%20%20%20%20%3Cstrong%3E.HTA%EF%BC%88HTML%20Application%EF%BC%89%E6%98%AF%E4%B8%80%E7%A7%8D%E7%94%A8%20HTML%20%2B%20CSS%20%2B%20JavaScript%20%E7%BC%96%E5%86%99%E7%9A%84%20Windows%20%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%A0%BC%E5%BC%8F%E3%80%82%3C%2Fstrong%3E%0A%20%20%20%20%E5%AE%83%E7%94%B1%20Windows%20%E7%9A%84%20%3Cstrong%3Emshta.exe%3C%2Fstrong%3E%20%E8%BF%90%E8%A1%8C%EF%BC%8C%E5%9B%A0%E6%AD%A4%E5%8F%AF%E4%BB%A5%E5%83%8F%E6%9C%AC%E5%9C%B0%E7%A8%8B%E5%BA%8F%E4%B8%80%E6%A0%B7%E6%89%A7%E8%A1%8C%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E5%83%8F%E6%99%AE%E9%80%9A%E7%BD%91%E9%A1%B5%E9%82%A3%E6%A0%B7%E5%8F%97%E6%B5%8F%E8%A7%88%E5%99%A8%E9%99%90%E5%88%B6%E3%80%82%0A%20%20%3C%2Fp%3E%0A%0A%20%20%3Chr%20%2F%3E%0A%0A%20%20%3Ch2%3E.HTA%20%E7%9A%84%E6%A0%B8%E5%BF%83%E7%89%B9%E7%82%B9%3C%2Fh2%3E%0A%0A%20%20%3Ch3%3E1.%20%E7%94%A8%E7%BD%91%E9%A1%B5%E6%8A%80%E6%9C%AF%E5%86%99%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8%3C%2Fh3%3E%0A%20%20%3Cul%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3EHTML%EF%BC%9A%3C%2Fstrong%3E%E5%81%9A%E7%95%8C%E9%9D%A2%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3ECSS%EF%BC%9A%3C%2Fstrong%3E%E5%81%9A%E6%A0%B7%E5%BC%8F%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3EJavaScript%EF%BC%9A%3C%2Fstrong%3E%E5%81%9A%E9%80%BB%E8%BE%91%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E6%97%A0%E9%9C%80%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9A%3C%2Fstrong%3E%E7%9B%B4%E6%8E%A5%E7%94%B1%20%3Ccode%3Emshta.exe%3C%2Fcode%3E%20%E8%BF%90%E8%A1%8C%3C%2Fli%3E%0A%20%20%3C%2Ful%3E%0A%0A%20%20%3Ch3%3E2.%20%E6%9D%83%E9%99%90%E6%AF%94%E6%99%AE%E9%80%9A%E7%BD%91%E9%A1%B5%E9%AB%98%3C%2Fh3%3E%0A%20%20%3Cp%3EHTA%20%E5%8F%AF%E4%BB%A5%EF%BC%9A%3C%2Fp%3E%0A%20%20%3Cul%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E8%AF%BB%E5%86%99%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%3C%2Fstrong%3E%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E8%B0%83%E7%94%A8%20ActiveX%3C%2Fstrong%3E%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E6%93%8D%E4%BD%9C%E6%B3%A8%E5%86%8C%E8%A1%A8%3C%2Fstrong%3E%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E6%89%A7%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%3C%2Fstrong%3E%3C%2Fli%3E%0A%20%20%3C%2Ful%3E%0A%20%20%3Cp%3E%E8%BF%99%E4%B9%9F%E6%98%AF%E5%AE%83%E5%B8%B8%E8%A2%AB%E7%94%A8%E4%BA%8E%E5%86%85%E9%83%A8%E5%B7%A5%E5%85%B7%E6%88%96%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC%E7%9A%84%E5%8E%9F%E5%9B%A0%E3%80%82%3C%2Fp%3E%0A%0A%20%20%3Ch3%3E3.%20%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F%E7%AE%80%E5%8D%95%3C%2Fh3%3E%0A%20%20%3Cp%3E%E5%8F%8C%E5%87%BB%20%3Ccode%3E.hta%3C%2Fcode%3E%20%E6%96%87%E4%BB%B6%E5%8D%B3%E5%8F%AF%E8%BF%90%E8%A1%8C%EF%BC%8C%E5%B0%B1%E5%83%8F%20%3Ccode%3E.exe%3C%2Fcode%3E%20%E4%B8%80%E6%A0%B7%E3%80%82%3C%2Fp%3E%0A%0A%20%20%3Chr%20%2F%3E%0A%0A%20%20%3Ch2%3E%E4%B8%80%E4%B8%AA%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%20HTA%20%E7%A4%BA%E4%BE%8B%3C%2Fh2%3E%0A%20%20%3Cpre%3E%3Ccode%3E%26lt%3Bhtml%26gt%3B%0A%26lt%3Bhead%26gt%3B%0A%20%20%26lt%3Btitle%26gt%3BHello%20HTA%26lt%3B%2Ftitle%26gt%3B%0A%20%20%26lt%3BHTA%3AAPPLICATION%0A%20%20%20%20ID%3D%22myApp%22%0A%20%20%20%20APPLICATIONNAME%3D%22HelloHTA%22%0A%20%20%20%20BORDER%3D%22thin%22%0A%20%20%20%20SCROLL%3D%22no%22%0A%20%20%2F%26gt%3B%0A%26lt%3B%2Fhead%26gt%3B%0A%26lt%3Bbody%26gt%3B%0A%20%20%26lt%3Bh1%26gt%3BHello%2C%20HTA!%26lt%3B%2Fh1%26gt%3B%0A%20%20%26lt%3Bbutton%20onclick%3D%22alert('%E6%8C%89%E9%92%AE%E8%A2%AB%E7%82%B9%E5%87%BB')%22%26gt%3B%E7%82%B9%E6%88%91%26lt%3B%2Fbutton%26gt%3B%0A%26lt%3B%2Fbody%26gt%3B%0A%26lt%3B%2Fhtml%26gt%3B%0A%3C%2Fcode%3E%3C%2Fpre%3E%0A%20%20%3Cp%3E%E4%BF%9D%E5%AD%98%E4%B8%BA%20%3Ccode%3Ehello.hta%3C%2Fcode%3E%EF%BC%8C%E5%8F%8C%E5%87%BB%E5%8D%B3%E5%8F%AF%E8%BF%90%E8%A1%8C%E3%80%82%3C%2Fp%3E%0A%0A%20%20%3Chr%20%2F%3E%0A%0A%20%20%3Ch2%3EHTA%20%E7%9A%84%E5%B8%B8%E8%A7%81%E7%94%A8%E9%80%94%3C%2Fh2%3E%0A%20%20%3Cul%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E5%86%85%E9%83%A8%E5%B7%A5%E5%85%B7%EF%BC%9A%3C%2Fstrong%3E%E5%A6%82%E6%89%B9%E9%87%8F%E5%A4%84%E7%90%86%E3%80%81%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC%E7%95%8C%E9%9D%A2%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E7%AE%80%E5%8D%95%E6%A1%8C%E9%9D%A2%20GUI%20%E7%A8%8B%E5%BA%8F%3C%2Fstrong%3E%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%3C%2Fstrong%3E%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E6%97%A7%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%85%8D%E7%BD%AE%E7%95%8C%E9%9D%A2%3C%2Fstrong%3E%3C%2Fli%3E%0A%20%20%3C%2Ful%3E%0A%0A%20%20%3Chr%20%2F%3E%0A%0A%20%20%3Ch2%3EHTA%20%E7%9A%84%E7%BC%BA%E7%82%B9%3C%2Fh2%3E%0A%20%20%3Cul%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E5%8F%AA%E9%80%82%E7%94%A8%E4%BA%8E%20Windows%3C%2Fstrong%3E%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E5%AE%89%E5%85%A8%E6%80%A7%E8%BE%83%E4%BD%8E%EF%BC%9A%3C%2Fstrong%3E%E9%AB%98%E6%9D%83%E9%99%90%20%2B%20ActiveX%3C%2Fli%3E%0A%20%20%20%20%3Cli%3E%3Cstrong%3E%E6%8A%80%E6%9C%AF%E8%BE%83%E8%80%81%EF%BC%9A%3C%2Fstrong%3E%E5%BE%AE%E8%BD%AF%E5%B7%B2%E4%B8%8D%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%3C%2Fli%3E%0A%20%20%3C%2Ful%3E%0A%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A");
+          
+          const doc = frame.contentDocument || frame.contentWindow.document;
+          doc.open();
+          doc.write(rawContent);
+          doc.close();
 
-<pre style="background:#282c34; color:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08); font-size:13px; line-height:1.6; padding:18px 20px; overflow:auto;">
-Sub createSQL()
-    Dim ws As Worksheet
-    Dim currentRow As Long
-    Dim lastRow As Long
-    Dim tableName As String
-    Dim itemsName As String
-    Dim endCol As Long
-    Dim dataTypeRange As Range
-    Dim dataStartRow As Long
-    Dim sqlOutputColumn As Long
-    Dim insertSQL As String
-    Dim sqlFileContent As String
-    Dim emptyRowCount As Long
-    Dim startInsert As Boolean
-
-    ' アクティブシートを設定
-    Set ws = ActiveSheet
-
-    ' 最終行を取得（A列から空白20行連続の場合終了）
-    lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
-
-    ' 初期設定
-    currentRow = 4 ' スキャン開始行（A4セルから）
-    emptyRowCount = 0 ' 空白行カウント初期化
-    sqlFileContent = "" ' SQLファイル内容初期化
-    startInsert = False
-
-    Do While currentRow <= lastRow
-        ' A列が空白の場合、空白行カウントを増やす
-        If IsEmpty(ws.Cells(currentRow, "A").Value) Then
-            emptyRowCount = emptyRowCount + 1
-
-            ' 空白行が20連続なら処理終了
-            If emptyRowCount >= 20 Then Exit Do
-
-            currentRow = currentRow + 1 ' 次の行へ移動
-            GoTo SkipIteration ' 空白行の場合は次のループへ進む
-
-        Else
-            emptyRowCount = 0 ' 空白行カウントリセット
-        End If
-
-        ' A列の値が「テーブル名：」の場合、テーブル名を取得
-        If ws.Cells(currentRow, "A").Value = "テーブル名：" Then
-            tableName = ws.Cells(currentRow, "B").Value ' B列からテーブル名を取得
-            If sqlFileContent <> "" Then
-                sqlFileContent = sqlFileContent & vbCrLf
-            End If
-            sqlFileContent = sqlFileContent & "-- " & tableName & vbCrLf
-            sqlFileContent = sqlFileContent & "TRUNCATE table " & tableName & ";" & vbCrLf
-            currentRow = currentRow + 1 ' 次の行へ移動
-
-        ElseIf ws.Cells(currentRow, "A").Value = "カラム名（和名）" Then
-            ' カラム名（和名）行の場合、項目名文のSQL文を作成
-            endCol = ws.Cells(currentRow, ws.Columns.Count).End(xlToLeft).Column ' 最終列を動的に取得
-            Set itemsRange = ws.Range(ws.Cells(currentRow, "B"), ws.Cells(currentRow, endCol))
-
-            itemsName = "("
-            Dim colIdx As Integer
-            For colIdx = 1 To itemsRange.Columns.Count
-                itemsName = itemsName & itemsRange.Cells(1, colIdx).Value ' データ値（B列～最終列）
-
-                ' カラム間の区切処理（最終のカラムには追加しない）
-                If colIdx < itemsRange.Columns.Count Then
-                    itemsName = itemsName & ", "
-                End If
-            Next colIdx
-            itemsName = itemsName & ")" ' 項目名文終了
-            currentRow = currentRow + 1 ' 次の行へ移動
-
-        ElseIf ws.Cells(currentRow, "A").Value = "データ型" Then
-            ' データ型行の場合、範囲を設定（B列から空白セルが現れるまで）
-            'Dim endCol As Long
-            'endCol = ws.Cells(currentRow, ws.Columns.Count).End(xlToLeft).Column ' 最終列を動的に取得
-            Set dataTypeRange = ws.Range(ws.Cells(currentRow, "B"), ws.Cells(currentRow, endCol))
-            dataStartRow = currentRow + 1 ' データ開始行を記録
-            sqlOutputColumn = endCol + 1 ' 出力列（右隣）
-            currentRow = currentRow + 1 ' 次の行へ移動
-
-        ElseIf IsNumeric(ws.Cells(currentRow, "A").Value) Then
-            ' データ行の場合、INSERT文を作成
-            If Not startInsert Then
-                startInsert = True
-                insertSQL = "INSERT INTO " & tableName & itemsName & " VALUES"
-                ' SQL文を出力（右隣のセル）
-                ws.Cells(currentRow - 1, sqlOutputColumn).Value = insertSQL
-                ' SQL文をファイル内容に追加
-                sqlFileContent = sqlFileContent & "INSERT INTO " & tableName & itemsName & vbCrLf & "VALUES" & vbCrLf
-            End If
-            insertSQL = "("
-
-            Dim colIndex As Integer
-            For colIndex = 1 To dataTypeRange.Columns.Count
-                Dim cellValue As Variant
-                Dim dataType As String
-
-                cellValue = ws.Cells(currentRow, colIndex + 1).Value ' データ値（B列～最終列）
-                dataType = dataTypeRange.Cells(1, colIndex).Value ' データ型
-
-                If IsEmpty(cellValue) Or cellValue = "" Then
-                    insertSQL = insertSQL & "NULL"
-                ElseIf dataType = "CHAR" Or dataType = "VARCHAR" Or dataType = "VARCHAR2" Or dataType = "DATE" Or dataType = "TIMESTAMP" Then
-                    insertSQL = insertSQL & "'" & cellValue & "'"
-                Else
-                    insertSQL = insertSQL & cellValue
-                End If
-
-                ' カラム間の区切処理（最終のカラムには追加しない）
-                If colIndex < dataTypeRange.Columns.Count Then
-                    insertSQL = insertSQL & ", "
-                End If
-            Next colIndex
-
-            If Not IsEmpty(ws.Cells(currentRow + 1, "A").Value) And IsNumeric(ws.Cells(currentRow + 1, "A").Value) Then
-                ' 最終行ではない
-                insertSQL = insertSQL & ")," ' INSERT文終了
-            Else
-                ' 最終行
-                insertSQL = insertSQL & ");" ' INSERT文終了
-                startInsert = False
-            End If
-
-            ' SQL文を出力（右隣のセル）
-            ws.Cells(currentRow, sqlOutputColumn).Value = insertSQL
-
-            ' SQL文をファイル内容に追加
-            sqlFileContent = sqlFileContent & insertSQL & vbCrLf
-
-            currentRow = currentRow + 1 ' 次のデータ行へ移動
-
-        Else
-            currentRow = currentRow + 1 ' 次の行へ移動
-        End If
-
-SkipIteration:
-    Loop
-
-    ' ファイル名抽出（Excelファイル名から特定部分を取得）
-    Dim workbookName As String, extractedFileName As String
-    workbookName = ThisWorkbook.Name ' Excelファイル名
-    extractedFileName = Mid(workbookName, InStr(workbookName, "_") + 1) ' _以降を抽出
-    extractedFileName = Mid(extractedFileName, InStr(extractedFileName, "】") + 1) ' _以降を抽出
-    extractedFileName = Left(extractedFileName, InStr(extractedFileName, "_") - 1) ' _まで抽出
-
-    If extractedFileName <> "" Then extractedFileName = extractedFileName & ".sql" Else extractedFileName = Left(workbookName, Len(workbookName) - Len(".xlsm")) & ".sql"
-
-    ' SQLファイルに出力（Excelファイルと同じフォルダーに保存）
-    Dim sqlFilePath As String
-    sqlFilePath = ThisWorkbook.Path & "\" & extractedFileName
-
-    ' Dim fileNum As Integer
-    ' fileNum = FreeFile
-    ' Open sqlFilePath For Output As fileNum
-    '     Print #fileNum, sqlFileContent
-    ' Close fileNum
-    ' SQLファイルにUTF-8 BOMなし形式で出力（ADODB.Streamオブジェクト使用）
-    Dim streamWithBOM As Object, streamWithoutBOM As Object
-    Set streamWithBOM = CreateObject("ADODB.Stream")
-    Set streamWithoutBOM = CreateObject("ADODB.Stream")
-    With streamWithBOM
-        .Charset = "UTF-8" ' UTF-8形式で設定（BOM付き）
-        .Type = 2 ' テキストモードで設定
-        .Open ' ストリームを開く
-        .WriteText sqlFileContent ' SQL文を書き込み
-        .Position = 3 ' BOM部分（3バイト）をスキップ
-        With streamWithoutBOM ' BOMなしストリームにコピーする処理開始
-            .Type = 1 ' バイナリモードに変更（必須）
-            .Open
-            streamWithBOM.CopyTo streamWithoutBOM
-            .SaveToFile sqlFilePath, 2 ' ファイルに保存（上書きモード）
-        End With
-        .Close ' ストリームを閉じる
-        Set streamWithoutBOM = Nothing ' オブジェクト開放
-        Set streamWithBOM = Nothing ' オブジェクト開放
-    End With
-
-    MsgBox "INSERT文: " & extractedFileName & " が生成されました！", vbInformation
-End Sub
-</pre>
-
-      <!-- 渲染文章正文 HTML -->
-      <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+          // Auto resize height
+          frame.onload = function() {
+            try {
+              const height = frame.contentWindow.document.body.scrollHeight;
+              if (height > 0) {
+                 frame.style.height = (height + 50) + 'px';
+              }
+            } catch(e) { console.error("Auto resize failed", e); }
+          };
+        })();
+      </script>
     
   </div>
   <!-- 文章正文结束 -->
