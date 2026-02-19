@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>VBA工具</title>
+      <link href="/2026/02/19/1764146234548-VBA%E5%B7%A5%E5%85%B7/"/>
+      <url>/2026/02/19/1764146234548-VBA%E5%B7%A5%E5%85%B7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="VBA-工具宏说明文档"><a href="#VBA-工具宏说明文档" class="headerlink" title="VBA 工具宏说明文档"></a>VBA 工具宏说明文档</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a><strong>概述</strong></h2><p>本 VBA 工具提供以下功能：</p><ul><li><strong>运行批处理文件</strong>（如服务器启动脚本）</li><li><strong>打开指定 Excel 工具文件</strong></li><li><strong>记录错误日志</strong></li></ul><p>该工具适用于自动化操作，减少手动执行命令和打开文件的工作量。</p><hr><h2 id="功能列表"><a href="#功能列表" class="headerlink" title="功能列表"></a><strong>功能列表</strong></h2><h3 id="1-RunBat"><a href="#1-RunBat" class="headerlink" title="1. RunBat"></a><strong>1. RunBat</strong></h3><p><strong>功能</strong>：运行指定文件夹中的批处理文件（<code>起動.bat</code>）<br><strong>参数</strong>：<code>folderPath</code> - 批处理文件所在的文件夹路径  </p><pre><code class="language-vb">&#39;-----------------------------------------------&#39; 功能：运行指定文件夹中的批处理文件（起動.bat）&#39; 参数：folderPath - 批处理文件所在的文件夹路径&#39;-----------------------------------------------Public Sub RunBat(folderPath As String)    Dim wsh As Object    Dim batPath As String        &#39; 拼接批处理文件完整路径    batPath = folderPath &amp; &quot;\起動.bat&quot;        &#39; 判断文件是否存在    If Dir(batPath) &lt;&gt; &quot;&quot; Then        &#39; 创建 WScript.Shell 对象，用于执行命令行        Set wsh = CreateObject(&quot;WScript.Shell&quot;)                &#39; 使用 cmd.exe 打开命令行窗口，切换到指定目录并运行起動.bat        &#39; /k 表示执行后保持窗口打开        wsh.Run &quot;cmd.exe /k &quot;&quot;cd /d &quot; &amp; folderPath &amp; &quot; &amp; 起動.bat&quot;&quot;&quot;, 1, True    Else        &#39; 文件不存在时弹出提示框，并记录错误日志        MsgBox &quot;文件不存在：&quot; &amp; batPath, vbExclamation        LogError &quot;文件不存在：&quot; &amp; batPath    End IfEnd Sub&#39;-----------------------------------------------&#39; 功能：打开指定路径的 Excel 文件&#39; 参数：relativePath - 相对路径（相对于当前工作簿路径）&#39;-----------------------------------------------Public Sub OpenExcelTool(relativePath As String)    Dim filePath As String        &#39; 拼接 Excel 文件完整路径    filePath = ThisWorkbook.Path &amp; &quot;\&quot; &amp; relativePath        &#39; 判断文件是否存在    If Dir(filePath) &lt;&gt; &quot;&quot; Then        &#39; 打开 Excel 文件        Workbooks.Open filePath    Else        &#39; 文件不存在时弹出提示框，并记录错误日志        MsgBox &quot;Excel 文件不存在：&quot; &amp; filePath, vbExclamation        LogError &quot;Excel 文件不存在：&quot; &amp; filePath    End IfEnd Sub&#39;-----------------------------------------------&#39; 功能：记录错误信息到日志文件&#39; 参数：errorMsg - 错误信息&#39;-----------------------------------------------Public Sub LogError(errorMsg As String)    Dim logFile As String    Dim fNum As Integer        &#39; 日志文件路径（与当前工作簿同目录）    logFile = ThisWorkbook.Path &amp; &quot;\ErrorLog.txt&quot;        &#39; 获取空闲文件号    fNum = FreeFile        &#39; 以追加模式打开日志文件，并写入当前时间和错误信息    Open logFile For Append As #fNum    Print #fNum, Now &amp; &quot; - &quot; &amp; errorMsg    Close #fNumEnd Sub&#39;-----------------------------------------------&#39; 功能：运行服务器工具的批处理文件&#39;-----------------------------------------------Public Sub RunServerBat()    &#39; 调用 RunBat 方法，传入服务器工具路径    RunBat &quot;C:\Users\Desktop\TOOL\ServerTool&quot;End Sub&#39;-----------------------------------------------&#39; 功能：打开 ITA 测试工具 Excel 文件&#39;-----------------------------------------------Public Sub OpenITATestTool()    &#39; 调用 OpenExcelTool 方法，传入 ITA 测试工具相对路径    OpenExcelTool &quot;TOOL\ITATestTool\ITaTestTool.xlsm&quot;End Sub</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> TOOL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> VBA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>VBA工具</title>
+      <link href="/2026/02/19/1765537635892-VBA%E5%B7%A5%E5%85%B7/"/>
+      <url>/2026/02/19/1765537635892-VBA%E5%B7%A5%E5%85%B7/</url>
+      
+        <content type="html"><![CDATA[<p>■Excel<br>シート名：1<br>想定項目実施項目想定値実施値</p><p>シート名：2<br>実施項目実施値</p><p>■マクロ</p><p>1,在 Excel 按 Alt + F11 打开 VBA 编辑器。<br>2,在左侧工程窗格找到放置 CommandButton 的工作表（例如 Sheet2）。双击打开。<br>3,选择对象下拉框选 CommandButton1，过程下拉框选 Click（编辑器会自动生成事件框架）。<br>4.在事件里调用你的处理：<br>Private Sub CommandButton1_Click()<br> Call FillItemsAndValues<br>End Sub</p><p>注意：这是工作表代码模块（不是标准模块）。事件名必须与按钮名称一致（比如 CommandButton1_Click）。如果你的按钮名不是 CommandButton1，请在设计模式下选中按钮，在属性窗口把 Name 看清楚或改成一致。</p><p>■VBA</p><p>Option Explicit</p><p>‘——键值清洗：去前后半角空格、去全角空格（必要时可加大小写统一）<br>Private Function CleanKey(ByVal v As Variant) As String<br>    Dim s As String<br>    s &#x3D; CStr(v)<br>    s &#x3D; Replace(s, ChrW(12288), “”)  ‘ 全角空格<br>    s &#x3D; Trim(s)                      ‘ 半角前后空格<br>    ‘ 若需要忽略大小写，可启用下一行：<br>    ‘ s &#x3D; UCase$(s)<br>    CleanKey &#x3D; s<br>End Function</p><p>Public Sub FillItemsAndValues()<br>    Dim wsSrc As Worksheet, wsTgt As Worksheet<br>    Dim lastSrc As Long, lastTgt As Long<br>    Dim r As Long<br>    Dim dict As Object<br>    Dim k As String<br>    Dim itemName As Variant, itemValue As Variant</p><pre><code>&#39; —— 工作表（按你的文件名）Set wsTgt = ThisWorkbook.Sheets(&quot;1&quot;) &#39; 黄色：A=想定項目，B=受信項目，D=受信値Set wsSrc = ThisWorkbook.Sheets(&quot;2&quot;) &#39; 白色：A=送信項目(实施项目)，B=送信値(实施值)lastSrc = wsSrc.Cells(wsSrc.Rows.Count, 1).End(xlUp).RowlastTgt = wsTgt.Cells(wsTgt.Rows.Count, 1).End(xlUp).Row&#39; —— 字典：key=来源A（实施项目），value=数组 [实施项目, 实施值]Set dict = CreateObject(&quot;Scripting.Dictionary&quot;)For r = 2 To lastSrc    k = CleanKey(wsSrc.Cells(r, 1).Value)     &#39; 实施项目（键）    If Len(k) &gt; 0 Then        itemName = wsSrc.Cells(r, 1).Value     &#39; 2!A        itemValue = wsSrc.Cells(r, 2).Value    &#39; 2!B（保留原始类型）        dict(k) = Array(itemName, itemValue)    End IfNext rApplication.ScreenUpdating = FalseApplication.Calculation = xlCalculationManual&#39; —— 按 1!A（想定項目）匹配；命中后写 1!B（受信項目）、1!D（受信値）For r = 2 To lastTgt    k = CleanKey(wsTgt.Cells(r, 1).Value)  &#39; 1!A 想定項目    If dict.Exists(k) Then        wsTgt.Cells(r, 2).Value = dict(k)(0)   &#39; 1!B ← 2!A（实施项目）        wsTgt.Cells(r, 4).Value = dict(k)(1)   &#39; 1!D ← 2!B（实施值）    End IfNext rApplication.Calculation = xlCalculationAutomaticApplication.ScreenUpdating = TrueMsgBox &quot;完成：2!A→1!B，2!B→1!D（按 A 列键匹配）&quot;, vbInformation</code></pre><p>End Sub</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> TOOL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> VBA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JSON Key-Value 提取及处理工具</title>
       <link href="/2026/02/19/1766048949686-Json%E6%A0%BC%E5%BC%8F%E7%9A%84%E8%BD%AC%E5%8C%96%E4%BB%A5%E5%8F%8A%E9%A1%B9%E7%9B%AE%E5%8C%B9%E9%85%8D/"/>
       <url>/2026/02/19/1766048949686-Json%E6%A0%BC%E5%BC%8F%E7%9A%84%E8%BD%AC%E5%8C%96%E4%BB%A5%E5%8F%8A%E9%A1%B9%E7%9B%AE%E5%8C%B9%E9%85%8D/</url>
@@ -1469,31 +1519,6 @@
     
     
     <entry>
-      <title>VBA工具</title>
-      <link href="/2025/12/15/1765537635892-VBA%E5%B7%A5%E5%85%B7/"/>
-      <url>/2025/12/15/1765537635892-VBA%E5%B7%A5%E5%85%B7/</url>
-      
-        <content type="html"><![CDATA[<p>■Excel<br>シート名：1<br>想定項目実施項目想定値実施値</p><p>シート名：2<br>実施項目実施値</p><p>■マクロ</p><p>1,在 Excel 按 Alt + F11 打开 VBA 编辑器。<br>2,在左侧工程窗格找到放置 CommandButton 的工作表（例如 Sheet2）。双击打开。<br>3,选择对象下拉框选 CommandButton1，过程下拉框选 Click（编辑器会自动生成事件框架）。<br>4.在事件里调用你的处理：<br>Private Sub CommandButton1_Click()<br> Call FillItemsAndValues<br>End Sub</p><p>注意：这是工作表代码模块（不是标准模块）。事件名必须与按钮名称一致（比如 CommandButton1_Click）。如果你的按钮名不是 CommandButton1，请在设计模式下选中按钮，在属性窗口把 Name 看清楚或改成一致。</p><p>■VBA</p><p>Option Explicit</p><p>‘——键值清洗：去前后半角空格、去全角空格（必要时可加大小写统一）<br>Private Function CleanKey(ByVal v As Variant) As String<br>    Dim s As String<br>    s &#x3D; CStr(v)<br>    s &#x3D; Replace(s, ChrW(12288), “”)  ‘ 全角空格<br>    s &#x3D; Trim(s)                      ‘ 半角前后空格<br>    ‘ 若需要忽略大小写，可启用下一行：<br>    ‘ s &#x3D; UCase$(s)<br>    CleanKey &#x3D; s<br>End Function</p><p>Public Sub FillItemsAndValues()<br>    Dim wsSrc As Worksheet, wsTgt As Worksheet<br>    Dim lastSrc As Long, lastTgt As Long<br>    Dim r As Long<br>    Dim dict As Object<br>    Dim k As String<br>    Dim itemName As Variant, itemValue As Variant</p><pre><code>&#39; —— 工作表（按你的文件名）Set wsTgt = ThisWorkbook.Sheets(&quot;1&quot;) &#39; 黄色：A=想定項目，B=受信項目，D=受信値Set wsSrc = ThisWorkbook.Sheets(&quot;2&quot;) &#39; 白色：A=送信項目(实施项目)，B=送信値(实施值)lastSrc = wsSrc.Cells(wsSrc.Rows.Count, 1).End(xlUp).RowlastTgt = wsTgt.Cells(wsTgt.Rows.Count, 1).End(xlUp).Row&#39; —— 字典：key=来源A（实施项目），value=数组 [实施项目, 实施值]Set dict = CreateObject(&quot;Scripting.Dictionary&quot;)For r = 2 To lastSrc    k = CleanKey(wsSrc.Cells(r, 1).Value)     &#39; 实施项目（键）    If Len(k) &gt; 0 Then        itemName = wsSrc.Cells(r, 1).Value     &#39; 2!A        itemValue = wsSrc.Cells(r, 2).Value    &#39; 2!B（保留原始类型）        dict(k) = Array(itemName, itemValue)    End IfNext rApplication.ScreenUpdating = FalseApplication.Calculation = xlCalculationManual&#39; —— 按 1!A（想定項目）匹配；命中后写 1!B（受信項目）、1!D（受信値）For r = 2 To lastTgt    k = CleanKey(wsTgt.Cells(r, 1).Value)  &#39; 1!A 想定項目    If dict.Exists(k) Then        wsTgt.Cells(r, 2).Value = dict(k)(0)   &#39; 1!B ← 2!A（实施项目）        wsTgt.Cells(r, 4).Value = dict(k)(1)   &#39; 1!D ← 2!B（实施值）    End IfNext rApplication.Calculation = xlCalculationAutomaticApplication.ScreenUpdating = TrueMsgBox &quot;完成：2!A→1!B，2!B→1!D（按 A 列键匹配）&quot;, vbInformation</code></pre><p>End Sub</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> VBA </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> TOOL </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>📘 ～つつ</title>
       <link href="/2025/12/15/1765811570009--/"/>
       <url>/2025/12/15/1765811570009--/</url>
@@ -2095,31 +2120,6 @@
           
       </categories>
       
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>VBA工具</title>
-      <link href="/2025/11/30/1764146234548-VBA%E5%B7%A5%E5%85%B7/"/>
-      <url>/2025/11/30/1764146234548-VBA%E5%B7%A5%E5%85%B7/</url>
-      
-        <content type="html"><![CDATA[<h1 id="VBA-工具宏说明文档"><a href="#VBA-工具宏说明文档" class="headerlink" title="VBA 工具宏说明文档"></a>VBA 工具宏说明文档</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a><strong>概述</strong></h2><p>本 VBA 工具提供以下功能：</p><ul><li><strong>运行批处理文件</strong>（如服务器启动脚本）</li><li><strong>打开指定 Excel 工具文件</strong></li><li><strong>记录错误日志</strong></li></ul><p>该工具适用于自动化操作，减少手动执行命令和打开文件的工作量。</p><hr><h2 id="功能列表"><a href="#功能列表" class="headerlink" title="功能列表"></a><strong>功能列表</strong></h2><h3 id="1-RunBat"><a href="#1-RunBat" class="headerlink" title="1. RunBat"></a><strong>1. RunBat</strong></h3><p><strong>功能</strong>：运行指定文件夹中的批处理文件（<code>起動.bat</code>）<br><strong>参数</strong>：<code>folderPath</code> - 批处理文件所在的文件夹路径  </p><pre><code class="language-vb">&#39;-----------------------------------------------&#39; 功能：运行指定文件夹中的批处理文件（起動.bat）&#39; 参数：folderPath - 批处理文件所在的文件夹路径&#39;-----------------------------------------------Public Sub RunBat(folderPath As String)    Dim wsh As Object    Dim batPath As String        &#39; 拼接批处理文件完整路径    batPath = folderPath &amp; &quot;\起動.bat&quot;        &#39; 判断文件是否存在    If Dir(batPath) &lt;&gt; &quot;&quot; Then        &#39; 创建 WScript.Shell 对象，用于执行命令行        Set wsh = CreateObject(&quot;WScript.Shell&quot;)                &#39; 使用 cmd.exe 打开命令行窗口，切换到指定目录并运行起動.bat        &#39; /k 表示执行后保持窗口打开        wsh.Run &quot;cmd.exe /k &quot;&quot;cd /d &quot; &amp; folderPath &amp; &quot; &amp; 起動.bat&quot;&quot;&quot;, 1, True    Else        &#39; 文件不存在时弹出提示框，并记录错误日志        MsgBox &quot;文件不存在：&quot; &amp; batPath, vbExclamation        LogError &quot;文件不存在：&quot; &amp; batPath    End IfEnd Sub&#39;-----------------------------------------------&#39; 功能：打开指定路径的 Excel 文件&#39; 参数：relativePath - 相对路径（相对于当前工作簿路径）&#39;-----------------------------------------------Public Sub OpenExcelTool(relativePath As String)    Dim filePath As String        &#39; 拼接 Excel 文件完整路径    filePath = ThisWorkbook.Path &amp; &quot;\&quot; &amp; relativePath        &#39; 判断文件是否存在    If Dir(filePath) &lt;&gt; &quot;&quot; Then        &#39; 打开 Excel 文件        Workbooks.Open filePath    Else        &#39; 文件不存在时弹出提示框，并记录错误日志        MsgBox &quot;Excel 文件不存在：&quot; &amp; filePath, vbExclamation        LogError &quot;Excel 文件不存在：&quot; &amp; filePath    End IfEnd Sub&#39;-----------------------------------------------&#39; 功能：记录错误信息到日志文件&#39; 参数：errorMsg - 错误信息&#39;-----------------------------------------------Public Sub LogError(errorMsg As String)    Dim logFile As String    Dim fNum As Integer        &#39; 日志文件路径（与当前工作簿同目录）    logFile = ThisWorkbook.Path &amp; &quot;\ErrorLog.txt&quot;        &#39; 获取空闲文件号    fNum = FreeFile        &#39; 以追加模式打开日志文件，并写入当前时间和错误信息    Open logFile For Append As #fNum    Print #fNum, Now &amp; &quot; - &quot; &amp; errorMsg    Close #fNumEnd Sub&#39;-----------------------------------------------&#39; 功能：运行服务器工具的批处理文件&#39;-----------------------------------------------Public Sub RunServerBat()    &#39; 调用 RunBat 方法，传入服务器工具路径    RunBat &quot;C:\Users\Desktop\TOOL\ServerTool&quot;End Sub&#39;-----------------------------------------------&#39; 功能：打开 ITA 测试工具 Excel 文件&#39;-----------------------------------------------Public Sub OpenITATestTool()    &#39; 调用 OpenExcelTool 方法，传入 ITA 测试工具相对路径    OpenExcelTool &quot;TOOL\ITATestTool\ITaTestTool.xlsm&quot;End Sub</code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> VBA </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> TOOL </tag>
-            
-        </tags>
       
     </entry>
     
