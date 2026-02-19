@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    📘 こけている | Sun Blog
+    Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -658,99 +658,122 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  post.ejs
-  文章详情页模板
+  category.ejs
+  分类页面模板
   功能：
-    - 显示文章标题
-    - 显示文章发布日期和标签
-    - 渲染文章正文内容
+    - 显示分类标题
+    - 遍历当前分类下所有文章
+    - 渲染文章卡片列表
+    - 当分类下无文章时显示提示
 -->
 
-<article class="post">
-  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
+<section class="main-section">
+  <!-- 页面主容器，控制布局和样式 -->
+
+  <!-- 分类标题 -->
+  <h2 class="section-title">📘 TOOL 分类</h2>
+  <!-- emoji 📘 用于视觉增强 -->
+  <!-- TOOL 动态输出当前页面所属分类名称 -->
+  <!-- 显示示例：📘 Java 分类 -->
+
+  <div class="post-list">
+    <!-- 文章列表容器，用于放置文章卡片 -->
+
+    
+    <!-- 判断当前分类下是否有文章 -->
+    <!-- page.posts → 当前页面文章数组 -->
+    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
+
+      
+      <!-- 遍历当前分类下每篇文章 post -->
+      <!-- post 对象包含文章标题、路径、日期、分类、标签、摘要等信息 -->
+
+        <!--
+  _partial/post-card.ejs
+  功能：
+    - 渲染单篇文章的卡片
+    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
+    - 可在分类页、标签页、归档页复用
+-->
+
+<article class="post-card">
+  <!-- 单篇文章卡片容器，用于布局和样式 -->
 
   <!-- 文章标题 -->
-  <h1 class="post-title">📘 こけている</h1>
-  <!-- page.title → 当前文章标题 -->
+  <h3 class="post-title">
+    <a href="/2026/02/18/1771489495316/">tool.hta</a>
+    <!-- 链接到文章详情页 -->
+    <!-- url_for(post.path) → 生成文章路径 -->
+    <!-- post.title → 当前文章标题 -->
+  </h3>
 
-  <!-- 文章元信息：发布日期 + 标签 -->
-  <div class="post-meta">
-    <span>发表于 2025-12-15</span>
+  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
+  <p class="post-meta">
+    发布于 2026-02-19
     <!-- 显示文章发布日期 -->
 
-    
-      <!-- 判断文章是否有标签 -->
-
-      <span>标签：
+     |
+      分类：
+      
+        <a href="/categories/TOOL/">TOOL</a>
         
-          <a href="/tags/%E6%97%A5%E8%AF%AD%E5%8D%95%E8%AF%8D/">日语单词</a>
-          
-          <!-- 遍历文章标签，生成标签链接 -->
-          <!-- 多个标签用逗号分隔 -->
-        
-      </span>
-
+        <!-- 遍历文章分类 -->
+        <!-- 多个分类用逗号分隔 -->
+      
     
-    <!-- 标签判断结束 -->
-  </div>
+
+     |
+      标签：
+      
+        <a href="/tags/TOOL/">TOOL</a>
+        
+        <!-- 遍历文章标签 -->
+        <!-- 多个标签用逗号分隔 -->
+      
+    
+  </p>
   <!-- 文章元信息结束 -->
 
-  <!-- 文章正文内容 -->
-  <div class="post-content">
+  <!-- 文章摘要 -->
+  <p class="post-excerpt">
+    
     
 
-    
-      <h2 id="1-基本意味"><a href="#1-基本意味" class="headerlink" title="1. 基本意味"></a>1. 基本意味</h2><p>「こけている」是动词 <strong>こける</strong> 的 <strong>ている形</strong>。  </p>
-<ul>
-<li><strong>こける</strong>：主要意思是 <strong>摔倒、跌倒</strong>。  </li>
-<li>「こけている」表示 <strong>正在摔倒的状态</strong> 或 <strong>已经摔倒并处于倒下的样子</strong>。</li>
-</ul>
-<hr>
-<h2 id="2-语感（ニュアンス）"><a href="#2-语感（ニュアンス）" class="headerlink" title="2. 语感（ニュアンス）"></a>2. 语感（ニュアンス）</h2><ul>
-<li><strong>动作进行中</strong>：正在摔倒的瞬间。  </li>
-<li><strong>结果状态</strong>：摔倒后保持倒下的样子。  </li>
-<li><strong>口语化</strong>：常用于日常会话，带有轻松或随意的语感。</li>
-</ul>
-<p>👉 根据语境，可以是 <strong>动作的进行</strong> 或 <strong>结果的持续</strong>。</p>
-<hr>
-<h2 id="3-使用场景"><a href="#3-使用场景" class="headerlink" title="3. 使用场景"></a>3. 使用场景</h2><ul>
-<li><strong>日常生活</strong>：描述有人摔倒。  </li>
-<li><strong>比喻用法</strong>：形容失败或状况不好。  </li>
-<li><strong>轻松语气</strong>：朋友之间的随口表达。</li>
-</ul>
-<hr>
-<h2 id="4-例句"><a href="#4-例句" class="headerlink" title="4. 例句"></a>4. 例句</h2><ul>
-<li><p>子供が道でこけている。<br>（孩子在路上摔倒了。）</p>
-</li>
-<li><p>彼は階段でこけているところを見られた。<br>（他在楼梯摔倒的样子被看见了。）</p>
-</li>
-<li><p>試合でこけている選手を助けた。<br>（帮助了在比赛中摔倒的选手。）</p>
-</li>
-</ul>
-<hr>
-<h2 id="5-类似表現"><a href="#5-类似表現" class="headerlink" title="5. 类似表現"></a>5. 类似表現</h2><ul>
-<li><strong>転ぶ（ころぶ）</strong>：摔倒，更常见、更标准的说法。  </li>
-<li><strong>倒れる（たおれる）</strong>：倒下，强调彻底倒下。  </li>
-<li><strong>滑る（すべる）</strong>：滑倒。</li>
-</ul>
-<hr>
-<h2 id="6-英语対応"><a href="#6-英语対応" class="headerlink" title="6. 英语対応"></a>6. 英语対応</h2><p>根据语境不同：  </p>
-<ul>
-<li><strong>fall &#x2F; be falling</strong>（正在摔倒）  </li>
-<li><strong>be down &#x2F; lying on the ground</strong>（已经摔倒的状态）  </li>
-<li><strong>trip</strong>（绊倒）</li>
-</ul>
-<hr>
-<h2 id="✅-総まとめ"><a href="#✅-総まとめ" class="headerlink" title="✅ 総まとめ"></a>✅ 総まとめ</h2><p>「こけている」是「こける」的进行形，表示 <strong>正在摔倒或已经摔倒的状态</strong>。<br>常用于口语，语感轻松，也可比喻为 <strong>失败或状况不佳</strong>。</p>
 
-      <!-- 渲染文章正文 HTML -->
-      <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
-    
+
+ツール
+
+&amp;lt;HTA:APPLICATION  ID&amp;#x3D;”OpsLauncher”  APPLICATIONNAME&amp;#x3D;”OpsLauncher”  BORDER&amp;#x3D...
+  </p>
+
+  <!-- 操作按钮容器 -->
+  <div class="post-actions">
+    <!-- 阅读全文按钮 -->
+    <a href="/2026/02/18/1771489495316/" class="read-more">阅读全文 →</a>
+    <!-- 编辑按钮 -->
+    <button onclick="openEditor('_posts/1771489495316.md')" class="read-more">✏️ 编辑</button>
   </div>
-  <!-- 文章正文结束 -->
+  <!-- 链接到文章详情页 -->
+  <!-- CSS class "read-more" 用于样式化按钮 -->
 
 </article>
-<!-- 单篇文章容器结束 -->
+<!-- 单篇文章卡片结束 -->
+
+        <!-- 调用局部模板 _partial/post-card.ejs 渲染文章卡片 -->
+        <!-- 将当前文章对象 post 传入模板 -->
+        <!--  输出 HTML，不转义，保证标签正常显示 -->
+
+      
+      <!-- 遍历文章结束 -->
+
+    
+    <!-- 条件判断结束 -->
+
+  </div>
+  <!-- 文章列表容器结束 -->
+
+</section>
+<!-- 页面主容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
