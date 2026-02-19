@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    IF項目（key-value）➡ JSON（request情報） | Sun Blog
+    SQL生成工具 | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -363,7 +363,7 @@
           <li>
             <a href="/categories/ITA/">
               <span class="sidebar-name">ITA</span>
-              <span class="sidebar-count">3</span>
+              <span class="sidebar-count">2</span>
             </a>
           </li>
         
@@ -377,7 +377,7 @@
           <li>
             <a href="/categories/TOOL/">
               <span class="sidebar-name">TOOL</span>
-              <span class="sidebar-count">1</span>
+              <span class="sidebar-count">6</span>
             </a>
           </li>
         
@@ -391,7 +391,7 @@
           <li>
             <a href="/categories/VBA/">
               <span class="sidebar-name">VBA</span>
-              <span class="sidebar-count">7</span>
+              <span class="sidebar-count">3</span>
             </a>
           </li>
         
@@ -472,6 +472,13 @@
       
         
           <li>
+            <a href="/tags/hta/">
+              <span class="sidebar-name">.hta</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
             <a href="/tags/A5M2/">
               <span class="sidebar-name">A5M2</span>
               <span class="sidebar-count">1</span>
@@ -481,6 +488,13 @@
           <li>
             <a href="/tags/AI%E7%BB%84%E5%90%88/">
               <span class="sidebar-name">AI组合</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/API%E8%AF%B7%E6%B1%82/">
+              <span class="sidebar-name">API请求</span>
               <span class="sidebar-count">1</span>
             </a>
           </li>
@@ -516,7 +530,14 @@
           <li>
             <a href="/tags/TOOL/">
               <span class="sidebar-name">TOOL</span>
-              <span class="sidebar-count">9</span>
+              <span class="sidebar-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/VBA/">
+              <span class="sidebar-name">VBA</span>
+              <span class="sidebar-count">4</span>
             </a>
           </li>
         
@@ -702,12 +723,12 @@
   <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
   <!-- 文章标题 -->
-  <h1 class="post-title">IF項目（key-value）➡ JSON（request情報）</h1>
+  <h1 class="post-title">SQL生成工具</h1>
   <!-- page.title → 当前文章标题 -->
 
   <!-- 文章元信息：发布日期 + 标签 -->
   <div class="post-meta">
-    <span>发表于 2025-12-23</span>
+    <span>发表于 2026-02-19</span>
     <!-- 显示文章发布日期 -->
 
     
@@ -715,7 +736,7 @@
 
       <span>标签：
         
-          <a href="/tags/TOOL/">TOOL</a>
+          <a href="/tags/VBA/">VBA</a>
           
           <!-- 遍历文章标签，生成标签链接 -->
           <!-- 多个标签用逗号分隔 -->
@@ -732,188 +753,333 @@
     
 
     
-      <p>‘&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>‘【概要】<br>‘ 本宏用于将当前激活工作表中的“树型结构”数据导出为 JSON 文件。<br>‘ 支持多级嵌套结构及数组结构（key以”_list”结尾）。<br>‘<br>‘【代码处理流程】<br>‘ 1. 计算有效数据的最大行与最大列。<br>‘ 2. 调用递归函数 ParseRows 将工作表内容解析为 JSON 字符串。<br>‘ 3. 若有多余的逗号结尾，进行清理。<br>‘ 4. 弹出保存对话框，选择文件保存路径。<br>‘ 5. 使用 FileSystemObject 写入 JSON 内容到文件。<br>‘ 6. 完成后弹窗提示。<br>‘&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
-<p>‘——————————————-<br>‘ 主过程：导出树型结构数据为 JSON 文件<br>‘——————————————-<br>Sub ExportJsonFromExcelTreeLikeData()<br>    ‘ 定义并获取当前激活工作表<br>    Dim ws As Worksheet<br>    Set ws &#x3D; ActiveSheet</p>
-<pre><code>&#39; 计算有效数据的最后一列（最大有数据的列号）
-Dim lastCol As Long
-lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
+      <style>
+  table.sweb-report {
+    border-collapse: collapse;
+    width: 90%;
+    margin: 30px auto;
+    font-family: 'Segoe UI', 'Meiryo', 'Arial', sans-serif;
+    font-size: 15px;
+    background: #fcfcfc;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+  table.sweb-report th, table.sweb-report td {
+    border: 1px solid #d8d8d8;
+    padding: 8px 12px;
+    text-align: center;
+    background: #fff;
+    transition: background 0.15s;
+  }
+  table.sweb-report th {
+    background: #0177cb;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  table.sweb-report tr.title-row th {
+    background: linear-gradient(90deg, #eaf0fa, #e3eaff 80%);
+    color: #15335c;
+    font-size: 18px;
+    text-align: left;
+    border: none;
+    padding: 16px;
+    letter-spacing: 2px;
+  }
+  table.sweb-report tr.meta-row td {
+    background: #f1f7fb;
+    color: #448;
+    text-align: left;
+    border: none;
+    font-size: 13px;
+    padding: 7px 16px;
+    font-weight: 500;
+  }
+  table.sweb-report tr.data-title td {
+    background: #fffbe6;
+    color: #887444;
+    text-align: left;
+    font-weight: 600;
+    border: none;
+    padding: 10px 16px;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  /* 橘黄色专用于カラム名（和名）列，包括表头和所有数据行（包括最后一行） */
+  table.sweb-report td.col-jp, 
+  table.sweb-report th.col-jp {
+    background: #ffe3c1 !important;
+    color: #ba6900 !important;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+  /* 数据区数据色加深（深蓝）*/
+  table.sweb-report tr.data-row td:not(.col-jp) {
+    background: #a3c9e8 !important;
+    color: #15335c !important;
+    font-weight: 600;
+  }
+  /* 给最后一行除了第一列以外添加白色 */
+  table.sweb-report tr.last-row td:not(.col-jp) {
+    background: #fff !important;
+    color: #383838 !important;
+    font-weight: 400;
+  }
+  /* 鼠标悬停行高亮 */
+  table.sweb-report tr:not(.title-row):not(.meta-row):hover td {
+    background: #e7f5fe !important;
+    transition: background 0.2s;
+  }
+</style>
+<table class="sweb-report">
+  <tr class="title-row">
+    <th colspan="5">テスト用SQL生成_シート名【テストデータ】</th>
+  </tr>
+  <tr class="meta-row">
+    <td colspan="3">作成者</td>
+    <td colspan="2">修正者</td>
+  </tr>
+  <tr class="meta-row">
+    <td colspan="3">作成日</td>
+    <td colspan="2">修正日</td>
+  </tr>
+  <tr class="data-title">
+    <td colspan="5">テストデータ</td>
+  </tr>
+  <tr class="data-title">
+    <td colspan="5">テーブル名：商品</td>
+  </tr>
+  <tr>
+    <th class="col-jp">カラム名（和名）</th>
+    <th>WEB申込商品ID</th>
+    <th>WEB申込商品名称</th>
+    <th>分類区分</th>
+    <th>体系区分</th>
+  </tr>
+  <tr class="data-row">
+    <td class="col-jp">データ型</td>
+    <td>CHAR</td>
+    <td>VARCHAR2</td>
+    <td>CHAR</td>
+    <td>CHAR</td>
+  </tr>
+  <tr class="data-row">
+    <td class="col-jp">桁数</td>
+    <td>4</td>
+    <td>50</td>
+    <td>1</td>
+    <td>1</td>
+  </tr>
+  <tr class="data-row">
+    <td class="col-jp">小数以下桁数</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr class="data-row">
+    <td class="col-jp">NULL</td>
+    <td>不可</td>
+    <td>不可</td>
+    <td>不可</td>
+    <td>不可</td>
+  </tr>
+  <tr class="data-row">
+    <td class="col-jp">主キー</td>
+    <td>1</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr class="last-row">
+    <td class="col-jp">01</td>
+    <td>0000</td>
+    <td>WEB申込商品名称</td>
+    <td>1</td>
+    <td>1</td>
+  </tr>
+</table>
 
-&#39; 计算有效数据的最后一行（各列中最大有数据的行号）
-Dim lastRow As Long
-Dim c As Long
-lastRow = 1
-For c = 1 To lastCol
-    &#39; 获取每列最后一个有数据的行号
-    Dim lr As Long
-    lr = ws.Cells(ws.Rows.Count, c).End(xlUp).Row
-    &#39; 更新最大行号
-    If lr &gt; lastRow Then lastRow = lr
-Next c
+<pre style="background:#282c34; color:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08); font-size:13px; line-height:1.6; padding:18px 20px; overflow:auto;">
+Sub createSQL()
+    Dim ws As Worksheet
+    Dim currentRow As Long
+    Dim lastRow As Long
+    Dim tableName As String
+    Dim itemsName As String
+    Dim endCol As Long
+    Dim dataTypeRange As Range
+    Dim dataStartRow As Long
+    Dim sqlOutputColumn As Long
+    Dim insertSQL As String
+    Dim sqlFileContent As String
+    Dim emptyRowCount As Long
+    Dim startInsert As Boolean
 
-&#39; 将表格区域内容解析成 JSON 字符串
-Dim json As String
-json = ParseRows(ws, 1, lastRow, 1, lastCol)
+    ' アクティブシートを設定
+    Set ws = ActiveSheet
 
-&#39; 删除末尾多余逗号
-If Right(json, 1) = &quot;,&quot; Then json = Left(json, Len(json) - 1)
-&#39; 外层用大括号包裹
-json = &quot;{&quot; &amp; json &amp; &quot;}&quot;
+    ' 最終行を取得（A列から空白20行連続の場合終了）
+    lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
 
-&#39; 选择保存路径与文件名（弹出保存文件对话框，默认文件名 output.json.txt）
-Dim savePath As String
-savePath = Application.GetSaveAsFilename(&quot;output.json.txt&quot;, &quot;Text Files (*.txt), *.txt&quot;)
-&#39; 用户取消时直接退出
-If savePath = &quot;False&quot; Then Exit Sub
+    ' 初期設定
+    currentRow = 4 ' スキャン開始行（A4セルから）
+    emptyRowCount = 0 ' 空白行カウント初期化
+    sqlFileContent = "" ' SQLファイル内容初期化
+    startInsert = False
 
-&#39; 创建文件系统对象并写入 JSON 到文件
-Dim fso As Object, ts As Object
-Set fso = CreateObject(&quot;Scripting.FileSystemObject&quot;)
-Set ts = fso.CreateTextFile(savePath, True, True)
-&#39; 写入 JSON 内容并关闭文件流
-ts.Write json
-ts.Close
+    Do While currentRow <= lastRow
+        ' A列が空白の場合、空白行カウントを増やす
+        If IsEmpty(ws.Cells(currentRow, "A").Value) Then
+            emptyRowCount = emptyRowCount + 1
 
-&#39; 提示导出完成，并显示保存路径
-MsgBox &quot;JSON取得完了: &quot; &amp; savePath, vbInformation
-</code></pre>
-<p>End Sub</p>
-<p>‘————————————————-<br>‘ 递归解析区域数据为 JSON 片段字符串<br>‘ ws       - 工作表对象<br>‘ startRow - 起始行号<br>‘ endRow   - 结束行号<br>‘ colLevel - 当前解析的层级（列号）<br>‘ maxLevel - 最大层级（列号）<br>‘ return   - 返回区域的 JSON 片段字符串<br>‘————————————————-<br>Function ParseRows(ws As Worksheet, startRow As Long, endRow As Long, colLevel As Long, maxLevel As Long) As String<br>    ‘ 当前层级的 JSON 结果字符串<br>    Dim result As String<br>    result &#x3D; “”<br>    ‘ 当前遍历到的行号<br>    Dim i As Long<br>    i &#x3D; startRow</p>
-<pre><code>Do While i &lt;= endRow
-    &#39; 获取本层级的 key（若本行本列为空则跳过）
-    Dim key As String
-    key = Trim(ws.Cells(i, colLevel).Value)
-    If key &lt;&gt; &quot;&quot; Then
-        &#39; 判断 key 是否以 &quot;_list&quot; 结尾（为数组类型）
-        Dim isListKey As Boolean
-        isListKey = (LCase(Right(key, 5)) = &quot;_list&quot;)
+            ' 空白行が20連続なら処理終了
+            If emptyRowCount >= 20 Then Exit Do
 
-        &#39; 标记是否有子级（下一级嵌套/分支），初始默认无
-        Dim hasChild As Boolean
-        hasChild = False
-
-        &#39; 判断下一行是否在下一级层级有 key（用于判定有分支）
-        If i + 1 &lt;= endRow And colLevel &lt; maxLevel Then
-            Dim nextLevelHasKey As Boolean
-            nextLevelHasKey = False
-            Dim k As Long
-            For k = colLevel + 1 To maxLevel - 1
-                &#39; 检查下一行更右侧是否有 key
-                If Trim(ws.Cells(i + 1, k).Value) &lt;&gt; &quot;&quot; Then
-                    nextLevelHasKey = True
-                    Exit For
-                End If
-            Next k
-            If nextLevelHasKey Then hasChild = True
-        End If
-
-        &#39; 写入 key 字符串
-        result = result &amp; &quot;&quot;&quot;&quot; &amp; key &amp; &quot;&quot;&quot;:&quot;
-
-        If isListKey Then
-            &#39;----------------------------
-            &#39; &quot;_list&quot;型（数组结构）处理
-            &#39;----------------------------
-            Dim objs As String
-            objs = &quot;&quot;  &#39; 用以存储所有元素的 JSON
-            Dim curRow As Long
-            curRow = i + 1  &#39; 指向数组第一个对象的起始行
-
-            &#39; 循环处理数组中的每个对象元素
-            Do While curRow &lt;= endRow
-                &#39; 下一级（colLevel+1）如果没有字段说明，数组结束
-                If Trim(ws.Cells(curRow, colLevel + 1).Value) = &quot;&quot; Then Exit Do
-                Dim obj As String
-                obj = &quot;&quot;  &#39; 存储单个对象的 JSON
-                Dim startObjRow As Long
-                startObjRow = curRow  &#39; 本对象起始行
-                Dim nextObjRow As Long
-                nextObjRow = curRow  &#39; 用于遍历本对象的字段及内容
-
-                &#39; 遍历对象的所有字段行
-                Do
-                    Dim field As String
-                    field = Trim(ws.Cells(nextObjRow, colLevel + 1).Value)
-                    &#39; 字段为空，对象结构结束
-                    If field = &quot;&quot; Then Exit Do
-                    &#39; 获取字段的值（最后一级列的内容，作为 value）
-                    Dim value As String
-                    value = ws.Cells(nextObjRow, maxLevel).Value
-                    &#39; 写入字段所对应的 JSON key-value
-                    obj = obj &amp; &quot;&quot;&quot;&quot; &amp; field &amp; &quot;&quot;&quot;:&quot;&quot;&quot; &amp; EscJson(value) &amp; &quot;&quot;&quot;,&quot;
-                    &#39; 下移到下一行
-                    nextObjRow = nextObjRow + 1
-                    &#39; 超过表格最大行，对象结束
-                    If nextObjRow &gt; endRow Then Exit Do
-                    &#39; 如果字段名重复且不是第一行，认为是新对象起始（防止同一字段名作为多个对象内容分割）
-                    If Trim(ws.Cells(nextObjRow, colLevel + 1).Value) = field And nextObjRow &gt; startObjRow Then Exit Do
-                    &#39; 本层级有新 key，视为对象结束
-                    If Trim(ws.Cells(nextObjRow, colLevel).Value) &lt;&gt; &quot;&quot; Then Exit Do
-                Loop
-
-                &#39; 清理对象末尾的多余逗号
-                If Right(obj, 1) = &quot;,&quot; Then obj = Left(obj, Len(obj) - 1)
-                &#39; 用大括号包裹对象 JSON，并加入数组 JSON 字符串
-                objs = objs &amp; &quot;{&quot; &amp; obj &amp; &quot;},&quot;
-                &#39; 跳到下一个对象起始行
-                curRow = nextObjRow
-            Loop
-
-            &#39; 清理数组末尾多余逗号
-            If Right(objs, 1) = &quot;,&quot; Then objs = Left(objs, Len(objs) - 1)
-            &#39; 输出 JSON 数组
-            result = result &amp; &quot;[&quot; &amp; objs &amp; &quot;],&quot;
-            &#39; 行号跳到数组结束下一个 key 开始处
-            i = curRow - 1
-
-        ElseIf hasChild Then
-            &#39;----------------------------
-            &#39; 普通嵌套对象（递归处理分支）
-            &#39;----------------------------
-            Dim childStart As Long
-            childStart = i + 1  &#39; 子对象起始行
-            Dim childEnd As Long
-            childEnd = endRow   &#39; 子对象的结束行，默认到表尾
-            Dim x As Long
-            For x = i + 1 To endRow
-                &#39; 左侧新 key 出现，说明子对象结束
-                If Trim(ws.Cells(x, colLevel).Value) &lt;&gt; &quot;&quot; Then
-                    childEnd = x - 1
-                    Exit For
-                End If
-            Next x
-
-            &#39; 递归，获取子对象 JSON 字符串
-            Dim childJson As String
-            childJson = ParseRows(ws, childStart, childEnd, colLevel + 1, maxLevel)
-            &#39; 清理末尾逗号
-            If Right(childJson, 1) = &quot;,&quot; Then childJson = Left(childJson, Len(childJson) - 1)
-            &#39; 包裹成对象结构
-            result = result &amp; &quot;{&quot; &amp; childJson &amp; &quot;},&quot;
-            &#39; 行号跳到子对象最后一行
-            i = childEnd
+            currentRow = currentRow + 1 ' 次の行へ移動
+            GoTo SkipIteration ' 空白行の場合は次のループへ進む
 
         Else
-            &#39;----------------------------
-            &#39; 普通叶节点（直接取内容）
-            &#39;----------------------------
-            Dim val As String
-            val = &quot;&quot;
-            If colLevel &lt; maxLevel Then
-                val = ws.Cells(i, maxLevel).Value
-            End If
-            &#39; 将内容写入 JSON 并进行必要转码
-            result = result &amp; &quot;&quot;&quot;&quot; &amp; EscJson(val) &amp; &quot;&quot;&quot;,&quot;
+            emptyRowCount = 0 ' 空白行カウントリセット
         End If
-    End If
-    &#39; 遍历到下一行
-    i = i + 1
-Loop
-&#39; 返回本层级 JSON 结果
-ParseRows = result
-</code></pre>
-<p>End Function</p>
-<p>‘——————————————-<br>‘ 字符串 JSON 转义函数<br>‘ str - 待处理字符串<br>‘ return - 返回转码后的字符串<br>‘——————————————-<br>Function EscJson(str As String) As String<br>    ‘ 替换反斜杠为双反斜杠<br>    str &#x3D; Replace(str, “&quot;, “\“)<br>    ‘ 替换英文双引号为带转义的双引号<br>    str &#x3D; Replace(str, “”””, “&quot;“”)<br>    ‘ 替换换行回车为 \n<br>    str &#x3D; Replace(str, vbCrLf, “\n”)<br>    str &#x3D; Replace(str, vbLf, “\n”)<br>    ‘ 替换制表符为 \t<br>    str &#x3D; Replace(str, vbTab, “\t”)<br>    ‘ 返回处理结果<br>    EscJson &#x3D; str<br>End Function</p>
 
+        ' A列の値が「テーブル名：」の場合、テーブル名を取得
+        If ws.Cells(currentRow, "A").Value = "テーブル名：" Then
+            tableName = ws.Cells(currentRow, "B").Value ' B列からテーブル名を取得
+            If sqlFileContent <> "" Then
+                sqlFileContent = sqlFileContent & vbCrLf
+            End If
+            sqlFileContent = sqlFileContent & "-- " & tableName & vbCrLf
+            sqlFileContent = sqlFileContent & "TRUNCATE table " & tableName & ";" & vbCrLf
+            currentRow = currentRow + 1 ' 次の行へ移動
+
+        ElseIf ws.Cells(currentRow, "A").Value = "カラム名（和名）" Then
+            ' カラム名（和名）行の場合、項目名文のSQL文を作成
+            endCol = ws.Cells(currentRow, ws.Columns.Count).End(xlToLeft).Column ' 最終列を動的に取得
+            Set itemsRange = ws.Range(ws.Cells(currentRow, "B"), ws.Cells(currentRow, endCol))
+
+            itemsName = "("
+            Dim colIdx As Integer
+            For colIdx = 1 To itemsRange.Columns.Count
+                itemsName = itemsName & itemsRange.Cells(1, colIdx).Value ' データ値（B列～最終列）
+
+                ' カラム間の区切処理（最終のカラムには追加しない）
+                If colIdx < itemsRange.Columns.Count Then
+                    itemsName = itemsName & ", "
+                End If
+            Next colIdx
+            itemsName = itemsName & ")" ' 項目名文終了
+            currentRow = currentRow + 1 ' 次の行へ移動
+
+        ElseIf ws.Cells(currentRow, "A").Value = "データ型" Then
+            ' データ型行の場合、範囲を設定（B列から空白セルが現れるまで）
+            'Dim endCol As Long
+            'endCol = ws.Cells(currentRow, ws.Columns.Count).End(xlToLeft).Column ' 最終列を動的に取得
+            Set dataTypeRange = ws.Range(ws.Cells(currentRow, "B"), ws.Cells(currentRow, endCol))
+            dataStartRow = currentRow + 1 ' データ開始行を記録
+            sqlOutputColumn = endCol + 1 ' 出力列（右隣）
+            currentRow = currentRow + 1 ' 次の行へ移動
+
+        ElseIf IsNumeric(ws.Cells(currentRow, "A").Value) Then
+            ' データ行の場合、INSERT文を作成
+            If Not startInsert Then
+                startInsert = True
+                insertSQL = "INSERT INTO " & tableName & itemsName & " VALUES"
+                ' SQL文を出力（右隣のセル）
+                ws.Cells(currentRow - 1, sqlOutputColumn).Value = insertSQL
+                ' SQL文をファイル内容に追加
+                sqlFileContent = sqlFileContent & "INSERT INTO " & tableName & itemsName & vbCrLf & "VALUES" & vbCrLf
+            End If
+            insertSQL = "("
+
+            Dim colIndex As Integer
+            For colIndex = 1 To dataTypeRange.Columns.Count
+                Dim cellValue As Variant
+                Dim dataType As String
+
+                cellValue = ws.Cells(currentRow, colIndex + 1).Value ' データ値（B列～最終列）
+                dataType = dataTypeRange.Cells(1, colIndex).Value ' データ型
+
+                If IsEmpty(cellValue) Or cellValue = "" Then
+                    insertSQL = insertSQL & "NULL"
+                ElseIf dataType = "CHAR" Or dataType = "VARCHAR" Or dataType = "VARCHAR2" Or dataType = "DATE" Or dataType = "TIMESTAMP" Then
+                    insertSQL = insertSQL & "'" & cellValue & "'"
+                Else
+                    insertSQL = insertSQL & cellValue
+                End If
+
+                ' カラム間の区切処理（最終のカラムには追加しない）
+                If colIndex < dataTypeRange.Columns.Count Then
+                    insertSQL = insertSQL & ", "
+                End If
+            Next colIndex
+
+            If Not IsEmpty(ws.Cells(currentRow + 1, "A").Value) And IsNumeric(ws.Cells(currentRow + 1, "A").Value) Then
+                ' 最終行ではない
+                insertSQL = insertSQL & ")," ' INSERT文終了
+            Else
+                ' 最終行
+                insertSQL = insertSQL & ");" ' INSERT文終了
+                startInsert = False
+            End If
+
+            ' SQL文を出力（右隣のセル）
+            ws.Cells(currentRow, sqlOutputColumn).Value = insertSQL
+
+            ' SQL文をファイル内容に追加
+            sqlFileContent = sqlFileContent & insertSQL & vbCrLf
+
+            currentRow = currentRow + 1 ' 次のデータ行へ移動
+
+        Else
+            currentRow = currentRow + 1 ' 次の行へ移動
+        End If
+
+SkipIteration:
+    Loop
+
+    ' ファイル名抽出（Excelファイル名から特定部分を取得）
+    Dim workbookName As String, extractedFileName As String
+    workbookName = ThisWorkbook.Name ' Excelファイル名
+    extractedFileName = Mid(workbookName, InStr(workbookName, "_") + 1) ' _以降を抽出
+    extractedFileName = Mid(extractedFileName, InStr(extractedFileName, "】") + 1) ' _以降を抽出
+    extractedFileName = Left(extractedFileName, InStr(extractedFileName, "_") - 1) ' _まで抽出
+
+    If extractedFileName <> "" Then extractedFileName = extractedFileName & ".sql" Else extractedFileName = Left(workbookName, Len(workbookName) - Len(".xlsm")) & ".sql"
+
+    ' SQLファイルに出力（Excelファイルと同じフォルダーに保存）
+    Dim sqlFilePath As String
+    sqlFilePath = ThisWorkbook.Path & "\" & extractedFileName
+
+    ' Dim fileNum As Integer
+    ' fileNum = FreeFile
+    ' Open sqlFilePath For Output As fileNum
+    '     Print #fileNum, sqlFileContent
+    ' Close fileNum
+    ' SQLファイルにUTF-8 BOMなし形式で出力（ADODB.Streamオブジェクト使用）
+    Dim streamWithBOM As Object, streamWithoutBOM As Object
+    Set streamWithBOM = CreateObject("ADODB.Stream")
+    Set streamWithoutBOM = CreateObject("ADODB.Stream")
+    With streamWithBOM
+        .Charset = "UTF-8" ' UTF-8形式で設定（BOM付き）
+        .Type = 2 ' テキストモードで設定
+        .Open ' ストリームを開く
+        .WriteText sqlFileContent ' SQL文を書き込み
+        .Position = 3 ' BOM部分（3バイト）をスキップ
+        With streamWithoutBOM ' BOMなしストリームにコピーする処理開始
+            .Type = 1 ' バイナリモードに変更（必須）
+            .Open
+            streamWithBOM.CopyTo streamWithoutBOM
+            .SaveToFile sqlFilePath, 2 ' ファイルに保存（上書きモード）
+        End With
+        .Close ' ストリームを閉じる
+        Set streamWithoutBOM = Nothing ' オブジェクト開放
+        Set streamWithBOM = Nothing ' オブジェクト開放
+    End With
+
+    MsgBox "INSERT文: " & extractedFileName & " が生成されました！", vbInformation
+End Sub
+</pre>
       <!-- 渲染文章正文 HTML -->
       <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
     

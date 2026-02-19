@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <!-- 设置字符集为 UTF-8 -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 响应式布局，适配移动设备 -->
+
+  <!-- 页面标题 -->
+  <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
+  <!-- 否则只显示网站标题 config.title -->
+  <title>
+    IF項目（key-value）➡ JSON（request情報） | Sun Blog
+  </title>
+
+  <!-- 页面描述，用于 SEO -->
+  <meta name="description" content="一个记录开发、学习与生活点滴的博客">
+
+  <!-- ===== 全局样式引入 ===== -->
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/sidebar.css">
+  <link rel="stylesheet" href="/css/post-list.css">
+  <link rel="stylesheet" href="/css/page.css">
+  <link rel="stylesheet" href="/css/category.css">
+  <link rel="stylesheet" href="/css/archive.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <!-- 各模块样式，便于维护 -->
+
+  <!-- ===== 字体与图标 ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <!-- 网站 favicon 和 Google 字体 -->
+
+  <!-- ===== 登录状态检查 ===== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const onLoginPage = window.location.pathname.startsWith("/login");
+      if (!onLoginPage && !localStorage.getItem("isLoggedIn")) {
+        window.location.href = "/login/";
+      }
+      // 如果未登录且不在登录页，自动跳转到登录页
+    });
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  
+    <!-- ===== 顶部导航栏 ===== -->
+    <header class="top-nav">
+  <!-- ============================
+       顶部导航栏模块
+       功能：
+         - 显示网站 logo
+         - 提供主菜单导航
+         - 技术分类下拉菜单
+         - 新建笔记 / 关于我 / 我的项目 / 技能树
+         - 小屏幕汉堡菜单切换
+         - 退出登录按钮
+  ============================ -->
+
+  <!-- 网站 Logo -->
+  <div class="logo">
+    <a href="/">首页</a>
+    <!-- 点击跳转到网站首页 -->
+  </div>
+
+  <!-- 搜索栏（左侧显示） -->
+  <div class="search-bar" style="margin-right: auto; margin-left: 20px; position: relative;">
+    <input type="text" id="local-search-input" placeholder="搜索标题 / 内容 / 关键词..." autocomplete="off" />
+    <button id="search-btn">搜索</button>
+  </div>
+
+  <!-- 搜索结果抽屉（右侧滑出） -->
+  <div id="search-drawer" class="search-drawer">
+    <div class="drawer-header">
+      <h3>搜索结果 <span id="search-count" style="font-size:0.8rem; color:#666; font-weight:normal;"></span></h3>
+      <button id="close-drawer" aria-label="关闭">×</button>
+    </div>
+    <div id="drawer-content" class="drawer-content">
+      <div class="empty-state">请输入关键词进行搜索</div>
+    </div>
+  </div>
+
+  <!-- 汉堡按钮（小屏幕时显示） -->
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="切换菜单">☰</button>
+  <!-- onclick 调用 toggleMenu() 切换移动端菜单显示状态 -->
+
+  <!-- 主菜单容器 -->
+  <nav class="menu">
+
+    <!-- 普通菜单项 -->
+    <a href="/new-note/">新建笔记</a>
+    <a href="/notes/">笔记列表</a>
+    <a href="/archives/">时间轴</a>
+    <a href="/about/">关于我</a>
+    <a href="/projects/">项目集</a>
+    <a href="/skills/">技能树</a>
+    <button type="button" id="study-main-btn" class="menu-btn">学习资料</button>
+    <!-- 点击跳转到对应页面 -->
+
+    <!-- 技术分类下拉菜单 -->
+    <div class="dropdown">
+      <button class="menu-btn" type="button">技术分类</button>
+      <!-- 下拉按钮，点击显示分类列表 -->
+
+      <div class="dropdown-content">
+        
+          
+            <a href="/categories/01-%E8%A7%A3%E9%87%8A%E8%AF%B4%E6%98%8E/">01-解释说明</a>
+          
+            <a href="/categories/AI%E7%BB%84%E5%90%88/">AI组合</a>
+          
+            <a href="/categories/DB%E7%99%BB%E5%BD%95%E8%AE%BE%E7%BD%AE/">DB登录设置</a>
+          
+            <a href="/categories/ITA/">ITA</a>
+          
+            <a href="/categories/JUnit/">JUnit</a>
+          
+            <a href="/categories/TOOL/">TOOL</a>
+          
+            <a href="/categories/URL/">URL</a>
+          
+            <a href="/categories/VBA/">VBA</a>
+          
+            <a href="/categories/%E3%83%A1%E3%83%A2/">メモ</a>
+          
+            <a href="/categories/%E5%85%A8%E6%A0%88%E6%8A%80%E6%9C%AF%E6%B8%85%E5%8D%95/">全栈技术清单</a>
+          
+            <a href="/categories/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/">思维导图</a>
+          
+            <a href="/categories/%E6%97%A5%E8%AF%AD%E7%AC%94%E8%AE%B0/">日语笔记</a>
+          
+            <a href="/categories/%E6%A8%A1%E6%9D%BF/">模板</a>
+          
+            <a href="/categories/%E8%A8%AD%E8%A8%88%E6%9B%B8%E7%9B%B8%E9%96%A2/">設計書相関</a>
+          
+            <a href="/categories/%E8%AE%A1%E5%88%92/">计划</a>
+          
+            <a href="/categories/%E9%85%8D%E7%BD%AE/">配置</a>
+          
+            <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理</a>
+          
+        
+      </div>
+    </div>
+    <!-- 技术分类下拉菜单结束 -->
+
+    <!-- 退出登录按钮 -->
+    <button class="logout" onclick="logout()">退出</button>
+    <!-- 点击调用 logout() 清除登录状态并跳转登录页 -->
+
+  </nav>
+  <!-- 主菜单容器结束 -->
+
+</header>
+<!-- 顶部导航栏结束 -->
+
+<script>
+  // 全站搜索功能
+  const searchInput = document.getElementById('local-search-input');
+  const searchBtn = document.getElementById('search-btn');
+  const searchDrawer = document.getElementById('search-drawer');
+  const drawerContent = document.getElementById('drawer-content');
+  const closeDrawerBtn = document.getElementById('close-drawer');
+  const searchCount = document.getElementById('search-count');
+
+  let searchData = [];
+
+  // 加载搜索数据
+  async function loadSearchData() {
+    if (searchData.length > 0) return;
+    try {
+      const response = await fetch('/search.xml');
+      const str = await response.text();
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(str, "text/xml");
+      const entries = xml.querySelectorAll('entry');
+      
+      searchData = Array.from(entries).map(entry => {
+        return {
+          title: entry.querySelector('title')?.textContent || '',
+          content: entry.querySelector('content')?.textContent || '',
+          url: entry.querySelector('url')?.textContent || '',
+          categories: Array.from(entry.querySelectorAll('category')).map(c => c.textContent.trim()),
+          tags: Array.from(entry.querySelectorAll('tag')).map(t => t.textContent.trim())
+        };
+      });
+    } catch (e) {
+      console.error('Search data load failed:', e);
+      drawerContent.innerHTML = '<div class="error-state">搜索数据加载失败，请刷新重试</div>';
+    }
+  }
+
+  // 打开抽屉
+  function openDrawer() {
+    searchDrawer.classList.add('open');
+  }
+
+  // 关闭抽屉
+  function closeDrawer() {
+    searchDrawer.classList.remove('open');
+  }
+
+  // 执行搜索
+  async function performSearch() {
+    const term = searchInput.value.trim().toLowerCase();
+    
+    // 即使为空也打开抽屉，显示提示
+    openDrawer();
+
+    if (!term) {
+      drawerContent.innerHTML = '<div class="empty-state">请输入关键词开始搜索...</div>';
+      searchCount.textContent = '';
+      return;
+    }
+    
+    drawerContent.innerHTML = '<div class="loading-state">正在搜索...</div>';
+
+    // 确保数据已加载
+    if (searchData.length === 0) {
+      await loadSearchData();
+    }
+    
+    const keywords = term.split(/[\s\-]+/);
+    
+    const matched = searchData.filter(item => {
+      const title = item.title.toLowerCase();
+      const content = item.content.toLowerCase();
+      const meta = (item.categories.join(' ') + ' ' + item.tags.join(' ')).toLowerCase();
+      
+      return keywords.some(k => title.includes(k) || content.includes(k) || meta.includes(k));
+    });
+    
+    searchCount.textContent = `(共 ${matched.length} 条)`;
+
+    if (matched.length > 0) {
+      const html = matched.map(item => {
+        // 高亮关键词逻辑
+        let displayTitle = item.title;
+        let displayContent = item.content.replace(/<[^>]+>/g, "");
+        
+        // 简单截取预览
+        const snippetLength = 100;
+        // 尝试找到第一个关键词的位置
+        let firstIndex = -1;
+        for (const k of keywords) {
+          const idx = displayContent.toLowerCase().indexOf(k);
+          if (idx !== -1) {
+            firstIndex = idx;
+            break;
+          }
+        }
+        
+        let start = 0;
+        if (firstIndex > 20) {
+          start = firstIndex - 20;
+        }
+        
+        let snippet = displayContent.substring(start, start + snippetLength);
+        if (start > 0) snippet = '...' + snippet;
+        if (start + snippetLength < displayContent.length) snippet = snippet + '...';
+
+        // 简单的关键词高亮（不区分大小写替换）
+        keywords.forEach(k => {
+          if(!k) return;
+          const reg = new RegExp(`(${k})`, 'gi');
+          displayTitle = displayTitle.replace(reg, '<mark>$1</mark>');
+          snippet = snippet.replace(reg, '<mark>$1</mark>');
+        });
+
+        return `
+          <a href="${item.url}" class="search-item">
+            <div class="search-item-title">${displayTitle}</div>
+            <div class="search-item-content">${snippet}</div>
+            <div class="search-item-meta">
+              ${item.categories.length ? `<span class="tag category">${item.categories[0]}</span>` : ''}
+              ${item.tags.map(t => `<span class="tag">#${t}</span>`).join(' ')}
+            </div>
+          </a>
+        `;
+      }).join('');
+      drawerContent.innerHTML = html;
+    } else {
+      drawerContent.innerHTML = '<div class="empty-state">没有找到相关内容</div>';
+    }
+  }
+
+  // 按钮点击触发搜索
+  if (searchBtn) {
+    searchBtn.addEventListener('click', function() {
+      performSearch();
+    });
+  }
+
+  // 回车触发搜索
+  searchInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      performSearch();
+    }
+  });
+
+  // 关闭按钮事件
+  if (closeDrawerBtn) {
+    closeDrawerBtn.addEventListener('click', closeDrawer);
+  }
+
+  // 点击遮罩层关闭（如果在抽屉外点击）
+  // 这里我们做一个简单的处理：如果点击了主内容区域，也可以关闭
+  document.addEventListener('click', function(e) {
+    // 如果抽屉打开，且点击的不是抽屉本身，也不是搜索框/按钮
+    if (searchDrawer.classList.contains('open') && 
+        !searchDrawer.contains(e.target) && 
+        !searchInput.contains(e.target) && 
+        e.target !== searchBtn) {
+      closeDrawer();
+    }
+  });
+</script>
+
+    <!-- 导入 header 部分模板 -->
+
+    <!-- ===== 侧边栏 ===== -->
+    <aside class="sidebar" id="sidebar">
+  <!-- ============================
+       侧边栏模块
+       功能：
+         - 自动读取 Hexo 分类数据
+         - 自动读取 Hexo 标签数据
+         - 渲染为分类导航和标签云
+  ============================ -->
+
+  <!-- 分类导航 -->
+  <details class="sidebar-widget">
+    <summary class="sidebar-title">📘 分类导航</summary>
+    <ul class="category-list">
+      
+        
+          <li>
+            <a href="/categories/01-%E8%A7%A3%E9%87%8A%E8%AF%B4%E6%98%8E/">
+              <span class="sidebar-name">01-解释说明</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/AI%E7%BB%84%E5%90%88/">
+              <span class="sidebar-name">AI组合</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/DB%E7%99%BB%E5%BD%95%E8%AE%BE%E7%BD%AE/">
+              <span class="sidebar-name">DB登录设置</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/ITA/">
+              <span class="sidebar-name">ITA</span>
+              <span class="sidebar-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/JUnit/">
+              <span class="sidebar-name">JUnit</span>
+              <span class="sidebar-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/TOOL/">
+              <span class="sidebar-name">TOOL</span>
+              <span class="sidebar-count">6</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/URL/">
+              <span class="sidebar-name">URL</span>
+              <span class="sidebar-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/VBA/">
+              <span class="sidebar-name">VBA</span>
+              <span class="sidebar-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/%E3%83%A1%E3%83%A2/">
+              <span class="sidebar-name">メモ</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/%E5%85%A8%E6%A0%88%E6%8A%80%E6%9C%AF%E6%B8%85%E5%8D%95/">
+              <span class="sidebar-name">全栈技术清单</span>
+              <span class="sidebar-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/">
+              <span class="sidebar-name">思维导图</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/%E6%97%A5%E8%AF%AD%E7%AC%94%E8%AE%B0/">
+              <span class="sidebar-name">日语笔记</span>
+              <span class="sidebar-count">59</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/%E6%A8%A1%E6%9D%BF/">
+              <span class="sidebar-name">模板</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/%E8%A8%AD%E8%A8%88%E6%9B%B8%E7%9B%B8%E9%96%A2/">
+              <span class="sidebar-name">設計書相関</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/%E8%AE%A1%E5%88%92/">
+              <span class="sidebar-name">计划</span>
+              <span class="sidebar-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/%E9%85%8D%E7%BD%AE/">
+              <span class="sidebar-name">配置</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">
+              <span class="sidebar-name">项目管理</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+      
+    </ul>
+  </details>
+
+  <!-- 分割线 -->
+  <div class="sidebar-divider"></div>
+
+  <!-- 标签云 -->
+  <details class="sidebar-widget">
+    <summary class="sidebar-title">🏷️ 标签云</summary>
+    <ul class="tag-list">
+      
+        
+          <li>
+            <a href="/tags/hta/">
+              <span class="sidebar-name">.hta</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/A5M2/">
+              <span class="sidebar-name">A5M2</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/AI%E7%BB%84%E5%90%88/">
+              <span class="sidebar-name">AI组合</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/API%E8%AF%B7%E6%B1%82/">
+              <span class="sidebar-name">API请求</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/Controller/">
+              <span class="sidebar-name">Controller</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/Oracle/">
+              <span class="sidebar-name">Oracle</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/PC%E9%85%8D%E7%BD%AE/">
+              <span class="sidebar-name">PC配置</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/PMO/">
+              <span class="sidebar-name">PMO</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/TOOL/">
+              <span class="sidebar-name">TOOL</span>
+              <span class="sidebar-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/VBA/">
+              <span class="sidebar-name">VBA</span>
+              <span class="sidebar-count">4</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/log/">
+              <span class="sidebar-name">log</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/%E3%83%A1%E3%83%A2/">
+              <span class="sidebar-name">メモ</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/%E5%85%A8%E6%A0%88%E6%8A%80%E6%9C%AF%E6%B8%85%E5%8D%95/">
+              <span class="sidebar-name">全栈技术清单</span>
+              <span class="sidebar-count">5</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/%E5%B7%A5%E5%85%B7/">
+              <span class="sidebar-name">工具</span>
+              <span class="sidebar-count">2</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/%E5%BC%8F%E6%A0%B7%E4%B9%A6%E5%81%9A%E6%88%90/">
+              <span class="sidebar-name">式样书做成</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/%E6%89%A7%E8%A1%8C%E7%B1%BB/">
+              <span class="sidebar-name">执行类</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/%E6%8A%80%E6%9C%AF%E7%82%B9%E8%AF%B4%E6%98%8E/">
+              <span class="sidebar-name">技术点说明</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/%E6%97%A5%E8%AF%AD%E5%8D%95%E8%AF%8D/">
+              <span class="sidebar-name">日语单词</span>
+              <span class="sidebar-count">44</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/">
+              <span class="sidebar-name">日语学习计划</span>
+              <span class="sidebar-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/%E6%97%A5%E8%AF%AD%E8%AF%AD%E6%B3%95/">
+              <span class="sidebar-name">日语语法</span>
+              <span class="sidebar-count">15</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/%E6%A6%82%E8%A6%81/">
+              <span class="sidebar-name">概要</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/%E8%A9%B3%E7%B4%B0%E8%A8%AD%E8%A8%88/">
+              <span class="sidebar-name">詳細設計</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/%E9%85%8D%E7%BD%AE/">
+              <span class="sidebar-name">配置</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+      
+    </ul>
+  </details>
+
+  <div class="sidebar-divider"></div>
+
+  <details class="sidebar-widget">
+    <summary class="sidebar-title" id="sidebar-study-title">📚 学习资料</summary>
+    <ul class="study-list">
+      <li>
+        <select id="file-type-select" style="width: 100%; padding: 6px 8px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem;">
+          <option value="pdf">PDF 文件</option>
+          <option value="image">图片文件</option>
+        </select>
+      </li>
+      <li>
+        <select id="category-select" style="width: 100%; margin-top: 6px; padding: 6px 8px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.85rem;">
+          <option value="bcs">标初上</option>
+          <option value="bcx">标初下</option>
+          <option value="bzs">标中上</option>
+          <option value="bzx">标中下</option>
+          <option value="bgs">标高上</option>
+          <option value="bgx">标高下</option>
+        </select>
+      </li>
+      <li>
+        <button type="button" id="pdf-upload-btn" style="width: 100%; padding: 8px 12px; border-radius: 6px; border: none; background: #0f766e; color: #fff; cursor: pointer; font-size: 0.9rem;">上传文件</button>
+      </li>
+      <li>
+        <input type="file" id="pdf-upload-input" accept="application/pdf" multiple style="width: 100%; margin-top: 8px; font-size: 0.85rem;">
+      </li>
+    </ul>
+    <div class="study-groups">
+      <div class="study-group collapsed">
+        <div class="study-group-title">标初上</div>
+        <ul id="study-bcs">
+          <li>暂无文件</li>
+        </ul>
+      </div>
+      <div class="study-group collapsed">
+        <div class="study-group-title">标初下</div>
+        <ul id="study-bcx">
+          <li>暂无文件</li>
+        </ul>
+      </div>
+      <div class="study-group collapsed">
+        <div class="study-group-title">标中上</div>
+        <ul id="study-bzs">
+          <li>暂无文件</li>
+        </ul>
+      </div>
+      <div class="study-group collapsed">
+        <div class="study-group-title">标中下</div>
+        <ul id="study-bzx">
+          <li>暂无文件</li>
+        </ul>
+      </div>
+      <div class="study-group collapsed">
+        <div class="study-group-title">标高上</div>
+        <ul id="study-bgs">
+          <li>暂无文件</li>
+        </ul>
+      </div>
+      <div class="study-group collapsed">
+        <div class="study-group-title">标高下</div>
+        <ul id="study-bgx">
+          <li>暂无文件</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+</aside>
+
+    <!-- 导入 sidebar 部分模板 -->
+  
+
+  <!-- ===== 主体内容区 ===== -->
+  <main id="main-content">
+    <!--
+  post.ejs
+  文章详情页模板
+  功能：
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
+-->
+
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
+
+  <!-- 文章标题 -->
+  <h1 class="post-title">IF項目（key-value）➡ JSON（request情報）</h1>
+  <!-- page.title → 当前文章标题 -->
+
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2026-02-19</span>
+    <!-- 显示文章发布日期 -->
+
+    
+      <!-- 判断文章是否有标签 -->
+
+      <span>标签：
+        
+          <a href="/tags/VBA/">VBA</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+      </span>
+
+    
+    <!-- 标签判断结束 -->
+  </div>
+  <!-- 文章元信息结束 -->
+
+  <!-- 文章正文内容 -->
+  <div class="post-content">
+    
+
+    
+      <p>‘&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>‘【概要】<br>‘ 本宏用于将当前激活工作表中的“树型结构”数据导出为 JSON 文件。<br>‘ 支持多级嵌套结构及数组结构（key以”_list”结尾）。<br>‘<br>‘【代码处理流程】<br>‘ 1. 计算有效数据的最大行与最大列。<br>‘ 2. 调用递归函数 ParseRows 将工作表内容解析为 JSON 字符串。<br>‘ 3. 若有多余的逗号结尾，进行清理。<br>‘ 4. 弹出保存对话框，选择文件保存路径。<br>‘ 5. 使用 FileSystemObject 写入 JSON 内容到文件。<br>‘ 6. 完成后弹窗提示。<br>‘&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<p>‘——————————————-<br>‘ 主过程：导出树型结构数据为 JSON 文件<br>‘——————————————-<br>Sub ExportJsonFromExcelTreeLikeData()<br>    ‘ 定义并获取当前激活工作表<br>    Dim ws As Worksheet<br>    Set ws &#x3D; ActiveSheet</p>
+<pre><code>&#39; 计算有效数据的最后一列（最大有数据的列号）
+Dim lastCol As Long
+lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
+
+&#39; 计算有效数据的最后一行（各列中最大有数据的行号）
+Dim lastRow As Long
+Dim c As Long
+lastRow = 1
+For c = 1 To lastCol
+    &#39; 获取每列最后一个有数据的行号
+    Dim lr As Long
+    lr = ws.Cells(ws.Rows.Count, c).End(xlUp).Row
+    &#39; 更新最大行号
+    If lr &gt; lastRow Then lastRow = lr
+Next c
+
+&#39; 将表格区域内容解析成 JSON 字符串
+Dim json As String
+json = ParseRows(ws, 1, lastRow, 1, lastCol)
+
+&#39; 删除末尾多余逗号
+If Right(json, 1) = &quot;,&quot; Then json = Left(json, Len(json) - 1)
+&#39; 外层用大括号包裹
+json = &quot;{&quot; &amp; json &amp; &quot;}&quot;
+
+&#39; 选择保存路径与文件名（弹出保存文件对话框，默认文件名 output.json.txt）
+Dim savePath As String
+savePath = Application.GetSaveAsFilename(&quot;output.json.txt&quot;, &quot;Text Files (*.txt), *.txt&quot;)
+&#39; 用户取消时直接退出
+If savePath = &quot;False&quot; Then Exit Sub
+
+&#39; 创建文件系统对象并写入 JSON 到文件
+Dim fso As Object, ts As Object
+Set fso = CreateObject(&quot;Scripting.FileSystemObject&quot;)
+Set ts = fso.CreateTextFile(savePath, True, True)
+&#39; 写入 JSON 内容并关闭文件流
+ts.Write json
+ts.Close
+
+&#39; 提示导出完成，并显示保存路径
+MsgBox &quot;JSON取得完了: &quot; &amp; savePath, vbInformation
+</code></pre>
+<p>End Sub</p>
+<p>‘————————————————-<br>‘ 递归解析区域数据为 JSON 片段字符串<br>‘ ws       - 工作表对象<br>‘ startRow - 起始行号<br>‘ endRow   - 结束行号<br>‘ colLevel - 当前解析的层级（列号）<br>‘ maxLevel - 最大层级（列号）<br>‘ return   - 返回区域的 JSON 片段字符串<br>‘————————————————-<br>Function ParseRows(ws As Worksheet, startRow As Long, endRow As Long, colLevel As Long, maxLevel As Long) As String<br>    ‘ 当前层级的 JSON 结果字符串<br>    Dim result As String<br>    result &#x3D; “”<br>    ‘ 当前遍历到的行号<br>    Dim i As Long<br>    i &#x3D; startRow</p>
+<pre><code>Do While i &lt;= endRow
+    &#39; 获取本层级的 key（若本行本列为空则跳过）
+    Dim key As String
+    key = Trim(ws.Cells(i, colLevel).Value)
+    If key &lt;&gt; &quot;&quot; Then
+        &#39; 判断 key 是否以 &quot;_list&quot; 结尾（为数组类型）
+        Dim isListKey As Boolean
+        isListKey = (LCase(Right(key, 5)) = &quot;_list&quot;)
+
+        &#39; 标记是否有子级（下一级嵌套/分支），初始默认无
+        Dim hasChild As Boolean
+        hasChild = False
+
+        &#39; 判断下一行是否在下一级层级有 key（用于判定有分支）
+        If i + 1 &lt;= endRow And colLevel &lt; maxLevel Then
+            Dim nextLevelHasKey As Boolean
+            nextLevelHasKey = False
+            Dim k As Long
+            For k = colLevel + 1 To maxLevel - 1
+                &#39; 检查下一行更右侧是否有 key
+                If Trim(ws.Cells(i + 1, k).Value) &lt;&gt; &quot;&quot; Then
+                    nextLevelHasKey = True
+                    Exit For
+                End If
+            Next k
+            If nextLevelHasKey Then hasChild = True
+        End If
+
+        &#39; 写入 key 字符串
+        result = result &amp; &quot;&quot;&quot;&quot; &amp; key &amp; &quot;&quot;&quot;:&quot;
+
+        If isListKey Then
+            &#39;----------------------------
+            &#39; &quot;_list&quot;型（数组结构）处理
+            &#39;----------------------------
+            Dim objs As String
+            objs = &quot;&quot;  &#39; 用以存储所有元素的 JSON
+            Dim curRow As Long
+            curRow = i + 1  &#39; 指向数组第一个对象的起始行
+
+            &#39; 循环处理数组中的每个对象元素
+            Do While curRow &lt;= endRow
+                &#39; 下一级（colLevel+1）如果没有字段说明，数组结束
+                If Trim(ws.Cells(curRow, colLevel + 1).Value) = &quot;&quot; Then Exit Do
+                Dim obj As String
+                obj = &quot;&quot;  &#39; 存储单个对象的 JSON
+                Dim startObjRow As Long
+                startObjRow = curRow  &#39; 本对象起始行
+                Dim nextObjRow As Long
+                nextObjRow = curRow  &#39; 用于遍历本对象的字段及内容
+
+                &#39; 遍历对象的所有字段行
+                Do
+                    Dim field As String
+                    field = Trim(ws.Cells(nextObjRow, colLevel + 1).Value)
+                    &#39; 字段为空，对象结构结束
+                    If field = &quot;&quot; Then Exit Do
+                    &#39; 获取字段的值（最后一级列的内容，作为 value）
+                    Dim value As String
+                    value = ws.Cells(nextObjRow, maxLevel).Value
+                    &#39; 写入字段所对应的 JSON key-value
+                    obj = obj &amp; &quot;&quot;&quot;&quot; &amp; field &amp; &quot;&quot;&quot;:&quot;&quot;&quot; &amp; EscJson(value) &amp; &quot;&quot;&quot;,&quot;
+                    &#39; 下移到下一行
+                    nextObjRow = nextObjRow + 1
+                    &#39; 超过表格最大行，对象结束
+                    If nextObjRow &gt; endRow Then Exit Do
+                    &#39; 如果字段名重复且不是第一行，认为是新对象起始（防止同一字段名作为多个对象内容分割）
+                    If Trim(ws.Cells(nextObjRow, colLevel + 1).Value) = field And nextObjRow &gt; startObjRow Then Exit Do
+                    &#39; 本层级有新 key，视为对象结束
+                    If Trim(ws.Cells(nextObjRow, colLevel).Value) &lt;&gt; &quot;&quot; Then Exit Do
+                Loop
+
+                &#39; 清理对象末尾的多余逗号
+                If Right(obj, 1) = &quot;,&quot; Then obj = Left(obj, Len(obj) - 1)
+                &#39; 用大括号包裹对象 JSON，并加入数组 JSON 字符串
+                objs = objs &amp; &quot;{&quot; &amp; obj &amp; &quot;},&quot;
+                &#39; 跳到下一个对象起始行
+                curRow = nextObjRow
+            Loop
+
+            &#39; 清理数组末尾多余逗号
+            If Right(objs, 1) = &quot;,&quot; Then objs = Left(objs, Len(objs) - 1)
+            &#39; 输出 JSON 数组
+            result = result &amp; &quot;[&quot; &amp; objs &amp; &quot;],&quot;
+            &#39; 行号跳到数组结束下一个 key 开始处
+            i = curRow - 1
+
+        ElseIf hasChild Then
+            &#39;----------------------------
+            &#39; 普通嵌套对象（递归处理分支）
+            &#39;----------------------------
+            Dim childStart As Long
+            childStart = i + 1  &#39; 子对象起始行
+            Dim childEnd As Long
+            childEnd = endRow   &#39; 子对象的结束行，默认到表尾
+            Dim x As Long
+            For x = i + 1 To endRow
+                &#39; 左侧新 key 出现，说明子对象结束
+                If Trim(ws.Cells(x, colLevel).Value) &lt;&gt; &quot;&quot; Then
+                    childEnd = x - 1
+                    Exit For
+                End If
+            Next x
+
+            &#39; 递归，获取子对象 JSON 字符串
+            Dim childJson As String
+            childJson = ParseRows(ws, childStart, childEnd, colLevel + 1, maxLevel)
+            &#39; 清理末尾逗号
+            If Right(childJson, 1) = &quot;,&quot; Then childJson = Left(childJson, Len(childJson) - 1)
+            &#39; 包裹成对象结构
+            result = result &amp; &quot;{&quot; &amp; childJson &amp; &quot;},&quot;
+            &#39; 行号跳到子对象最后一行
+            i = childEnd
+
+        Else
+            &#39;----------------------------
+            &#39; 普通叶节点（直接取内容）
+            &#39;----------------------------
+            Dim val As String
+            val = &quot;&quot;
+            If colLevel &lt; maxLevel Then
+                val = ws.Cells(i, maxLevel).Value
+            End If
+            &#39; 将内容写入 JSON 并进行必要转码
+            result = result &amp; &quot;&quot;&quot;&quot; &amp; EscJson(val) &amp; &quot;&quot;&quot;,&quot;
+        End If
+    End If
+    &#39; 遍历到下一行
+    i = i + 1
+Loop
+&#39; 返回本层级 JSON 结果
+ParseRows = result
+</code></pre>
+<p>End Function</p>
+<p>‘——————————————-<br>‘ 字符串 JSON 转义函数<br>‘ str - 待处理字符串<br>‘ return - 返回转码后的字符串<br>‘——————————————-<br>Function EscJson(str As String) As String<br>    ‘ 替换反斜杠为双反斜杠<br>    str &#x3D; Replace(str, “&quot;, “\“)<br>    ‘ 替换英文双引号为带转义的双引号<br>    str &#x3D; Replace(str, “”””, “&quot;“”)<br>    ‘ 替换换行回车为 \n<br>    str &#x3D; Replace(str, vbCrLf, “\n”)<br>    str &#x3D; Replace(str, vbLf, “\n”)<br>    ‘ 替换制表符为 \t<br>    str &#x3D; Replace(str, vbTab, “\t”)<br>    ‘ 返回处理结果<br>    EscJson &#x3D; str<br>End Function</p>
+
+      <!-- 渲染文章正文 HTML -->
+      <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+    
+  </div>
+  <!-- 文章正文结束 -->
+
+</article>
+<!-- 单篇文章容器结束 -->
+
+    <!-- 渲染当前页面内容 -->
+    <!--  保证 HTML 正常渲染，不转义 -->
+
+    <section id="study-main-panel" style="display:none; margin-top:24px;">
+      <h2 style="font-size:1.2rem; margin-bottom:12px;">📚 学习资料列表</h2>
+      <div id="study-main-groups">
+        <div class="study-group collapsed">
+          <div class="study-group-title">标初上</div>
+          <ul id="study-main-bcs">
+            <li>暂无文件</li>
+          </ul>
+        </div>
+        <div class="study-group collapsed">
+          <div class="study-group-title">标初下</div>
+          <ul id="study-main-bcx">
+            <li>暂无文件</li>
+          </ul>
+        </div>
+        <div class="study-group collapsed">
+          <div class="study-group-title">标中上</div>
+          <ul id="study-main-bzs">
+            <li>暂无文件</li>
+          </ul>
+        </div>
+        <div class="study-group collapsed">
+          <div class="study-group-title">标中下</div>
+          <ul id="study-main-bzx">
+            <li>暂无文件</li>
+          </ul>
+        </div>
+        <div class="study-group collapsed">
+          <div class="study-group-title">标高上</div>
+          <ul id="study-main-bgs">
+            <li>暂无文件</li>
+          </ul>
+        </div>
+        <div class="study-group collapsed">
+          <div class="study-group-title">标高下</div>
+          <ul id="study-main-bgx">
+            <li>暂无文件</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="study-viewer" style="display:none;position:fixed;inset:0;background:rgba(15,23,42,0.9);z-index:2000;align-items:center;justify-content:center;">
+    <div style="position:relative;width:96vw;max-width:1200px;max-height:96vh;background:#020617;padding:10px 16px 14px;border-radius:10px;box-shadow:0 22px 70px rgba(0,0,0,0.7);display:flex;flex-direction:column;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;color:#e5e7eb;font-size:0.95rem;">
+        <span id="study-viewer-title" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:75vw;"></span>
+        <button id="study-viewer-close" style="border:none;background:transparent;color:#e5e7eb;font-size:1.3rem;cursor:pointer;line-height:1;">×</button>
+      </div>
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;margin:4px 0 6px;">
+        <img id="study-viewer-img" src="" alt="" style="max-width:100%;max-height:84vh;border-radius:4px;background:#020617;" />
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:10px;">
+        <button id="study-viewer-prev" style="min-width:80px;padding:6px 12px;border-radius:6px;border:none;background:#1e293b;color:#e5e7eb;cursor:pointer;font-size:0.9rem;">上一张</button>
+        <button id="study-viewer-next" style="min-width:80px;padding:6px 12px;border-radius:6px;border:none;background:#1e293b;color:#e5e7eb;cursor:pointer;font-size:0.9rem;">下一张</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 全局脚本区域 ===== -->
+  <script>
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "/login/";
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function toggleMenu() {
+      const menu = document.querySelector('header.top-nav .menu');
+      if (menu) {
+        menu.classList.toggle('show');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const uploadInput = document.getElementById('pdf-upload-input');
+      const uploadBtn = document.getElementById('pdf-upload-btn');
+      const typeSelect = document.getElementById('file-type-select');
+      const categorySelect = document.getElementById('category-select');
+      const studyPanel = document.getElementById('study-main-panel');
+      const studyMainBtn = document.getElementById('study-main-btn');
+      const sidebarStudyTitle = document.getElementById('sidebar-study-title');
+      const viewer = document.getElementById('study-viewer');
+      const viewerImg = document.getElementById('study-viewer-img');
+      const viewerTitle = document.getElementById('study-viewer-title');
+      const viewerPrev = document.getElementById('study-viewer-prev');
+      const viewerNext = document.getElementById('study-viewer-next');
+      const viewerClose = document.getElementById('study-viewer-close');
+
+      const studyFilesMap = {};
+      let currentCategory = null;
+      let currentIndex = 0;
+
+      const CATEGORY_CONFIG = [
+        { key: 'bcs', label: '标初上' },
+        { key: 'bcx', label: '标初下' },
+        { key: 'bzs', label: '标中上' },
+        { key: 'bzx', label: '标中下' },
+        { key: 'bgs', label: '标高上' },
+        { key: 'bgx', label: '标高下' }
+      ];
+
+      function getListEl(key) {
+        return document.getElementById('study-' + key);
+      }
+
+      function getMainListEl(key) {
+        return document.getElementById('study-main-' + key);
+      }
+
+      function updateAccept() {
+        if (!uploadInput || !typeSelect) return;
+        if (typeSelect.value === 'image') {
+          uploadInput.accept = 'image/*';
+        } else {
+          uploadInput.accept = 'application/pdf';
+        }
+      }
+
+      function isLocalhost() {
+        return (
+          location.hostname === 'localhost' ||
+          location.hostname === '127.0.0.1' ||
+          location.hostname === ''
+        );
+      }
+
+      async function fetchStudyList(catKey) {
+        if (!isLocalhost()) {
+          try {
+            const apiRes = await fetch('/api/study-list?category=' + encodeURIComponent(catKey));
+            if (apiRes.ok) {
+              const apiData = await apiRes.json();
+              if (Array.isArray(apiData.files)) {
+                return apiData.files;
+              }
+            }
+          } catch (e) {
+          }
+        }
+
+        try {
+          const ghRes = await fetch(
+            'https://api.github.com/repos/Sun1105/hexo-source/contents/source/study/' + catKey
+          );
+          if (!ghRes.ok) {
+            return [];
+          }
+          const ghData = await ghRes.json();
+          return Array.isArray(ghData) ? ghData : [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      async function loadResources() {
+        for (const cat of CATEGORY_CONFIG) {
+          const sideList = getListEl(cat.key);
+          const mainList = getMainListEl(cat.key);
+
+          if (sideList) {
+            sideList.innerHTML = '<li>加载中...</li>';
+          }
+          if (mainList) {
+            mainList.innerHTML = '<li>加载中...</li>';
+          }
+
+          const list = await fetchStudyList(cat.key);
+          const files = Array.isArray(list)
+            ? list.filter(file => file.name && /\.(pdf|png|jpe?g|gif|webp|svg)$/i.test(file.name))
+            : [];
+
+          studyFilesMap[cat.key] = files;
+
+          if (!files.length) {
+            if (sideList) sideList.innerHTML = '<li>暂无文件</li>';
+            if (mainList) mainList.innerHTML = '<li>暂无文件</li>';
+            continue;
+          }
+
+          const parts = files.map((file, index) => {
+            const href =
+              file.download_url ||
+              file.html_url ||
+              (file.path ? '/' + file.path.replace(/^source\//, '') : '#');
+            return (
+              '<li>' +
+                '<a href="' + href + '" target="_blank" class="study-file-link" data-category="' +
+                cat.key + '" data-index="' + index + '">' +
+                  '<span class="sidebar-name">' + file.name + '</span>' +
+                '</a>' +
+              '</li>'
+            );
+          });
+
+          if (sideList) {
+            sideList.innerHTML = parts.join('');
+            bindStudyLinks(sideList);
+          }
+          if (mainList) {
+            mainList.innerHTML = parts.join('');
+            bindStudyLinks(mainList);
+          }
+        }
+      }
+
+      loadResources();
+
+      if (typeSelect) {
+        typeSelect.addEventListener('change', updateAccept);
+        updateAccept();
+      }
+
+      function openViewer(category, index) {
+        const list = studyFilesMap[category] || [];
+        if (!list.length) return;
+
+        if (index < 0) index = 0;
+        if (index >= list.length) index = list.length - 1;
+
+        const file = list[index];
+        const href =
+          file.download_url ||
+          file.html_url ||
+          (file.path ? '/' + file.path.replace(/^source\//, '') : '#');
+
+        currentCategory = category;
+        currentIndex = index;
+
+        if (viewerImg) {
+          viewerImg.src = href;
+        }
+        if (viewerTitle) {
+          viewerTitle.textContent = file.name || '';
+        }
+        if (viewer) {
+          viewer.style.display = 'flex';
+        }
+
+        if (viewerPrev) {
+          viewerPrev.disabled = index <= 0;
+        }
+        if (viewerNext) {
+          viewerNext.disabled = index >= list.length - 1;
+        }
+      }
+
+      function closeViewer() {
+        if (viewer) {
+          viewer.style.display = 'none';
+        }
+      }
+
+      function showOffset(delta) {
+        if (!currentCategory) return;
+        openViewer(currentCategory, currentIndex + delta);
+      }
+
+      function onStudyLinkClick(event) {
+        if (!viewer || !viewerImg) return;
+        event.preventDefault();
+        const category = this.getAttribute('data-category');
+        const index = parseInt(this.getAttribute('data-index'), 10) || 0;
+        openViewer(category, index);
+      }
+
+      function bindStudyLinks(container) {
+        const links = container.querySelectorAll('a.study-file-link');
+        links.forEach(link => {
+          link.addEventListener('click', onStudyLinkClick);
+        });
+      }
+
+      function showStudyPanel() {
+        if (!studyPanel) return;
+        const main = document.getElementById('main-content');
+        if (main) {
+          const children = Array.from(main.children);
+          children.forEach(child => {
+            if (child.id === 'study-main-panel') {
+              child.style.display = 'block';
+            } else {
+              child.style.display = 'none';
+            }
+          });
+          main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      if (studyMainBtn) {
+        studyMainBtn.addEventListener('click', () => {
+          showStudyPanel();
+          loadResources();
+        });
+      }
+
+      // 左侧“学习资料”标题只负责展开侧边栏，不再强制切换主内容
+
+      const groupTitles = document.querySelectorAll('.study-group-title');
+      groupTitles.forEach(title => {
+        const group = title.parentElement;
+        const list = group.querySelector('ul');
+        if (!list) return;
+        title.addEventListener('click', () => {
+          group.classList.toggle('collapsed');
+        });
+      });
+
+      if (uploadBtn && uploadInput) {
+        uploadBtn.addEventListener('click', () => {
+          if (!uploadInput.files || !uploadInput.files.length) {
+            alert('请选择要上传的文件');
+            return;
+          }
+
+          const files = Array.from(uploadInput.files);
+          const type = typeSelect ? typeSelect.value : 'pdf';
+          const category = categorySelect ? categorySelect.value : 'bcs';
+
+          const invalid = files.some(file => {
+            if (type === 'pdf') {
+              return !file.name.toLowerCase().endsWith('.pdf');
+            }
+            if (type === 'image') {
+              return !file.type.startsWith('image/');
+            }
+            return true;
+          });
+
+          if (invalid) {
+            if (type === 'pdf') {
+              alert('仅支持扩展名为 .pdf 的文件');
+            } else if (type === 'image') {
+              alert('仅支持图片文件');
+            } else {
+              alert('文件类型不支持');
+            }
+            return;
+          }
+
+          uploadBtn.disabled = true;
+          uploadBtn.textContent = '上传中...';
+
+          let successCount = 0;
+          let failCount = 0;
+
+          function uploadAt(index) {
+            if (index >= files.length) {
+              const message = '上传完成：成功 ' + successCount + ' 个，失败 ' + failCount + ' 个';
+              alert(message);
+              uploadInput.value = '';
+              loadResources();
+              uploadBtn.disabled = false;
+              uploadBtn.textContent = '上传文件';
+              return;
+            }
+
+            const file = files[index];
+            const reader = new FileReader();
+
+            reader.onload = event => {
+              (async () => {
+                try {
+                  const arrayBuffer = event.target.result;
+                  const bytes = new Uint8Array(arrayBuffer);
+                  let binary = '';
+                  for (let i = 0; i < bytes.byteLength; i++) {
+                    binary += String.fromCharCode(bytes[i]);
+                  }
+                  const base64 = btoa(binary);
+
+                  const res = await fetch('/api/upload-pdf', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                      filename: file.name,
+                      content: base64,
+                      type,
+                      category
+                    })
+                  });
+
+                  if (res.ok) {
+                    successCount += 1;
+                  } else {
+                    try {
+                      const errData = await res.json();
+                      if (errData && errData.error) {
+                        console.error('上传失败', file.name, errData.error);
+                      }
+                    } catch (e2) {}
+                    failCount += 1;
+                  }
+                } catch (e) {
+                  failCount += 1;
+                } finally {
+                  uploadAt(index + 1);
+                }
+              })();
+            };
+
+            reader.onerror = () => {
+              failCount += 1;
+              uploadAt(index + 1);
+            };
+
+            reader.readAsArrayBuffer(file);
+          }
+
+          uploadAt(0);
+        });
+      }
+
+      if (viewerClose) {
+        viewerClose.addEventListener('click', () => {
+          closeViewer();
+        });
+      }
+
+      if (viewerPrev) {
+        viewerPrev.addEventListener('click', () => {
+          showOffset(-1);
+        });
+      }
+
+      if (viewerNext) {
+        viewerNext.addEventListener('click', () => {
+          showOffset(1);
+        });
+      }
+
+      if (viewer) {
+        viewer.addEventListener('click', event => {
+          if (event.target === viewer) {
+            closeViewer();
+          }
+        });
+      }
+
+      document.addEventListener('keydown', event => {
+        if (!viewer || viewer.style.display === 'none') return;
+        if (event.key === 'Escape') {
+          closeViewer();
+        } else if (event.key === 'ArrowLeft') {
+          showOffset(-1);
+        } else if (event.key === 'ArrowRight') {
+          showOffset(1);
+        }
+      });
+    });
+  </script>
+
+  <!-- ===== 可选的“返回顶部”按钮 ===== -->
+  <button id="backToTop" title="回到顶部">↑</button>
+
+  <script>
+    // ===== 返回顶部按钮逻辑 =====
+    const topBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      // 当页面向下滚动超过 300px 显示按钮，否则隐藏
+      topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    topBtn.addEventListener('click', scrollToTop);
+    // 点击按钮触发平滑滚动到顶部
+  </script>
+
+  <!-- ===== Mermaid 流程图支持 ===== -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    
+    document.addEventListener("DOMContentLoaded", async () => {
+      mermaid.initialize({ startOnLoad: false, theme: 'default' });
+
+      // 查找并转换 mermaid 代码块
+      const mermaidBlocks = document.querySelectorAll('pre > code.language-mermaid');
+      if (mermaidBlocks.length > 0) {
+        mermaidBlocks.forEach(block => {
+          const content = block.textContent;
+          const pre = block.parentElement;
+          const div = document.createElement('div');
+          div.className = 'mermaid';
+          div.textContent = content;
+          pre.parentNode.replaceChild(div, pre);
+        });
+
+        // 渲染
+        await mermaid.run({
+          querySelector: '.mermaid'
+        });
+      }
+    });
+  </script>
+  <!-- ===== 引入编辑器弹窗组件 ===== -->
+  <div id="editorModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index: 1000;">
+  <div style="background:#fff; width:90%; max-width:800px; margin:50px auto; padding:20px; border-radius:8px; position:relative; max-height: 90vh; overflow-y: auto;">
+    <h2 id="editorTitle">编辑文章</h2>
+
+    <!-- 标题输入框 -->
+    <input type="text" id="noteTitle" placeholder="标题" style="width:100%; padding:8px; margin-bottom:10px;">
+
+    <!-- 文件名输入框 (新增) -->
+    <div style="margin-bottom: 10px; font-size: 0.85rem; color: #666; display: flex; align-items: center; gap: 10px;">
+        <label for="noteFilename" style="white-space: nowrap;">文件路径:</label>
+        <input type="text" id="noteFilename" placeholder="source/_posts/filename.md" style="flex: 1; padding: 5px; font-family: monospace; color: #555;">
+    </div>
+
+    <!-- 分类输入框 -->
+    <input type="text" id="noteCategory" placeholder="分类" style="width:100%; padding:8px; margin-bottom:10px;">
+
+    <!-- 标签输入框 -->
+    <input type="text" id="noteTags" placeholder="标签，用逗号分隔" style="width:100%; padding:8px; margin-bottom:10px;">
+
+    <!-- 内容输入框 -->
+    <textarea id="noteContent" rows="15" style="width:100%; padding:8px; font-family: monospace;"></textarea>
+
+    <!-- 保存/取消按钮 -->
+    <div style="margin-top:10px; display:flex; gap:10px;">
+      <button id="saveNoteBtn" style="flex:1; padding:10px; background:#28a745; color:#fff; border:none; border-radius:5px; cursor:pointer;">💾 保存</button>
+      <button id="cancelEditBtn" style="flex:1; padding:10px; background:#dc3545; color:#fff; border:none; border-radius:5px; cursor:pointer;">❌ 取消</button>
+    </div>
+
+    <!-- Markdown 实时预览 -->
+    <div id="preview" style="margin-top:20px; padding:10px; border:1px solid #ddd; border-radius:5px; background: #f9f9f9;"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  window.mermaid = mermaid;
+  mermaid.initialize({ startOnLoad: false });
+</script>
+<script>
+(function() {
+  const owner = "Sun1105";              // GitHub 用户名
+  const repo = "hexo-source";           // 仓库名
+  const postsDir = "source/_posts";     // 文章目录
+  let editingNote = null;               // 当前正在编辑的文章对象
+
+  const editorModal = document.getElementById('editorModal');
+  const noteTitle = document.getElementById('noteTitle');
+  const noteFilename = document.getElementById('noteFilename');
+  const noteCategory = document.getElementById('noteCategory');
+  const noteTags = document.getElementById('noteTags');
+  const noteContent = document.getElementById('noteContent');
+  const saveNoteBtn = document.getElementById('saveNoteBtn');
+  const cancelEditBtn = document.getElementById('cancelEditBtn');
+  const previewDiv = document.getElementById('preview');
+
+  // 渲染预览（含 Mermaid 支持）
+  const renderPreview = async (content) => {
+    const trimmed = content.trim();
+    // 检测是否为完整 HTML 文档
+    const isFullHtml = trimmed.match(/^\s*<!DOCTYPE/i) || trimmed.match(/^\s*<html/i);
+
+    if (isFullHtml) {
+        // 使用 iframe 渲染完整 HTML
+        previewDiv.innerHTML = '<iframe id="previewFrame" style="width:100%; height:500px; border:1px solid #eee;"></iframe>';
+        const frame = document.getElementById('previewFrame');
+        if (frame) {
+            const doc = frame.contentDocument || frame.contentWindow.document;
+            doc.open();
+            doc.write(content);
+            doc.close();
+        }
+        return;
+    }
+
+    // Markdown 渲染
+    previewDiv.innerHTML = marked.parse(content);
+
+    if (window.mermaid) {
+      const mermaidBlocks = previewDiv.querySelectorAll('code.language-mermaid');
+      if (mermaidBlocks.length > 0) {
+        mermaidBlocks.forEach(block => {
+          const content = block.textContent;
+          const pre = block.parentElement;
+          const div = document.createElement('div');
+          div.className = 'mermaid';
+          div.textContent = content;
+          if (pre && pre.parentNode) {
+            pre.parentNode.replaceChild(div, pre);
+          }
+        });
+        try {
+          await window.mermaid.run({ querySelector: '#preview .mermaid' });
+        } catch (e) {
+          console.error("Mermaid render error:", e);
+        }
+      }
+    }
+  };
+
+  // 暴露给全局的函数
+  window.openEditor = async function(pathOrFile) {
+    let file;
+    
+    if (!pathOrFile) {
+        // 新建文章
+        file = null;
+    } else if (typeof pathOrFile === 'string') {
+        // 如果传入的是字符串（路径），则获取文件信息
+        let cleanPath = pathOrFile.replace(/\\/g, '/'); // 确保是正斜杠
+        if (!cleanPath.startsWith('source/')) {
+            cleanPath = 'source/' + cleanPath;
+        }
+        
+        // 处理中文路径
+        const encodedPath = cleanPath.split('/').map(encodeURIComponent).join('/');
+
+        try {
+            console.log(`正在获取文件信息: ${encodedPath}`);
+            const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${encodedPath}`);
+            if (!res.ok) {
+                const errText = await res.text();
+                throw new Error(`无法获取文件信息 (Status: ${res.status}): ${errText}`);
+            }
+            file = await res.json();
+        } catch (e) {
+            console.error(e);
+            alert('获取文件失败: ' + e.message + '\n请检查控制台 (F12) 获取更多信息。');
+            return;
+        }
+    } else {
+        file = pathOrFile;
+    }
+
+    editingNote = file;
+    editorModal.style.display = "block";
+
+    if (!file) {
+        // 新建模式
+        noteTitle.value = "";
+        noteFilename.value = "source/_posts/" + Date.now() + ".md"; // 默认文件名
+        noteCategory.value = "";
+        noteTags.value = "";
+        noteContent.value = "";
+        previewDiv.innerHTML = "";
+        document.getElementById('editorTitle').innerText = "新建文章";
+        return;
+    }
+
+    // 编辑模式
+    document.getElementById('editorTitle').innerText = "编辑文章";
+    noteTitle.value = "加载中...";
+    noteFilename.value = file.path || ""; // 填充文件路径
+    noteContent.value = "加载中...";
+
+    try {
+      // 获取文件内容
+      let content = "";
+      if (file.content && file.encoding === 'base64') {
+          // 使用 TextDecoder 处理 UTF-8 字符，比 escape/decodeURIComponent 更现代且稳健
+          try {
+              const binaryString = window.atob(file.content.replace(/\n/g, ""));
+              const bytes = new Uint8Array(binaryString.length);
+              for (let i = 0; i < binaryString.length; i++) {
+                  bytes[i] = binaryString.charCodeAt(i);
+              }
+              content = new TextDecoder('utf-8').decode(bytes);
+          } catch (e) {
+              console.warn("TextDecoder failed, falling back to legacy decode:", e);
+              content = decodeURIComponent(escape(window.atob(file.content.replace(/\n/g, ""))));
+          }
+      } else if (file.download_url) {
+          // 文件较大时（>1MB），API 不返回 content，需从 download_url 获取
+          console.log("File content too large, fetching from download_url...");
+          const rawRes = await fetch(file.download_url);
+          if (!rawRes.ok) {
+              throw new Error(`无法从 download_url 获取内容: ${rawRes.status}`);
+          }
+          content = await rawRes.text();
+      } else {
+          // 兜底：如果 API 返回结构不符合预期
+          if (file.content) {
+             // 非 base64 编码？直接使用
+             content = file.content;
+          } else {
+             throw new Error("未找到文件内容 (No content field and no download_url)");
+          }
+      }
+
+      // 解析Front Matter
+      // 使用 js-yaml 解析
+      const parts = content.split(/^---$/m);
+      if (parts.length >= 3) {
+        const frontMatterRaw = parts[1];
+        const body = parts.slice(2).join('---').trim();
+        
+        try {
+            const frontMatter = jsyaml.load(frontMatterRaw);
+            
+            // 标题
+            noteTitle.value = frontMatter.title || "";
+            
+            // 分类
+            if (frontMatter.categories) {
+                if (Array.isArray(frontMatter.categories)) {
+                    // 如果是数组，展平并用逗号分隔
+                    noteCategory.value = frontMatter.categories.flat().join(", ");
+                } else {
+                    noteCategory.value = frontMatter.categories;
+                }
+            } else if (frontMatter.category) {
+                 // 兼容 category 字段
+                 if (Array.isArray(frontMatter.category)) {
+                    noteCategory.value = frontMatter.category.flat().join(", ");
+                } else {
+                    noteCategory.value = frontMatter.category;
+                }
+            } else {
+                noteCategory.value = "";
+            }
+
+            // 标签
+            if (frontMatter.tags) {
+                if (Array.isArray(frontMatter.tags)) {
+                    noteTags.value = frontMatter.tags.flat().join(", ");
+                } else {
+                    noteTags.value = frontMatter.tags;
+                }
+            } else {
+                noteTags.value = "";
+            }
+
+        } catch (e) {
+            console.error("YAML parsing error:", e);
+            alert("YAML 解析失败，请手动检查 Front Matter 格式");
+        }
+
+        noteContent.value = body;
+        renderPreview(body);
+
+      } else {
+        // 没有Front Matter
+        noteTitle.value = file.name.replace(/\.md$/, '');
+        noteContent.value = content;
+        renderPreview(content);
+      }
+
+    } catch (e) {
+      console.error(e);
+      noteContent.value = "读取内容失败: " + e.message;
+    }
+  };
+
+  // 监听输入，实时预览
+  noteContent.addEventListener('input', () => {
+    renderPreview(noteContent.value);
+  });
+
+  // 关闭
+  cancelEditBtn.onclick = () => {
+    editorModal.style.display = "none";
+    editingNote = null;
+  };
+
+  // 点击外部关闭
+  window.onclick = (event) => {
+    if (event.target == editorModal) {
+      editorModal.style.display = "none";
+      editingNote = null;
+    }
+  };
+
+  // 保存
+  saveNoteBtn.onclick = async () => {
+    const title = noteTitle.value.trim();
+    const content = noteContent.value;
+    const categories = noteCategory.value.trim();
+    const tags = noteTags.value.trim();
+    let filepath = noteFilename.value.trim();
+
+    if (!title) {
+      alert("请输入标题");
+      return;
+    }
+    
+    if (!filepath) {
+        alert("请输入文件路径");
+        return;
+    }
+    
+    // 确保路径以 source/ 开头 (可选，视需求而定，Hexo通常在source下)
+    if (!filepath.startsWith('source/')) {
+        filepath = 'source/' + filepath;
+    }
+    // 确保以 .md 结尾
+    if (!filepath.endsWith('.md')) {
+        filepath += '.md';
+    }
+
+    // 构造新的文件内容（含 Front Matter）
+    let newFileContent = "---\n";
+    newFileContent += `title: ${title}\n`;
+    newFileContent += `date: ${new Date().toISOString()}\n`;
+    if (categories) newFileContent += `categories: [${categories}]\n`;
+    if (tags) newFileContent += `tags: [${tags}]\n`;
+    newFileContent += "---\n\n";
+    newFileContent += content;
+
+    // Base64 编码
+    // const contentBase64 = window.btoa(unescape(encodeURIComponent(newFileContent)));
+    // API 期望直接的字符串，它会在后端进行 Base64 编码
+    
+    const sha = editingNote ? editingNote.sha : null;
+    // const path = editingNote ? editingNote.path : `source/_posts/${Date.now()}-${title}.md`;
+    
+    // 使用用户指定的文件路径
+    // 注意：如果是重命名（修改了路径），sha 应该为 null（视为新文件），或者后端支持移动操作
+    // 这里简化处理：如果路径变了，就视为创建新文件。旧文件依然存在（除非后端有处理逻辑）。
+    // 真正的重命名需要 delete old + create new
+    
+    const isRename = editingNote && (editingNote.path !== filepath);
+    const finalSha = isRename ? null : sha; 
+    
+    const payload = {
+        path: filepath,
+        message: sha ? `Update ${title}` : `Create ${title}`,
+        content: newFileContent, // 直接发送内容，后端处理 Base64
+        sha: finalSha
+    };
+
+    // 决定调用哪个后端 API (本地代理)
+    // 注意：这里我们调用本地的 Serverless Function 或者 Next.js API 路由
+    // 如果是纯 Hexo 静态站，通常没有后端。
+    // 但用户之前的 new-note.js 暗示了有 Vercel API 支持。
+    // 我们需要确认 API 路径。根据之前的分析，API 在 api/ 目录下。
+    // Vercel 会将 api/ 目录下的文件部署为 Serverless Functions。
+    // 假设路径是 /api/new-note 和 /api/edit-note
+
+    // 修复：如果是重命名（isRename=true）或者新建文件（!editingNote），finalSha 为 null
+    // 此时应该调用 /api/new-note，而不是 /api/edit-note
+    const apiUrl = finalSha ? '/api/edit-note' : '/api/new-note';
+
+    saveNoteBtn.disabled = true;
+    saveNoteBtn.innerText = "保存中...";
+
+    try {
+        const res = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        
+        if (res.ok) {
+            alert("保存成功！即将刷新...");
+            location.reload();
+        } else {
+            alert("保存失败: " + (data.error || JSON.stringify(data)));
+        }
+    } catch (e) {
+        console.error(e);
+        alert("请求失败: " + e.message);
+    } finally {
+        saveNoteBtn.disabled = false;
+        saveNoteBtn.innerText = "💾 保存";
+    }
+  };
+})();
+</script>
+</body>
+</html>

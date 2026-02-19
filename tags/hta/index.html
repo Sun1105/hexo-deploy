@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    变量词典 | Sun Blog
+    Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -363,7 +363,7 @@
           <li>
             <a href="/categories/ITA/">
               <span class="sidebar-name">ITA</span>
-              <span class="sidebar-count">3</span>
+              <span class="sidebar-count">2</span>
             </a>
           </li>
         
@@ -377,7 +377,7 @@
           <li>
             <a href="/categories/TOOL/">
               <span class="sidebar-name">TOOL</span>
-              <span class="sidebar-count">1</span>
+              <span class="sidebar-count">6</span>
             </a>
           </li>
         
@@ -391,7 +391,7 @@
           <li>
             <a href="/categories/VBA/">
               <span class="sidebar-name">VBA</span>
-              <span class="sidebar-count">7</span>
+              <span class="sidebar-count">3</span>
             </a>
           </li>
         
@@ -472,6 +472,13 @@
       
         
           <li>
+            <a href="/tags/hta/">
+              <span class="sidebar-name">.hta</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
             <a href="/tags/A5M2/">
               <span class="sidebar-name">A5M2</span>
               <span class="sidebar-count">1</span>
@@ -481,6 +488,13 @@
           <li>
             <a href="/tags/AI%E7%BB%84%E5%90%88/">
               <span class="sidebar-name">AI组合</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/API%E8%AF%B7%E6%B1%82/">
+              <span class="sidebar-name">API请求</span>
               <span class="sidebar-count">1</span>
             </a>
           </li>
@@ -516,7 +530,14 @@
           <li>
             <a href="/tags/TOOL/">
               <span class="sidebar-name">TOOL</span>
-              <span class="sidebar-count">9</span>
+              <span class="sidebar-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/VBA/">
+              <span class="sidebar-name">VBA</span>
+              <span class="sidebar-count">4</span>
             </a>
           </li>
         
@@ -690,362 +711,117 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  post.ejs
-  文章详情页模板
+  tag.ejs
+  标签页面模板
   功能：
-    - 显示文章标题
-    - 显示文章发布日期和标签
-    - 渲染文章正文内容
+    - 显示当前标签名称
+    - 遍历该标签下的所有文章
+    - 渲染为文章卡片列表
 -->
 
-<article class="post">
-  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
+<section class="main-section">
+  <!-- 页面主容器，用于布局和样式控制 -->
+
+  <!-- 标签标题 -->
+  <h2 class="section-title">🏷️ .hta 标签</h2>
+  <!-- emoji 🏷️ 用于视觉增强 -->
+  <!-- .hta 动态输出当前页面所属标签名称 -->
+  <!-- 最终显示效果示例：🏷️ Java 标签 -->
+
+  <div class="post-list">
+    <!-- 文章列表容器，用于存放该标签下的所有文章卡片 -->
+
+    
+    <!-- 判断当前标签下是否有文章 -->
+    <!-- page.posts → 当前页面文章数组 -->
+    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
+
+      
+      <!-- 遍历每篇文章 post -->
+      
+        <!--
+  _partial/post-card.ejs
+  功能：
+    - 渲染单篇文章的卡片
+    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
+    - 可在分类页、标签页、归档页复用
+-->
+
+<article class="post-card">
+  <!-- 单篇文章卡片容器，用于布局和样式 -->
 
   <!-- 文章标题 -->
-  <h1 class="post-title">变量词典</h1>
-  <!-- page.title → 当前文章标题 -->
+  <h3 class="post-title">
+    <a href="/2026/02/19/1771489495316/">ツール一覧.hta</a>
+    <!-- 链接到文章详情页 -->
+    <!-- url_for(post.path) → 生成文章路径 -->
+    <!-- post.title → 当前文章标题 -->
+  </h3>
 
-  <!-- 文章元信息：发布日期 + 标签 -->
-  <div class="post-meta">
-    <span>发表于 2026-01-05</span>
+  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
+  <p class="post-meta">
+    发布于 2026-02-19
     <!-- 显示文章发布日期 -->
 
-    
-      <!-- 判断文章是否有标签 -->
-
-      <span>标签：
+     |
+      分类：
+      
+        <a href="/categories/TOOL/">TOOL</a>
         
-          <a href="/tags/TOOL/">TOOL</a>
-          
-          <!-- 遍历文章标签，生成标签链接 -->
-          <!-- 多个标签用逗号分隔 -->
-        
-      </span>
-
+        <!-- 遍历文章分类 -->
+        <!-- 多个分类用逗号分隔 -->
+      
     
-    <!-- 标签判断结束 -->
-  </div>
+
+     |
+      标签：
+      
+        <a href="/tags/hta/">.hta</a>
+        
+        <!-- 遍历文章标签 -->
+        <!-- 多个标签用逗号分隔 -->
+      
+    
+  </p>
   <!-- 文章元信息结束 -->
 
-  <!-- 文章正文内容 -->
-  <div class="post-content">
+  <!-- 文章摘要 -->
+  <p class="post-excerpt">
+    
     
 
-    
-      <style>
-  .block-table {
-    border-collapse: separate;
-    border-spacing: 0;
-    margin: 32px 0 30px 0;
-    font-size: 15px;
-    width: 550px;
-    min-width: 350px;
-    max-width: 550px;
-    box-shadow: 0 3px 16px rgba(77,100,143,0.09);
-    border-radius: 8px;
-    overflow: hidden;
-    font-family: 'Segoe UI', 'Meiryo', 'Arial', sans-serif;
-    background: #fff;
-    table-layout: fixed;
-  }
-  .block-table caption {
-    caption-side: top;
-    text-align: left;
-    font-size: 17px;
-    font-weight: bold;
-    color: #1976d2;
-    margin-bottom: 9px;
-    padding-top: 12px;
-    letter-spacing: 1px;
-  }
-  .block-table th, .block-table td {
-    padding: 11px 8px;
-    border: none;
-    text-align: center;
-    transition: background 0.18s;
-    word-break: break-all;
-  }
-  .block-table th {
-    background: linear-gradient(90deg, #5c97e7 60%, #85d8f7 100%);
-    color: #fff;
-    font-weight: bold;
-    text-align: center;
-    font-size: 15px;
-    letter-spacing: 1px;
-  }
-  .block-table .header-secondary {
-    background: #eaf4ff;
-    color: #165291;
-    font-weight: 500;
-    text-align: center;
-    font-size: 15px;
-  }
-  .block-table tr:not(:last-child) td {
-    border-bottom: 1px solid #f0f3fa;
-  }
-  .block-table tr.row-label td:first-child,
-  .block-table tr.row-label th:first-child {
-    background: #f6f7fb;
-    color: #4685c7;
-    font-weight: 600;
-    width: 70px;
-    letter-spacing: 1px;
-    text-align: right;
-    font-size: 14px;
-    border-radius: 0;
-  }
-  .block-table td {
-    background: #fff;
-    color: #23344d;
-    font-size: 14px;
-  }
-  .block-table td.empty {
-    background: #f7fafd;
-  }
-</style>
 
-<table class="block-table">
-  <caption>シート名：API定義作業用</caption>
-  <col style="width:70px;"><col style="width:96px;"><col style="width:96px;"><col style="width:96px;"><col style="width:96px;"><col style="width:96px;">
-  <tr>
-    <th></th>
-    <th>A列</th>
-    <th>B列</th>
-    <th>C列</th>
-    <th>D列</th>
-    <th>E列</th>
-  </tr>
-  <tr class="row-label">
-    <td>1行目</td>
-    <td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td>
-  </tr>
-  <tr class="row-label header-secondary">
-    <td>2行目</td>
-    <td></td>
-    <td>変換したい日本語</td>
-    <td>変換後の英語<br>（スネークケース）</td>
-    <td>変換後の英語<br>（キャメルケース）</td>
-    <td>大文字</td>
-    <td class="empty"></td>
-  </tr>
-  <tr class="row-label">
-    <td>3行目</td>
-    <td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td>
-  </tr>
-</table>
 
-<table class="block-table">
-  <caption>シート名：辞書</caption>
-  <col style="width:70px;"><col style="width:96px;"><col style="width:96px;"><col style="width:96px;"><col style="width:96px;">
-  <tr>
-    <th></th>
-    <th>A列</th>
-    <th>B列</th>
-    <th>C列</th>
-    <th style="background:#f7fafd;"></th>
-  </tr>
-  <tr class="row-label">
-    <td>1行目</td>
-    <td colspan="4" style="text-align:left;color:#1967a7;font-weight:700;font-size:14px;background:#f6f7fb;">■辞書</td>
-  </tr>
-  <tr class="row-label header-secondary">
-    <td>2行目</td>
-    <td class="empty"></td>
-    <td>日本語単語</td>
-    <td>対応する英単語</td>
-    <td class="empty"></td>
-  </tr>
-  <tr class="row-label">
-    <td>3行目</td>
-    <td class="empty"></td>
-    <td>日時</td>
-    <td>datetime</td>
-    <td class="empty"></td>
-  </tr>
-</table>
+ツール
 
-<pre style="background:#282c34; color:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08); font-size:13px; line-height:1.7; padding:18px 20px; overflow:auto;">
-Sub 日本語から変換()
-    Dim searchRange As Range
-    Dim searchCondition As String
-    Dim originalSearchCondition As String
-    Dim foundCell As Range
-    Dim result As String
-    Dim startRow As Integer
-    Dim originalWordLen As Integer
-    Dim completeWordLen As Integer
+&amp;lt;HTA:APPLICATION  ID&amp;#x3D;”OpsLauncher”  APPLICATIONNAME&amp;#x3D;”OpsLauncher”  BORDER&amp;#x3D...
+  </p>
 
-    ' 開始行
-    startRow = 3
-
-    Do
-        ' 検索条件セルの値を取得
-        originalSearchCondition = Cells(startRow, 2)
-        ' 最初に取得した値を別の変数に値をコピーする
-        searchCondition = Cells(startRow, 2)
-        
-        Set searchRange = Range("辞書!B3:B5000")
-        
-        completeWordLen = 0
-        originalWordLen = Len(originalSearchCondition)
-        
-        found = ""
-        result_snake = ""
-        result_camel = ""
-        foundFlag = ""
-        
-        Do
-            Set foundCell = searchRange.Find(searchCondition, LookAt:=xlWhole)
-            If Not foundCell Is Nothing Then
-                ' 完全一致するものが存在する場合
-                found = foundCell.Offset(0, 1).Value
-                If found <> "" Then
-                    If Not result_snake = "" Then
-                        result_snake = result_snake + "_" + found
-                        result_camel = result_camel + UCase(Left(found, 1)) + Mid(found, 2)
-                    Else
-                        result_snake = found
-                        result_camel = found
-                    End If
-                End If
-                completeWordLen = completeWordLen + Len(searchCondition)
-            Else
-                ' 存在しなかった場合
-                Do
-                    If Not Len(searchCondition) = 1 Then
-                        ' 末尾一文字を削って新しい検索条件を作成
-                        searchCondition = Left(searchCondition, Len(searchCondition) - 1)
-                    End If
-                    ' 新しい検索条件での検索結果をセット
-                    Set foundCell = searchRange.Find(searchCondition, LookAt:=xlWhole)
-                Loop While foundCell Is Nothing And Len(searchCondition) > 1
-                
-                ' 一致するものが見つかった場合
-                If Not foundCell Is Nothing Then
-                    ' 結果に一致したセルの英単語を保存
-                    found = foundCell.Offset(0, 1).Value
-                    If found <> "" Then
-                        If Not result_snake = "" Then
-                            result_snake = result_snake + "_" + found
-                            result_camel = result_camel + UCase(Left(found, 1)) + Mid(found, 2)
-                        Else
-                            result_snake = found
-                            result_camel = found
-                        End If
-                    End If
-                    ' 先頭から何文字まで英語変換が完了したか保管
-                    completeWordLen = completeWordLen + Len(searchCondition)
-                    
-                    ' 検索完了した分の文字数を検索条件の先頭から削除したものを新しい検索条件とする
-                    searchCondition = Right(originalSearchCondition, Len(originalSearchCondition) - Len(searchCondition))
-                    originalSearchCondition = searchCondition
-                Else
-                    ascValue = Asc(searchCondition)
-                    If ascValue <> 95 Then
-                        If (ascValue >= 48 And ascValue <= 57) Or (ascValue >= 65 And ascValue <= 90) Or (ascValue >= 97 And ascValue <= 122) Then
-                            ' 半角数字、半角英字の場合はそのまま連結する、Errorではない、警告を出す
-                            If foundFlag = "" Then
-                                foundFlag = "Warn"
-                            End If
-                        Else
-                            foundFlag = "Error"
-                        End If
-                        ' 結果に検索条件の先頭１文字を保存
-                        result_snake = result_snake + searchCondition
-                        result_camel = result_camel + searchCondition
-                    End If
-                    
-                    ' 先頭から何文字まで英語変換が完了したか保管
-                    completeWordLen = completeWordLen + 1
-                    
-                    ' 検索完了した分の文字数を検索条件の先頭から削除したものを新しい検索条件とする
-                    searchCondition = Right(originalSearchCondition, Len(originalSearchCondition) - 1)
-                    originalSearchCondition = searchCondition
-                End If
-            End If
-        '　もともとの検索条件の文字数と変換が完了した文字数が一致するまで繰り返す
-        Loop While originalWordLen > completeWordLen
-        
-        ' 検索結果をセルに出力
-        Cells(startRow, 3).Value = result_snake
-        Cells(startRow, 4).Value = SnakeToCamel(result_camel)
-        Cells(startRow, 5).Value = UCase(result_snake)
-        Cells(startRow, 6).Value = foundFlag
-        startRow = startRow + 1
-        
-    ' 検索条件列に値が無くなるまで繰り返す
-    Loop While Not Cells(startRow, 2).Value = ""
-End Sub
-
-Function SnakeToCamel(ByVal inputStr As String) As String
-    Dim i As Long
-    Dim result As String
-    Dim isUnderscore As Boolean
-    
-    result = ""
-    isUnderscore = False
-    For i = 1 To Len(inputStr)
-        Dim currentChat As String
-        currentChat = Mid(inputStr, i, 1)
-        If currentChat = "_" Then
-            isUnderscore = True
-        Else
-            If isUnderscore Then
-                result = result & UCase(currentChat)
-                isUnderscore = False
-            Else
-                result = result & currentChat
-            End If
-        End If
-    Next i
-    SnakeToCamel = result
-    
-End Function
-
-Sub クリア_全部()
-    Dim startRow As Integer
-
-    ' 開始行
-    startRow = 3
-
-    Do
-        ' セルの値を削除
-        Cells(startRow, 2).Value = ""
-        Cells(startRow, 3).Value = ""
-        Cells(startRow, 4).Value = ""
-        Cells(startRow, 5).Value = ""
-        startRow = startRow + 1
-
-    ' 検索条件列に値が無くなるまで繰り返す
-    Loop While Not Cells(startRow, 2).Value = ""
-End Sub
-
-Sub クリア_変換結果()
-    Dim startRow As Integer
-
-    ' 開始行
-    startRow = 3
-
-    Do
-        ' 変換結果のセルの値を削除
-        Cells(startRow, 3).Value = ""
-        Cells(startRow, 4).Value = ""
-        Cells(startRow, 5).Value = ""
-        startRow = startRow + 1
-
-    ' 検索条件列に値が無くなるまで繰り返す
-    Loop While Not Cells(startRow, 2).Value = ""
-End Sub
-</pre>
-
-      <!-- 渲染文章正文 HTML -->
-      <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
-    
+  <!-- 操作按钮容器 -->
+  <div class="post-actions">
+    <!-- 阅读全文按钮 -->
+    <a href="/2026/02/19/1771489495316/" class="read-more">阅读全文 →</a>
+    <!-- 编辑按钮 -->
+    <button onclick="openEditor('_posts/1771489495316.md')" class="read-more">✏️ 编辑</button>
   </div>
-  <!-- 文章正文结束 -->
+  <!-- 链接到文章详情页 -->
+  <!-- CSS class "read-more" 用于样式化按钮 -->
 
 </article>
-<!-- 单篇文章容器结束 -->
+<!-- 单篇文章卡片结束 -->
+
+
+      
+      <!-- 遍历文章结束 -->
+
+    
+    <!-- 条件判断结束 -->
+
+  </div>
+  <!-- 文章列表容器结束 -->
+
+</section>
+<!-- 页面主容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->

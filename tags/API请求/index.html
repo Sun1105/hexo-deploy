@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    SQL生成工具 | Sun Blog
+    Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -363,7 +363,7 @@
           <li>
             <a href="/categories/ITA/">
               <span class="sidebar-name">ITA</span>
-              <span class="sidebar-count">3</span>
+              <span class="sidebar-count">2</span>
             </a>
           </li>
         
@@ -377,7 +377,7 @@
           <li>
             <a href="/categories/TOOL/">
               <span class="sidebar-name">TOOL</span>
-              <span class="sidebar-count">1</span>
+              <span class="sidebar-count">6</span>
             </a>
           </li>
         
@@ -391,7 +391,7 @@
           <li>
             <a href="/categories/VBA/">
               <span class="sidebar-name">VBA</span>
-              <span class="sidebar-count">7</span>
+              <span class="sidebar-count">3</span>
             </a>
           </li>
         
@@ -472,6 +472,13 @@
       
         
           <li>
+            <a href="/tags/hta/">
+              <span class="sidebar-name">.hta</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
             <a href="/tags/A5M2/">
               <span class="sidebar-name">A5M2</span>
               <span class="sidebar-count">1</span>
@@ -481,6 +488,13 @@
           <li>
             <a href="/tags/AI%E7%BB%84%E5%90%88/">
               <span class="sidebar-name">AI组合</span>
+              <span class="sidebar-count">1</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/API%E8%AF%B7%E6%B1%82/">
+              <span class="sidebar-name">API请求</span>
               <span class="sidebar-count">1</span>
             </a>
           </li>
@@ -516,7 +530,14 @@
           <li>
             <a href="/tags/TOOL/">
               <span class="sidebar-name">TOOL</span>
-              <span class="sidebar-count">9</span>
+              <span class="sidebar-count">3</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags/VBA/">
+              <span class="sidebar-name">VBA</span>
+              <span class="sidebar-count">4</span>
             </a>
           </li>
         
@@ -690,384 +711,118 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  post.ejs
-  文章详情页模板
+  tag.ejs
+  标签页面模板
   功能：
-    - 显示文章标题
-    - 显示文章发布日期和标签
-    - 渲染文章正文内容
+    - 显示当前标签名称
+    - 遍历该标签下的所有文章
+    - 渲染为文章卡片列表
 -->
 
-<article class="post">
-  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
+<section class="main-section">
+  <!-- 页面主容器，用于布局和样式控制 -->
+
+  <!-- 标签标题 -->
+  <h2 class="section-title">🏷️ API请求 标签</h2>
+  <!-- emoji 🏷️ 用于视觉增强 -->
+  <!-- API请求 动态输出当前页面所属标签名称 -->
+  <!-- 最终显示效果示例：🏷️ Java 标签 -->
+
+  <div class="post-list">
+    <!-- 文章列表容器，用于存放该标签下的所有文章卡片 -->
+
+    
+    <!-- 判断当前标签下是否有文章 -->
+    <!-- page.posts → 当前页面文章数组 -->
+    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
+
+      
+      <!-- 遍历每篇文章 post -->
+      
+        <!--
+  _partial/post-card.ejs
+  功能：
+    - 渲染单篇文章的卡片
+    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
+    - 可在分类页、标签页、归档页复用
+-->
+
+<article class="post-card">
+  <!-- 单篇文章卡片容器，用于布局和样式 -->
 
   <!-- 文章标题 -->
-  <h1 class="post-title">SQL生成工具</h1>
-  <!-- page.title → 当前文章标题 -->
+  <h3 class="post-title">
+    <a href="/2026/02/19/1764510854184-%E8%BD%BB%E9%87%8F%E7%89%88-Web-API/">轻量版 Web API</a>
+    <!-- 链接到文章详情页 -->
+    <!-- url_for(post.path) → 生成文章路径 -->
+    <!-- post.title → 当前文章标题 -->
+  </h3>
 
-  <!-- 文章元信息：发布日期 + 标签 -->
-  <div class="post-meta">
-    <span>发表于 2026-01-05</span>
+  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
+  <p class="post-meta">
+    发布于 2026-02-19
     <!-- 显示文章发布日期 -->
 
-    
-      <!-- 判断文章是否有标签 -->
-
-      <span>标签：
+     |
+      分类：
+      
+        <a href="/categories/TOOL/">TOOL</a>
         
-          <a href="/tags/TOOL/">TOOL</a>
-          
-          <!-- 遍历文章标签，生成标签链接 -->
-          <!-- 多个标签用逗号分隔 -->
-        
-      </span>
-
+        <!-- 遍历文章分类 -->
+        <!-- 多个分类用逗号分隔 -->
+      
     
-    <!-- 标签判断结束 -->
-  </div>
+
+     |
+      标签：
+      
+        <a href="/tags/API%E8%AF%B7%E6%B1%82/">API请求</a>
+        
+        <!-- 遍历文章标签 -->
+        <!-- 多个标签用逗号分隔 -->
+      
+    
+  </p>
   <!-- 文章元信息结束 -->
 
-  <!-- 文章正文内容 -->
-  <div class="post-content">
+  <!-- 文章摘要 -->
+  <p class="post-excerpt">
+    
     
 
+
     
-      <style>
-  table.sweb-report {
-    border-collapse: collapse;
-    width: 90%;
-    margin: 30px auto;
-    font-family: 'Segoe UI', 'Meiryo', 'Arial', sans-serif;
-    font-size: 15px;
-    background: #fcfcfc;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  }
-  table.sweb-report th, table.sweb-report td {
-    border: 1px solid #d8d8d8;
-    padding: 8px 12px;
-    text-align: center;
-    background: #fff;
-    transition: background 0.15s;
-  }
-  table.sweb-report th {
-    background: #0177cb;
-    color: #fff;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-  table.sweb-report tr.title-row th {
-    background: linear-gradient(90deg, #eaf0fa, #e3eaff 80%);
-    color: #15335c;
-    font-size: 18px;
-    text-align: left;
-    border: none;
-    padding: 16px;
-    letter-spacing: 2px;
-  }
-  table.sweb-report tr.meta-row td {
-    background: #f1f7fb;
-    color: #448;
-    text-align: left;
-    border: none;
-    font-size: 13px;
-    padding: 7px 16px;
-    font-weight: 500;
-  }
-  table.sweb-report tr.data-title td {
-    background: #fffbe6;
-    color: #887444;
-    text-align: left;
-    font-weight: 600;
-    border: none;
-    padding: 10px 16px;
-    font-size: 14px;
-    letter-spacing: 1px;
-  }
-  /* 橘黄色专用于カラム名（和名）列，包括表头和所有数据行（包括最后一行） */
-  table.sweb-report td.col-jp, 
-  table.sweb-report th.col-jp {
-    background: #ffe3c1 !important;
-    color: #ba6900 !important;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: 0.5px;
-  }
-  /* 数据区数据色加深（深蓝）*/
-  table.sweb-report tr.data-row td:not(.col-jp) {
-    background: #a3c9e8 !important;
-    color: #15335c !important;
-    font-weight: 600;
-  }
-  /* 给最后一行除了第一列以外添加白色 */
-  table.sweb-report tr.last-row td:not(.col-jp) {
-    background: #fff !important;
-    color: #383838 !important;
-    font-weight: 400;
-  }
-  /* 鼠标悬停行高亮 */
-  table.sweb-report tr:not(.title-row):not(.meta-row):hover td {
-    background: #e7f5fe !important;
-    transition: background 0.2s;
-  }
-</style>
-<table class="sweb-report">
-  <tr class="title-row">
-    <th colspan="5">テスト用SQL生成_シート名【テストデータ】</th>
-  </tr>
-  <tr class="meta-row">
-    <td colspan="3">作成者</td>
-    <td colspan="2">修正者</td>
-  </tr>
-  <tr class="meta-row">
-    <td colspan="3">作成日</td>
-    <td colspan="2">修正日</td>
-  </tr>
-  <tr class="data-title">
-    <td colspan="5">テストデータ</td>
-  </tr>
-  <tr class="data-title">
-    <td colspan="5">テーブル名：商品</td>
-  </tr>
-  <tr>
-    <th class="col-jp">カラム名（和名）</th>
-    <th>WEB申込商品ID</th>
-    <th>WEB申込商品名称</th>
-    <th>分類区分</th>
-    <th>体系区分</th>
-  </tr>
-  <tr class="data-row">
-    <td class="col-jp">データ型</td>
-    <td>CHAR</td>
-    <td>VARCHAR2</td>
-    <td>CHAR</td>
-    <td>CHAR</td>
-  </tr>
-  <tr class="data-row">
-    <td class="col-jp">桁数</td>
-    <td>4</td>
-    <td>50</td>
-    <td>1</td>
-    <td>1</td>
-  </tr>
-  <tr class="data-row">
-    <td class="col-jp">小数以下桁数</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr class="data-row">
-    <td class="col-jp">NULL</td>
-    <td>不可</td>
-    <td>不可</td>
-    <td>不可</td>
-    <td>不可</td>
-  </tr>
-  <tr class="data-row">
-    <td class="col-jp">主キー</td>
-    <td>1</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr class="last-row">
-    <td class="col-jp">01</td>
-    <td>0000</td>
-    <td>WEB申込商品名称</td>
-    <td>1</td>
-    <td>1</td>
-  </tr>
-</table>
-
-<pre style="background:#282c34; color:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08); font-size:13px; line-height:1.6; padding:18px 20px; overflow:auto;">
-Sub createSQL()
-    Dim ws As Worksheet
-    Dim currentRow As Long
-    Dim lastRow As Long
-    Dim tableName As String
-    Dim itemsName As String
-    Dim endCol As Long
-    Dim dataTypeRange As Range
-    Dim dataStartRow As Long
-    Dim sqlOutputColumn As Long
-    Dim insertSQL As String
-    Dim sqlFileContent As String
-    Dim emptyRowCount As Long
-    Dim startInsert As Boolean
-
-    ' アクティブシートを設定
-    Set ws = ActiveSheet
-
-    ' 最終行を取得（A列から空白20行連続の場合終了）
-    lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
-
-    ' 初期設定
-    currentRow = 4 ' スキャン開始行（A4セルから）
-    emptyRowCount = 0 ' 空白行カウント初期化
-    sqlFileContent = "" ' SQLファイル内容初期化
-    startInsert = False
-
-    Do While currentRow <= lastRow
-        ' A列が空白の場合、空白行カウントを増やす
-        If IsEmpty(ws.Cells(currentRow, "A").Value) Then
-            emptyRowCount = emptyRowCount + 1
-
-            ' 空白行が20連続なら処理終了
-            If emptyRowCount >= 20 Then Exit Do
-
-            currentRow = currentRow + 1 ' 次の行へ移動
-            GoTo SkipIteration ' 空白行の場合は次のループへ進む
-
-        Else
-            emptyRowCount = 0 ' 空白行カウントリセット
-        End If
-
-        ' A列の値が「テーブル名：」の場合、テーブル名を取得
-        If ws.Cells(currentRow, "A").Value = "テーブル名：" Then
-            tableName = ws.Cells(currentRow, "B").Value ' B列からテーブル名を取得
-            If sqlFileContent <> "" Then
-                sqlFileContent = sqlFileContent & vbCrLf
-            End If
-            sqlFileContent = sqlFileContent & "-- " & tableName & vbCrLf
-            sqlFileContent = sqlFileContent & "TRUNCATE table " & tableName & ";" & vbCrLf
-            currentRow = currentRow + 1 ' 次の行へ移動
-
-        ElseIf ws.Cells(currentRow, "A").Value = "カラム名（和名）" Then
-            ' カラム名（和名）行の場合、項目名文のSQL文を作成
-            endCol = ws.Cells(currentRow, ws.Columns.Count).End(xlToLeft).Column ' 最終列を動的に取得
-            Set itemsRange = ws.Range(ws.Cells(currentRow, "B"), ws.Cells(currentRow, endCol))
-
-            itemsName = "("
-            Dim colIdx As Integer
-            For colIdx = 1 To itemsRange.Columns.Count
-                itemsName = itemsName & itemsRange.Cells(1, colIdx).Value ' データ値（B列～最終列）
-
-                ' カラム間の区切処理（最終のカラムには追加しない）
-                If colIdx < itemsRange.Columns.Count Then
-                    itemsName = itemsName & ", "
-                End If
-            Next colIdx
-            itemsName = itemsName & ")" ' 項目名文終了
-            currentRow = currentRow + 1 ' 次の行へ移動
-
-        ElseIf ws.Cells(currentRow, "A").Value = "データ型" Then
-            ' データ型行の場合、範囲を設定（B列から空白セルが現れるまで）
-            'Dim endCol As Long
-            'endCol = ws.Cells(currentRow, ws.Columns.Count).End(xlToLeft).Column ' 最終列を動的に取得
-            Set dataTypeRange = ws.Range(ws.Cells(currentRow, "B"), ws.Cells(currentRow, endCol))
-            dataStartRow = currentRow + 1 ' データ開始行を記録
-            sqlOutputColumn = endCol + 1 ' 出力列（右隣）
-            currentRow = currentRow + 1 ' 次の行へ移動
-
-        ElseIf IsNumeric(ws.Cells(currentRow, "A").Value) Then
-            ' データ行の場合、INSERT文を作成
-            If Not startInsert Then
-                startInsert = True
-                insertSQL = "INSERT INTO " & tableName & itemsName & " VALUES"
-                ' SQL文を出力（右隣のセル）
-                ws.Cells(currentRow - 1, sqlOutputColumn).Value = insertSQL
-                ' SQL文をファイル内容に追加
-                sqlFileContent = sqlFileContent & "INSERT INTO " & tableName & itemsName & vbCrLf & "VALUES" & vbCrLf
-            End If
-            insertSQL = "("
-
-            Dim colIndex As Integer
-            For colIndex = 1 To dataTypeRange.Columns.Count
-                Dim cellValue As Variant
-                Dim dataType As String
-
-                cellValue = ws.Cells(currentRow, colIndex + 1).Value ' データ値（B列～最終列）
-                dataType = dataTypeRange.Cells(1, colIndex).Value ' データ型
-
-                If IsEmpty(cellValue) Or cellValue = "" Then
-                    insertSQL = insertSQL & "NULL"
-                ElseIf dataType = "CHAR" Or dataType = "VARCHAR" Or dataType = "VARCHAR2" Or dataType = "DATE" Or dataType = "TIMESTAMP" Then
-                    insertSQL = insertSQL & "'" & cellValue & "'"
-                Else
-                    insertSQL = insertSQL & cellValue
-                End If
-
-                ' カラム間の区切処理（最終のカラムには追加しない）
-                If colIndex < dataTypeRange.Columns.Count Then
-                    insertSQL = insertSQL & ", "
-                End If
-            Next colIndex
-
-            If Not IsEmpty(ws.Cells(currentRow + 1, "A").Value) And IsNumeric(ws.Cells(currentRow + 1, "A").Value) Then
-                ' 最終行ではない
-                insertSQL = insertSQL & ")," ' INSERT文終了
-            Else
-                ' 最終行
-                insertSQL = insertSQL & ");" ' INSERT文終了
-                startInsert = False
-            End If
-
-            ' SQL文を出力（右隣のセル）
-            ws.Cells(currentRow, sqlOutputColumn).Value = insertSQL
-
-            ' SQL文をファイル内容に追加
-            sqlFileContent = sqlFileContent & insertSQL & vbCrLf
-
-            currentRow = currentRow + 1 ' 次のデータ行へ移動
-
-        Else
-            currentRow = currentRow + 1 ' 次の行へ移動
-        End If
-
-SkipIteration:
-    Loop
-
-    ' ファイル名抽出（Excelファイル名から特定部分を取得）
-    Dim workbookName As String, extractedFileName As String
-    workbookName = ThisWorkbook.Name ' Excelファイル名
-    extractedFileName = Mid(workbookName, InStr(workbookName, "_") + 1) ' _以降を抽出
-    extractedFileName = Mid(extractedFileName, InStr(extractedFileName, "】") + 1) ' _以降を抽出
-    extractedFileName = Left(extractedFileName, InStr(extractedFileName, "_") - 1) ' _まで抽出
-
-    If extractedFileName <> "" Then extractedFileName = extractedFileName & ".sql" Else extractedFileName = Left(workbookName, Len(workbookName) - Len(".xlsm")) & ".sql"
-
-    ' SQLファイルに出力（Excelファイルと同じフォルダーに保存）
-    Dim sqlFilePath As String
-    sqlFilePath = ThisWorkbook.Path & "\" & extractedFileName
-
-    ' Dim fileNum As Integer
-    ' fileNum = FreeFile
-    ' Open sqlFilePath For Output As fileNum
-    '     Print #fileNum, sqlFileContent
-    ' Close fileNum
-    ' SQLファイルにUTF-8 BOMなし形式で出力（ADODB.Streamオブジェクト使用）
-    Dim streamWithBOM As Object, streamWithoutBOM As Object
-    Set streamWithBOM = CreateObject("ADODB.Stream")
-    Set streamWithoutBOM = CreateObject("ADODB.Stream")
-    With streamWithBOM
-        .Charset = "UTF-8" ' UTF-8形式で設定（BOM付き）
-        .Type = 2 ' テキストモードで設定
-        .Open ' ストリームを開く
-        .WriteText sqlFileContent ' SQL文を書き込み
-        .Position = 3 ' BOM部分（3バイト）をスキップ
-        With streamWithoutBOM ' BOMなしストリームにコピーする処理開始
-            .Type = 1 ' バイナリモードに変更（必須）
-            .Open
-            streamWithBOM.CopyTo streamWithoutBOM
-            .SaveToFile sqlFilePath, 2 ' ファイルに保存（上書きモード）
-        End With
-        .Close ' ストリームを閉じる
-        Set streamWithoutBOM = Nothing ' オブジェクト開放
-        Set streamWithBOM = Nothing ' オブジェクト開放
-    End With
-
-    MsgBox "INSERT文: " & extractedFileName & " が生成されました！", vbInformation
-End Sub
-</pre>
-
-      <!-- 渲染文章正文 HTML -->
-      <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
     
+    API Tester (Lite)
+
+&amp;lt;script src=&amp;quot;https://cdn.tailwindcss.com&amp;quot;&amp;gt;&amp;lt;/s...
+  </p>
+
+  <!-- 操作按钮容器 -->
+  <div class="post-actions">
+    <!-- 阅读全文按钮 -->
+    <a href="/2026/02/19/1764510854184-%E8%BD%BB%E9%87%8F%E7%89%88-Web-API/" class="read-more">阅读全文 →</a>
+    <!-- 编辑按钮 -->
+    <button onclick="openEditor('_posts/1764510854184-轻量版-Web-API.md')" class="read-more">✏️ 编辑</button>
   </div>
-  <!-- 文章正文结束 -->
+  <!-- 链接到文章详情页 -->
+  <!-- CSS class "read-more" 用于样式化按钮 -->
 
 </article>
-<!-- 单篇文章容器结束 -->
+<!-- 单篇文章卡片结束 -->
+
+
+      
+      <!-- 遍历文章结束 -->
+
+    
+    <!-- 条件判断结束 -->
+
+  </div>
+  <!-- 文章列表容器结束 -->
+
+</section>
+<!-- 页面主容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->
