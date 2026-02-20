@@ -11,7 +11,7 @@
   <!-- 如果当前页面有标题，则显示 "页面标题 | 网站标题" -->
   <!-- 否则只显示网站标题 config.title -->
   <title>
-    Sun Blog
+    Git分支管理 | Sun Blog
   </title>
 
   <!-- 页面描述，用于 SEO -->
@@ -711,186 +711,69 @@
   <!-- ===== 主体内容区 ===== -->
   <main id="main-content">
     <!--
-  tag.ejs
-  标签页面模板
+  post.ejs
+  文章详情页模板
   功能：
-    - 显示当前标签名称
-    - 遍历该标签下的所有文章
-    - 渲染为文章卡片列表
+    - 显示文章标题
+    - 显示文章发布日期和标签
+    - 渲染文章正文内容
 -->
 
-<section class="main-section">
-  <!-- 页面主容器，用于布局和样式控制 -->
-
-  <!-- 标签标题 -->
-  <h2 class="section-title">🏷️ 工具 标签</h2>
-  <!-- emoji 🏷️ 用于视觉增强 -->
-  <!-- 工具 动态输出当前页面所属标签名称 -->
-  <!-- 最终显示效果示例：🏷️ Java 标签 -->
-
-  <div class="post-list">
-    <!-- 文章列表容器，用于存放该标签下的所有文章卡片 -->
-
-    
-    <!-- 判断当前标签下是否有文章 -->
-    <!-- page.posts → 当前页面文章数组 -->
-    <!-- page.posts.length → 文章数量，大于 0 则进入循环 -->
-
-      
-      <!-- 遍历每篇文章 post -->
-      
-        <!--
-  _partial/post-card.ejs
-  功能：
-    - 渲染单篇文章的卡片
-    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
-    - 可在分类页、标签页、归档页复用
--->
-
-<article class="post-card">
-  <!-- 单篇文章卡片容器，用于布局和样式 -->
+<article class="post">
+  <!-- 单篇文章容器，用于文章详情页布局和样式 -->
 
   <!-- 文章标题 -->
-  <h3 class="post-title">
-    <a href="/2026/01/08/1767944082848--%E5%90%84%E7%A7%8D-AI-%E7%BB%84%E5%90%88%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90-%E5%AE%9E%E7%94%A8%E6%B8%85%E5%8D%95-/">✅ 各种 AI 组合工具推荐（实用清单）</a>
-    <!-- 链接到文章详情页 -->
-    <!-- url_for(post.path) → 生成文章路径 -->
-    <!-- post.title → 当前文章标题 -->
-  </h3>
+  <h1 class="post-title">Git分支管理</h1>
+  <!-- page.title → 当前文章标题 -->
 
-  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
-  <p class="post-meta">
-    发布于 2026-01-09
+  <!-- 文章元信息：发布日期 + 标签 -->
+  <div class="post-meta">
+    <span>发表于 2026-02-20</span>
     <!-- 显示文章发布日期 -->
 
-     |
-      分类：
-      
-        <a href="/categories/URL/">URL</a>
-        
-        <!-- 遍历文章分类 -->
-        <!-- 多个分类用逗号分隔 -->
-      
     
+      <!-- 判断文章是否有标签 -->
 
-     |
-      标签：
-      
-        <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+      <span>标签：
         
-        <!-- 遍历文章标签 -->
-        <!-- 多个标签用逗号分隔 -->
-      
+          <a href="/tags/Git/">Git</a>
+          
+          <!-- 遍历文章标签，生成标签链接 -->
+          <!-- 多个标签用逗号分隔 -->
+        
+      </span>
+
     
-  </p>
+    <!-- 标签判断结束 -->
+  </div>
   <!-- 文章元信息结束 -->
 
-  <!-- 文章摘要 -->
-  <p class="post-excerpt">
+  <!-- 文章正文内容 -->
+  <div class="post-content">
     
-    🤖 各种 AI 组合工具推荐（实用清单）
-按 重要度 + 使用频率 + 场景覆盖面 整理适合：个人效率提升 &amp;#x2F; 技术人员 &amp;#x2F; 产品 &amp;amp; 项目 &amp;#x2F; 企业协作
 
+    
+      <h1 id="1-切换到-develop-分支"><a href="#1-切换到-develop-分支" class="headerlink" title="1. 切换到 develop 分支"></a>1. 切换到 develop 分支</h1><p>git checkout develop</p>
+<h1 id="2-创建新分支"><a href="#2-创建新分支" class="headerlink" title="2. 创建新分支"></a>2. 创建新分支</h1><p>git checkout -b feature&#x2F;AABBBBC0001_新規作成</p>
+<h1 id="3-推送新分支"><a href="#3-推送新分支" class="headerlink" title="3. 推送新分支"></a>3. 推送新分支</h1><p>git push -u origin feature&#x2F;AABBBBC0001_新規作成</p>
+<h1 id="4-追踪新分支-不需要，第三步完成了"><a href="#4-追踪新分支-不需要，第三步完成了" class="headerlink" title="4. 追踪新分支(不需要，第三步完成了)"></a>4. 追踪新分支(不需要，第三步完成了)</h1><p>git push –set-upstream origin feature&#x2F;AABBBBC0001_新規作成</p>
+<h1 id="5-修改代码文件"><a href="#5-修改代码文件" class="headerlink" title="5. 修改代码文件"></a>5. 修改代码文件</h1><h1 id="6-提交修改文件"><a href="#6-提交修改文件" class="headerlink" title="6. 提交修改文件"></a>6. 提交修改文件</h1><p>git add .<br>git commit -m “【API機能】AABBBBC0001_新規作成”</p>
+<h1 id="7-拉取远程更新"><a href="#7-拉取远程更新" class="headerlink" title="7. 拉取远程更新"></a>7. 拉取远程更新</h1><p>git pull</p>
+<h1 id="8-将提交的修改文件，更新到远程"><a href="#8-将提交的修改文件，更新到远程" class="headerlink" title="8. 将提交的修改文件，更新到远程"></a>8. 将提交的修改文件，更新到远程</h1><p>git push</p>
+<h1 id="9-重命名当前分支为"><a href="#9-重命名当前分支为" class="headerlink" title="9. 重命名当前分支为"></a>9. 重命名当前分支为</h1><p>git branch -m feature&#x2F;AABBBBC0001_新規作成</p>
+<h1 id="10-删除远程旧分支（可选，确认不再使用旧分支时执行）"><a href="#10-删除远程旧分支（可选，确认不再使用旧分支时执行）" class="headerlink" title="10. 删除远程旧分支（可选，确认不再使用旧分支时执行）"></a>10. 删除远程旧分支（可选，确认不再使用旧分支时执行）</h1><p>git push origin –delete feature&#x2F;AABBBBC0001_新規作成</p>
+<p>概要<br>・AABBBBC0001_新規作成</p>
+<p>詳細<br>・KKAAAC0102.sql</p>
+<p>参考資料<br>・</p>
 
-...
-  </p>
-
-  <!-- 操作按钮容器 -->
-  <div class="post-actions">
-    <!-- 阅读全文按钮 -->
-    <a href="/2026/01/08/1767944082848--%E5%90%84%E7%A7%8D-AI-%E7%BB%84%E5%90%88%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90-%E5%AE%9E%E7%94%A8%E6%B8%85%E5%8D%95-/" class="read-more">阅读全文 →</a>
-    <!-- 编辑按钮 -->
-    <button onclick="openEditor('_posts/1767944082848--各种-AI-组合工具推荐-实用清单-.md')" class="read-more">✏️ 编辑</button>
+      <!-- 渲染文章正文 HTML -->
+      <!-- 使用  不转义 HTML，保证内容中的标签生效 -->
+    
   </div>
-  <!-- 链接到文章详情页 -->
-  <!-- CSS class "read-more" 用于样式化按钮 -->
+  <!-- 文章正文结束 -->
 
 </article>
-<!-- 单篇文章卡片结束 -->
-
-
-      
-      <!-- 遍历每篇文章 post -->
-      
-        <!--
-  _partial/post-card.ejs
-  功能：
-    - 渲染单篇文章的卡片
-    - 包含标题、发布日期、分类、标签、摘要、阅读全文按钮
-    - 可在分类页、标签页、归档页复用
--->
-
-<article class="post-card">
-  <!-- 单篇文章卡片容器，用于布局和样式 -->
-
-  <!-- 文章标题 -->
-  <h3 class="post-title">
-    <a href="/2026/01/08/1767943768689--%E7%BD%91%E9%A1%B5%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7/">✅ 网页在线工具</a>
-    <!-- 链接到文章详情页 -->
-    <!-- url_for(post.path) → 生成文章路径 -->
-    <!-- post.title → 当前文章标题 -->
-  </h3>
-
-  <!-- 文章元信息：发布日期 + 分类 + 标签 -->
-  <p class="post-meta">
-    发布于 2026-01-09
-    <!-- 显示文章发布日期 -->
-
-     |
-      分类：
-      
-        <a href="/categories/URL/">URL</a>
-        
-        <!-- 遍历文章分类 -->
-        <!-- 多个分类用逗号分隔 -->
-      
-    
-
-     |
-      标签：
-      
-        <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
-        
-        <!-- 遍历文章标签 -->
-        <!-- 多个标签用逗号分隔 -->
-      
-    
-  </p>
-  <!-- 文章元信息结束 -->
-
-  <!-- 文章摘要 -->
-  <p class="post-excerpt">
-    
-    在线工具汇总1️⃣ Markdown 转 HTML 工具（及其他 Markdown 工具）
-Markdown 转 HTML
-https://www.markdownlang.com/ja/markdo...
-  </p>
-
-  <!-- 操作按钮容器 -->
-  <div class="post-actions">
-    <!-- 阅读全文按钮 -->
-    <a href="/2026/01/08/1767943768689--%E7%BD%91%E9%A1%B5%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7/" class="read-more">阅读全文 →</a>
-    <!-- 编辑按钮 -->
-    <button onclick="openEditor('_posts/1767943768689--网页在线工具.md')" class="read-more">✏️ 编辑</button>
-  </div>
-  <!-- 链接到文章详情页 -->
-  <!-- CSS class "read-more" 用于样式化按钮 -->
-
-</article>
-<!-- 单篇文章卡片结束 -->
-
-
-      
-      <!-- 遍历文章结束 -->
-
-    
-    <!-- 条件判断结束 -->
-
-  </div>
-  <!-- 文章列表容器结束 -->
-
-</section>
-<!-- 页面主容器结束 -->
+<!-- 单篇文章容器结束 -->
 
     <!-- 渲染当前页面内容 -->
     <!--  保证 HTML 正常渲染，不转义 -->

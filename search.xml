@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Git分支管理</title>
+      <link href="/2026/02/19/1771555228705/"/>
+      <url>/2026/02/19/1771555228705/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-切换到-develop-分支"><a href="#1-切换到-develop-分支" class="headerlink" title="1. 切换到 develop 分支"></a>1. 切换到 develop 分支</h1><p>git checkout develop</p><h1 id="2-创建新分支"><a href="#2-创建新分支" class="headerlink" title="2. 创建新分支"></a>2. 创建新分支</h1><p>git checkout -b feature&#x2F;AABBBBC0001_新規作成</p><h1 id="3-推送新分支"><a href="#3-推送新分支" class="headerlink" title="3. 推送新分支"></a>3. 推送新分支</h1><p>git push -u origin feature&#x2F;AABBBBC0001_新規作成</p><h1 id="4-追踪新分支-不需要，第三步完成了"><a href="#4-追踪新分支-不需要，第三步完成了" class="headerlink" title="4. 追踪新分支(不需要，第三步完成了)"></a>4. 追踪新分支(不需要，第三步完成了)</h1><p>git push –set-upstream origin feature&#x2F;AABBBBC0001_新規作成</p><h1 id="5-修改代码文件"><a href="#5-修改代码文件" class="headerlink" title="5. 修改代码文件"></a>5. 修改代码文件</h1><h1 id="6-提交修改文件"><a href="#6-提交修改文件" class="headerlink" title="6. 提交修改文件"></a>6. 提交修改文件</h1><p>git add .<br>git commit -m “【API機能】AABBBBC0001_新規作成”</p><h1 id="7-拉取远程更新"><a href="#7-拉取远程更新" class="headerlink" title="7. 拉取远程更新"></a>7. 拉取远程更新</h1><p>git pull</p><h1 id="8-将提交的修改文件，更新到远程"><a href="#8-将提交的修改文件，更新到远程" class="headerlink" title="8. 将提交的修改文件，更新到远程"></a>8. 将提交的修改文件，更新到远程</h1><p>git push</p><h1 id="9-重命名当前分支为"><a href="#9-重命名当前分支为" class="headerlink" title="9. 重命名当前分支为"></a>9. 重命名当前分支为</h1><p>git branch -m feature&#x2F;AABBBBC0001_新規作成</p><h1 id="10-删除远程旧分支（可选，确认不再使用旧分支时执行）"><a href="#10-删除远程旧分支（可选，确认不再使用旧分支时执行）" class="headerlink" title="10. 删除远程旧分支（可选，确认不再使用旧分支时执行）"></a>10. 删除远程旧分支（可选，确认不再使用旧分支时执行）</h1><p>git push origin –delete feature&#x2F;AABBBBC0001_新規作成</p><p>概要<br>・AABBBBC0001_新規作成</p><p>詳細<br>・KKAAAC0102.sql</p><p>参考資料<br>・</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 命令执行 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>AWS × ServiceNow × AI 全能方案说明</title>
       <link href="/2026/02/19/1771507456161/"/>
       <url>/2026/02/19/1771507456161/</url>
